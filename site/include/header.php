@@ -4,7 +4,10 @@
 
    $metaTitle = trim((string)($title ?? ''));
    $metaFullTitle = seo_full_title($metaTitle);
-   $metaShortTitle = trim((string)($breadcrumb ?? '')) ?: (seo_short_title($metaTitle) ?: SEO_BRAND);
+   $metaServices = seo_services();
+   $metaShortTitle = trim((string)($breadcrumb ?? ''))
+      ?: (isset($metaServices[seo_path()]) ? $metaServices[seo_path()][0] : '')
+      ?: (seo_short_title($metaTitle) ?: SEO_BRAND);
    $metaDescription = trim((string)($description ?? 'Obsługa informatyczna firm, outsourcing IT, serwis komputerowy, strony www, Google Ads i SEO w Piasecznie, Warszawie i okolicach.'));
    $metaUrl = seo_canonical();
    $metaImage = SEO_SITE_URL . 'assets/img/opengraph.png';

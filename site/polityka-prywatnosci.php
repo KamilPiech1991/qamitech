@@ -1,6 +1,8 @@
 <?php
    $page  = 'polityka';
    $title = 'Polityka prywatności';
+   $hero_visual = false;
+   $hero_cta = false;
 
    require_once( 'include/header.php' ); ?>
 <?php include( 'part/hero-page.php' ); ?>

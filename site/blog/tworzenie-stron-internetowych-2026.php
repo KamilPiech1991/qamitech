@@ -4,7 +4,7 @@
     $category   = 'Strony www';
     $autor      = 'Qamitech';
     $date       = '28 czerwiec 2026';
-    $image      = 'blog-tworzenie-stron.jpg' 
+    $image      = 'thumbs/blog-tworzenie-stron.jpg' 
 ?>
 
 <?php require_once( '../include/header.php' ); ?>

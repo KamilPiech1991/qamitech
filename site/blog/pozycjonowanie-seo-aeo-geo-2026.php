@@ -4,7 +4,7 @@
     $category   = 'Nowości w IT';
     $autor      = 'Qamitech';
     $date       = '28 czerwiec 2026';
-    $image      = 'blog-pozycjonowanie.jpg' 
+    $image      = 'thumbs/blog-pozycjonowanie.jpg' 
 ?>
 
 <?php require_once( '../include/header.php' ); ?>

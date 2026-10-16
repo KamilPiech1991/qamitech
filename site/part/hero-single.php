@@ -1,5 +1,4 @@
-<section class="section section-content pt-xlarge pt-md-large pb-xsmall" data-arts-theme-text="dark">
-<div class="pt-medium desk-none"></div>
+<section class="section section-content page-hero-single pb-xsmall" data-arts-theme-text="dark">
   <div 
     class="container-sm section-content__content content js-arts-split-text arts-split-text"
     data-arts-os-animation="true"

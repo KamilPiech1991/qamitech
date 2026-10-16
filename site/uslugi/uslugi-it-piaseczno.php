@@ -3,6 +3,10 @@
    $title = 'Informatyk Piaseczno – obsługa IT firm, serwis komputerowy, strony www | Qamitech';
    $description = 'Informatyk dla firm z Piaseczna: stała obsługa IT, serwis i naprawa komputerów, sieci Wi-Fi, strony www, Google Ads i SEO. Biuro w Starej Iwicznej. Tel. 501 784 882';
    $breadcrumb = 'Usługi IT Piaseczno';
+   $h1 = 'Informatyk i obsługa IT w Piasecznie';
+   $hero_icon = 'location_on';
+   $hero_badge = 'Dojazd: Piaseczno';
+   $hero_lead = 'Obsługa informatyczna firm, serwis komputerowy, sieci Wi-Fi, strony internetowe i marketing w Google dla firm z Piaseczna i okolic.';
    $faq = [
       ['q' => 'Czy dojeżdżacie do firm w Piasecznie?', 'a' => 'Tak. Nasze biuro jest w Starej Iwicznej (gmina Lesznowola), między Warszawą a Piasecznem — do firm z Piaseczna dojeżdżamy na spotkania, wdrożenia i naprawy. Wiele spraw rozwiązujemy też zdalnie.'],
       ['q' => 'Jakie usługi IT świadczycie w Piasecznie?', 'a' => 'Outsourcing IT i stałą obsługę informatyczną firm, serwis komputerowy, sieci LAN i Wi-Fi, tworzenie stron internetowych i sklepów, kampanie Google Ads oraz pozycjonowanie SEO, AEO i GEO.'],
@@ -12,16 +16,7 @@
 <!-- PAGE HEADER -->
 <?php require_once( '../include/header.php' ); ?>
 
-<section class="section section-content pt-xlarge pt-md-large pb-medium mt-5 mt-md-0">
-   <div class="container">
-      <div class="section-content__content content js-arts-split-text arts-split-text"
-         data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-         data-arts-split-text="lines" data-arts-split-text-set="lines"
-         data-arts-split-text-overflow-wrap="lines">
-         <h1>Informatyk i obsługa IT w Piasecznie</h1>
-      </div>
-   </div>
-</section>
+<?php include( __DIR__ . '/../part/hero-page.php' ); ?>
 
 <section class="section section-content pb-large">
    <div class="container">

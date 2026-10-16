@@ -2,21 +2,13 @@
    $page  = 'kontakt';
    $title = 'Kontakt - Qamitech Piaseczno | Obsługa IT i strony www';
    $description = 'Skontaktuj się z Qamitech. Biuro w Starej Iwicznej k. Piaseczna. Obsługujemy firmy z Piaseczna, Warszawy, Konstancina i okolic. Tel: 501 784 882';
+   $h1 = 'Kontakt';
+   $hero_cta = ['Napisz wiadomość', '#formContact'];
    ?>
 <!-- PAGE HEADER -->
 <?php require_once( 'include/header.php' ); ?>
 
-<!-- Minimalny hero - wymagany przez Barba.js/animacje przejść -->
-<section class="section section-content pt-xlarge pt-md-large pb-small mt-5 mt-md-0">
-   <div class="container">
-      <div class="section-content__content content js-arts-split-text arts-split-text"
-         data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-         data-arts-split-text="lines" data-arts-split-text-set="lines"
-         data-arts-split-text-overflow-wrap="lines">
-         <h1>Kontakt</h1>
-      </div>
-   </div>
-</section>
+<?php include( 'part/hero-page.php' ); ?>
 
 <section class="section section-content py-medium bg-dark-1" data-arts-theme-text="light">
    <div class="container">
