@@ -1,6 +1,12 @@
 <?php 
    $title = 'Kampanie Google Ads Piaseczno, Warszawa | Qamitech';
    $description = 'Skuteczne kampanie Google Ads dla firm z Piaseczna, Warszawy i Mazowsza. Płacisz tylko za realne kliknięcia. Certyfikowani specjaliści Google Ads. Bezpłatny audyt!';
+   $faq = [
+      ['q' => 'Kiedy kampania Google Ads zaczyna przynosić efekty?', 'a' => 'W odróżnieniu od SEO reklamy Google Ads wyświetlają się od pierwszego dnia działania kampanii. Następnie regularnie optymalizujemy kampanię, by przy tym samym budżecie uzyskiwać coraz lepsze wyniki.'],
+      ['q' => 'Co zawiera obsługa kampanii Google Ads?', 'a' => 'Bezpłatny audyt wstępny, dobór słów kluczowych i wykluczających, testy A/B reklam, konfigurację śledzenia konwersji (zakupy, formularze, połączenia), miesięczny raport z rekomendacjami, stałą optymalizację stawek oraz dedykowanego opiekuna kampanii.'],
+      ['q' => 'Jakie kampanie prowadzicie?', 'a' => 'Kampanie w wyszukiwarce (Search), displayowe (GDN), remarketing, kampanie lokalne dla firm z Piaseczna, Warszawy i okolic oraz kampanie produktowe Google Shopping dla sklepów internetowych.'],
+      ['q' => 'Czy możecie poprawić moją obecną kampanię?', 'a' => 'Tak — wykonujemy audyt istniejących kampanii, eliminujemy marnowanie budżetu i wdrażamy zmiany zwiększające skuteczność.'],
+   ];
 ?>
          <!-- PAGE HEADER -->
 
@@ -20,7 +26,7 @@
                         data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
                         data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
                         <p>
-                        Kampanie Google Ads to jeden z najskuteczniejszych sposobów na dotarcie do nowych klientów w internecie. Reklamy pojawiają się dokładnie wtedy, gdy potencjalny klient szuka produktów lub usług, które oferujesz - co oznacza, że platisz tylko za realne zainteresowanie. Qamitech kompleksowo zarządza kampaniami Google Ads dla firm z różnych branż, dbając o maksymalny zwrot z inwestycji.
+                        Kampanie Google Ads to jeden z najskuteczniejszych sposobów na dotarcie do nowych klientów w internecie. Reklamy pojawiają się dokładnie wtedy, gdy potencjalny klient szuka produktów lub usług, które oferujesz - co oznacza, że płacisz tylko za realne zainteresowanie. Qamitech kompleksowo zarządza kampaniami Google Ads dla firm z różnych branż, dbając o maksymalny zwrot z inwestycji.
                         </p>
 
                         <h2>Dlaczego warto zlecić kampanie Google Ads specjalistom?</h2>
@@ -57,33 +63,34 @@
 
                         <h2>Co otrzymujesz w ramach obsługi?</h2>
                         <ul>
-                           <li>Bezplatny audyt wstępny i analiza potencjalu kampanii</li>
-                           <li>Dobór slow kluczowych i wykluczajacych</li>
-                           <li>Tworzenie i testowanie roznych wariantow reklam (A/B testing)</li>
-                           <li>Konfiguracja sledzenia konwersji (zakupy, formularze, polaczenia)</li>
-                           <li>Miesieczny raport wynikow z rekomendacjami</li>
-                           <li>Stala optymalizacja - obniżanie kosztu klikniecia (CPC)</li>
-                           <li>Dedykowany opiekun kampanii dostepny pod telefonem</li>
+                           <li>Bezpłatny audyt wstępny i analiza potencjału kampanii</li>
+                           <li>Dobór słów kluczowych i wykluczających</li>
+                           <li>Tworzenie i testowanie różnych wariantów reklam (testy A/B)</li>
+                           <li>Konfiguracja śledzenia konwersji (zakupy, formularze, połączenia)</li>
+                           <li>Miesięczny raport wyników z rekomendacjami</li>
+                           <li>Stała optymalizacja – obniżanie kosztu kliknięcia (CPC)</li>
+                           <li>Dedykowany opiekun kampanii dostępny pod telefonem</li>
                         </ul>
 
-                        <h2>Dla kogo sa kampanie Google Ads?</h2>
+                        <h2>Dla kogo są kampanie Google Ads?</h2>
                         <p>
-                        Google Ads sprawdza sie dla firm, ktore chca szybko zwiekszyc liczbe zapytan ofertowych lub sprzedaz online. W odroznieniu od SEO, wyniki widac juz od pierwszego dnia dzialania kampanii. To idealne rozwiazanie dla firm otwierajacych nowe oddzialy, wprowadzajacych nowe produkty lub dzialajacych w bardzo konkurencyjnych branzach.
+                        Google Ads sprawdza się dla firm, które chcą szybko zwiększyć liczbę zapytań ofertowych lub sprzedaż online. W odróżnieniu od SEO wyniki widać już od pierwszego dnia działania kampanii. To idealne rozwiązanie dla firm otwierających nowe oddziały, wprowadzających nowe produkty lub działających w bardzo konkurencyjnych branżach.
                         </p>
 
-                        <h3>Kampanie Google Ads - efekty, ktore mierzysz</h3>
+                        <h3>Kampanie Google Ads – efekty, które mierzysz</h3>
                         <p>
-                        Kazda zlotowka wydana na reklame jest mierzalna. W przeciwienstwie do tradycyjnych form reklamy, Google Ads daje pelna transparentnosc: wiesz dokladnie ile wydales, ile osob kliknelo w reklame, ile z nich skontaktowalo sie z Twoja firma i ile transakcji zostalo zawartych. Dzieki temu mozesz optymalizowac budzet i skupiac sie na tym, co naprawde przynosi zysk.
+                        Każda złotówka wydana na reklamę jest mierzalna. W przeciwieństwie do tradycyjnych form reklamy Google Ads daje pełną transparentność: wiesz dokładnie, ile wydałeś, ile osób kliknęło w reklamę, ile z nich skontaktowało się z Twoją firmą i ile transakcji zostało zawartych. Dzięki temu możesz optymalizować budżet i skupiać się na tym, co naprawdę przynosi zysk.
                         </p>
 
                         <h4>
-                        Skontaktuj sie z nami i dowiedz sie, jak kampanie Google Ads moga zwiekszyc sprzedaz w Twojej firmie. Oferujemy bezplatna konsultacje i wstepna analize potencjalu reklamowego.
+                        Skontaktuj się z nami i dowiedz się, jak kampanie Google Ads mogą zwiększyć sprzedaż w Twojej firmie. Oferujemy bezpłatną konsultację i wstępną analizę potencjału reklamowego: <a href="tel:+48501784882">501 784 882</a>.
                         </h4>
                      </div>
                   </div>
                </div>
             </section>
 
+<?php include( __DIR__ . '/../part/faq.php' ); ?>
             </main>
 
             <!-- PAGE FOOTER -->

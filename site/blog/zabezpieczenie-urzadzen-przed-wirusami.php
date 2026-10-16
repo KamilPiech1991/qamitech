@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Jak zabezpieczyć swoje urządzenia przed wirusami i malware?';
+    $description = 'Wirusy i malware to coraz większe zagrożenie dla użytkowników urządzeń elektronicznych. W dzisiejszych czasach, gdy większość naszych codziennych…';
     $category   = 'Zabezpieczenia';
     $autor      = 'Qamitech';
     $date       = '15 marzec 2023';

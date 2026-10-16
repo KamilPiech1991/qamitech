@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Pozycjonowanie SEO, AEO i GEO w 2026 roku – kompletny przewodnik dla firm';
+    $description = 'Rok 2026 przyniósł fundamentalną zmianę w sposobie, w jaki ludzie szukają informacji w internecie. Google AI Overview, ChatGPT, Gemini i Perplexity stają…';
     $category   = 'Nowości w IT';
     $autor      = 'Qamitech';
     $date       = '28 czerwiec 2026';

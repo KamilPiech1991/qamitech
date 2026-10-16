@@ -207,12 +207,12 @@
             <div class="main-form">
                <form class="form form-contact form-dark js-ajax-form" id="formContact" action="forms/form-contact.php"
                   method="POST" data-message-success="Dziękujemy za wiadomość! Wkrótce otrzymasz odpowiedź."
-                  data-message-error="Coś poszło nie tak :( Napisz bezpośrednio na <a href='hello@qamitech.pl'>hello@qamitech.pl</a>">
+                  data-message-error="Coś poszło nie tak :( Napisz bezpośrednio na <a href='mailto:kontakt@qamitech.pl'>kontakt@qamitech.pl</a> lub zadzwoń: 501 784 882">
                   <div class="row">
                      <div class="col-md-6 mb-5">
                         <label class="input-float js-input-float">
                            <span class="input-label">Imię i nazwisko</span>
-                           <input class="input-float__input" type="text" name="visitor_name" required="required"
+                           <input class="input-float__input" type="text" name="visitor_name" required="required" autocomplete="name"
                               data-msg="Wypełnij to pole" />
                            <span class="form__error"></span>
                         </label>
@@ -220,60 +220,58 @@
                      <div class="col-md-6 mb-5">
                         <label class="input-float js-input-float">
                            <span class="input-label">Telefon</span>
-                           <input class="input-float__input" type="text" name="visitor_surname" required="required"
+                           <input class="input-float__input" type="tel" name="visitor_phone" required="required" autocomplete="tel"
                               data-msg="Wypełnij to pole" />
                            <span class="form__error"></span>
                         </label>
                      </div>
                      <div class="col-md-6 mb-5">
                         <label class="input-float js-input-float">
-                           <span class="input-label">Nazwa firmy</span>
-                           <input class="input-float__input" type="email" name="visitor_email" required="required"
-                              data-msg="Wypełnij to pole" />
+                           <span class="input-label">E-mail</span>
+                           <input class="input-float__input" type="email" name="visitor_email" required="required" autocomplete="email"
+                              data-msg="Podaj poprawny adres e-mail" />
                            <span class="form__error"></span>
                         </label>
                      </div>
                      <div class="col-md-6 mb-5">
+                        <label class="input-float js-input-float">
+                           <span class="input-label">Nazwa firmy (opcjonalnie)</span>
+                           <input class="input-float__input" type="text" name="visitor_company" autocomplete="organization" />
+                           <span class="form__error"></span>
+                        </label>
+                     </div>
+                     <div class="col-12 mb-5">
                         <label class="input-float js-input-float">
                            <span class="input-label">Temat kontaktu</span>
-
-                           <select name="visitor_phone" id="">
-                              <option value="Temat 1">
-                                 Temat 1
-                              </option>
-                              <option value="Temat 2">
-                                 Temat 2
-                              </option>
-                              <option value="Temat 3">
-                                 Temat 3
-                              </option>
+                           <select name="visitor_topic">
+                              <option value="Outsourcing IT / stała obsługa informatyczna">Outsourcing IT / stała obsługa informatyczna</option>
+                              <option value="Serwis komputerowy">Serwis komputerowy</option>
+                              <option value="Sieci LAN / Wi-Fi">Sieci LAN / Wi-Fi</option>
+                              <option value="Strona internetowa lub sklep">Strona internetowa lub sklep</option>
+                              <option value="Kampania Google Ads">Kampania Google Ads</option>
+                              <option value="Pozycjonowanie SEO / AEO / GEO">Pozycjonowanie SEO / AEO / GEO</option>
+                              <option value="Szkolenie AI / marketing / IT">Szkolenie AI / marketing / IT</option>
+                              <option value="Branding">Branding</option>
+                              <option value="Pomoc informatyczna w domu">Pomoc informatyczna w domu</option>
+                              <option value="Inny temat">Inny temat</option>
                            </select>
                            <span class="form__error"></span>
                         </label>
                      </div>
-                     <div class="col-md-6 mb-5">
-                        <label class="input-float js-input-float">
-                           <span class="input-label">Email</span>
-                           <input class="input-float__input" type="text" name="visitor_field_2" required="required"
-                              data-msg="Wypełnij to pole" />
-                           <span class="form__error"></span>
-                        </label>
-                     </div>
-                     <div class="col-md-6 mb-5">
-                        <label class="input-float js-input-float">
-                           <span class="input-label">Dołącz załącznik</span>
-                           <input class="input-float__input" type="email" name="visitor_field_3" required="required"
-                              data-msg="Wypełnij to pole" />
-                           <span class="form__error"></span>
-                        </label>
-                     </div>
-
                      <div class="col-12 mb-5">
                         <label class="input-float js-input-float">
-                           <input class="input-float__input" id="check" type="checkbox" name="" required="required"
+                           <span class="input-label">Wiadomość</span>
+                           <textarea class="input-float__input input-float__input_textarea" name="visitor_msg" rows="5" required="required"
+                              data-msg="Opisz krótko, w czym możemy pomóc"></textarea>
+                           <span class="form__error"></span>
+                        </label>
+                     </div>
+                     <div class="col-12 mb-5">
+                        <label class="input-float js-input-float">
+                           <input class="input-float__input" id="check" type="checkbox" name="visitor_consent" value="1" required="required"
                               data-msg="Zaznacz zgodę" />
                            <label for="check" class="check-label">
-                              Oświadczam, że zapoznałem/am się z regulaminem strony oraz polityką prywatności RODO.
+                              Oświadczam, że zapoznałem/am się z <a href="regulamin.php">regulaminem strony</a> oraz <a href="polityka-prywatnosci.php">polityką prywatności RODO</a>.
                            </label>
                            <span class="form__error"></span>
                         </label>

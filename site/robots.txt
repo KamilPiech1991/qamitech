@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
+Disallow: /forms/
 
-Sitemap: https://qamitech.pl/sitemap.xml
+# Wyszukiwarki i asystenci AI — wyraźnie dopuszczeni (widoczność w ChatGPT, Perplexity, Claude, Gemini)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /forms/
+
+Sitemap: https://www.qamitech.pl/sitemap.xml

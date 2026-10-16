@@ -1,0 +1,39 @@
+# Qamitech
+
+> Qamitech (Qamitech Creative Solution) to lokalna firma IT ze Starej Iwicznej koło Piaseczna. Zapewnia małym i średnim firmom z Piaseczna, Warszawy i okolic Mazowsza stałą obsługę informatyczną (outsourcing IT), serwis komputerowy i sieci LAN/Wi-Fi, a także marketing internetowy: strony i sklepy www, kampanie Google Ads, pozycjonowanie SEO, AEO i GEO oraz szkolenia z AI.
+
+## Dane kontaktowe
+
+- Adres: ul. Cicha 3, 05-500 Stara Iwiczna (gmina Lesznowola, powiat piaseczyński)
+- Telefon: +48 501 784 882
+- E-mail: kontakt@qamitech.pl
+- Godziny: poniedziałek–piątek, 9:00–17:00
+- Obszar działania: Piaseczno, Warszawa, Konstancin-Jeziorna, Pruszków, Grodzisk Mazowiecki, Lesznowola, Mysiadło, Tarczyn, Grójec, Góra Kalwaria, Otwock, Legionowo
+- Pierwsza konsultacja i wycena: bezpłatne
+
+## Usługi
+
+- [Outsourcing IT i obsługa informatyczna firm](https://www.qamitech.pl/outsourcing.php): stała opieka nad komputerami, serwerami, siecią, pocztą, VPN i kopiami zapasowymi; czas reakcji na zgłoszenia krytyczne 2, 12 lub 24 h; wycena przez kalkulator.
+- [Serwis komputerowy](https://www.qamitech.pl/uslugi/serwis-komputerowy.php): naprawa laptopów, komputerów i tabletów, instalacja systemów, odzyskiwanie danych.
+- [Sieci LAN i WLAN](https://www.qamitech.pl/uslugi/sieci-lan-wlan.php): projekt, okablowanie i konfiguracja sieci biurowych i Wi-Fi.
+- [Pomoc informatyczna w domu](https://www.qamitech.pl/uslugi/pomoc-domowa.php): dojazd do klientów prywatnych.
+- [Tworzenie stron internetowych i sklepów](https://www.qamitech.pl/uslugi/tworzenie-stron-www.php): strony firmowe i sklepy WooCommerce; orientacyjnie wizytówka 800–2500 zł, strona z blogiem 2500–8000 zł, sklep od 4000 zł.
+- [Kampanie Google Ads](https://www.qamitech.pl/uslugi/kampanie-google-ads.php): Search, Display, remarketing, Shopping, kampanie lokalne; bezpłatny audyt i miesięczne raporty.
+- [Pozycjonowanie SEO, AEO i GEO](https://www.qamitech.pl/uslugi/pozycjonowanie-stron.php): lokalne SEO, Google Business Profile, widoczność w AI Overview i ChatGPT; pierwsze efekty zwykle po 2–3 miesiącach.
+- [Szkolenia z AI, marketingu i IT](https://www.qamitech.pl/uslugi/szkolenia-it.php): AI w marketingu, agenci AI, automatyzacja (n8n, Make, Zapier), Google Ads, WordPress, cyberbezpieczeństwo; grupy 5–30 osób i 1:1.
+- [Branding dla firm](https://www.qamitech.pl/uslugi/branding-dla-firm.php): logo, identyfikacja wizualna, treści.
+
+## Strony lokalne
+
+- [Usługi IT Piaseczno](https://www.qamitech.pl/uslugi/uslugi-it-piaseczno.php)
+- [Usługi IT Warszawa](https://www.qamitech.pl/uslugi/uslugi-it-warszawa.php)
+- [Usługi IT Pruszków](https://www.qamitech.pl/uslugi/uslugi-it-pruszkow.php)
+- [Usługi IT Konstancin-Jeziorna](https://www.qamitech.pl/uslugi/uslugi-it-konstancin.php)
+- [Usługi IT Grodzisk Mazowiecki](https://www.qamitech.pl/uslugi/uslugi-it-grodzisk-mazowiecki.php)
+
+## Więcej
+
+- [FAQ — najczęstsze pytania](https://www.qamitech.pl/faq.php)
+- [Realizacje (portfolio stron i sklepów)](https://www.qamitech.pl/realizacje/index.php)
+- [Blog](https://www.qamitech.pl/blog/index.php)
+- [Kontakt](https://www.qamitech.pl/kontakt.php)

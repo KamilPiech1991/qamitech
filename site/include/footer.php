@@ -39,7 +39,7 @@
                           <input class="input-float__input" type="email" name="visitor_mail" required="required"
                             data-msg="Wpisz adres e-mail" />
                           <span class="input-float__label">Twój e-mail</span>                        
-                          <input class="button btn-light" type="submit" value="-"><br />
+                          <input class="button btn-light" type="submit" value="→" aria-label="Zapisz się do newslettera"><br />
                           <span class="form__error"></span>
                         </label>
                       </form>
@@ -51,12 +51,15 @@
                     <h2 class="widgettitle h4 mt-2">Usługi firmy</h2>
                     <div>
                       <ul class="menu">
+                        <li class="menu-item"><a href="<?php home_url(); ?>outsourcing.php">Outsourcing IT</a></li>
                         <li class="menu-item"><a href="<?php home_url(); ?>uslugi/serwis-komputerowy.php">Serwis komputerowy</a></li>
                         <li class="menu-item"><a href="<?php home_url(); ?>uslugi/szkolenia-it.php">Szkolenia IT</a></li>
                         <li class="menu-item"><a href="<?php home_url(); ?>uslugi/sieci-lan-wlan.php">Sieci LAN/WLAN</a></li>
                         <li class="menu-item"><a href="<?php home_url(); ?>uslugi/pomoc-domowa.php">Pomoc domowa</a></li>
                         <li class="menu-item"><a href="<?php home_url(); ?>uslugi/tworzenie-stron-www.php">Tworzenie stron www</a></li>
                         <li class="menu-item"><a href="<?php home_url(); ?>uslugi/pozycjonowanie-stron.php">Pozycjonowanie stron</a></li>
+                        <li class="menu-item"><a href="<?php home_url(); ?>uslugi/kampanie-google-ads.php">Kampanie Google Ads</a></li>
+                        <li class="menu-item"><a href="<?php home_url(); ?>uslugi/branding-dla-firm.php">Branding dla firm</a></li>
                       </ul>
                     </div>
                   </section>
@@ -68,8 +71,7 @@
                       <ul class="menu">
                         <li class="menu-item"><a href="<?php home_url(); ?>oferta.php">Oferta</a></li>
                         <li class="menu-item"><a href="<?php home_url(); ?>blog/index.php">Blog</a></li>
-                        <li class="menu-item"><a href="<?php home_url(); ?>">Nasz team</a></li>
-                        <li class="menu-item"><a href="<?php home_url(); ?>">Kariera</a></li>  
+                        <li class="menu-item"><a href="<?php home_url(); ?>realizacje/index.php">Realizacje</a></li>
                       </ul>
                     </div>
                   </section> 
@@ -105,6 +107,11 @@
                 <div class="col-lg-8 text-lg-start text-center">
                   <section class="widget widget_text">
                     <div class="textwidget">
+                      <address class="mb-2" style="font-style:normal;">
+                        <strong>Qamitech</strong> · ul. Cicha 3, 05-500 Stara Iwiczna ·
+                        <a href="tel:+48501784882">501 784 882</a> ·
+                        <a href="mailto:kontakt@qamitech.pl">kontakt@qamitech.pl</a> · pn–pt 9:00–17:00
+                      </address>
                       <a href="<?php home_url(); ?>regulamin.php">Regulamin strony</a>
                       <a href="<?php home_url(); ?>polityka-prywatnosci.php">Polityka prywatności</a>
                     </div>

@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Długie zapytanie/ restart/ wylogowanie w Windows 7';
+    $description = 'Czasami użytkownicy systemu Windows 7 mogą napotkać problemy z długimi czasami oczekiwania na zapytania, restartem lub wylogowaniem. Istnieje wiele…';
     $category   = 'Kategoria';
     $autor      = 'Qamitech';
     $date       = '15 lipiec 2022';

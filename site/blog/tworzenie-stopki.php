@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Tworzenie stopki';
+    $description = 'Stopka to ważny element każdej strony internetowej. Zazwyczaj zawiera ona informacje o prawach autorskich, linki do innych stron internetowych, dane…';
     $category   = 'Kategoria';
     $autor      = 'Qamitech';
     $date       = '23 czerwca 2022';

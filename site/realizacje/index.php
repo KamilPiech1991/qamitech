@@ -1,6 +1,7 @@
 <?php 
    $page  = 'realizacje';
-   $title = 'Realizacje';
+   $title = 'Realizacje – strony internetowe i sklepy wykonane przez Qamitech';
+   $description = 'Portfolio Qamitech: strony firmowe i sklepy internetowe, m.in. Eurodomy, Marmostyl, Pure Rehab, Rancilio Ekspresy, Veles Lighting, Sahra Art.';
    ?>
 <!-- PAGE HEADER -->
 <?php require_once( '../include/header.php' ); ?>

@@ -8,7 +8,7 @@
     data-arts-split-text-overflow-wrap="lines"
     >
     <h1>
-    <?php the_title(); ?>
+    <?php echo htmlspecialchars($h1 ?? seo_short_title((string)$title), ENT_QUOTES, 'UTF-8'); ?>
     </h1>
   </div>
 </section>
