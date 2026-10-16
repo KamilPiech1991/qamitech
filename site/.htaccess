@@ -1,5 +1,33 @@
 RewriteEngine On
+
+# Jeden adres strony: https://www.qamitech.pl
+RewriteCond %{HTTP_HOST} ^qamitech\.pl$ [NC]
+RewriteRule ^ https://www.qamitech.pl%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Puste lub robocze podstrony → właściwe strony usług (bez duplikatów w Google)
+RewriteRule ^uslugi/obsluga-informatyczna-firm\.php$ /outsourcing.php [L,R=301]
+RewriteRule ^uslugi/outsorcing-it\.php$ /outsourcing.php [L,R=301]
+RewriteRule ^uslugi/projektowanie-stron-www\.php$ /uslugi/tworzenie-stron-www.php [L,R=301]
+RewriteRule ^uslugi/sklepy-online\.php$ /uslugi/tworzenie-stron-www.php [L,R=301]
+RewriteRule ^jak-dzialamy\.php$ /#how-we-work [L,R=301,NE]
+RewriteRule ^o-nas/?(index\.php)?$ /kontakt.php [L,R=301]
+RewriteRule ^blog/single-post\.php$ /blog/index.php [L,R=301]
+RewriteRule ^test\.php$ / [L,R=301]
+RewriteRule ^index\.php/ /index.php [L,R=301]
+
 RewriteRule ^(.*)\.html$ /$1 [R=301,L]
 
+ErrorDocument 404 /error/404.php
+
+# Plik stanu workflowu „Deploy strony na FTP” nie może być publiczny
+<Files ".ftp-deploy-sync-state.json">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</Files>

@@ -1,21 +1,22 @@
-<?php 
+<?php
    $page  = 'uslugi';
-   $title = 'Obsługa IT i tworzenie stron Grodzisk Mazowiecki | Qamitech';
-   $description = 'Profesjonalna obsługa informatyczna firm, tworzenie stron internetowych, kampanie Google Ads i pozycjonowanie SEO w Grodzisk Mazowiecki. Qamitech - lokalny partner IT. Tel: 501 784 882';
+   $title = 'Informatyk Grodzisk Mazowiecki – obsługa IT firm i strony www | Qamitech';
+   $description = 'Informatyk dla firm z Grodziska Mazowieckiego: outsourcing IT, serwis komputerowy, sieci Wi-Fi, strony www, Google Ads i SEO. Tel. 501 784 882';
+   $breadcrumb = 'Usługi IT Grodzisk Mazowiecki';
+   $h1 = 'Informatyk i obsługa IT w Grodzisku Mazowieckim';
+   $hero_icon = 'location_on';
+   $hero_badge = 'Dojazd: Grodzisk Mazowiecki';
+   $hero_lead = 'Obsługa informatyczna firm, serwis komputerowy, sieci Wi-Fi, strony internetowe i marketing w Google dla firm z Grodziska Mazowieckiego i okolic.';
+   $faq = [
+      ['q' => 'Czy dojeżdżacie do firm w Grodzisku Mazowieckim?', 'a' => 'Tak. Nasze biuro jest w Starej Iwicznej (gmina Lesznowola), między Warszawą a Piasecznem — do firm z Grodziska Mazowieckiego dojeżdżamy na spotkania, wdrożenia i naprawy. Wiele spraw rozwiązujemy też zdalnie.'],
+      ['q' => 'Jakie usługi IT świadczycie w Grodzisku Mazowieckim?', 'a' => 'Outsourcing IT i stałą obsługę informatyczną firm, serwis komputerowy, sieci LAN i Wi-Fi, tworzenie stron internetowych i sklepów, kampanie Google Ads oraz pozycjonowanie SEO, AEO i GEO.'],
+      ['q' => 'Ile kosztuje pierwsza konsultacja?', 'a' => 'Pierwsza konsultacja i wycena są bezpłatne. Zadzwoń: <a href="tel:+48501784882">501 784 882</a> lub napisz: <a href="mailto:kontakt@qamitech.pl">kontakt@qamitech.pl</a>.'],
+   ];
    ?>
 <!-- PAGE HEADER -->
 <?php require_once( '../include/header.php' ); ?>
 
-<section class="section section-content pt-xlarge pt-md-large pb-medium mt-5 mt-md-0">
-   <div class="container">
-      <div class="section-content__content content js-arts-split-text arts-split-text"
-         data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-         data-arts-split-text="lines" data-arts-split-text-set="lines"
-         data-arts-split-text-overflow-wrap="lines">
-         <h1>Obsługa IT i tworzenie stron Grodzisk Mazowiecki</h1>
-      </div>
-   </div>
-</section>
+<?php include( __DIR__ . '/../part/hero-page.php' ); ?>
 
 <section class="section section-content pb-large">
    <div class="container">
@@ -27,27 +28,27 @@
             data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
 
             <p>
-            Qamitech to lokalny partner IT dla firm z <strong>Grodzisk Mazowiecki</strong> i okolic. Świadczymy pełen zakres usług informatycznych i marketingowych — od tworzenia stron internetowych, przez obsługę IT i kampanie Google Ads, po pozycjonowanie SEO, AEO i GEO. Działamy szybko, lokalnie i skutecznie.
+            <strong>Qamitech to lokalny partner IT dla firm z Grodziska Mazowieckiego i okolic.</strong> Zapewniamy stałą obsługę informatyczną firm, serwis komputerowy, sieci LAN i Wi-Fi oraz marketing internetowy — strony www, kampanie Google Ads i pozycjonowanie SEO, AEO i GEO. Biuro mamy w Starej Iwicznej (gmina Lesznowola), między Warszawą a Piasecznem, więc do klientów w Grodzisku Mazowieckim dojeżdżamy na spotkania, wdrożenia i naprawy. Pierwsza konsultacja i wycena są bezpłatne.
             </p>
 
-            <h2>Usługi IT dla firm w Grodzisk Mazowiecki</h2>
+            <h2>Usługi IT dla firm w Grodzisku Mazowieckim</h2>
             <ul>
-               <li><strong><a href="../uslugi/tworzenie-stron-www.php">Tworzenie stron internetowych Grodzisk Mazowiecki</a></strong> — profesjonalne strony www i sklepy e-commerce dla firm lokalnych.</li>
-               <li><strong><a href="../uslugi/kampanie-google-ads.php">Kampanie Google Ads Grodzisk Mazowiecki</a></strong> — skuteczna reklama w Google, płacisz tylko za kliknięcia.</li>
-               <li><strong><a href="../outsourcing.php">Outsourcing IT Grodzisk Mazowiecki</a></strong> — kompleksowa opieka nad infrastrukturą IT w modelu abonamentowym.</li>
-               <li><strong><a href="../uslugi/pozycjonowanie-stron.php">Pozycjonowanie SEO Grodzisk Mazowiecki</a></strong> — wyższa pozycja w Google, więcej klientów z internetu.</li>
-               <li><strong><a href="../uslugi/serwis-komputerowy.php">Serwis komputerowy Grodzisk Mazowiecki</a></strong> — naprawa laptopów, komputerów i urządzeń biurowych.</li>
-               <li><strong><a href="../uslugi/sieci-lan-wlan.php">Sieci LAN/WLAN Grodzisk Mazowiecki</a></strong> — projektowanie i instalacja sieci biurowych.</li>
+               <li><strong><a href="../outsourcing.php">Obsługa IT firm Grodzisk Mazowiecki</a></strong> — stała opieka informatyczna z ustalonym czasem reakcji i wsparciem zdalnym oraz na miejscu.</li>
+               <li><strong><a href="serwis-komputerowy.php">Serwis komputerowy Grodzisk Mazowiecki</a></strong> — naprawa laptopów, komputerów i urządzeń biurowych.</li>
+               <li><strong><a href="sieci-lan-wlan.php">Sieci LAN i Wi-Fi Grodzisk Mazowiecki</a></strong> — projektowanie, instalacja i serwis sieci biurowych.</li>
+               <li><strong><a href="tworzenie-stron-www.php">Tworzenie stron internetowych Grodzisk Mazowiecki</a></strong> — strony firmowe i sklepy internetowe.</li>
+               <li><strong><a href="kampanie-google-ads.php">Kampanie Google Ads Grodzisk Mazowiecki</a></strong> — reklama w Google — płacisz tylko za kliknięcia.</li>
+               <li><strong><a href="pozycjonowanie-stron.php">Pozycjonowanie SEO, AEO i GEO Grodzisk Mazowiecki</a></strong> — widoczność w Google i w odpowiedziach AI.</li>
             </ul>
 
-            <h2>Dlaczego Qamitech w Grodzisk Mazowiecki?</h2>
+            <h2>Dlaczego Qamitech w Grodzisku Mazowieckim?</h2>
             <p>
-            Nasze biuro mieści się w Starej Iwicznej (gmina Lesznowola), zaledwie kilka minut od centrum Grodziska Mazowieckiego. Zapewniamy szybki dojazd, spotkania osobiste i stały kontakt z dedykowanym opiekunem. Obsługujemy firmy z Grodzisk Mazowiecki od lat — znamy lokalny rynek i specyfikę tutejszych przedsiębiorstw.
+            Jesteśmy blisko: obsługujemy firmy z Grodziska Mazowieckiego oraz okolicznych miejscowości, m.in. Milanówek, Żółwin, Jaktorów, Książenice i Podkowa Leśna. Masz stały kontakt z jednym opiekunem, jasno ustalony zakres obsługi i czas reakcji (2, 12 lub 24 godziny dla zgłoszeń krytycznych). Wiele problemów rozwiązujemy zdalnie, a gdy trzeba — przyjeżdżamy na miejsce.
             </p>
 
             <h2>Jak zacząć współpracę?</h2>
             <p>
-            Skontaktuj się z nami telefonicznie lub mailowo. Pierwsza konsultacja i wycena są zawsze bezpłatne. Opowiemy Ci, co możemy zrobić dla Twojej firmy w Grodzisk Mazowiecki i jakich efektów możesz oczekiwać.
+            Zadzwoń lub napisz i opisz, czego potrzebujesz. Poznamy Twoją firmę, sprawdzimy obecny sprzęt i oprogramowanie, a potem przygotujemy jasną ofertę dla firmy z Grodziska Mazowieckiego. Pracujemy od poniedziałku do piątku w godzinach 9:00–17:00.
             </p>
 
             <h3>Zadzwoń: <a href="tel:+48501784882">501 784 882</a> | Napisz: <a href="mailto:kontakt@qamitech.pl">kontakt@qamitech.pl</a></h3>
@@ -58,6 +59,7 @@
    </div>
 </section>
 
+<?php include( __DIR__ . '/../part/faq.php' ); ?>
 </main>
 <!-- PAGE FOOTER -->
 <?php require_once( '../include/footer.php' ); ?>

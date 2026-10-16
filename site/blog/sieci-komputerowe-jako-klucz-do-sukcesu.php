@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Budowanie Solidnych Fundamentów Biznesu: Sieci Komputerowe jako Klucz do Sukcesu';
+    $description = 'W dzisiejszym dynamicznym świecie biznesu, sieci komputerowe są nie tylko elementem technologicznym, ale wręcz niezbędnym fundamentem każdej nowoczesnej…';
     $category   = 'Zabezpieczenia';
     $autor      = 'Qamitech';
     $date       = '8 styczeń 2024';

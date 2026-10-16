@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Jak usprawnić codzienne obowiązki z pomocą automatyzacji procesów?';
+    $description = 'W dzisiejszych czasach coraz więcej przedsiębiorstw zaczyna zwracać uwagę na automatyzację procesów biznesowych. Dzięki temu możliwe jest usprawnienie…';
     $category   = 'Nowości w IT';
     $autor      = 'Qamitech';
     $date       = '15 luty 2023';

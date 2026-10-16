@@ -2,6 +2,10 @@
 <?php 
    $title = 'Branding i identyfikacja wizualna firm Piaseczno, Warszawa | Qamitech';
    $description = 'Tworzenie logo, identyfikacji wizualnej i materiałów marketingowych dla firm z Piaseczna i Warszawy. Profesjonalny branding dopasowany do Twojej branży.';
+   $faq = [
+      ['q' => 'Co obejmuje branding dla firmy?', 'a' => 'Strategię marki, projekt logo, identyfikację wizualną (papier firmowy, wizytówki, plakaty), projekt strony internetowej oraz treści budujące wizerunek firmy.'],
+      ['q' => 'Czy możecie zająć się marką na stałe?', 'a' => 'Tak — oferujemy stałą współpracę w zakresie utrzymania i rozwijania marki, w tym strony www i kampanii reklamowych.'],
+   ];
 ?>
          <!-- PAGE HEADER -->
 
@@ -52,6 +56,7 @@
                </div>
             </section>
 
+<?php include( __DIR__ . '/../part/faq.php' ); ?>
             </main>
 
             <!-- PAGE FOOTER -->

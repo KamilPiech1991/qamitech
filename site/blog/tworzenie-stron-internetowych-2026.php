@@ -1,9 +1,10 @@
 <?php 
     $title      = 'Tworzenie stron internetowych w 2026 roku – trendy, koszty i co powinna mieć dobra strona firmy';
+    $description = 'Strona internetowa to dziś obowiązkowa wizytówka każdej firmy — niezależnie czy działasz w Piasecznie, Warszawie, czy w mniejszej miejscowości. Ale sama…';
     $category   = 'Strony www';
     $autor      = 'Qamitech';
     $date       = '28 czerwiec 2026';
-    $image      = 'blog-tworzenie-stron.jpg' 
+    $image      = 'thumbs/blog-tworzenie-stron.jpg' 
 ?>
 
 <?php require_once( '../include/header.php' ); ?>

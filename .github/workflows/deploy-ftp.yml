@@ -29,6 +29,8 @@ jobs:
     environment: production
     env:
       FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR }}
+      CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CF_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
     steps:
       - name: Sprawdź konfigurację
         env:
@@ -58,6 +60,21 @@ jobs:
             exit 1
           fi
 
+      - name: Sprawdź nazwy plików (UTF-8)
+        run: |
+          bad=$(python3 -c "
+          import os
+          for root, dirs, files in os.walk(b'site'):
+              for n in files + dirs:
+                  try: n.decode('utf-8')
+                  except UnicodeDecodeError: print(os.path.join(root, n).decode('utf-8', 'replace'))
+          ")
+          if [ -n "$bad" ]; then
+            echo "::error::Pliki z nazwami spoza UTF-8 (akcja FTP ich nie obsłuży) — zmień nazwy lub przenieś poza site/:"
+            echo "$bad"
+            exit 1
+          fi
+
       - name: Wyślij pliki
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -74,3 +91,18 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+
+      # Opcjonalnie (gdy strona jest za Cloudflare): czyści cache, żeby zmiany były widoczne od razu.
+      # Wymaga sekretów CLOUDFLARE_API_TOKEN (uprawnienie Zone → Cache Purge) i CLOUDFLARE_ZONE_ID.
+      - name: Wyczyść cache Cloudflare
+        if: env.CF_API_TOKEN != '' && env.CF_ZONE_ID != '' && !(github.event_name == 'workflow_dispatch' && inputs.dry_run)
+        run: |
+          response=$(curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}')
+          if echo "$response" | grep -q '"success":true'; then
+            echo "Cache Cloudflare wyczyszczony."
+          else
+            echo "::warning::Nie udało się wyczyścić cache Cloudflare: $response"
+          fi

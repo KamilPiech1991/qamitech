@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Zaawansowane metody ochrony sieci firmowej przed nieautoryzowanym dostępem';
+    $description = 'Zaawansowane metody ochrony sieci firmowej przed nieautoryzowanym dostępem: firewall, VPN, segmentacja sieci, uwierzytelnianie wieloskładnikowe i monitoring.';
     $category   = 'Zabezpieczenia';
     $autor      = 'Qamitech';
     $date       = '15 luty 2023';

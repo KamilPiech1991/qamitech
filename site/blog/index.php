@@ -1,6 +1,7 @@
 <?php 
    $page  = 'blog';
-   $title = 'Artykuły';
+   $title = 'Blog o IT, stronach www i SEO | Qamitech';
+   $description = 'Porady o obsłudze informatycznej firm, outsourcingu IT, cyberbezpieczeństwie, tworzeniu stron internetowych oraz pozycjonowaniu SEO, AEO i GEO.';
    ?>
 <!-- PAGE HEADER -->
 <?php require_once( '../include/header.php' ); ?>

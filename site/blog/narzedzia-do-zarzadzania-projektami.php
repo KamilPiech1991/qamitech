@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Dlaczego warto skorzystać z narzędzi do zarządzania projektami?';
+    $description = 'Zarządzanie projektami to proces, który wymaga skrupulatnego planowania, monitorowania postępu prac i koordynowania zespołu. Bez odpowiednich narzędzi do…';
     $category   = 'Nowości w IT';
     $autor      = 'Qamitech';
     $date       = '27 marca 2023';

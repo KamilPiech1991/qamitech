@@ -89,7 +89,7 @@
                   Tworzenie stron internetowych
                 </h3>
                 <small>
-                Projektujemy i wdrazamy nowoczesne strony internetowe oraz sklepy e-commerce. Tworzymy responsywne serwisy zoptymalizowane pod kątem SEO, szybkości działania i doświadczenia użytkownika. Od prostych wizytówek po rozbudowane systemy CMS.
+                Projektujemy i wdrażamy nowoczesne strony internetowe oraz sklepy e-commerce. Tworzymy responsywne serwisy zoptymalizowane pod kątem SEO, szybkości działania i doświadczenia użytkownika. Od prostych wizytówek po rozbudowane systemy CMS.
                 </small>
               </div>
               <div class="section-content__wrapper-button mt-4 mt-md-5" data-arts-os-animation="true"
@@ -140,7 +140,7 @@
                   Kampanie Google Ads
                 </h3>
                 <small>
-                Skuteczne kampanie reklamowe w wyszukiwarce Google. Docieramy do klientów dokładnie w momencie, gdy szukają Twoich usług. Platisz tylko za realne kliknięcia - bez marnowania budżetu.
+                Skuteczne kampanie reklamowe w wyszukiwarce Google. Docieramy do klientów dokładnie w momencie, gdy szukają Twoich usług. Płacisz tylko za realne kliknięcia - bez marnowania budżetu.
                 </small>
               </div>
               <div class="section-content__wrapper-button mt-4 mt-md-5" data-arts-os-animation="true"

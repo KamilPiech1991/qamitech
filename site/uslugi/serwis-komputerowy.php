@@ -1,7 +1,13 @@
          
 <?php 
-   $title = 'Serwis komputerowy Piaseczno, Warszawa | Qamitech';
+   $title = 'Serwis komputerowy Piaseczno – naprawa laptopów i komputerów | Qamitech';
    $description = 'Profesjonalny serwis komputerowy w Piasecznie i Warszawie. Naprawa laptopów, komputerów, odzyskiwanie danych. Szybka realizacja. Zadzwoń: 501 784 882';
+   $faq = [
+      ['q' => 'Jakie usterki naprawiacie?', 'a' => 'Naprawiamy laptopy, komputery stacjonarne i tablety: awarie dysków, płyt głównych i kart graficznych, problemy z systemem i oprogramowaniem, przegrzewanie (czyszczenie i konserwacja), a także konfigurujemy routery i sieci.'],
+      ['q' => 'Czy odzyskujecie dane z uszkodzonego dysku?', 'a' => 'Tak, pomagamy odzyskać dane i zabezpieczyć je na przyszłość — konfigurujemy kopie zapasowe, które chronią przed utratą plików przy kolejnej awarii.'],
+      ['q' => 'Czy przyjeżdżacie do klienta?', 'a' => 'Tak. Firmy obsługujemy na miejscu w Piasecznie, Warszawie i okolicach, a klientów prywatnych w ramach usługi <a href="pomoc-domowa.php">pomoc informatyczna w domu</a>.'],
+      ['q' => 'Jak zgłosić sprzęt do naprawy?', 'a' => 'Zadzwoń pod numer <a href="tel:+48501784882">501 784 882</a> lub napisz na <a href="mailto:kontakt@qamitech.pl">kontakt@qamitech.pl</a> i opisz problem. Pracujemy od poniedziałku do piątku w godzinach 9:00–17:00.'],
+   ];
 ?>
          <!-- PAGE HEADER -->
 
@@ -44,7 +50,7 @@
                      </li>
                   </ul>
                   <h4>
-                  Wszystkie nasze usługi są świadczone na najwyższym poziomie, a nasz zespół jest do dyspozycji klientów przez całą dobę. Zapraszamy do skorzystania z naszych usług!
+                  Wszystkie nasze usługi są świadczone na najwyższym poziomie, a nasz zespół jest do dyspozycji klientów od poniedziałku do piątku w godzinach 9:00–17:00. Zapraszamy do skorzystania z naszych usług!
                   </h4>
                   </div>
                      </div>
@@ -52,6 +58,7 @@
                </div>
             </section>
 
+<?php include( __DIR__ . '/../part/faq.php' ); ?>
             </main>
 
             <!-- PAGE FOOTER -->
