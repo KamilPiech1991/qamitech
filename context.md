@@ -218,7 +218,7 @@ Sekcja „Qamitech w liczbach”:
 | 100% | Profesjonalizmu i zaangażowania |
 
 Na stronie **nie ma**: opinii/recenzji klientów, logotypów klientów, case studies z wynikami, certyfikatów (tylko deklaracja), zespołu, roku założenia firmy.
-Największy dowód — **portfolio ok. 37 realizacji** (pkt 9).
+Największy dowód — **portfolio: 36 realizacji** (pkt 9).
 
 ---
 
@@ -410,7 +410,7 @@ Najnowsze wpisy (2026) są w nowym stylu: lokalne frazy, ceny, checklisty, AI/AE
 Lista do wykorzystania przy poprawkach strony, SEO i treściach.
 
 ### Treść i wiarygodność
-1. **Sprzeczne liczby:** „128 zadowolonych klientów” i „17 firm, które zaufały”, przy ~37 realizacjach w portfolio. Etykieta „Zadowolonych klientów” powtarza się dwa razy (128 i 99%).
+1. **Sprzeczne liczby:** „128 zadowolonych klientów” i „17 firm, które zaufały”, przy 36 realizacjach w portfolio. Etykieta „Zadowolonych klientów” powtarza się dwa razy (128 i 99%).
 2. **Sprzeczna dostępność:** serwis komputerowy i pomoc domowa — „do dyspozycji klientów przez całą dobę”; strona główna — „Obsługa klienta 5 dni w tygodniu”; kontakt — Pn–Pt 9–17.
 3. **Różne widełki cen stron:** „od kilkuset złotych” (usługa) i „od 800 zł” (blog).
 4. **Szkolenia:** „centrum szkoleniowe w Piasecznie i Warszawie”, a w kontakcie jest jedno biuro w Starej Iwicznej. Nazwa w menu („Szkolenia IT”) nie oddaje treści (AI i marketing).
