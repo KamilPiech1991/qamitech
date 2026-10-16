@@ -1,0 +1,76 @@
+# Wgrywa zawartość katalogu site/ na serwer FTP.
+# - automatycznie po każdym pushu na main, który zmienia coś w site/
+# - ręcznie: Actions → "Deploy strony na FTP" → Run workflow (domyślnie próba na sucho)
+# Wysyłane są tylko pliki zmienione od poprzedniego wdrożenia. Pliki istniejące
+# wyłącznie na serwerze (np. config z hasłami, wykluczony z repo) nie są usuwane.
+name: Deploy strony na FTP
+
+on:
+  push:
+    branches: [main]
+    paths: ["site/**"]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Próba na sucho — tylko pokaż, co zostałoby wysłane"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ftp
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR }}
+    steps:
+      - name: Sprawdź konfigurację
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          missing=""
+          [ -n "$FTP_SERVER" ]     || missing="$missing secret:FTP_SERVER"
+          [ -n "$FTP_USERNAME" ]   || missing="$missing secret:FTP_USERNAME"
+          [ -n "$FTP_PASSWORD" ]   || missing="$missing secret:FTP_PASSWORD"
+          [ -n "$FTP_SERVER_DIR" ] || missing="$missing variable:FTP_SERVER_DIR"
+          if [ -n "$missing" ]; then
+            echo "::error::Brakuje ustawień w Settings → Secrets and variables → Actions:$missing"
+            exit 1
+          fi
+          case "$FTP_SERVER_DIR" in */) ;; *)
+            echo "::error::FTP_SERVER_DIR musi kończyć się ukośnikiem, np. /public_html/"; exit 1 ;;
+          esac
+
+      - uses: actions/checkout@v4
+
+      - name: Sprawdź katalog site/
+        run: |
+          if [ -z "$(find site -type f 2>/dev/null | head -n 1)" ]; then
+            echo "::error::Katalog site/ jest pusty — najpierw uruchom workflow \"Import strony z FTP\"."
+            exit 1
+          fi
+
+      - name: Wyślij pliki
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          port: ${{ vars.FTP_PORT || '21' }}
+          security: ${{ vars.FTP_SECURITY || 'strict' }}
+          local-dir: ./site/
+          server-dir: ${{ vars.FTP_SERVER_DIR }}
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

@@ -1,0 +1,142 @@
+# Pobiera aktualne pliki strony z serwera FTP do katalogu site/ i wypycha je
+# na nową gałąź import/ftp-<numer>, z której otwierasz PR do main.
+# Uruchamiany ręcznie: Actions → "Import strony z FTP" → Run workflow.
+name: Import strony z FTP
+
+on:
+  workflow_dispatch:
+    inputs:
+      allow_public_repo:
+        description: "Repo jest publiczne — mimo to wypchnij pliki (sprawdź wcześniej, że nie zawierają haseł)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ftp
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR }}
+      FTP_PROTOCOL: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+      FTP_PORT: ${{ vars.FTP_PORT || '21' }}
+      FTP_SECURITY: ${{ vars.FTP_SECURITY || 'strict' }}
+      BRANCH: import/ftp-${{ github.run_number }}
+    steps:
+      - name: Sprawdź konfigurację
+        run: |
+          missing=""
+          [ -n "$FTP_SERVER" ]     || missing="$missing secret:FTP_SERVER"
+          [ -n "$FTP_USERNAME" ]   || missing="$missing secret:FTP_USERNAME"
+          [ -n "$LFTP_PASSWORD" ]  || missing="$missing secret:FTP_PASSWORD"
+          [ -n "$FTP_SERVER_DIR" ] || missing="$missing variable:FTP_SERVER_DIR"
+          if [ -n "$missing" ]; then
+            echo "::error::Brakuje ustawień w Settings → Secrets and variables → Actions:$missing"
+            exit 1
+          fi
+          case "$FTP_PROTOCOL" in ftps|ftp) ;; *)
+            echo "::error::FTP_PROTOCOL musi mieć wartość ftps albo ftp (jest: $FTP_PROTOCOL)"; exit 1 ;;
+          esac
+
+      - name: Blokada dla publicznego repozytorium
+        if: github.event.repository.private == false && inputs.allow_public_repo != true
+        run: |
+          echo "::error::Repozytorium jest publiczne — import przerwany przed pobraniem plików. Zmień repo na prywatne (Settings → General → Danger Zone → Change visibility) albo uruchom ponownie z zaznaczonym allow_public_repo, jeśli na pewno w plikach nie ma haseł."
+          exit 1
+
+      - uses: actions/checkout@v4
+
+      - name: Zainstaluj lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Pobierz pliki z serwera
+        run: |
+          if [ "$FTP_PROTOCOL" = "ftps" ]; then
+            tls="set ftp:ssl-force true; set ftp:ssl-protect-data true;"
+          else
+            tls="set ftp:ssl-allow false;"
+          fi
+          if [ "$FTP_SECURITY" = "loose" ]; then verify=no; else verify=yes; fi
+
+          rm -rf site && mkdir site
+          # Wykluczenia: logi, kopie zapasowe, zrzuty baz, statystyki hostingu
+          # i pliki z hasłami, które nie powinny trafić do repozytorium.
+          lftp --env-password -u "$FTP_USERNAME" -p "$FTP_PORT" "ftp://$FTP_SERVER" -e "
+            $tls
+            set ssl:verify-certificate $verify;
+            set net:max-retries 3;
+            set net:timeout 30;
+            mirror --verbose --parallel=4 \
+              --exclude-glob .git/ \
+              --exclude-glob .ftpquota \
+              --exclude-glob .ftp-deploy-sync-state.json \
+              --exclude-glob .htpasswd \
+              --exclude-glob .env \
+              --exclude-glob '.env.*' \
+              --exclude-glob error_log \
+              --exclude-glob '*.log' \
+              --exclude-glob '*.sql' \
+              --exclude-glob '*.sql.gz' \
+              --exclude-glob '*.zip' \
+              --exclude-glob '*.tar' \
+              --exclude-glob '*.tar.gz' \
+              --exclude-glob '*.tgz' \
+              --exclude-glob '*.bak' \
+              --exclude-glob cgi-bin/ \
+              --exclude-glob logs/ \
+              --exclude-glob stats/ \
+              --exclude-glob 'awstats*' \
+              '$FTP_SERVER_DIR' site;
+            quit"
+
+          count=$(find site -type f | wc -l)
+          echo "Pobrano plików: $count"
+          if [ "$count" -eq 0 ]; then
+            echo "::error::Katalog $FTP_SERVER_DIR na serwerze jest pusty albo ścieżka jest błędna."
+            exit 1
+          fi
+
+      - name: Szukaj haseł i kluczy w plikach
+        id: scan
+        run: |
+          pattern="(pass(word|wd)?|pwd|secret|api[_-]?key|token|smtp_?pass)[a-z_]*['\"]?[[:space:]]*(=>|=|:|,)[[:space:]]*['\"][^'\"]{4,}"
+          if grep -rInEi --include='*.php' --include='*.ini' --include='*.json' \
+               --include='*.inc' --include='*.yml' --include='*.yaml' --include='*.conf' \
+               "$pattern" site > scan.txt; then
+            found=$(cut -d: -f1 scan.txt | sort -u)
+            {
+              echo "### ⚠️ Możliwe hasła lub klucze w plikach"
+              echo "Sprawdź te pliki przed scaleniem (treść celowo nie jest wyświetlana):"
+              echo
+              echo "$found" | sed 's/^/- `/; s/$/`/'
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Wypchnij na nową gałąź
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add site
+          if git diff --cached --quiet; then
+            echo "Brak zmian względem ${{ github.ref_name }} — nic do wypchnięcia." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git commit -q -m "Import plików strony z FTP ($(date -u +%F))"
+          git push -q origin "$BRANCH"
+          {
+            echo "### ✅ Pliki pobrane na gałąź \`$BRANCH\`"
+            echo
+            echo "[Otwórz PR do main](${{ github.server_url }}/${{ github.repository }}/compare/main...$BRANCH?expand=1)"
+          } >> "$GITHUB_STEP_SUMMARY"
