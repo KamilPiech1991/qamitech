@@ -104,6 +104,26 @@ jobs:
             exit 1
           fi
 
+      - name: Popraw kodowanie nazw plików (Windows-1250 → UTF-8)
+        run: |
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import os
+          fixed = []
+          for root, dirs, files in os.walk(b'site', topdown=False):
+              for name in files + dirs:
+                  try:
+                      name.decode('utf-8')
+                  except UnicodeDecodeError:
+                      new = name.decode('cp1250').encode('utf-8')
+                      os.rename(os.path.join(root, name), os.path.join(root, new))
+                      fixed.append(os.path.join(root, new).decode())
+          if fixed:
+              print('### ⚠️ Nazwy plików poprawione z Windows-1250 na UTF-8')
+              print('Na serwerze mają stare kodowanie — deploy wyśle je pod nowymi nazwami. Jeśli strona ich nie używa, przenieś je poza `site/`.')
+              print()
+              print('\n'.join('- `' + f + '`' for f in fixed))
+          PY
+
       - name: Szukaj haseł i kluczy w plikach
         id: scan
         run: |

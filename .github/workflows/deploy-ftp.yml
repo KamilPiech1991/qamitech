@@ -58,6 +58,21 @@ jobs:
             exit 1
           fi
 
+      - name: Sprawdź nazwy plików (UTF-8)
+        run: |
+          bad=$(python3 -c "
+          import os
+          for root, dirs, files in os.walk(b'site'):
+              for n in files + dirs:
+                  try: n.decode('utf-8')
+                  except UnicodeDecodeError: print(os.path.join(root, n).decode('utf-8', 'replace'))
+          ")
+          if [ -n "$bad" ]; then
+            echo "::error::Pliki z nazwami spoza UTF-8 (akcja FTP ich nie obsłuży) — zmień nazwy lub przenieś poza site/:"
+            echo "$bad"
+            exit 1
+          fi
+
       - name: Wyślij pliki
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
