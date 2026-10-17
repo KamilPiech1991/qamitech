@@ -1,0 +1,52 @@
+{
+  "_info": "Wzór kampanii. Pola zaczynające się od _ są pomijane. Lokalizacje: ID z locations.py (2616 = Polska). Języki: 1030 = polski.",
+  "name": "Qamitech | Search | Outsourcing IT",
+  "daily_budget": 40,
+  "bidding": {
+    "strategy": "maximize_clicks",
+    "max_cpc": 6
+  },
+  "_bidding_inne": "maximize_conversions (opcjonalnie target_cpa) albo manual_cpc (wtedy max_cpc w każdej grupie)",
+  "locations": [2616],
+  "languages": [1030],
+  "search_partners": false,
+  "default_match": "PHRASE",
+  "negative_keywords": ["praca", "darmowy", "kurs", "szkolenie", "allegro", "olx", "chomikuj", "pdf"],
+  "ad_groups": [
+    {
+      "name": "Outsourcing IT",
+      "keywords": [
+        "[outsourcing it piaseczno]",
+        "[outsourcing it warszawa]",
+        "\"outsourcing it dla firm\"",
+        "\"obsługa informatyczna firm\"",
+        "\"informatyk dla firmy\"",
+        "\"abonament it dla firm\""
+      ],
+      "ads": [
+        {
+          "final_url": "https://www.qamitech.pl/outsourcing.php",
+          "path1": "outsourcing-it",
+          "path2": "piaseczno",
+          "headlines": [
+            {"text": "Outsourcing IT dla Firm", "pin": "HEADLINE_1"},
+            "Obsługa IT Piaseczno",
+            "Informatyk na Abonament",
+            "Stała Opieka IT dla Firm",
+            "Helpdesk Zdalnie i na Miejscu",
+            "Bezpłatna Wycena Obsługi IT",
+            "Lokalny Partner IT",
+            "Dedykowany Opiekun IT",
+            "Bezpieczeństwo Danych Firmy",
+            "Zadzwoń: 501 784 882"
+          ],
+          "descriptions": [
+            "Kompleksowa obsługa informatyczna firm z Piaseczna i Warszawy. Wycena bezpłatna.",
+            "Helpdesk, serwis sprzętu, sieci LAN/WLAN i backup. Jasne zasady i stały opiekun.",
+            "Pracuj stabilnie i bez gaszenia pożarów IT. Abonament dopasowany do Twojej firmy."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,7 @@ Qamitech website
 - `context.md` — kontekst firmy i analiza strony www.qamitech.pl
 - `site/` — pliki strony (pojawią się po pierwszym imporcie z FTP)
 - `.github/workflows/` — import z FTP i automatyczny deploy
+- `google-ads/` — skrypty do prowadzenia kampanii Google Ads z Claude Code bezpośrednio przez Google Ads API (instrukcja: [google-ads/README.md](google-ads/README.md))
 
 ## Połączenie z serwerem FTP
 
