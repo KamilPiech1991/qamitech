@@ -9,10 +9,7 @@
 <!-- Minimalny hero - wymagany przez Barba.js/animacje przejść -->
 <section class="section section-content pt-xlarge pt-md-large pb-small mt-5 mt-md-0">
    <div class="container">
-      <div class="section-content__content content js-arts-split-text arts-split-text"
-         data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-         data-arts-split-text="lines" data-arts-split-text-set="lines"
-         data-arts-split-text-overflow-wrap="lines">
+      <div class="section-content__content content arts-split-text">
          <h1>Kontakt</h1>
       </div>
    </div>

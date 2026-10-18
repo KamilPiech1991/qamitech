@@ -2,16 +2,13 @@
    <div class="container">
       <div class="row d-flex align-items-center">
          <div class="col-md-7 col-lg-6">
-            <div class="section-content__content content js-arts-split-text arts-split-text"
-               data-arts-os-animation="true" data-arts-os-animation-name="animateText" data-arts-split-text="lines"
-               data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+            <div class="section-content__content content arts-split-text">
                <h1 class="mb-0">Zajmujemy się obsługą<span class="underline-text"> informatyczną</span> i<span class="underline-text"> marketingową</span> firm</h1>
                <p class="col-md-8">
                   Zapewniamy kompleksowe wsparcie IT dla firm, które chcą pracować stabilnie, bezpiecznie i bez ciągłego gaszenia technologicznych pożarów.
                </p>
             </div>
-            <div class="section-content__wrapper-button mt-4 mt-md-5" data-arts-os-animation="true"
-               data-arts-os-animation-name="animateJump">
+            <div class="section-content__wrapper-button mt-4 mt-md-5">
                <a class="button button_icon btn-radial" href="<?php home_url(); ?>kontakt.php">
                   <span class="button__label button__label-normal">
                      <span class="button__icon button__icon_after knz-arrow-right"></span>

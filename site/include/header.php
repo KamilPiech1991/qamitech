@@ -36,14 +36,12 @@
    <meta name="twitter:title" content="<?php echo htmlspecialchars($metaFullTitle, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta name="twitter:description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta name="twitter:image" content="<?php echo htmlspecialchars($metaImage, ENT_QUOTES, 'UTF-8'); ?>" />
-   <link rel="preload" href="<?php home_url(); ?>assets/js/vendor.js" as="script" type="application/javascript" />
-   <link rel="preload" href="<?php home_url(); ?>assets/js/components.js?v=20260623-ajaxfix" as="script" type="application/javascript" />
-   <link rel="preload" href="<?php home_url(); ?>assets/fonts/MaterialIcons-Regular.woff2" as="font" type="font/woff2"
-      crossorigin="anonymous" />
-   <!-- Stylesheet -->
-   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/vendor.css" />
-   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/main.css" />
-   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css" />
+   <!-- Font nagłówka hero (LCP) — wcześniej pobrany, mniej przeskoków tekstu -->
+   <link rel="preload" href="<?php home_url(); ?>assets/fonts/NoirPro-<?php echo (($page ?? '') === 'home') ? 'Bold' : 'Medium'; ?>-latin.woff2" as="font" type="font/woff2" crossorigin />
+   <!-- Stylesheet: *.min.css budowane z vendor.css / main.css (tools/css, npm run build) -->
+   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/vendor.min.css?v=20261018" />
+   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/main.min.css?v=20261018" />
+   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css?v=20261018" />
    <!-- Favicons & App Icons -->
    <link rel="apple-touch-icon" sizes="57x57" href="<?php home_url(); ?>assets/img/favicons/apple-icon-57x57.png" />
    <link rel="apple-touch-icon" sizes="60x60" href="<?php home_url(); ?>assets/img/favicons/apple-icon-60x60.png" />
@@ -52,7 +50,7 @@
    <link rel="apple-touch-icon" sizes="114x114" href="<?php home_url(); ?>assets/img/favicons/apple-icon-114x114.png" />
    <link rel="apple-touch-icon" sizes="120x120" href="<?php home_url(); ?>assets/img/favicons/apple-icon-120x120.png" />
    <link rel="apple-touch-icon" sizes="144x144" href="<?php home_url(); ?>assets/img/favicons/apple-icon-144x144.png" />
-   <link rel="apple-touch-icon" sizes="152x152" href="<?php home_url(); ?>ssets/img/favicons/apple-icon-152x152.png" />
+   <link rel="apple-touch-icon" sizes="152x152" href="<?php home_url(); ?>assets/img/favicons/apple-icon-152x152.png" />
    <link rel="apple-touch-icon" sizes="180x180" href="<?php home_url(); ?>assets/img/favicons/apple-icon-180x180.png" />
    <link rel="icon" type="image/png" sizes="192x192"
       href="<?php home_url(); ?>assets/img/favicons/android-icon-192x192.png" />
@@ -64,10 +62,10 @@
    <meta name="msapplication-TileImage" content="<?php home_url(); ?>assets/img/favicons/ms-icon-144x144.png" />
    <meta name="theme-color" content="#ffffff" />
    <link rel="icon" type="image/x-icon" href="<?php home_url(); ?>assets/img/favicons/favicon.ico" />
-   <script src="https://www.google.com/recaptcha/api.js"></script>
 
    <script>
    document.addEventListener('DOMContentLoaded', function() {
+      if (window.__themeLateInit) return;
       // Mobile overlay submenu toggle
       document.querySelectorAll('.js-menu-overlay-submenu-toggle').forEach(function(btn) {
          btn.addEventListener('click', function(e) {
@@ -167,8 +165,11 @@
                <div class="col-auto col-md-2">
                   <a class="logo" href="<?php home_url(); ?>index.php">
                      <div class="logo__wrapper-img">
-                        <img class="logo__img-primary" src="<?php home_url(); ?>assets/img/logo/logo-qamitech.png"
-                           alt="Logo" />
+                        <picture>
+                           <source srcset="<?php home_url(); ?>assets/img/logo/logo-qamitech-440.webp" type="image/webp" />
+                           <img class="logo__img-primary" src="<?php home_url(); ?>assets/img/logo/logo-qamitech-440.png"
+                              width="220" height="63" fetchpriority="high" alt="Qamitech" />
+                        </picture>
                      </div>
                   </a>
                </div>

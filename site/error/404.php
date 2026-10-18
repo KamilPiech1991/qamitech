@@ -15,7 +15,7 @@
             <div class="section__content container pt-large pb-large">
               <div class="row justify-content-center text-center">
                 <div class="col-lg-8">
-                  <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true" data-arts-os-animation-name="animateText" data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+                  <div class="section-content__content content arts-split-text">
                     <h1 class="xxl mb-0">Błąd 404</h1>
                     <p class="h3">Wygląda na to że nie takiej strony.</p>
                   </div>

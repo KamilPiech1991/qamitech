@@ -45,7 +45,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="assets/img/blog/thumbs/tworzenie-stopki.jpg" width="430"
                                                 height="300" alt="Tworzenie stopki" /></div>
                                     </div>
@@ -92,7 +92,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="assets/img/blog/thumbs/instalacja-sun-java6.jpg" width="430"
                                                 height="300" alt="Instalacja Sun Java" /></div>
                                     </div>
@@ -139,7 +139,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="assets/img/blog/thumbs/restart-windows.jpg" width="430"
                                                 height="300" alt="Restart Windows" />
                                         </div>

@@ -61,7 +61,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/eurodomy.jpg"
                                     width="430" height="300" alt="Eurodomy – strona internetowa" /></div>
                               </div>
@@ -100,7 +100,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/e-tabak.jpg"
                                     width="430" height="300" alt="e-tabak.pl – sklep internetowy" /></div>
                               </div>
@@ -139,7 +139,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/obok-lasu.jpg"
                                     width="430" height="300" alt="Obok Lasu – strona internetowa" /></div>
                               </div>
@@ -178,7 +178,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/marmostyl.jpg"
                                     width="430" height="300" alt="Marmostyl – strona internetowa" /></div>
                               </div>
@@ -217,7 +217,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/purerehab.jpg"
                                     width="430" height="300" alt="Pure Rehab fizjoterapia" /></div>
                               </div>
@@ -256,7 +256,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/sahraart.jpg"
                                     width="430" height="300" alt="Sahra Art - sklep z dywanami" /></div>
                               </div>
@@ -295,7 +295,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/rancilio.jpg"
                                     width="430" height="300" alt="Rancilio Ekspresy do kawy" /></div>
                               </div>
@@ -334,7 +334,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/smka.jpg"
                                     width="430" height="300" alt="SMKA Portal Producenta" /></div>
                               </div>
@@ -373,7 +373,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/regionzdrowia.jpg"
                                     width="430" height="300" alt="Region Zdrowia - parki prozdrowotne" /></div>
                               </div>
@@ -412,7 +412,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/psotelgracja.jpg"
                                     width="430" height="300" alt="PSO Tel Gracja" /></div>
                               </div>
@@ -451,7 +451,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/bogdangrzeszczyk.jpg"
                                     width="430" height="300" alt="Bogdan Grzeszczyk" /></div>
                               </div>
@@ -490,7 +490,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/ventoni.jpg"
                                     width="430" height="300" alt="Ventoni sklep" /></div>
                               </div>
@@ -529,7 +529,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/fastclean.jpg"
                                     width="430" height="300" alt="Fastclean czyszczenie wentylacji" /></div>
                               </div>
@@ -568,7 +568,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/cloudinsight.jpg"
                                     width="430" height="300" alt="Cloud Insight" /></div>
                               </div>
@@ -607,7 +607,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/face2face.jpg"
                                     width="430" height="300" alt="Face2Face" /></div>
                               </div>
@@ -646,7 +646,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/veles.jpg"
                                     width="430" height="300" alt="Veles Lighting oswietlenie" /></div>
                               </div>
@@ -685,7 +685,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/esivo.jpg"
                                     width="430" height="300" alt="Esivo" /></div>
                               </div>
@@ -724,7 +724,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="../assets/img/realizacje/oligradskyi.jpg"
                                     width="430" height="300" alt="Oligradskyi" /></div>
                               </div>
@@ -763,7 +763,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(11).jpg"
                                     width="430" height="300" alt="Car detailing" /></div>
                               </div>
@@ -802,7 +802,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(13).jpg"
                                     width="430" height="300" alt="Rushing Rivers" /></div>
                               </div>
@@ -841,7 +841,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/4-good-work.png"
                                     width="430" height="300" alt="Instalacje grzewcze mcgoodwork" /></div>
                               </div>
@@ -880,7 +880,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(15).jpg"
                                     width="430" height="300" alt="Reventon design" /></div>
                               </div>
@@ -919,7 +919,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/3penergia.png"
                                     width="430" height="300" alt="3P Energia" /></div>
                               </div>
@@ -958,7 +958,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/littlefrank.png"
                                     width="430" height="300" alt="Little Frank" /></div>
                               </div>
@@ -997,7 +997,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/krprojekt.png"
                                     width="430" height="300" alt="KR Projekt" /></div>
                               </div>
@@ -1036,7 +1036,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/opiekaplus.png"
                                     width="430" height="300" alt="Opieka Plus" /></div>
                               </div>
@@ -1075,7 +1075,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/oboklasu.png"
                                     width="430" height="300" alt="Obok Lasu" /></div>
                               </div>
@@ -1114,7 +1114,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/emix.png"
                                     width="430" height="300" alt="Emix" /></div>
                               </div>
@@ -1153,7 +1153,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/visionandsound.png"
                                     width="430" height="300" alt="Vision And Sound" /></div>
                               </div>
@@ -1192,7 +1192,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/agtes.png"
                                     width="430" height="300" alt="Agtes Serwis" /></div>
                               </div>
@@ -1231,7 +1231,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/dynamic-marketing.png"
                                     width="430" height="300" alt="Dynamic marketing" /></div>
                               </div>
@@ -1270,7 +1270,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/tseremonty.png"
                                     width="430" height="300" alt="Tse Remonty" /></div>
                               </div>
@@ -1309,7 +1309,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/graschem.png"
                                     width="430" height="300" alt="Graschem" /></div>
                               </div>
@@ -1348,7 +1348,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(8).jpg"
                                     width="430" height="300" alt="Convey Cargo" /></div>
                               </div>
@@ -1387,7 +1387,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(9).jpg"
                                     width="430" height="300" alt="Kancelaria prawna" /></div>
                               </div>
@@ -1426,7 +1426,7 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                     data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(4).jpg"
                                     width="430" height="300" alt="Studio Gracja" /></div>
                               </div>

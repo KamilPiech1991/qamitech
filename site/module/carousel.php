@@ -25,7 +25,7 @@
                   <div class="mask-reveal overflow" data-arts-os-animation="true" data-arts-os-animation-name="animateMask" data-arts-os-animation-params="{direction: 'right'}">
                      <div class="mask-reveal__layer mask-reveal__layer-1">
                         <div class="mask-reveal__layer mask-reveal__layer-2">
-                           <img class="swiper-lazy" src="#" data-src="assets/img/projects/001.jpg" width="1250" height="800" alt="" /> 
+                           <img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/projects/001.jpg" width="1250" height="800" alt="" /> 
                         </div>
                      </div>
                   </div>
@@ -37,7 +37,7 @@
                <div class="swiper-slide slider-images__slide overflow">
                   <div class="mask-reveal overflow" data-arts-os-animation="true" data-arts-os-animation-name="animateMask" data-arts-os-animation-params="{direction: 'right'}">
                      <div class="mask-reveal__layer mask-reveal__layer-1">
-                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="#" data-src="assets/img/projects/002.jpg" width="1250" height="800" alt="" /> </div>
+                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/projects/002.jpg" width="1250" height="800" alt="" /> </div>
                      </div>
                   </div>
                   <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true" data-arts-os-animation-name="animateText" data-arts-os-animation-params="{stagger:{amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
@@ -48,7 +48,7 @@
                <div class="swiper-slide slider-images__slide overflow">
                   <div class="mask-reveal overflow" data-arts-os-animation="true" data-arts-os-animation-name="animateMask" data-arts-os-animation-params="{direction: 'right'}">
                      <div class="mask-reveal__layer mask-reveal__layer-1">
-                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="#" data-src="assets/img/projects/003.jpg" width="1250" height="800" alt="" /> </div>
+                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/projects/003.jpg" width="1250" height="800" alt="" /> </div>
                      </div>
                   </div>
                   <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true" data-arts-os-animation-name="animateText" data-arts-os-animation-params="{stagger:{amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
@@ -59,7 +59,7 @@
                <div class="swiper-slide slider-images__slide overflow">
                   <div class="mask-reveal overflow" data-arts-os-animation="true" data-arts-os-animation-name="animateMask" data-arts-os-animation-params="{direction: 'right'}">
                      <div class="mask-reveal__layer mask-reveal__layer-1">
-                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="#" data-src="<?php home_url(); ?>assets/img/projects/001.jpg" width="1250" height="800" alt="" /> </div>
+                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php home_url(); ?>assets/img/projects/001.jpg" width="1250" height="800" alt="" /> </div>
                      </div>
                   </div>
                   <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true" data-arts-os-animation-name="animateText" data-arts-os-animation-params="{stagger:{amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
@@ -70,7 +70,7 @@
                <div class="swiper-slide slider-images__slide overflow">
                   <div class="mask-reveal overflow" data-arts-os-animation="true" data-arts-os-animation-name="animateMask" data-arts-os-animation-params="{direction: 'right'}">
                      <div class="mask-reveal__layer mask-reveal__layer-1">
-                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="#" data-src="assets/img/projects/002.jpg" width="1250" height="800" alt="" /> </div>
+                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/projects/002.jpg" width="1250" height="800" alt="" /> </div>
                      </div>
                   </div>
                   <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true" data-arts-os-animation-name="animateText" data-arts-os-animation-params="{stagger:{amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
@@ -81,7 +81,7 @@
                <div class="swiper-slide slider-images__slide overflow">
                   <div class="mask-reveal overflow" data-arts-os-animation="true" data-arts-os-animation-name="animateMask" data-arts-os-animation-params="{direction: 'right'}">
                      <div class="mask-reveal__layer mask-reveal__layer-1">
-                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="#" data-src="assets/img/projects/003.jpg" width="1250" height="800" alt="" /> </div>
+                        <div class="mask-reveal__layer mask-reveal__layer-2"><img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/projects/003.jpg" width="1250" height="800" alt="" /> </div>
                      </div>
                   </div>
                   <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true" data-arts-os-animation-name="animateText" data-arts-os-animation-params="{stagger:{amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
