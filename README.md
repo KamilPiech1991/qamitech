@@ -4,6 +4,7 @@ Qamitech website
 - `context.md` — kontekst firmy i analiza strony www.qamitech.pl
 - `site/` — pliki strony (pojawią się po pierwszym imporcie z FTP)
 - `.github/workflows/` — import z FTP i automatyczny deploy
+- `google-ads/` — skrypty do prowadzenia kampanii Google Ads z Claude Code bezpośrednio przez Google Ads API (instrukcja: [google-ads/README.md](google-ads/README.md))
 
 ## Połączenie z serwerem FTP
 
@@ -46,3 +47,20 @@ Każdy push na `main`, który zmienia coś w `site/`, automatycznie wgrywa zmien
 - Pliki istniejące wyłącznie na serwerze (np. config z hasłami) nie są usuwane.
 - Na serwerze powstaje plik stanu `.ftp-deploy-sync-state.json`; warto zablokować do niego dostęp w `.htaccess`.
 - Deploy działa w środowisku `production` — w Settings → Environments możesz dodać wymóg ręcznego zatwierdzenia.
+
+## Wydajność strony (PageSpeed)
+
+- **CSS:** strona ładuje `assets/css/vendor.min.css` i `main.min.css`, budowane z `vendor.css` / `main.css`.
+  Po każdej zmianie w `vendor.css` lub `main.css` uruchom build i podbij `?v=` w `site/include/header.php`:
+  ```bash
+  cd tools/css && npm install && npm run build
+  ```
+  `custom.css` nie wymaga builda — edytuj go bezpośrednio (też podbij `?v=`).
+  Build usuwa z `vendor.css` nieużywane style Font Awesome i klas `.material-icons.<nazwa>`
+  (ikony Material działają przez ligatury: `<i class="material-icons">phone</i>`). Gdyby w stopce wróciły
+  ikony social z Font Awesome, usuń `fa` z `DEAD_SELECTOR` w `tools/css/build.mjs`.
+- **JS motywu** (`vendor.js`, `components.js`) ładuje się po pierwszym wyrenderowaniu strony — patrz komentarz w `site/include/footer.php`.
+- **Hero:** blok z `<h1>` nie ma animacji wejścia (`data-arts-os-animation`), żeby był widoczny od razu. Nie dodawaj jej z powrotem.
+- **Obrazki ładowane leniwie** (`data-src`) mają w `src` przezroczysty GIF w `data:` — nie wpisuj tam `#`, bo przeglądarka pobiera wtedy całą stronę jeszcze raz.
+- **Fonty:** Noir Pro w WOFF2 ograniczonym do znaków łacińskich (`*-latin.woff2`) z `font-display: swap`.
+- **`.htaccess`:** kompresja gzip i cache przeglądarki (CSS/JS/obrazki 1 miesiąc, fonty 1 rok).

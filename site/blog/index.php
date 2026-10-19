@@ -60,7 +60,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/thumbs/blog-pozycjonowanie.jpg" width="430"
                                                 height="300" alt="Pozycjonowanie SEO AEO GEO 2026" /></div>
                                     </div>
@@ -96,7 +96,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/thumbs/blog-tworzenie-stron.jpg" width="430"
                                                 height="300" alt="Tworzenie stron internetowych 2026" /></div>
                                     </div>
@@ -133,7 +133,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/thumbs/tworzenie-stopki.jpg" width="430"
                                                 height="300" alt="Tworzenie stopki" /></div>
                                     </div>
@@ -180,7 +180,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/thumbs/instalacja-sun-java6.jpg" width="430"
                                                 height="300" alt="Instalacja pakietu sun-java6 jak na Ubuntu lucid" /></div>
                                     </div>
@@ -227,7 +227,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/thumbs/restart-windows.jpg" width="430"
                                                 height="300" alt="Długie zamykanie/ restart/ wylogowanie w Windows 7" />
                                         </div>
@@ -276,7 +276,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/automatyzacja.jpg" width="430"
                                                 height="300" alt="Jak usprawnić codzienne obowiązki z pomocą automatyzacji procesów?" />
                                         </div>
@@ -325,7 +325,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/zabezpieczenia.jpg" width="430"
                                                 height="300" alt="Zaawansowane metody ochrony sieci firmowej przed nieautoryzowanym dostępem " />
                                         </div>
@@ -375,7 +375,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/wirus.jpg" width="430"
                                                 height="300" alt="Jak zabezpieczyć swoje urządzenia przed wirusami i malware?" />
                                         </div>
@@ -425,7 +425,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/security.jpg" width="430"
                                                 height="300" alt="W jaki sposób wydajnie zarządzać danymi klientów w ramach RODO?" />
                                         </div>
@@ -475,7 +475,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/ai.jpg" width="430"
                                                 height="300" alt="Jak działa sztuczna inteligencja w informatyce?" />
                                         </div>
@@ -525,7 +525,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/webdesign.jpg" width="430"
                                                 height="300" alt="Najnowsze trendy w projektowaniu i tworzeniu stron internetowych" />
                                         </div>
@@ -575,7 +575,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/chmura.jpg" width="430"
                                                 height="300" alt="Zalety i wady chmury obliczeniowej w zamian za tradycyjne serwery" />
                                         </div>
@@ -625,7 +625,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/projects.jpg" width="430"
                                                 height="300" alt="Narzędzia do zarządzania projektami" />
                                         </div>
@@ -675,7 +675,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/blockchain.jpg" width="430"
                                                 height="300" alt="Blockchain i jego zastosowanie w dzisiejszej erze cyfrowej" />
                                         </div>
@@ -724,7 +724,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/laptop-z-ukladem-zamka.jpg" width="430"
                                                 height="300" alt="Cyberbezpieczeństwo: Niewidzialna tarcza świata cyfrowego." />
                                         </div>
@@ -773,7 +773,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/sieci-komputerowe.jpeg" width="430"
                                                 height="300" alt="Budowanie Solidnych Fundamentów Biznesu: Sieci Komputerowe jako Klucz do Sukcesu" />
                                         </div>
@@ -822,7 +822,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/obsluga-informatyczna.jpg" width="430"
                                                 height="300" alt="Budowanie Solidnych Fundamentów Biznesu: Sieci Komputerowe jako Klucz do Sukcesu" />
                                         </div>
@@ -871,7 +871,7 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                 data-src="../assets/img/blog/outsorcing-it.jpg" width="430"
                                                 height="300" alt="Outsourcing IT — Korzyści, Wyzwania, Rodzaje i Najlepsze Praktyki" />
                                         </div>

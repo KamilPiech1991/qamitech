@@ -9,7 +9,7 @@
                 <div class="col-md-6">
                   <section class="widget widget_text">
                     <div class="textwidget widget-logo">
-                      <img src="<?php home_url(); ?>assets/img/logo/logo-qamitech-white.png" alt="">
+                      <img src="<?php home_url(); ?>assets/img/logo/logo-qamitech-white.png" width="360" height="80" loading="lazy" alt="Qamitech">
                     </div>
                   </section>
                 </div>
@@ -206,10 +206,33 @@
             }
           });
         </script>
-        <script src="<?php home_url(); ?>assets/js/vendor.js"></script>
-        <script src="<?php home_url(); ?>assets/js/components.js?v=20260623-ajaxfix"></script>
         <script>
-          (function ($) {
+          // Skrypty motywu ładujemy dopiero po pierwszym wyrenderowaniu strony, żeby nie zabierały
+          // łącza i procesora tekstowi, CSS i fontom (szybsze FCP/LCP na telefonach).
+          // Motyw startuje na zdarzeniu DOMContentLoaded, które wtedy już minęło, więc po załadowaniu
+          // skryptów wywołujemy je ponownie (inne nasłuchy DOMContentLoaded sprawdzają __themeLateInit).
+          (function () {
+            var base = '<?php home_url(); ?>assets/js/';
+            var files = ['vendor.js', 'components.js?v=20260623-ajaxfix'];
+            function loadThemeScripts() {
+              files.forEach(function (file, i) {
+                var s = document.createElement('script');
+                s.src = base + file;
+                s.async = false;
+                if (i === files.length - 1) s.onload = function () {
+                  window.__themeLateInit = true;
+                  document.dispatchEvent(new Event('DOMContentLoaded', { bubbles: true }));
+                  if (document.readyState === 'complete') window.dispatchEvent(new Event('load'));
+                  document.dispatchEvent(new Event('theme:loaded'));
+                };
+                document.body.appendChild(s);
+              });
+            }
+            requestAnimationFrame(function () { setTimeout(loadThemeScripts, 0); });
+          })();
+        </script>
+        <script>
+          document.addEventListener('theme:loaded', function () { (function ($) {
 
             var rankMath = {
               accordion: function () {
@@ -240,7 +263,7 @@
 
             rankMath.accordion();
 
-          })(jQuery);
+          })(jQuery); });
         </script>
 
         </body>

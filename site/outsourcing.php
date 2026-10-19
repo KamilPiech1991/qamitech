@@ -10,9 +10,7 @@
    <div class="container">
       <div class="row d-flex align-items-center">
          <div class="col-md-7 col-lg-6">
-            <div class="section-content__content content js-arts-split-text arts-split-text"
-               data-arts-os-animation="true" data-arts-os-animation-name="animateText" data-arts-split-text="lines"
-               data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+            <div class="section-content__content content arts-split-text">
                <h1 class="mb-0">Co to jest <br />
                   <span class="underline-text"> outsourcing it?</span>
                </h1>

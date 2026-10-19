@@ -1,0 +1,10 @@
+# Wzór pliku google-ads.yaml. Najprościej utworzyć go poleceniem:
+#   .venv/bin/python auth.py --client-secrets client_secret.json
+# Prawdziwy plik google-ads.yaml jest w .gitignore — nie commituj go.
+
+developer_token: "TWÓJ_DEVELOPER_TOKEN"        # MCC → Narzędzia → Centrum API
+client_id: "1234567890-abc.apps.googleusercontent.com"
+client_secret: "GOCSPX-..."
+refresh_token: "1//0g..."
+login_customer_id: "1234567890"                # ID konta MCC, bez myślników
+use_proto_plus: True
