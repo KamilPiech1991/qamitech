@@ -41,7 +41,7 @@
    <!-- Stylesheet: *.min.css budowane z vendor.css / main.css (tools/css, npm run build) -->
    <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/vendor.min.css?v=20261018" />
    <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/main.min.css?v=20261018" />
-   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css?v=20261018" />
+   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css?v=20261019" />
    <!-- Favicons & App Icons -->
    <link rel="apple-touch-icon" sizes="57x57" href="<?php home_url(); ?>assets/img/favicons/apple-icon-57x57.png" />
    <link rel="apple-touch-icon" sizes="60x60" href="<?php home_url(); ?>assets/img/favicons/apple-icon-60x60.png" />
@@ -170,6 +170,11 @@
                            <img class="logo__img-primary" src="<?php home_url(); ?>assets/img/logo/logo-qamitech-440.png"
                               width="220" height="63" fetchpriority="high" alt="Qamitech" />
                         </picture>
+                        <picture>
+                           <source srcset="<?php home_url(); ?>assets/img/logo/logo-qamitech-light-440.webp" type="image/webp" />
+                           <img class="logo__img-secondary" src="<?php home_url(); ?>assets/img/logo/logo-qamitech-light-440.png"
+                              width="220" height="63" fetchpriority="low" alt="" aria-hidden="true" />
+                        </picture>
                      </div>
                   </a>
                </div>
@@ -183,7 +188,7 @@
                         Tworzenie stron internetowych</a>
                         </li>
                         <li><a href="<?php home_url(); ?>uslugi/kampanie-google-ads.php">
-                        <i class="material-icons" style="font-size:18px;width:20px;flex-shrink:0;">ads_click</i>
+                        <i class="material-icons" style="font-size:18px;width:20px;flex-shrink:0;">touch_app</i>
                         Kampanie Google Ads</a>
                         </li>
                         <li><a href="<?php home_url(); ?>uslugi/serwis-komputerowy.php">
@@ -199,7 +204,7 @@
                         Sieci Lan / Wlan</a>
                         </li>
                         <li><a href="<?php home_url(); ?>uslugi/pomoc-domowa.php">
-                        <i class="material-icons" style="font-size:18px;width:20px;flex-shrink:0;">home_repair_service</i>
+                        <i class="material-icons" style="font-size:18px;width:20px;flex-shrink:0;">home</i>
                         Pomoc domowa</a>
                         </li>
                         <li><a href="<?php home_url(); ?>uslugi/branding-dla-firm.php">
@@ -287,7 +292,7 @@
                               class="header__scroll-container js-header-smooth-scroll-container overflow pointer-events-auto">
                               <div class="container">
                                  <ul class="menu-overlay js-menu-overlay">
-                                    <li style="position:relative;">
+                                    <li class="menu-overlay__item-has-children">
                                        <a href="<?php home_url(); ?>oferta.php" data-pjax-link="overlayMenu">
                                           <div class="menu-overlay__item-wrapper arts-split-text js-arts-split-text"
                                              data-arts-split-text="lines,words" data-arts-split-text-set="lines"
@@ -296,16 +301,17 @@
                                              <div class="menu-overlay__heading h3">Oferta firmy</div>
                                           </div>
                                        </a>
-                                       <span onclick="var u=document.getElementById('mob-oferta');var open=u.style.display==='block';u.style.display=open?'none':'block';this.innerHTML=open?'+':'&#8722;';" style="cursor:pointer;position:absolute;right:0;top:10px;padding:10px 20px;color:#fff;font-size:1.8rem;line-height:1;user-select:none;">+</span>
-                                       <ul id="mob-oferta" style="display:none;list-style:none;padding:0 0 10px 10px;margin:0;">
-                                          <li style="padding:5px 0;"><a href="<?php home_url(); ?>uslugi/tworzenie-stron-www.php" data-pjax-link="overlayMenu" style="color:rgba(255,255,255,0.7);font-size:15px;text-decoration:none;display:flex;align-items:center;gap:8px;"><i class="material-icons" style="font-size:16px;color:#A3D900;">laptop_mac</i>Tworzenie stron internetowych</a></li>
-                                          <li style="padding:5px 0;"><a href="<?php home_url(); ?>uslugi/kampanie-google-ads.php" data-pjax-link="overlayMenu" style="color:rgba(255,255,255,0.7);font-size:15px;text-decoration:none;display:flex;align-items:center;gap:8px;"><i class="material-icons" style="font-size:16px;color:#A3D900;">ads_click</i>Kampanie Google Ads</a></li>
-                                          <li style="padding:5px 0;"><a href="<?php home_url(); ?>uslugi/serwis-komputerowy.php" data-pjax-link="overlayMenu" style="color:rgba(255,255,255,0.7);font-size:15px;text-decoration:none;display:flex;align-items:center;gap:8px;"><i class="material-icons" style="font-size:16px;color:#A3D900;">build</i>Serwis komputerowy</a></li>
-                                          <li style="padding:5px 0;"><a href="<?php home_url(); ?>uslugi/szkolenia-it.php" data-pjax-link="overlayMenu" style="color:rgba(255,255,255,0.7);font-size:15px;text-decoration:none;display:flex;align-items:center;gap:8px;"><i class="material-icons" style="font-size:16px;color:#A3D900;">school</i>Szkolenia IT</a></li>
-                                          <li style="padding:5px 0;"><a href="<?php home_url(); ?>uslugi/sieci-lan-wlan.php" data-pjax-link="overlayMenu" style="color:rgba(255,255,255,0.7);font-size:15px;text-decoration:none;display:flex;align-items:center;gap:8px;"><i class="material-icons" style="font-size:16px;color:#A3D900;">wifi</i>Sieci Lan / Wlan</a></li>
-                                          <li style="padding:5px 0;"><a href="<?php home_url(); ?>uslugi/pomoc-domowa.php" data-pjax-link="overlayMenu" style="color:rgba(255,255,255,0.7);font-size:15px;text-decoration:none;display:flex;align-items:center;gap:8px;"><i class="material-icons" style="font-size:16px;color:#A3D900;">home_repair_service</i>Pomoc domowa</a></li>
-                                          <li style="padding:5px 0;"><a href="<?php home_url(); ?>uslugi/branding-dla-firm.php" data-pjax-link="overlayMenu" style="color:rgba(255,255,255,0.7);font-size:15px;text-decoration:none;display:flex;align-items:center;gap:8px;"><i class="material-icons" style="font-size:16px;color:#A3D900;">brush</i>Branding dla firm</a></li>
-                                          <li style="padding:5px 0;"><a href="<?php home_url(); ?>uslugi/pozycjonowanie-stron.php" data-pjax-link="overlayMenu" style="color:rgba(255,255,255,0.7);font-size:15px;text-decoration:none;display:flex;align-items:center;gap:8px;"><i class="material-icons" style="font-size:16px;color:#A3D900;">trending_up</i>Pozycjonowanie stron</a></li>
+                                       <button type="button" class="menu-overlay__toggle" aria-expanded="false" aria-controls="mob-oferta" aria-label="Pokaż usługi"
+                                          onclick="var u=document.getElementById('mob-oferta');var open=!u.hidden;u.hidden=open;this.setAttribute('aria-expanded',String(!open));this.textContent=open?'+':'\u2212';">+</button>
+                                       <ul id="mob-oferta" class="menu-overlay__services" hidden>
+                                          <li><a href="<?php home_url(); ?>uslugi/tworzenie-stron-www.php" data-pjax-link="overlayMenu"><i class="material-icons">laptop_mac</i>Tworzenie stron internetowych</a></li>
+                                          <li><a href="<?php home_url(); ?>uslugi/kampanie-google-ads.php" data-pjax-link="overlayMenu"><i class="material-icons">touch_app</i>Kampanie Google Ads</a></li>
+                                          <li><a href="<?php home_url(); ?>uslugi/serwis-komputerowy.php" data-pjax-link="overlayMenu"><i class="material-icons">build</i>Serwis komputerowy</a></li>
+                                          <li><a href="<?php home_url(); ?>uslugi/szkolenia-it.php" data-pjax-link="overlayMenu"><i class="material-icons">school</i>Szkolenia IT</a></li>
+                                          <li><a href="<?php home_url(); ?>uslugi/sieci-lan-wlan.php" data-pjax-link="overlayMenu"><i class="material-icons">wifi</i>Sieci Lan / Wlan</a></li>
+                                          <li><a href="<?php home_url(); ?>uslugi/pomoc-domowa.php" data-pjax-link="overlayMenu"><i class="material-icons">home</i>Pomoc domowa</a></li>
+                                          <li><a href="<?php home_url(); ?>uslugi/branding-dla-firm.php" data-pjax-link="overlayMenu"><i class="material-icons">brush</i>Branding dla firm</a></li>
+                                          <li><a href="<?php home_url(); ?>uslugi/pozycjonowanie-stron.php" data-pjax-link="overlayMenu"><i class="material-icons">trending_up</i>Pozycjonowanie stron</a></li>
                                        </ul>
                                     </li>
                                     <li>

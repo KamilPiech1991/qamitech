@@ -799,6 +799,11 @@
   flex-shrink: 0;
 }
 
+/* .material-icons ma kolor akcentu — na zielonym kółku ikona była niewidoczna */
+.header__mobile-phone .material-icons {
+  color: var(--color-dark-2);
+}
+
 /* Mobile overlay: submenu rozwijanie */
 .menu-overlay .sub-menu {
   display: none;
@@ -843,4 +848,105 @@
 
 .menu-overlay__item-arrow.is-open {
   transform: rotate(90deg);
+}
+
+/* Menu mobilne: rozwijana lista usług pod „Oferta firmy”.
+   Motyw ustawia elementy menu w wierszu (flex), więc lista musi zawinąć się do nowej linii. */
+.menu-overlay > li.menu-overlay__item-has-children {
+  flex-wrap: wrap;
+}
+
+.menu-overlay__toggle {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: auto; /* motyw ustawia button { width: 100% } */
+  padding: 10px 20px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu-overlay__services {
+  flex: 0 0 100%;
+  width: 100%;
+  margin: 0;
+  padding: 12px 0 4px;
+  list-style: none;
+}
+
+.menu-overlay__services li {
+  padding: 6px 0;
+}
+
+.menu-overlay__services a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 16px;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.menu-overlay__services a:hover {
+  color: #fff;
+}
+
+.menu-overlay__services .material-icons {
+  flex-shrink: 0;
+  font-size: 18px;
+  color: var(--color-accent-1);
+}
+
+/* Tablet (menu z hamburgera jest do 1199 px): układ jak na telefonie —
+   motyw dawał tu dwie kolumny bez odstępu od góry i menu wchodziło pod logo */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .menu-overlay {
+    display: block;
+    margin-top: 10em;
+  }
+
+  .menu-overlay > li {
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
+  .menu-overlay > li:first-child {
+    margin-top: 0;
+  }
+}
+
+/* Logo na ciemnym tle otwartego menu: jasna wersja */
+.header.opened .logo__img-primary {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.header.opened .logo__img-secondary {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Na telefonie napis „Menu / Zamknij” wchodził pod przycisk telefonu — zostaje sama ikona */
+@media (max-width: 1199.98px) {
+  .header__burger-label {
+    display: none;
+  }
+}
+
+/* Bardzo wąskie telefony: mniejsze logo, żeby telefon i hamburger mieściły się w jednym wierszu */
+@media (max-width: 374.98px) {
+  .logo__wrapper-img {
+    margin-right: 0;
+  }
+
+  .logo__wrapper-img img {
+    width: 150px;
+  }
 }
