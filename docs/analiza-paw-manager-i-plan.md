@@ -392,6 +392,8 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 
 **Wygląd:** wariant A z makiet („Ciepła karta”) w zieleni (kolor główny `#32BF46`, hover `#28A33A`, tekst na jasnym tle `#1F8A30`, tła `#E4F8E8` / `#C9F0D1`, akcent `#F2B84B`), ikony Lucide, animacje wejścia i hover, przycisk „+” z arkuszem szybkich akcji, tryb ciemny. Makiety obu wariantów: kanwa projektowa (wariant A przebarwiony na zieleń).
 
+**Wygląd i zdjęcia (19.10.2026):** Start przebudowany na strumień dużych kolorowych kart z dymkiem asystenta i szybkimi akcjami (wzór: strumień kart McDonald's i karty funkcji aplikacji pet care, nie Paw Manager). Każdy ekran ma gradientowy baner nagłówka z dużą ikoną w tle, tło aplikacji ma delikatne gradientowe plamy. Psy i szczenięta mają zdjęcia: wybór pliku w formularzu, zmniejszanie w przeglądarce do 640 px (JPEG), zapis w danych lokalnych; zdjęcia widać w listach, profilach, na Starcie, w banerze miotu, na karcie przekazania i stronie dla nabywcy. Produkcyjnie zdjęcia trafią do Supabase Storage, a nie do kodu QR.
+
 **Świadome uproszczenia prototypu (do fazy 2–3):** dane w localStorage jednej przeglądarki (brak kont i synchronizacji), PDF przez okno drukowania przeglądarki, QR koduje pełne dane (produkcyjnie: token), brak zdjęć szczeniąt, brak push, brak wielojęzyczności, nazwa i kolorystyka robocze.
 
 ---

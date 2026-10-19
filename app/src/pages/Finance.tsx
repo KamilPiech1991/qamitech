@@ -3,7 +3,9 @@ import { Plus, Receipt, Trophy, History, TrendingUp, Wallet } from 'lucide-react
 import { Link, useSearchParams } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList } from 'recharts';
 import { useStore } from '../app/store';
-import { Card, Empty, Field, Modal, PageHeader, ProBadge, Tabs, confirmDel, EditBtn, DelBtn } from '../components/ui';
+import { Card, Empty, Field, Modal, ProBadge, Tabs, confirmDel, EditBtn, DelBtn } from '../components/ui';
+import { ArtHeader } from '../components/ui';
+import { Wallet as ArtIcon } from 'lucide-react';
 import { fmtDate, fmtMoney, monthKey, MONTHS_SHORT, today, uid } from '../app/format';
 import { EXPENSE_CATEGORIES, SHOW_EXPENSE_TYPES, INCOME_CATEGORIES, type Expense, type Income } from '../app/types';
 
@@ -32,7 +34,7 @@ export default function Finance() {
 
   return (
     <div>
-      <PageHeader title="Bilans hodowli" sub="Wydatki, przychody i wynik hodowli" actions={<><button className="btn secondary" onClick={() => setEditInc({ id: uid(), date: t, amount: 0, category: INCOME_CATEGORIES[0] })}><Plus size={16} /> Przychód</button><button className="btn" onClick={() => setEdit(newExpense('kennel'))}><Plus size={18} /> Wydatek</button></>} />
+      <ArtHeader compact tone="blue" icon={<ArtIcon size={24} />} title="Bilans hodowli" sub="Wydatki, przychody i wynik hodowli" actions={<><button className="btn secondary" onClick={() => setEditInc({ id: uid(), date: t, amount: 0, category: INCOME_CATEGORIES[0] })}><Plus size={16} /> Przychód</button><button className="btn" onClick={() => setEdit(newExpense('kennel'))}><Plus size={18} /> Wydatek</button></>} />
       <Tabs value={tab} onChange={setTab} items={[{ key: 'budget', label: 'Finanse' }, { key: 'history', label: 'Rejestr wydatków' }, { key: 'income', label: 'Przychody' }, { key: 'stats', label: 'Analiza' }]} />
 
       {tab === 'budget' && <div className="stack">

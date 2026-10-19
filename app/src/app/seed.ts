@@ -11,7 +11,7 @@ export function emptyState(): AppState {
 export function demoState(): AppState {
   const t = today();
   const s = emptyState();
-  s.profile = { module: 'breeder', plan: 'free', kennelName: 'Hodowla z Zielonego Wzgórza', kennelNo: 'ZK-1427', breederName: 'Ania', email: 'michal@example.com', onboarded: true };
+  s.profile = { module: 'breeder', plan: 'free', kennelName: 'Hodowla z Zielonego Wzgórza', kennelNo: 'ZK-1427', breederName: 'Ania', email: 'ania@example.com', onboarded: true };
   const bubek = { id: uid(), name: 'Bubek', pedigreeName: 'Bubi Dolina Krzemowa FCI', breed: 'Basset Hound', sex: 'male' as const, birthDate: '2021-12-10', color: 'Łaciaty', weightKg: 17, neutered: false, fatherName: 'Grinch z Bordeaux', motherName: 'Fiona Królestwo Rusałek', pedigreeNo: '637378383', regNo: '8873663', chip: '6363737e', createdAt: t };
   const diana = { id: uid(), name: 'Diana', pedigreeName: 'Diana zza Miedzy', breed: 'Basset Hound', sex: 'female' as const, birthDate: '2022-05-03', color: 'Tricolor', weightKg: 21, fatherName: 'Rocky z San Francisco', motherName: 'Daisy from Royal Castle', pedigreeNo: '65566', chip: '25668', createdAt: t, fatherId: undefined as string | undefined };
   const rocky = { id: uid(), name: 'Rocky', pedigreeName: 'Rocky z San Francisco', breed: 'Chart Szkocki Deerhound', sex: 'male' as const, birthDate: '2024-06-07', color: 'Pręgowany', weightKg: 38, createdAt: t };

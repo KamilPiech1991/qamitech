@@ -3,7 +3,8 @@ import { Pencil, Plus, Scale, Syringe, Baby, ClipboardList, Utensils, Pill, Bath
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from 'recharts';
 import { useStore } from '../app/store';
-import { Card, Chips, Empty, Field, Modal, PageHeader, Tabs, confirmDel, sexIcon, DelBtn, EditBtn } from '../components/ui';
+import { Card, Chips, Empty, Field, Modal, Tabs, confirmDel, sexIcon, DelBtn, EditBtn } from '../components/ui';
+import { PhotoPicker, ArtHeader } from '../components/ui';
 import { LitterForm } from './Litters';
 import { daysBetween, fmtDate, fmtDateTime, nowLocal, today, uid } from '../app/format';
 import { ACCUSTOMED_ITEMS, LITTER_CHECKLIST, MARKER_COLORS, INCOME_CATEGORIES, type HealthKind, type LitterPack, type Puppy, type BirthEvent, type Income, type Expense } from '../app/types';
@@ -16,6 +17,7 @@ export function PuppyForm({ initial, litterId, index, onClose, onSave }: { initi
   const [p, setP] = useState<Puppy>(initial ?? { id: uid(), litterId, name: '', sex: 'male', birthDateTime: nowLocal(), birthStatus: 'alive', markerColor: MARKER_COLORS[index % MARKER_COLORS.length], pawId: `DP-${new Date().getFullYear()}-${Date.now().toString(36).toUpperCase().slice(-4)}`, owners: [], character: [] });
   return (
     <Modal title={initial ? 'Edytuj szczenię' : 'Dodaj szczenię'} onClose={onClose} actions={<><button className="btn secondary" onClick={onClose}>Anuluj</button><button className="btn" disabled={!p.name.trim()} onClick={() => onSave(p)}>Zapisz</button></>}>
+      <PhotoPicker value={p.photo} onChange={v => setP({ ...p, photo: v })} />
       <div className="form-grid">
         <Field label="Imię / oznaczenie *"><input value={p.name} onChange={e => setP({ ...p, name: e.target.value })} placeholder="np. Blue Boy" /></Field>
         <Field label="Płeć"><select value={p.sex} onChange={e => setP({ ...p, sex: e.target.value as 'male' | 'female' })}><option value="male">Pies</option><option value="female">Suka</option></select></Field>
@@ -54,7 +56,9 @@ export default function LitterDetail() {
 
   return (
     <div>
-      <PageHeader back={() => nav('/mioty')} title={litter.name} sub={<>Ur. {fmtDate(litter.birthDate)} ({age} dni) · Matka: {litter.motherName} · Ojciec: {litter.fatherName || '—'}</>} actions={<button className="btn secondary" onClick={() => setEditLitter(true)}><Pencil size={16} /> Edytuj miot</button>} />
+      <ArtHeader tone="green" icon={<PawPrint size={24} />} back={() => nav('/mioty')} title={litter.name} sub={<>Ur. {fmtDate(litter.birthDate)} ({age} dni) · Matka: {litter.motherName} · Ojciec: {litter.fatherName || '—'}</>} actions={<button className="btn secondary" onClick={() => setEditLitter(true)}><Pencil size={16} /> Edytuj miot</button>}>
+        {pups.length > 0 && <div className="avatar-stack">{pups.slice(0, 8).map(x => <span key={x.id} title={x.name} style={{ borderColor: x.markerColor }}>{x.photo ? <img src={x.photo} alt="" /> : <PawPrint size={16} />}</span>)}<small>{pups.length} {pups.length === 1 ? 'szczenię' : pups.length < 5 ? 'szczenięta' : 'szczeniąt'}</small></div>}
+      </ArtHeader>
       <Tabs value={tab} onChange={setTab} items={[{ key: 'puppies', label: `Szczenięta (${pups.length})` }, { key: 'analysis', label: 'Rozwój' }, { key: 'care', label: `Plan odchowu (${pct}%)` }, { key: 'birth', label: 'Dziennik porodu' }, { key: 'money', label: 'Rentowność' }, { key: 'pack', label: 'Nowy dom' }]} />
 
       {tab === 'puppies' && (
@@ -68,7 +72,7 @@ export default function LitterDetail() {
             <Card key={p.id} className="" >
               <div style={{ borderLeft: `5px solid ${p.markerColor}`, paddingLeft: 12 }}>
                 <div className="row between">
-                  <div><b style={{ fontSize: 17, color: 'var(--primary-600)' }}>{p.name}</b><div className="muted">{sexIcon(p.sex)} {p.sex === 'male' ? 'Pies' : 'Suka'} · Ur. {fmtDateTime(p.birthDateTime)}{p.birthStatus !== 'alive' ? ' · ' + (p.birthStatus === 'stillborn' ? 'martwo urodzony' : 'padł') : ''}</div></div>
+                  <div className="row" style={{ gap: 10 }}><div className="pup-ava" style={{ boxShadow: `0 0 0 3px ${p.markerColor}` }}>{p.photo ? <img src={p.photo} alt="" /> : <PawPrint size={22} />}</div><div><b style={{ fontSize: 17, color: 'var(--primary-600)' }}>{p.name}</b><div className="muted">{sexIcon(p.sex)} {p.sex === 'male' ? 'Pies' : 'Suka'} · Ur. {fmtDateTime(p.birthDateTime)}{p.birthStatus !== 'alive' ? ' · ' + (p.birthStatus === 'stillborn' ? 'martwo urodzony' : 'padł') : ''}</div></div></div>
                   {last ? <div className="card soft" style={{ padding: '6px 10px', textAlign: 'right' }}><b style={{ display: 'flex', gap: 4, alignItems: 'center' }}><Scale size={14} /> {last.grams} g</b>{diff !== null && <div style={{ fontSize: 12, color: diff >= 0 ? 'var(--success)' : 'var(--danger)' }}>{diff >= 0 ? '↑ +' : '↓ '}{diff} g</div>}</div> : <span className="badge gray">brak pomiaru</span>}
                 </div>
                 <div className="row" style={{ marginTop: 10, gap: 6 }}>

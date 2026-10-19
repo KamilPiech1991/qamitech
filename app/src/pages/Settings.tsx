@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
 import { Users, Download, Upload, Moon, Sun, Shield, Plus } from 'lucide-react';
 import { useStore } from '../app/store';
-import { Card, Field, PageHeader, ProBadge, Switch, DelBtn, Modal } from '../components/ui';
+import { Card, Field, ProBadge, Switch, DelBtn, Modal } from '../components/ui';
+import { ArtHeader } from '../components/ui';
+import { Settings as ArtIcon } from 'lucide-react';
 import { emptyState, demoState } from '../app/seed';
 import { FREE_LIMITS, type AppState, type Member } from '../app/types';
 import { uid } from '../app/format';
@@ -26,7 +28,7 @@ export default function Settings() {
 
   return (
     <div className="stack">
-      <PageHeader title="Ustawienia" />
+      <ArtHeader compact tone="slate" icon={<ArtIcon size={24} />} title="Ustawienia" sub="Profil, zespół, plan i dane" />
       <Card title="Wygląd" icon={p.darkMode ? <Moon size={18} /> : <Sun size={18} />}>
         <div className="row between"><div><b>Tryb ciemny</b><div className="muted">Oszczędza wzrok wieczorem przy porodzie.</div></div><Switch on={!!p.darkMode} onChange={v => setProfile({ darkMode: v })} label="Tryb ciemny" /></div>
       </Card>

@@ -24,7 +24,7 @@ export default function Portal() {
     <div className="module-pick" style={{ alignItems: 'start' }}>
       <div className="box stack" style={{ maxWidth: 560 }}>
         <div className="hero" style={{ textAlign: 'center' }}>
-          <div className="avatar lg" style={{ margin: '0 auto 10px', background: 'rgba(255,255,255,.18)', color: '#fff' }}><PawPrint size={44} className="wag" /></div>
+          <div className="avatar lg" style={{ margin: '0 auto 10px', background: 'rgba(255,255,255,.18)', color: '#fff' }}>{puppy.photo ? <img src={puppy.photo} alt="" /> : <PawPrint size={44} className="wag" />}</div>
           <div className="muted" style={{ fontWeight: 800 }}>{state.profile.kennelName || 'Hodowla'}</div>
           <h1 style={{ fontSize: 30 }}>{puppy.name}</h1>
           <div className="muted">{mother?.breed} · {puppy.sex === 'male' ? 'piesek' : 'suczka'} · {age} dni</div>

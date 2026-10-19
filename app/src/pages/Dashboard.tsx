@@ -86,6 +86,7 @@ export default function Dashboard() {
         {breeder && activePreg.map(b => { const f = state.dogs.find(d => d.id === b.femaleId); const day = daysBetween(b.matings[0].date, t) + 1; const expected = addDays(b.matings[0].date, 62); return (
           <div key={b.id} className="fc dark span2" onClick={() => nav(`/ciaza/${b.id}`)}>
             <Heart className="art" size={190} />
+            {f?.photo && <img className="fc-photo" src={f.photo} alt="" />}
             <div className="kicker">Ciąża · {f?.name} × {b.maleName}</div>
             <h2>{day}. dzień, {Math.ceil(day / 7)}. tydzień</h2>
             <div className="progress"><div style={{ width: `${Math.min(100, (day / 63) * 100)}%` }} /></div>
@@ -110,7 +111,7 @@ export default function Dashboard() {
             <div className="kicker">{latestLitter.name} · {daysBetween(latestLitter.birthDate, t)}. dzień</div>
             <h2>{litterPups.length} {litterPups.length === 1 ? 'szczenię' : litterPups.length < 5 ? 'szczenięta' : 'szczeniąt'}</h2>
             <p>{lastWeighDate ? `Ostatnie ważenie ${whenLabel(lastWeighDate.slice(0, 10)) === 'zaległe' ? daysBetween(lastWeighDate.slice(0, 10), t) + ' dni temu' : whenLabel(lastWeighDate.slice(0, 10))}.` : 'Jeszcze bez pomiarów wagi.'} {latestLitter.motherName} × {latestLitter.fatherName}</p>
-            <div className="pups">{litterPups.slice(0, 6).map(x => { const w = lastWeight(x.id); return <span key={x.id} className="pup"><i style={{ background: x.markerColor }} />{x.name}{w ? ` · ${w.grams} g` : ''}</span>; })}</div>
+            <div className="pups">{litterPups.slice(0, 6).map(x => { const w = lastWeight(x.id); return <span key={x.id} className="pup">{x.photo ? <img src={x.photo} alt="" style={{ boxShadow: `0 0 0 2px ${x.markerColor}` }} /> : <i style={{ background: x.markerColor }} />}{x.name}{w ? ` · ${w.grams} g` : ''}</span>; })}</div>
             <span className="cta" onClick={e => { e.stopPropagation(); nav(`/mioty/${latestLitter.id}?weigh=1`); }}><Scale size={16} /> Zważ miot</span>
           </div>)}
 

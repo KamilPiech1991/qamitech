@@ -1,5 +1,6 @@
 import { useEffect, type ReactNode } from 'react';
-import { ArrowLeft, Pencil, Trash2, X, PawPrint } from 'lucide-react';
+import { ArrowLeft, Pencil, Trash2, X, PawPrint, Camera, ImagePlus } from 'lucide-react';
+import { readPhoto } from '../app/photo';
 
 export const APP_NAME = 'Dogpilot';
 
@@ -74,3 +75,34 @@ export function confirmDel(msg = 'Na pewno usunąć ten wpis?') { return window.
 
 export const sexIcon = (s: 'male' | 'female') => (s === 'male' ? '♂' : '♀');
 export const sexLabel = (s: 'male' | 'female') => (s === 'male' ? 'Pies' : 'Suka');
+
+export type ArtTone = 'green' | 'blue' | 'sun' | 'rose' | 'lilac' | 'teal' | 'slate' | 'custom';
+/** Gradientowy baner nagłówka z dużą ikoną w tle i opcjonalnym zdjęciem. */
+export function ArtHeader({ tone = 'green', icon, photo, title, sub, actions, back, children, style, compact }: { tone?: ArtTone; icon?: ReactNode; photo?: string | null; title: ReactNode; sub?: ReactNode; actions?: ReactNode; back?: () => void; children?: ReactNode; style?: React.CSSProperties; compact?: boolean }) {
+  return (
+    <div className={`art-hero ${tone}${compact ? ' compact' : ''}`} style={style}>
+      {icon && <span className="art" aria-hidden>{icon}</span>}
+      <div className="art-top">
+        {back && <button className="icon-btn light no-print" onClick={back} aria-label="Wstecz"><ArrowLeft size={22} /></button>}
+        {photo !== undefined && <div className="art-photo">{photo ? <img src={photo} alt="" /> : icon}</div>}
+        <div className="art-text"><h1>{title}</h1>{sub && <div className="sub">{sub}</div>}</div>
+        {actions && <div className="row no-print art-actions">{actions}</div>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+/** Wybór zdjęcia z podglądem; obraz jest zmniejszany w przeglądarce i zapisywany jako data URL. */
+export function PhotoPicker({ value, onChange, label = 'Dodaj zdjęcie' }: { value?: string; onChange: (v?: string) => void; label?: string }) {
+  return (
+    <div className="photo-picker">
+      <div className="avatar lg">{value ? <img src={value} alt="" /> : <Camera size={30} />}</div>
+      <div className="stack" style={{ gap: 6, alignItems: 'flex-start' }}>
+        <label className="btn secondary sm"><ImagePlus size={16} /> {value ? 'Zmień zdjęcie' : label}<input type="file" accept="image/*" hidden onChange={async e => { const f = e.target.files?.[0]; if (f) { try { onChange(await readPhoto(f)); } catch { /* ignore */ } } e.target.value = ''; }} /></label>
+        {value && <button className="btn ghost sm" onClick={() => onChange(undefined)}><Trash2 size={16} /> Usuń zdjęcie</button>}
+        <small className="muted">JPG lub PNG. Zmniejszamy do 640 px, zdjęcie zostaje w Twoich danych.</small>
+      </div>
+    </div>
+  );
+}

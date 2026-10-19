@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { FileText, FileSignature, ClipboardCheck, ListChecks, Printer, HeartPulse } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Card, Empty, Field, PageHeader } from '../components/ui';
+import { ArtHeader } from '../components/ui';
+import { FileText as ArtIcon } from 'lucide-react';
 import { fmtDate, fmtDateLong, fmtDateTime, fmtMoney, today } from '../app/format';
 import { HEALTH_LABEL } from '../app/types';
 
@@ -25,7 +27,7 @@ export default function Documents() {
   if (!kind) {
     return (
       <div className="stack">
-        <PageHeader title="Dokumenty" sub="Gotowe wzory wypełniane danymi z aplikacji. Drukuj lub zapisz jako PDF." />
+        <ArtHeader compact tone="lilac" icon={<ArtIcon size={24} />} title="Dokumenty" sub="Gotowe wzory wypełniane danymi z aplikacji. Drukuj lub zapisz jako PDF." />
         <div className="grid cols-2">{DOCS.map(d => <Card key={d.kind} onClick={() => nav(`/dokumenty/${d.kind}`)}><div className="tile" style={{ border: 0, padding: 0, minHeight: 0, cursor: 'pointer' }}><div className="ico">{d.ico}</div><b>{d.title}</b><div className="muted">{d.desc}</div></div></Card>)}</div>
         <Card className="soft"><small>Wzory mają charakter pomocniczy i nie zastępują porady prawnej. Dostosuj zapisy do własnej hodowli i wymogów klubu.</small></Card>
       </div>

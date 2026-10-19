@@ -5,7 +5,8 @@ import { heatStats } from '../app/heat';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { useStore } from '../app/store';
-import { Card, Empty, Field, KV, Modal, PageHeader, ProBadge, Stat, Tabs, confirmDel, EditBtn, DelBtn } from '../components/ui';
+import { Card, Empty, Field, KV, Modal, ProBadge, Stat, Tabs, confirmDel, EditBtn, DelBtn } from '../components/ui';
+import { ArtHeader } from '../components/ui';
 import DogForm from '../components/DogForm';
 import { ageText, fmtDate, fmtDateTime, fmtMoney, nowLocal, today, uid } from '../app/format';
 import { COUNTRIES, HEALTH_LABEL, SHOW_CERTS, SHOW_CLASSES, SHOW_GRADES, SHOW_RANKS, SHOW_TITLES, type Breeding, type Championship, type HealthKind, type HealthRecord, type Show, type StudMating, type Weight, type Heat } from '../app/types';
@@ -31,7 +32,7 @@ export default function DogProfile() {
   ];
   return (
     <div>
-      <PageHeader back={() => nav('/psy')} title={dog.name} sub={<>{dog.pedigreeName} · {dog.breed} · {dog.sex === 'male' ? 'Pies' : 'Suka'}, {ageText(dog.birthDate)}</>}
+      <ArtHeader tone={dog.sex === 'female' ? 'rose' : 'blue'} icon={<PawPrint size={24} />} photo={dog.photo ?? null} back={() => nav('/psy')} title={dog.name} sub={<>{dog.pedigreeName} · {dog.breed} · {dog.sex === 'male' ? 'Pies' : 'Suka'}, {ageText(dog.birthDate)}</>}
         actions={<><button className="btn secondary" onClick={() => setEditing(true)}><Pencil size={16} /> Edytuj</button><button className="btn danger" onClick={() => { if (confirmDel('Usunąć psa i wszystkie jego wpisy?')) { remove('dogs', dog.id); nav('/psy'); } }}>Usuń</button></>} />
       <Tabs value={tab} onChange={t => setParams({ tab: t })} items={tabs} />
       {tab === 'card' && <CardTab />}

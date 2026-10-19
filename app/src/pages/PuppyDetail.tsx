@@ -4,7 +4,8 @@ import { QRCodeSVG } from 'qrcode.react';
 import { ChevronUp, ChevronDown, Pencil, Plus, Copy, Printer, Globe, Syringe, Scale, PawPrint } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { useStore } from '../app/store';
-import { Card, Chips, Empty, Field, KV, Modal, PageHeader, Tabs, confirmDel, sexLabel, EditBtn, DelBtn } from '../components/ui';
+import { Card, Chips, Empty, Field, KV, Modal, Tabs, confirmDel, sexLabel, EditBtn, DelBtn } from '../components/ui';
+import { ArtHeader } from '../components/ui';
 import { fmtDate, fmtDateTime, fmtMoney, nowLocal, today, uid } from '../app/format';
 import { CHARACTER_TAGS, HEALTH_LABEL, type HealthRecord, type Puppy, type PuppyOwner, type Weight } from '../app/types';
 import { buildPawIdPayload, encodePawId } from '../app/pawid';
@@ -35,7 +36,7 @@ export default function PuppyDetail() {
 
   return (
     <div>
-      <PageHeader back={() => nav(`/mioty/${litter.id}`)} title={<><span style={{ display: 'inline-block', width: 14, height: 14, borderRadius: 7, background: puppy.markerColor, marginRight: 8 }} />{puppy.name}</>} sub={<>{litter.name} · {sexLabel(puppy.sex)} · ur. {fmtDateTime(puppy.birthDateTime)}</>} actions={<><button className="btn secondary" onClick={() => setEditing(true)}><Pencil size={16} /> Edytuj</button><button className="btn danger" onClick={() => removePuppy(puppy.id) && nav(`/mioty/${litter.id}`)}>Usuń</button></>} />
+      <ArtHeader tone="custom" style={{ background: `linear-gradient(135deg, ${puppy.markerColor} 0%, #1B2A22 150%)` }} icon={<PawPrint size={24} />} photo={puppy.photo ?? null} back={() => nav(`/mioty/${litter.id}`)} title={puppy.name} sub={<>{litter.name} · {sexLabel(puppy.sex)} · ur. {fmtDateTime(puppy.birthDateTime)}</>} actions={<><button className="btn secondary" onClick={() => setEditing(true)}><Pencil size={16} /> Edytuj</button><button className="btn danger" onClick={() => removePuppy(puppy.id) && nav(`/mioty/${litter.id}`)}>Usuń</button></>} />
       <Tabs value={tab} onChange={t => setParams({ tab: t })} items={[{ key: 'card', label: 'Dane' }, { key: 'weights', label: 'Wagi' }, { key: 'health', label: 'Zdrowie' }, { key: 'owner', label: 'Nabywca i cena' }, { key: 'pawid', label: 'Karta przekazania' }, { key: 'pack', label: 'Nowy dom' }]} />
 
       {tab === 'card' && <div className="stack">
@@ -65,7 +66,7 @@ export default function PuppyDetail() {
       {tab === 'pawid' && <div className="stack">
         <div className="pawid" onClick={() => setShowQr(s => !s)} style={{ cursor: 'pointer' }}>
           {!showQr ? (<>
-            <div className="row between"><div><small style={{ opacity: .8 }}>Szczenię z hodowli</small><h2 style={{ color: '#fff', fontSize: 26 }}>{puppy.name}</h2></div><PawPrint size={44} style={{ opacity: .4 }} /></div>
+            <div className="row between"><div><small style={{ opacity: .8 }}>Szczenię z hodowli</small><h2 style={{ color: '#fff', fontSize: 26 }}>{puppy.name}</h2></div>{puppy.photo ? <div className="art-photo" style={{ width: 64, height: 64, borderRadius: 20 }}><img src={puppy.photo} alt="" /></div> : <PawPrint size={44} style={{ opacity: .4 }} />}</div>
             <KV items={[['Nazwa miotu', litter.name], ['Rasa', mother?.breed], ['Data i godzina ur.', fmtDateTime(puppy.birthDateTime)], ['Płeć', sexLabel(puppy.sex)], ['Umaszczenie', puppy.color], ['Waga ur. (g)', puppy.birthWeightG], ['Ojciec', litter.fatherName], ['Matka', litter.motherName], ['Numer rodowodu', puppy.pedigreeNo], ['Numer chipa', puppy.chip], ['Szczepienia', payload.vacc.map(v => `${v.n} ${fmtDate(v.d)}`).join(', ') || '—'], ['Odrobaczenia', payload.deworm.map(v => `${v.n} ${fmtDate(v.d)}`).join(', ') || '—']]} />
             <div className="row between" style={{ marginTop: 14 }}><div><small style={{ opacity: .8 }}>NR KARTY</small><div style={{ fontWeight: 800, fontSize: 18 }}>{puppy.pawId}</div></div><div style={{ textAlign: 'right' }}><small style={{ opacity: .8 }}>OBRÓŻKA</small><div style={{ width: 24, height: 24, borderRadius: 12, background: puppy.markerColor, marginLeft: 'auto', border: '2px solid #fff' }} /></div></div>
           </>) : (

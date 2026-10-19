@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Bell, Plus } from 'lucide-react';
 import { useStore } from '../app/store';
-import { Card, Empty, Field, Modal, PageHeader, confirmDel, EditBtn, DelBtn } from '../components/ui';
+import { Card, Empty, Field, Modal, confirmDel, EditBtn, DelBtn } from '../components/ui';
+import { ArtHeader } from '../components/ui';
+import { Bell as ArtIcon } from 'lucide-react';
 import { fmtDate, today, uid } from '../app/format';
 import type { Reminder } from '../app/types';
 
@@ -16,7 +18,7 @@ export default function Reminders() {
   const dogName = (id?: string) => state.dogs.find(d => d.id === id)?.name;
   return (
     <div>
-      <PageHeader title="Przypomnienia" sub="Terminy, wizyty, wydarzenia" actions={<button className="btn" onClick={() => setEdit({ id: uid(), title: '', date: t, done: false })}><Plus size={18} /> Dodaj</button>} />
+      <ArtHeader compact tone="sun" icon={<ArtIcon size={24} />} title="Przypomnienia" sub="Terminy, wizyty, wydarzenia" actions={<button className="btn" onClick={() => setEdit({ id: uid(), title: '', date: t, done: false })}><Plus size={18} /> Dodaj</button>} />
       <Card>
         {sorted.length === 0 ? <Empty icon={<Bell size={28} />}>Brak przypomnień. Dodaj pierwsze!</Empty> : (
           <div className="list">{sorted.map(r => (

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Field, Modal } from './ui';
-import { Dog as DogIcon } from 'lucide-react';
+import { Field, Modal, PhotoPicker } from './ui';
 import { useStore } from '../app/store';
 import type { Dog } from '../app/types';
 import { today, uid } from '../app/format';
@@ -10,15 +9,10 @@ export default function DogForm({ initial, onSave, onClose }: { initial?: Dog; o
   const [d, setD] = useState<Dog>(initial ?? { id: uid(), name: '', pedigreeName: '', breed: '', sex: 'female', birthDate: '', createdAt: today() });
   const males = state.dogs.filter(x => x.sex === 'male' && x.id !== d.id), females = state.dogs.filter(x => x.sex === 'female' && x.id !== d.id);
   const set = <K extends keyof Dog>(k: K, v: Dog[K]) => setD({ ...d, [k]: v });
-  const onPhoto = (f?: File) => { if (!f) return; const r = new FileReader(); r.onload = () => { const img = new Image(); img.onload = () => { const c = document.createElement('canvas'); const s = Math.min(1, 480 / Math.max(img.width, img.height)); c.width = img.width * s; c.height = img.height * s; c.getContext('2d')!.drawImage(img, 0, 0, c.width, c.height); set('photo', c.toDataURL('image/jpeg', .8)); }; img.src = r.result as string; }; r.readAsDataURL(f); };
   const valid = d.name.trim() && d.breed.trim() && d.birthDate;
   return (
     <Modal title={initial ? 'Edytuj psa' : 'Dodaj psa'} onClose={onClose} wide actions={<><button className="btn secondary" onClick={onClose}>Anuluj</button><button className="btn" disabled={!valid} onClick={() => onSave({ ...d, pedigreeName: d.pedigreeName || d.name })}>Zapisz</button></>}>
-      <div className="row" style={{ marginBottom: 10 }}>
-        <div className="avatar">{d.photo ? <img src={d.photo} alt="" /> : <DogIcon size={30} />}</div>
-        <label className="btn secondary sm">Zdjęcie<input type="file" accept="image/*" hidden onChange={e => onPhoto(e.target.files?.[0])} /></label>
-        {d.photo && <button className="btn ghost sm" onClick={() => set('photo', undefined)}>Usuń zdjęcie</button>}
-      </div>
+      <PhotoPicker value={d.photo} onChange={v => set('photo', v)} />
       <h3>Podstawowe informacje</h3>
       <div className="form-grid">
         <Field label="Imię domowe *"><input value={d.name} onChange={e => set('name', e.target.value)} /></Field>

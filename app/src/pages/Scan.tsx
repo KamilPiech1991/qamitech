@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Camera, Backpack } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../app/store';
-import { Card, Field, KV, PageHeader } from '../components/ui';
+import { Card, Field, KV } from '../components/ui';
+import { ArtHeader } from '../components/ui';
+import { QrCode as ArtIcon } from 'lucide-react';
 import { decodePawId, type PawIdPayload } from '../app/pawid';
 import { fmtDateTime, today, uid } from '../app/format';
 
@@ -55,7 +57,7 @@ export default function Scan() {
 
   return (
     <div className="stack">
-      <PageHeader title="Odbierz psa" sub="Zeskanuj kod z karty przekazania – profil psa pojawi się sam" />
+      <ArtHeader compact tone="slate" icon={<ArtIcon size={24} />} title="Odbierz psa" sub="Zeskanuj kod z karty przekazania – profil psa pojawi się sam" />
       {!payload && (
         <Card>
           {hasDetector ? (

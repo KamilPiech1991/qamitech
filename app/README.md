@@ -25,8 +25,10 @@ Psy i ich dane · zdrowie z przypomnieniami · rozród (plany kryć, progesteron
 - **Strona dla nabywcy** szczenięcia (link publiczny `#/portal/:id`): wagi, profilaktyka, karma, charakter, odliczanie do odbioru.
 - **Wyszukiwarka globalna** (psy, szczenięta, mioty, wystawy, zdrowie, wydatki, przypomnienia) i **tryb ciemny**.
 - Przycisk „+” z arkuszem szybkich akcji (waga, zdrowie, wydatek, przypomnienie, nowy pies) na desktopie i mobile.
+- **Zdjęcia psów i szczeniąt** – wybór pliku w formularzu, zmniejszanie w przeglądarce do 640 px, zapis w danych; widoczne w listach, profilach, na Starcie, na karcie przekazania i stronie dla nabywcy.
 
 ## Wygląd
+Start to strumień dużych kolorowych kart (ciąża, terminy, miot, finanse…) z dymkiem asystenta i rzędem szybkich akcji. Każdy ekran ma gradientowy baner nagłówka z dużą ikoną w tle (`ArtHeader` w `components/ui.tsx`), a tło aplikacji ma delikatne gradientowe plamy.
 Wariant A z makiet („Ciepła karta”) w zieleni: `--primary #32BF46` (hover `#28A33A`, tekst `#1F8A30`), tła `#E4F8E8` / `#C9F0D1`, akcent `#F2B84B`.
 Ikony Lucide, animacje wejścia (fadeUp/pop), kafle z efektem hover, tryb ciemny przełączany w pasku bocznym i w Ustawieniach.
 
@@ -35,6 +37,7 @@ Ikony Lucide, animacje wejścia (fadeUp/pop), kafle z efektem hover, tryb ciemny
 - `src/app/store.tsx` – store (React context + reducer) z zapisem do `localStorage`, limity planu
 - `src/app/pregnancy.ts` – logika kalendarza ciąży i treści tygodni
 - `src/app/pawid.ts` – kodowanie/dekodowanie karty przekazania (prefiks `DGP1:`, odczytuje też starszy `KNL1:`)
+- `src/app/photo.ts` – wczytywanie i zmniejszanie zdjęć do data URL
 - `src/app/heat.ts` – statystyki cieczek i prognoza następnej cieczki / okna płodnego
 - `src/app/pedigree.ts` – budowa rodowodu i współczynnik inbredu (wzór Wrighta)
 - `src/app/seed.ts` – dane demonstracyjne

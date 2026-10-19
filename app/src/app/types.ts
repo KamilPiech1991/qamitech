@@ -160,6 +160,7 @@ export interface Puppy {
   birthWeightG?: number;
   birthStatus: 'alive' | 'stillborn' | 'died';
   markerColor: string;
+  photo?: string; // data URL (JPEG, max 640 px)
   pedigreeNo?: string;
   chip?: string;
   pawId: string;

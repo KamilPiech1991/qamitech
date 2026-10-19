@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { PawPrint, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../app/store';
-import { Card, Empty, Field, Modal, PageHeader, confirmDel, DelBtn } from '../components/ui';
+import { Card, Empty, Field, Modal, confirmDel, DelBtn } from '../components/ui';
+import { ArtHeader } from '../components/ui';
+import { PawPrint as ArtIcon } from 'lucide-react';
 import { fmtDate, today, uid } from '../app/format';
 import type { Litter } from '../app/types';
 
@@ -34,7 +36,7 @@ export default function Litters() {
   const del = (id: string) => { if (!confirmDel('Usunąć miot wraz ze szczeniętami?')) return; dispatch({ type: 'bulk', fn: s => { const pids = s.puppies.filter(p => p.litterId === id).map(p => p.id); return { ...s, litters: s.litters.filter(l => l.id !== id), puppies: s.puppies.filter(p => p.litterId !== id), weights: s.weights.filter(w => !w.puppyId || !pids.includes(w.puppyId)), health: s.health.filter(h => !h.puppyId || !pids.includes(h.puppyId)), breedings: s.breedings.map(b => b.litterId === id ? { ...b, litterId: undefined } : b) }; } }); };
   return (
     <div>
-      <PageHeader title="Mioty" sub="Wszystkie mioty hodowli" actions={<button className="btn" onClick={() => setAdding(true)}><Plus size={18} /> Nowy miot</button>} />
+      <ArtHeader compact tone="green" icon={<ArtIcon size={24} />} title="Mioty" sub="Wszystkie mioty hodowli" actions={<button className="btn" onClick={() => setAdding(true)}><Plus size={18} /> Nowy miot</button>} />
       {litters.length === 0 ? <Card><Empty icon={<PawPrint size={28} />}>Brak miotów. Dodaj pierwszy miot, aby prowadzić metrykę szczeniąt.</Empty></Card> : (
         <div className="stack">{litters.map(l => { const pups = state.puppies.filter(p => p.litterId === l.id); return (
           <Card key={l.id} onClick={() => nav(`/mioty/${l.id}`)}>

@@ -3,6 +3,8 @@ import type { ReactNode } from 'react';
 import { Dog, PawPrint, Baby, Syringe, Bug, Stethoscope, Microscope, Trophy, Wallet, Printer } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Card, Empty, PageHeader } from '../components/ui';
+import { ArtHeader } from '../components/ui';
+import { BarChart3 as ArtIcon } from 'lucide-react';
 import { ageText, fmtDate, fmtDateTime, fmtMoney, today } from '../app/format';
 import { HEALTH_LABEL, type HealthKind } from '../app/types';
 
@@ -33,7 +35,7 @@ export default function Reports() {
     const groups = Array.from(new Set(defs.map(r => r.group)));
     return (
       <div className="stack">
-        <PageHeader title="Raporty" sub="Zbiorcze zestawienia gotowe do zapisu jako PDF (drukuj → zapisz jako PDF)" />
+        <ArtHeader compact tone="teal" icon={<ArtIcon size={24} />} title="Raporty" sub="Zbiorcze zestawienia gotowe do zapisu jako PDF (drukuj → zapisz jako PDF)" />
         {groups.map(g => <div key={g}><h3 style={{ textAlign: 'center', color: 'var(--muted)' }}>— {g} —</h3><div className="grid cols-2">{defs.filter(r => r.group === g).map(r => <Card key={r.kind} onClick={() => nav(`/raporty/${r.kind}`)}><div className="row" style={{ alignItems: 'flex-start' }}><div className="avatar" style={{ width: 44, height: 44, borderRadius: 14 }}>{r.ico}</div><div><b>{r.title}</b><div className="muted">{r.desc}</div></div></div></Card>)}</div></div>)}
       </div>
     );

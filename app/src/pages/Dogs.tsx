@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Dog as DogIcon, Syringe, Heart, Trophy, Scale, Clock, Plus, Flower2 } from 'lucide-react';
 import { useStore } from '../app/store';
-import { Card, Empty, PageHeader, ProBadge, sexIcon } from '../components/ui';
+import { Card, Empty, ProBadge, sexIcon } from '../components/ui';
+import { ArtHeader } from '../components/ui';
+import { Dog as ArtIcon } from 'lucide-react';
 import DogForm from '../components/DogForm';
 import { ageText } from '../app/format';
 import { FREE_LIMITS } from '../app/types';
@@ -25,7 +27,7 @@ export default function Dogs() {
 
   return (
     <div>
-      <PageHeader title="Psy" sub={`${females} ${females === 1 ? 'suka' : 'suk'} · ${males} ${males === 1 ? 'pies' : 'psów'}`} actions={<button className="btn" onClick={() => setAdding(true)}><Plus size={18} /> Dodaj psa</button>} />
+      <ArtHeader compact tone="green" icon={<ArtIcon size={24} />} title="Psy" sub={`${females} ${females === 1 ? 'suka' : 'suk'} · ${males} ${males === 1 ? 'pies' : 'psów'}`} actions={<button className="btn" onClick={() => setAdding(true)}><Plus size={18} /> Dodaj psa</button>} />
       <div className="row between no-print" style={{ marginBottom: 12 }}>
         <div className="tabs" style={{ margin: 0, padding: 0 }}>
           <button className={!sexFilter ? 'active' : ''} onClick={() => setParams({})}>Wszystkie</button>

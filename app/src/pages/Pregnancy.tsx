@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Calendar, Heart, Check, Baby, Dog, Lightbulb } from 'lucide-react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../app/store';
-import { Card, Empty, PageHeader } from '../components/ui';
+import { Card, Empty } from '../components/ui';
+import { ArtHeader } from '../components/ui';
 import { pregnancyInfo, PREGNANCY_WEEKS } from '../app/pregnancy';
 import { fmtDate, fmtDateLong, today } from '../app/format';
 
@@ -23,7 +24,7 @@ export default function Pregnancy() {
   const markDone = (key: 'usg' | 'rtg') => { if (done(key)) return; upsert('breedings', { ...b, [key]: [...b[key], { date: t, value: key === 'usg' ? 'wykonano' : 'wykonano' }] }); toast(key === 'usg' ? 'USG oznaczone jako wykonane' : 'RTG oznaczone jako wykonane'); };
   return (
     <div className="stack">
-      <PageHeader back={() => nav(`/psy/${female.id}?tab=breeding`)} title="Monitor ciąży" sub={<>{female.name} ({female.pedigreeName})</>} />
+      <ArtHeader tone="rose" icon={<Heart size={24} />} photo={female.photo ?? null} back={() => nav(`/psy/${female.id}?tab=breeding`)} title="Monitor ciąży" sub={<>{female.name} ({female.pedigreeName})</>} />
       <Card title="Liczymy od">
         <div className="card soft"><small className="muted">Na podstawie planu krycia</small><div><b>Krycie:</b> {fmtDateLong(first.date)}</div><div><b>Reproduktor:</b> {b.maleName}</div></div>
         <Link className="btn secondary sm" to={`/psy/${female.id}?tab=breeding`} style={{ marginTop: 8 }}><Calendar size={14} /> Inna data krycia</Link>
