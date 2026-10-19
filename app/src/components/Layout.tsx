@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Home, Dog, PawPrint, Wallet, BarChart3, Settings, Bell, QrCode, Plus, Scale, Syringe, Receipt, AlarmClock, FileText, Search, Moon, Sun } from 'lucide-react';
+import { Home, Dog, PawPrint, Wallet, BarChart3, Settings, Bell, QrCode, Plus, Scale, Syringe, Receipt, AlarmClock, FileText, Search, Moon, Sun, Trophy, ExternalLink } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Wordmark } from './ui';
 
@@ -25,13 +25,15 @@ export default function Layout() {
     { to: '/skanuj', label: 'Odbierz psa', ico: <QrCode size={22} /> },
     { to: '/ustawienia', label: 'Ustawienia', ico: <Settings size={22} /> },
   ];
-  const go = (to: string) => { setSheet(false); nav(to); };
+  const go = (to: string, external?: boolean) => { setSheet(false); if (external) { window.open(to, '_blank', 'noopener'); return; } nav(to); };
   const actions = [
     ...(breeder && latestLitter ? [{ label: 'Pomiar wagi szczeniąt', sub: latestLitter.name, ico: <Scale size={20} />, to: `/mioty/${latestLitter.id}?weigh=1` }] : []),
     { label: 'Szczepienie lub odrobaczenie', sub: 'wpis zdrowotny', ico: <Syringe size={20} />, to: '/psy?health=1' },
     { label: 'Wydatek', sub: 'hodowla lub wystawa', ico: <Receipt size={20} />, to: '/finanse?add=1' },
     { label: 'Przypomnienie', sub: 'termin, wizyta, wydarzenie', ico: <AlarmClock size={20} />, to: '/przypomnienia?add=1' },
     { label: 'Nowy pies', sub: 'do mojej hodowli', ico: <Dog size={20} />, to: '/psy?add=1' },
+    ...(breeder ? [{ label: 'Dodaj nowy miot', sub: 'metryka, szczenięta, plan odchowu', ico: <PawPrint size={20} />, to: '/mioty?add=1' }] : []),
+    { label: 'Zarezerwuj wystawę', sub: 'wystawy.net – zgłoszenia na wystawy', ico: <Trophy size={20} />, to: 'https://wystawy.net', external: true },
   ];
   const submitSearch = (e: React.FormEvent) => { e.preventDefault(); if (q.trim()) { nav(`/szukaj?q=${encodeURIComponent(q.trim())}`); } };
 
@@ -57,7 +59,7 @@ export default function Layout() {
         <div className="sheet" role="dialog" aria-label="Co chcesz dodać?">
           <div className="handle" />
           <h3 style={{ marginBottom: 10 }}>Co chcesz dodać?</h3>
-          {actions.map(a => <button key={a.label} className="action" onClick={() => go(a.to)}><span className="ico">{a.ico}</span><span><div>{a.label}</div><small className="muted" style={{ fontWeight: 600 }}>{a.sub}</small></span></button>)}
+          {actions.map(a => <button key={a.label} className="action" onClick={() => go(a.to, 'external' in a && a.external)}><span className="ico">{a.ico}</span><span><div>{a.label}{'external' in a && a.external && <ExternalLink size={13} style={{ marginLeft: 6, verticalAlign: -1, opacity: .6 }} />}</div><small className="muted" style={{ fontWeight: 600 }}>{a.sub}</small></span></button>)}
         </div>
       </>}
 

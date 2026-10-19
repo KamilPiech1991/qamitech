@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Download, Printer, Table2 } from 'lucide-react';
 import { litterStats, littersCsv } from '../app/litters';
@@ -41,6 +41,7 @@ export default function Litters() {
   const [adding, setAdding] = useState(false);
   const [params, setParams] = useSearchParams();
   const view = params.get('view') === 'table' ? 'table' : 'cards';
+  useEffect(() => { if (params.get('add')) { setAdding(true); setParams({}); } }, [params, setParams]);
   const [year, setYear] = useState('');
   const [motherF, setMotherF] = useState('');
   const [q, setQ] = useState('');
