@@ -394,6 +394,8 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 
 **Wygląd i zdjęcia (19.10.2026):** Start przebudowany na strumień dużych kolorowych kart z dymkiem asystenta i szybkimi akcjami (wzór: strumień kart McDonald's i karty funkcji aplikacji pet care, nie Paw Manager). Każdy ekran ma gradientowy baner nagłówka z dużą ikoną w tle, tło aplikacji ma delikatne gradientowe plamy. Psy i szczenięta mają zdjęcia: wybór pliku w formularzu, zmniejszanie w przeglądarce do 640 px (JPEG), zapis w danych lokalnych; zdjęcia widać w listach, profilach, na Starcie, w banerze miotu, na karcie przekazania i stronie dla nabywcy. Produkcyjnie zdjęcia trafią do Supabase Storage, a nie do kodu QR.
 
+**Metryka i rejestr miotów, logo (19.10.2026):** ekran miotu ma zakładkę „Metryka miotu” (oznaczenie, litera, rasa, nr zgłoszenia, data przeglądu, liczby szczeniąt wg płci i statusu, średnia waga urodzeniowa, przekazania, rodzice z linkami, plan krycia, przebieg porodu, postęp odchowu, link do karty miotu PDF). Ekran Mioty ma widok „Rejestr miotów”: tabela wszystkich miotów z filtrami (szukaj, rok, matka), podsumowaniem (mioty, szczenięta, średnia wielkość miotu, przekazania), zestawieniem po latach, eksportem CSV i drukiem. Hodowca może wgrać logo hodowli w Ustawieniach; logo pojawia się na Starcie, w pasku bocznym, na dokumentach, raportach, karcie przekazania i stronie dla nabywcy.
+
 **Świadome uproszczenia prototypu (do fazy 2–3):** dane w localStorage jednej przeglądarki (brak kont i synchronizacji), PDF przez okno drukowania przeglądarki, QR koduje pełne dane (produkcyjnie: token), brak zdjęć szczeniąt, brak push, brak wielojęzyczności, nazwa i kolorystyka robocze.
 
 ---

@@ -60,7 +60,7 @@ export default function Documents() {
 
       <Card>
         <div style={{ fontFamily: 'Georgia, serif', lineHeight: 1.6, fontSize: 14 }}>
-          <div className="row between" style={{ marginBottom: 16 }}><div><b style={{ fontSize: 16 }}>{kennel.kennelName}</b><div className="muted">{kennel.breederName}{kennel.kennelNo ? ` · nr hodowli ${kennel.kennelNo}` : ''}{kennel.email ? ` · ${kennel.email}` : ''}</div></div><div className="muted" style={{ textAlign: 'right' }}>{place || '[MIEJSCOWOŚĆ]'}, {fmtDateLong(today())}</div></div>
+          <div className="row between" style={{ marginBottom: 16 }}><div className="row" style={{ gap: 12 }}>{kennel.logo && <img className="kennel-logo lg" src={kennel.logo} alt="" />}<div><b style={{ fontSize: 16 }}>{kennel.kennelName}</b><div className="muted">{kennel.breederName}{kennel.kennelNo ? ` · nr hodowli ${kennel.kennelNo}` : ''}{kennel.email ? ` · ${kennel.email}` : ''}</div></div></div><div className="muted" style={{ textAlign: 'right' }}>{place || '[MIEJSCOWOŚĆ]'}, {fmtDateLong(today())}</div></div>
           <h2 style={{ textAlign: 'center', textTransform: 'uppercase', fontSize: 18, margin: '14px 0' }}>{def.title}</h2>
 
           {kind === 'umowa' && puppy && (

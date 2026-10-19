@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Users, Download, Upload, Moon, Sun, Shield, Plus } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Card, Field, ProBadge, Switch, DelBtn, Modal } from '../components/ui';
+import { PhotoPicker } from '../components/ui';
 import { ArtHeader } from '../components/ui';
 import { Settings as ArtIcon } from 'lucide-react';
 import { emptyState, demoState } from '../app/seed';
@@ -17,7 +18,7 @@ export default function Settings() {
 
   const exportJson = () => {
     const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `kennelo-backup-${new Date().toISOString().slice(0, 10)}.json`; a.click();
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `dogpilot-backup-${new Date().toISOString().slice(0, 10)}.json`; a.click();
     toast('Kopia zapasowa pobrana');
   };
   const importJson = async (f: File) => {
@@ -33,6 +34,7 @@ export default function Settings() {
         <div className="row between"><div><b>Tryb ciemny</b><div className="muted">Oszczędza wzrok wieczorem przy porodzie.</div></div><Switch on={!!p.darkMode} onChange={v => setProfile({ darkMode: v })} label="Tryb ciemny" /></div>
       </Card>
       <Card title="Profil i hodowla">
+        {p.module === 'breeder' && <><div className="muted" style={{ fontWeight: 800, marginBottom: 6 }}>Logo hodowli</div><PhotoPicker value={p.logo} onChange={v => { setProfile({ logo: v }); toast(v ? 'Logo zapisane' : 'Logo usunięte'); }} label="Dodaj logo hodowli" /><small className="muted" style={{ display: 'block', marginTop: -6, marginBottom: 12 }}>Logo pojawia się na Starcie, w pasku bocznym, na dokumentach, raportach, karcie przekazania i stronie dla nabywcy.</small></>}
         <div className="form-grid">
           <Field label="Imię"><input value={form.breederName} onChange={e => setForm({ ...form, breederName: e.target.value })} /></Field>
           <Field label="E-mail"><input value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></Field>

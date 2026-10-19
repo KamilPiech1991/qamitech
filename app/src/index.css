@@ -339,3 +339,11 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 .fc .fc-photo { margin: 0 0 auto; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,.7); box-shadow: 0 6px 16px rgba(0,0,0,.2); }
 .fc .pup img { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
 @media print { body::before { display: none; } .art-hero { box-shadow: none; } }
+.kennel-logo { width: 36px; height: 36px; border-radius: 10px; object-fit: contain; background: var(--surface); border: 1px solid var(--border); flex-shrink: 0; }
+.kennel-logo.lg { width: 56px; height: 56px; border-radius: 14px; }
+.avatar-lg { overflow: hidden; } .avatar-lg img { width: 100%; height: 100%; object-fit: cover; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table.tbl tfoot th { background: var(--surface-2); font-weight: 800; }
+table.tbl td a { font-weight: 700; }
+.grid.cols-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .grid.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

@@ -25,7 +25,7 @@ export default function Portal() {
       <div className="box stack" style={{ maxWidth: 560 }}>
         <div className="hero" style={{ textAlign: 'center' }}>
           <div className="avatar lg" style={{ margin: '0 auto 10px', background: 'rgba(255,255,255,.18)', color: '#fff' }}>{puppy.photo ? <img src={puppy.photo} alt="" /> : <PawPrint size={44} className="wag" />}</div>
-          <div className="muted" style={{ fontWeight: 800 }}>{state.profile.kennelName || 'Hodowla'}</div>
+          <div className="muted" style={{ fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>{state.profile.logo && <img className="kennel-logo" src={state.profile.logo} alt="" style={{ background: '#fff' }} />}{state.profile.kennelName || 'Hodowla'}</div>
           <h1 style={{ fontSize: 30 }}>{puppy.name}</h1>
           <div className="muted">{mother?.breed} · {puppy.sex === 'male' ? 'piesek' : 'suczka'} · {age} dni</div>
           {left !== null && <div style={{ marginTop: 14, background: 'rgba(255,255,255,.15)', borderRadius: 16, padding: 12 }}><div className="muted" style={{ fontSize: 12, fontWeight: 800 }}><CalendarHeart size={14} style={{ verticalAlign: -2 }} /> DO ODBIORU</div><div style={{ fontSize: 30, fontWeight: 900 }}>{left > 0 ? `${left} dni` : left === 0 ? 'Dziś!' : 'Już w domu'}</div><div className="muted">{fmtDate(handover)}</div></div>}

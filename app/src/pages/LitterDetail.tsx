@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Pencil, Plus, Scale, Syringe, Baby, ClipboardList, Utensils, Pill, Bath, Home, QrCode, PiggyBank, BookOpen, PawPrint } from 'lucide-react';
+import { Pencil, Plus, Scale, Syringe, Baby, ClipboardList, Utensils, Pill, Bath, Home, QrCode, PiggyBank, BookOpen, PawPrint, Heart, FileText } from 'lucide-react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from 'recharts';
 import { useStore } from '../app/store';
 import { Card, Chips, Empty, Field, Modal, Tabs, confirmDel, sexIcon, DelBtn, EditBtn } from '../components/ui';
-import { PhotoPicker, ArtHeader } from '../components/ui';
+import { PhotoPicker, ArtHeader, KV } from '../components/ui';
+import { litterStats } from '../app/litters';
 import { LitterForm } from './Litters';
 import { daysBetween, fmtDate, fmtDateTime, nowLocal, today, uid } from '../app/format';
 import { ACCUSTOMED_ITEMS, LITTER_CHECKLIST, MARKER_COLORS, INCOME_CATEGORIES, type HealthKind, type LitterPack, type Puppy, type BirthEvent, type Income, type Expense } from '../app/types';
 import { fmtMoney } from '../app/format';
 import { HealthForm } from './DogProfile';
 
-type Tab = 'puppies' | 'analysis' | 'care' | 'pack' | 'birth' | 'money';
+type Tab = 'card' | 'puppies' | 'analysis' | 'care' | 'pack' | 'birth' | 'money';
 
 export function PuppyForm({ initial, litterId, index, onClose, onSave }: { initial?: Puppy; litterId: string; index: number; onClose: () => void; onSave: (p: Puppy) => void }) {
   const [p, setP] = useState<Puppy>(initial ?? { id: uid(), litterId, name: '', sex: 'male', birthDateTime: nowLocal(), birthStatus: 'alive', markerColor: MARKER_COLORS[index % MARKER_COLORS.length], pawId: `DP-${new Date().getFullYear()}-${Date.now().toString(36).toUpperCase().slice(-4)}`, owners: [], character: [] });
@@ -39,7 +40,7 @@ export default function LitterDetail() {
   const nav = useNavigate();
   const litter = state.litters.find(l => l.id === id);
   const [params, setParams] = useSearchParams();
-  const [tab, setTab] = useState<Tab>((params.get('tab') as Tab) || 'puppies');
+  const [tab, setTab] = useState<Tab>((params.get('tab') as Tab) || 'card');
   const [editLitter, setEditLitter] = useState(false);
   const [addPup, setAddPup] = useState(false);
   const [bulkWeight, setBulkWeight] = useState(false);
@@ -59,7 +60,36 @@ export default function LitterDetail() {
       <ArtHeader tone="green" icon={<PawPrint size={24} />} back={() => nav('/mioty')} title={litter.name} sub={<>Ur. {fmtDate(litter.birthDate)} ({age} dni) · Matka: {litter.motherName} · Ojciec: {litter.fatherName || '—'}</>} actions={<button className="btn secondary" onClick={() => setEditLitter(true)}><Pencil size={16} /> Edytuj miot</button>}>
         {pups.length > 0 && <div className="avatar-stack">{pups.slice(0, 8).map(x => <span key={x.id} title={x.name} style={{ borderColor: x.markerColor }}>{x.photo ? <img src={x.photo} alt="" /> : <PawPrint size={16} />}</span>)}<small>{pups.length} {pups.length === 1 ? 'szczenię' : pups.length < 5 ? 'szczenięta' : 'szczeniąt'}</small></div>}
       </ArtHeader>
-      <Tabs value={tab} onChange={setTab} items={[{ key: 'puppies', label: `Szczenięta (${pups.length})` }, { key: 'analysis', label: 'Rozwój' }, { key: 'care', label: `Plan odchowu (${pct}%)` }, { key: 'birth', label: 'Dziennik porodu' }, { key: 'money', label: 'Rentowność' }, { key: 'pack', label: 'Nowy dom' }]} />
+      <Tabs value={tab} onChange={setTab} items={[{ key: 'card', label: 'Metryka miotu' }, { key: 'puppies', label: `Szczenięta (${pups.length})` }, { key: 'analysis', label: 'Rozwój' }, { key: 'care', label: `Plan odchowu (${pct}%)` }, { key: 'birth', label: 'Dziennik porodu' }, { key: 'money', label: 'Rentowność' }, { key: 'pack', label: 'Nowy dom' }]} />
+
+      {tab === 'card' && (() => { const s = litterStats(state, litter); const b = state.breedings.find(x => x.id === litter.breedingId); const weeks = Math.floor(age / 7); return (
+        <div className="stack">
+          <Card title="Dane miotu" icon={<ClipboardList size={18} />} right={<button className="btn secondary sm no-print" onClick={() => setEditLitter(true)}><Pencil size={14} /> Edytuj</button>}>
+            <div className="grid cols-2">
+              <KV items={[['Oznaczenie', litter.name], ['Litera miotu', litter.letter], ['Rasa', s.breed || undefined], ['Data urodzenia', `${fmtDate(litter.birthDate)} · ${age} dni (${weeks}. tydzień)`], ['Nr zgłoszenia / rejestracji', litter.regNo], ['Data przeglądu miotu', litter.reviewDate ? fmtDate(litter.reviewDate) : undefined]]} />
+              <KV items={[['Szczenięta', `${pups.length} (${s.males} ${sexIcon('male')} / ${s.females} ${sexIcon('female')})`], ['Urodzone żywo', s.alive], ['Martwo urodzone', s.stillborn], ['Padłe', s.died], ['Średnia waga urodzeniowa', s.avgBw ? `${s.avgBw} g` : undefined], ['Przekazane nabywcom', `${s.handed} z ${pups.length}`]]} />
+            </div>
+          </Card>
+          <div className="grid cols-2">
+            <Card title="Rodzice" icon={<Heart size={18} />}>
+              <KV items={[['Matka', s.mother ? <Link to={`/psy/${s.mother.id}`}>{litter.motherName}</Link> : litter.motherName], ['Ojciec', s.father ? <Link to={`/psy/${s.father.id}`}>{litter.fatherName}</Link> : (litter.fatherName || undefined)], ['Plan krycia', b ? <Link to={`/psy/${b.femaleId}?tab=breeding`}>{b.maleName} · krycie {b.matings.map(m => fmtDate(m.date)).join(', ')}</Link> : undefined], ['Ciąża', b?.matings[0] ? `${daysBetween(b.matings[0].date, litter.birthDate)} dni od pierwszego krycia` : undefined]]} />
+            </Card>
+            <Card title="Poród" icon={<Baby size={18} />} right={<button className="btn ghost sm no-print" onClick={() => setTab('birth')}>Dziennik</button>}>
+              <KV items={[['Początek', s.start ? fmtDateTime(s.start) : undefined], ['Koniec', s.end ? fmtDateTime(s.end) : undefined], ['Czas trwania', s.durationMin !== null ? `${Math.floor(s.durationMin / 60)} h ${s.durationMin % 60} min` : undefined], ['Wpisów w dzienniku', litter.birthDiary.length]]} />
+            </Card>
+          </div>
+          <Card title="Hodowla i postęp odchowu" icon={<Home size={18} />}>
+            <div className="grid cols-2">
+              <KV items={[['Hodowla', state.profile.kennelName || undefined], ['Nr hodowli', state.profile.kennelNo], ['Hodowca', state.profile.breederName || undefined]]} />
+              <KV items={[['Plan odchowu', `${s.careDone} z ${s.careTotal} etapów (${s.carePct}%)`], ['Notatki', litter.notes.length], ['Pakiet na nowy dom', litter.pack.foodName || litter.pack.firstDays ? 'uzupełniony' : 'do uzupełnienia']]} />
+            </div>
+            <div className="row no-print" style={{ marginTop: 12, gap: 6 }}>
+              <Link className="btn secondary sm" to="/dokumenty/karta-miotu"><FileText size={14} /> Karta miotu (PDF)</Link>
+              <button className="btn secondary sm" onClick={() => setTab('puppies')}><PawPrint size={14} /> Szczenięta</button>
+              <Link className="btn secondary sm" to="/mioty?view=table"><BookOpen size={14} /> Rejestr miotów</Link>
+            </div>
+          </Card>
+        </div>); })()}
 
       {tab === 'puppies' && (
         <div className="stack">

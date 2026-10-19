@@ -47,7 +47,7 @@ export default function Reports() {
       <PageHeader back={() => nav('/raporty')} title={def.title} sub={def.desc} actions={<button className="btn" onClick={() => window.print()}><Printer size={16} /> Drukuj / zapisz PDF</button>} />
       <Card>
         <div className="row between" style={{ marginBottom: 12 }}>
-          <div><b style={{ fontSize: 18 }}>{def.title.toUpperCase()}</b><div className="muted">{state.profile.kennelName || state.profile.breederName}{state.profile.kennelNo ? ` · Nr hodowli: ${state.profile.kennelNo}` : ''}</div></div>
+          <div className="row" style={{ gap: 12 }}>{state.profile.logo && <img className="kennel-logo lg" src={state.profile.logo} alt="" />}<div><b style={{ fontSize: 18 }}>{def.title.toUpperCase()}</b><div className="muted">{state.profile.kennelName || state.profile.breederName}{state.profile.kennelNo ? ` · Nr hodowli: ${state.profile.kennelNo}` : ''}</div></div></div>
           <div className="muted" style={{ textAlign: 'right' }}>Data wygenerowania: {fmtDate(today())}<br />Dogpilot</div>
         </div>
         <ReportBody kind={kind} />

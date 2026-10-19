@@ -136,6 +136,10 @@ export interface Litter {
   fatherName: string;
   birthDate: string;
   breedingId?: string;
+  breed?: string;
+  letter?: string; // litera miotu
+  regNo?: string; // nr zgłoszenia / rejestracji miotu
+  reviewDate?: string; // data przeglądu miotu
   notes: string[];
   checklist: Record<string, boolean>;
   pack: LitterPack;
@@ -235,6 +239,7 @@ export interface Profile {
   email?: string;
   onboarded: boolean;
   darkMode?: boolean;
+  logo?: string; // logo hodowli (data URL)
 }
 
 export interface AppState {

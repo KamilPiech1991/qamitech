@@ -25,6 +25,8 @@ Psy i ich dane · zdrowie z przypomnieniami · rozród (plany kryć, progesteron
 - **Strona dla nabywcy** szczenięcia (link publiczny `#/portal/:id`): wagi, profilaktyka, karma, charakter, odliczanie do odbioru.
 - **Wyszukiwarka globalna** (psy, szczenięta, mioty, wystawy, zdrowie, wydatki, przypomnienia) i **tryb ciemny**.
 - Przycisk „+” z arkuszem szybkich akcji (waga, zdrowie, wydatek, przypomnienie, nowy pies) na desktopie i mobile.
+- **Metryka miotu** – zakładka z danymi miotu (litera, rasa, nr zgłoszenia, data przeglądu, liczby szczeniąt, wagi, rodzice, poród, postęp odchowu) i **rejestr wszystkich miotów** (tabela z filtrami rok / matka / szukaj, podsumowanie, eksport CSV, druk).
+- **Logo hodowli** – wgrywane w Ustawieniach; widoczne na Starcie, w pasku bocznym, na dokumentach, raportach, karcie przekazania i stronie dla nabywcy.
 - **Zdjęcia psów i szczeniąt** – wybór pliku w formularzu, zmniejszanie w przeglądarce do 640 px, zapis w danych; widoczne w listach, profilach, na Starcie, na karcie przekazania i stronie dla nabywcy.
 
 ## Wygląd
@@ -37,6 +39,7 @@ Ikony Lucide, animacje wejścia (fadeUp/pop), kafle z efektem hover, tryb ciemny
 - `src/app/store.tsx` – store (React context + reducer) z zapisem do `localStorage`, limity planu
 - `src/app/pregnancy.ts` – logika kalendarza ciąży i treści tygodni
 - `src/app/pawid.ts` – kodowanie/dekodowanie karty przekazania (prefiks `DGP1:`, odczytuje też starszy `KNL1:`)
+- `src/app/litters.ts` – statystyki miotu i eksport rejestru do CSV
 - `src/app/photo.ts` – wczytywanie i zmniejszanie zdjęć do data URL
 - `src/app/heat.ts` – statystyki cieczek i prognoza następnej cieczki / okna płodnego
 - `src/app/pedigree.ts` – budowa rodowodu i współczynnik inbredu (wzór Wrighta)

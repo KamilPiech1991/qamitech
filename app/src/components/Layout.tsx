@@ -43,9 +43,10 @@ export default function Layout() {
         {side.map(i => <NavLink key={i.to} to={i.to} end={i.to === '/'} className={({ isActive }) => `navlink ${isActive ? 'active' : ''}`}><span className="ico">{i.ico}</span>{i.label}</NavLink>)}
         <div className="spacer" />
         <button className="navlink" style={{ border: 0, background: 'transparent', cursor: 'pointer', textAlign: 'left' }} onClick={() => setProfile({ darkMode: !state.profile.darkMode })}><span className="ico">{state.profile.darkMode ? <Sun size={22} /> : <Moon size={22} />}</span>{state.profile.darkMode ? 'Tryb jasny' : 'Tryb ciemny'}</button>
-        <div className="muted" style={{ padding: 10 }}>
-          <div><b>{state.profile.kennelName || state.profile.breederName}</b></div>
-          <div>Tryb: {breeder ? 'hodowla' : 'mój pies'} · Plan: {state.profile.plan.toUpperCase()}</div>
+        <div className="muted" style={{ padding: 10, display: 'flex', gap: 10, alignItems: 'center' }}>
+          {state.profile.logo && <img className="kennel-logo" src={state.profile.logo} alt="" />}
+          <div><div><b>{state.profile.kennelName || state.profile.breederName}</b></div>
+          <div>Tryb: {breeder ? 'hodowla' : 'mój pies'} · Plan: {state.profile.plan.toUpperCase()}</div></div>
         </div>
       </aside>
       <main className="main"><Outlet /></main>

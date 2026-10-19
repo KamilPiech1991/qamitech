@@ -46,7 +46,7 @@ export default function Dashboard() {
     <div className="stack dash">
       <div className="dash-top">
         <div className="who">
-          <div className="avatar-lg">{initials}</div>
+          <div className="avatar-lg">{p.logo ? <img src={p.logo} alt="" /> : initials}</div>
           <div>
             <div className="muted" style={{ fontSize: 12, fontWeight: 800 }}>{greet}{p.breederName ? `, ${p.breederName}` : ''}</div>
             <div style={{ fontSize: 18, fontWeight: 900, lineHeight: 1.1 }}>{breeder && p.kennelName ? p.kennelName : 'Dogpilot'}</div>
