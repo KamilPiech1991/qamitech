@@ -65,8 +65,8 @@ export type HealthKind = 'vaccination' | 'deworming' | 'parasite' | 'procedure' 
 export const HEALTH_LABEL: Record<HealthKind, string> = {
   vaccination: 'Szczepienie',
   deworming: 'Odrobaczenie',
-  parasite: 'Profilaktyka pasożytnicza',
-  procedure: 'Wizyta / zabieg',
+  parasite: 'Ochrona przed pasożytami',
+  procedure: 'Leczenie i zabiegi',
   exam: 'Badanie',
 };
 
@@ -260,13 +260,13 @@ export const HEAT_DEFAULT_INTERVAL_DAYS = 180;
 export const FREE_LIMITS = { females: 2, males: 2, shows: 5, championships: 6, chartMonths: 4 };
 
 export const EXPENSE_CATEGORIES: Record<string, string[]> = {
-  'Karma i żywienie': ['Karma sucha', 'Karma mokra', 'Przysmaki', 'Inne'],
-  'Suplementy': ['Witaminy', 'Suplementy na stawy', 'Inne'],
-  'Grooming i higiena': ['Kosmetyki', 'Groomer', 'Inne'],
-  'Usługa weterynaryjna': ['Szczepienie', 'Odrobaczenie', 'Badanie', 'Zabieg', 'Wizyta kontrolna', 'Inne'],
-  'Sprzęt i akcesoria': ['Smycz/obroża', 'Legowisko', 'Zabawki', 'Klatka', 'Inne'],
-  'Opłaty/Zgłoszenia': ['Składka klubowa', 'Rodowody', 'Rejestracja', 'Inne'],
-  'Rozród i miot': ['Krycie', 'Inseminacja', 'USG/RTG', 'Wyprawki', 'Chipowanie', 'Inne'],
+  'Żywienie': ['Karma sucha', 'Karma mokra', 'Przysmaki', 'Inne'],
+  'Suplementy i witaminy': ['Witaminy', 'Suplementy na stawy', 'Inne'],
+  'Pielęgnacja': ['Kosmetyki', 'Groomer', 'Inne'],
+  'Weterynarz': ['Szczepienie', 'Odrobaczenie', 'Badanie', 'Zabieg', 'Wizyta kontrolna', 'Inne'],
+  'Wyposażenie': ['Smycz/obroża', 'Legowisko', 'Zabawki', 'Klatka', 'Inne'],
+  'Opłaty i składki': ['Składka klubowa', 'Rodowody', 'Rejestracja', 'Inne'],
+  'Rozród i miot': ['Krycie', 'Inseminacja', 'USG/RTG', 'Akcesoria dla szczeniąt', 'Chipowanie', 'Inne'],
   'Inne': ['Inne'],
 };
 export const SHOW_EXPENSE_TYPES = ['Zgłoszenia psów', 'Paliwo / dojazd', 'Nocleg', 'Wyżywienie na miejscu', 'Handler', 'Inne'];
@@ -275,31 +275,35 @@ export const SHOW_CLASSES = ['Klasa baby', 'Klasa szczeniąt', 'Klasa młodzież
 export const SHOW_GRADES = ['Doskonała', 'Bardzo dobra', 'Dobra', 'Dostateczna', 'Wybitnie obiecujący', 'Obiecujący', 'Dyskwalifikacja'];
 export const SHOW_TITLES = ['BOB', 'BOS', 'BOG', 'BIS', 'Zwycięzca Młodzieży', 'Zwycięzca Rasy', 'Najlepszy Junior', 'Najlepsze Baby', 'Najlepsze Szczenię', 'Najlepszy Weteran'];
 export const SHOW_CERTS = ['CWC', 'Res. CWC', 'CACIB', 'Res. CACIB', 'CAJC', 'CAC', 'Res. CAC'];
-export const CHARACTER_TAGS = ['Spokojny', 'Energiczny', 'Ciekawski', 'Odważny', 'Ostrożny', 'Towarzyski', 'Przytulaśny', 'Niezależny', 'Wrażliwy', 'Pewny siebie', 'Lubi zabawę', 'Łakomczuch', 'Lubi ludzi', 'Obserwator'];
-export const ACCUSTOMED_ITEMS = ['Dzieci', 'Inne psy', 'Koty', 'Klatka kennelowa', 'Jazda samochodem', 'Zostawanie samemu', 'Smycz / obroża', 'Zabiegi pielęgnacyjne', 'Domowe dźwięki'];
+export const CHARACTER_TAGS = ['Spokojna dusza', 'Wulkan energii', 'Odkrywca', 'Śmiałek', 'Rozważny', 'Dusza towarzystwa', 'Pieszczoch', 'Indywidualista', 'Czuły', 'Lider', 'Psotnik', 'Smakosz', 'Przylepa', 'Bystrzak'];
+export const ACCUSTOMED_ITEMS = ['Dzieci', 'Psy', 'Koty', 'Kojec i transporter', 'Podróże autem', 'Chwile w samotności', 'Obroża i smycz', 'Szczotka i kąpiel', 'Odkurzacz i dźwięki domu'];
 export const MARKER_COLORS = ['#16a34a', '#2563eb', '#dc2626', '#f59e0b', '#7c3aed', '#0891b2', '#ec4899', '#111827', '#f97316', '#84cc16'];
 export const COUNTRIES = ['Polska', 'Niemcy', 'Czechy', 'Słowacja', 'Litwa', 'Łotwa', 'Estonia', 'Ukraina', 'Węgry', 'Rumunia', 'Austria', 'Włochy', 'Francja', 'Hiszpania', 'Holandia', 'Belgia', 'Dania', 'Szwecja', 'Norwegia', 'Finlandia', 'Wielka Brytania', 'Irlandia', 'Chorwacja', 'Słowenia', 'Serbia', 'Inny'];
 
 export const LITTER_CHECKLIST: { group: string; items: { key: string; title: string; desc: string }[] }[] = [
-  { group: 'Profilaktyka i dokumentacja', items: [
-    { key: 'deworm1', title: 'Pierwsze odrobaczenie', desc: 'Profilaktyka przeciwpasożytnicza (ok. 2. tydzień).' },
-    { key: 'deworm2', title: 'Drugie odrobaczenie', desc: 'Zaznacz po wykonaniu drugiego odrobaczenia szczeniąt.' },
-    { key: 'deworm3', title: 'Trzecie odrobaczenie', desc: 'Zaznacz po wykonaniu trzeciego odrobaczenia szczeniąt.' },
-    { key: 'vacc1', title: 'Pierwsze szczepienie', desc: 'Szczepienie wykonane po konsultacji z lekarzem weterynarii.' },
-    { key: 'vacc2', title: 'Drugie szczepienie', desc: 'Zaznacz po wykonaniu drugiego szczepienia szczeniąt.' },
-    { key: 'vacc3', title: 'Trzecie szczepienie', desc: 'Zaznacz po wykonaniu trzeciego szczepienia szczeniąt.' },
-    { key: 'chip', title: 'Chipowanie', desc: 'Wszystkie szczenięta zaczipowane, numery zapisane w metrykach.' },
-    { key: 'review', title: 'Przegląd miotu', desc: 'Przegląd miotu przez kierownika sekcji / oddział.' },
-    { key: 'pedigrees', title: 'Wniosek o metryki / rodowody', desc: 'Dokumentacja miotu złożona w oddziale.' },
-    { key: 'contracts', title: 'Umowy z nabywcami', desc: 'Umowy sprzedaży przygotowane dla każdego szczenięcia.' },
+  { group: 'Zdrowie szczeniąt', items: [
+    { key: 'deworm1', title: 'Odrobaczanie – dawka 1', desc: 'Około 2. tygodnia życia, preparat dobrany z weterynarzem.' },
+    { key: 'deworm2', title: 'Odrobaczanie – dawka 2', desc: 'Kolejna dawka po około dwóch tygodniach.' },
+    { key: 'deworm3', title: 'Odrobaczanie – dawka 3', desc: 'Ostatnia dawka przed wydaniem szczeniąt.' },
+    { key: 'vacc1', title: 'Szczepienie podstawowe', desc: 'Pierwsza szczepionka według zaleceń lekarza.' },
+    { key: 'vacc2', title: 'Szczepienie przypominające', desc: 'Druga dawka szczepienia.' },
+    { key: 'vacc3', title: 'Szczepienie przed odbiorem', desc: 'Ostatnie szczepienie przed przekazaniem do nowego domu.' },
+    { key: 'vet', title: 'Kontrola poporodowa', desc: 'Lekarz ogląda sukę i wszystkie szczenięta.' },
   ]},
-  { group: 'Opieka i rozwój', items: [
-    { key: 'bw', title: 'Wagi urodzeniowe', desc: 'Zapisane wagi urodzeniowe wszystkich szczeniąt.' },
-    { key: 'vet', title: 'Wizyta kontrolna u weterynarza', desc: 'Kontrola suki i szczeniąt po porodzie.' },
-    { key: 'solid', title: 'Pierwszy pokarm stały', desc: 'Rozpoczęcie dokarmiania (ok. 3.–4. tydzień).' },
-    { key: 'wean', title: 'Odstawienie od matki', desc: 'Szczenięta w pełni na pokarmie stałym.' },
-    { key: 'social', title: 'Socjalizacja', desc: 'Dźwięki, ludzie, nowe bodźce, pierwsze wyjścia.' },
-    { key: 'pack', title: 'Cyfrowa wyprawka gotowa', desc: 'Informacje dla nowych właścicieli przygotowane.' },
-    { key: 'handover', title: 'Przekazanie szczeniąt', desc: 'Wszystkie szczenięta przekazane nowym właścicielom.' },
+  { group: 'Papiery i formalności', items: [
+    { key: 'chip', title: 'Mikroczipy wszczepione', desc: 'Numery czipów wpisane do profili szczeniąt.' },
+    { key: 'review', title: 'Przegląd miotu w związku', desc: 'Wizyta kierownika sekcji lub przedstawiciela oddziału.' },
+    { key: 'pedigrees', title: 'Dokumenty miotu złożone', desc: 'Wniosek o metryki i rodowody wysłany do oddziału.' },
+    { key: 'contracts', title: 'Umowy gotowe do podpisu', desc: 'Umowa sprzedaży dla każdego szczenięcia (zakładka Dokumenty).' },
+  ]},
+  { group: 'Rozwój i nowy dom', items: [
+    { key: 'bw', title: 'Pierwsze ważenie', desc: 'Waga każdego szczenięcia zaraz po porodzie.' },
+    { key: 'solid', title: 'Pierwsza papka', desc: 'Start dokarmiania, zwykle w 3.–4. tygodniu.' },
+    { key: 'wean', title: 'Samodzielne jedzenie', desc: 'Szczenięta jedzą już tylko pokarm stały.' },
+    { key: 'social', title: 'Oswajanie ze światem', desc: 'Nowe dźwięki, ludzie, podłoża i krótkie wyjścia.' },
+    { key: 'photos', title: 'Sesja zdjęciowa', desc: 'Zdjęcia do ogłoszeń i strony dla nabywców.' },
+    { key: 'portal', title: 'Strony dla nabywców udostępnione', desc: 'Każdy nabywca dostał link do strony swojego szczenięcia.' },
+    { key: 'pack', title: 'Pakiet na nowy dom gotowy', desc: 'Żywienie, pielęgnacja i opis każdego szczenięcia uzupełnione.' },
+    { key: 'handover', title: 'Odbiory zakończone', desc: 'Wszystkie szczenięta są już w nowych domach.' },
   ]},
 ];

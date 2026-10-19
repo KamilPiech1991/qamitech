@@ -13,7 +13,7 @@ npm run preview   # podgląd builda
 Na ekranie startowym wybierz moduł (Właściciel / Hodowca) lub kliknij **„Załaduj dane demonstracyjne”**.
 
 ## Zakres
-Psy i metryki · zdrowie z przypomnieniami · rozród (skojarzenia, progesteron, USG, RTG) i **kalendarz ciąży** · krycia reproduktora · mioty, szczenięta, wagi, analiza miotu, checklista opieki, notatki · **Paw ID** (karta + kod QR + import przez skan/wklejenie) · cyfrowa wyprawka · wystawy, championaty, statystyki · finanse (budżet, kategorie, historia, statystyki, wykres) · raporty do PDF (druk) · przypomnienia · plan FREE/PRO z limitami · backup JSON · dwa moduły (Owner/Breeder).
+Psy i ich dane · zdrowie z przypomnieniami · rozród (plany kryć, progesteron, USG, RTG) i **monitor ciąży** · krycia reproduktora · mioty, szczenięta, wagi, rozwój miotu, plan odchowu, notatnik · **karta przekazania** (karta + kod QR + odbiór psa przez skan lub wklejenie) · pakiet na nowy dom · wystawy, championaty, osiągnięcia · finanse (bilans, kategorie, rejestr, analiza kosztów, wykres) · raporty do PDF (druk) · przypomnienia · plan FREE/PRO z limitami · backup JSON · dwa tryby pracy („Mam psa” / „Prowadzę hodowlę”).
 
 ## Funkcje, których konkurent nie ma (nasze wyróżniki)
 - **Kalendarz cieczek** z prognozą następnej cieczki i okna płodnego (profil suki → Rozród; terminy także na Start).
@@ -34,7 +34,7 @@ Ikony Lucide, animacje wejścia (fadeUp/pop), kafle z efektem hover, tryb ciemny
 - `src/app/types.ts` – model danych i słowniki (kategorie, klasy wystaw, checklista…)
 - `src/app/store.tsx` – store (React context + reducer) z zapisem do `localStorage`, limity planu
 - `src/app/pregnancy.ts` – logika kalendarza ciąży i treści tygodni
-- `src/app/pawid.ts` – kodowanie/dekodowanie paczki Paw ID (prefiks `KNL1:`)
+- `src/app/pawid.ts` – kodowanie/dekodowanie karty przekazania (prefiks `KNL1:`)
 - `src/app/heat.ts` – statystyki cieczek i prognoza następnej cieczki / okna płodnego
 - `src/app/pedigree.ts` – budowa rodowodu i współczynnik inbredu (wzór Wrighta)
 - `src/app/seed.ts` – dane demonstracyjne
@@ -42,3 +42,7 @@ Ikony Lucide, animacje wejścia (fadeUp/pop), kafle z efektem hover, tryb ciemny
 - `src/pages/` – ekrany modułów
 
 Dane trzymane są lokalnie w przeglądarce. Synchronizacja, konta, push i płatności – zgodnie z planem w `docs/`.
+
+## Nazewnictwo
+Nazwy funkcji i teksty są własne i celowo różnią się od Paw Managera (np. „karta przekazania” zamiast „Paw ID”, „pakiet na nowy dom” zamiast „cyfrowej wyprawki”, „monitor ciąży” zamiast „kalendarza ciąży”). Pełna tabela: sekcja 19 dokumentu `../docs/analiza-paw-manager-i-plan.md`.
+

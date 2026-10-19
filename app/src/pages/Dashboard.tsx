@@ -6,6 +6,8 @@ import { addDays, daysBetween, fmtDate, today } from '../app/format';
 import { HEALTH_LABEL } from '../app/types';
 import { heatStats } from '../app/heat';
 
+const TAGLINES = ['Co dziś w hodowli?', 'Wszystkie ogony policzone?', 'Miski pełne, plan gotowy?', 'Dobry dzień na spacer i ważenie.', 'Łapy w górę, zaczynamy!'];
+
 export default function Dashboard() {
   const { state } = useStore();
   const nav = useNavigate();
@@ -35,7 +37,7 @@ export default function Dashboard() {
             <div className="muted" style={{ fontWeight: 800, fontSize: 13 }}>{greet}</div>
             <h1>{p.breederName}{breeder && p.kennelName ? '' : '!'}</h1>
             {breeder && <div style={{ fontSize: 15, fontWeight: 700, opacity: .95 }}>{p.kennelName}{p.kennelNo ? ` · nr ${p.kennelNo}` : ''}</div>}
-            <div className="muted" style={{ marginTop: 6 }}>Psy śpią czy wariują?</div>
+            <div className="muted" style={{ marginTop: 6 }}>{TAGLINES[new Date().getDate() % TAGLINES.length]}</div>
           </div>
           <span className={`badge ${p.plan === 'pro' ? 'pro' : ''}`} style={p.plan !== 'pro' ? { background: 'rgba(255,255,255,.2)', color: '#fff' } : undefined}>{p.plan.toUpperCase()}</span>
         </div>
@@ -52,8 +54,8 @@ export default function Dashboard() {
       </Card>
 
       <div className="grid cols-2">
-        <a className="tile" onClick={() => nav('/psy?sex=female')}><div className="ico"><Dog size={24} /></div><div><div className="value">{females}</div><div className="label">{females === 1 ? 'Moja suka' : 'Moje suki'}</div></div></a>
-        <a className="tile" onClick={() => nav('/psy?sex=male')}><div className="ico"><Dog size={24} /></div><div><div className="value">{males}</div><div className="label">{males === 1 ? 'Mój pies' : 'Moje psy'}</div></div></a>
+        <a className="tile" onClick={() => nav('/psy?sex=female')}><div className="ico"><Dog size={24} /></div><div><div className="value">{females}</div><div className="label">{females === 1 ? 'Suka' : 'Suki'}</div></div></a>
+        <a className="tile" onClick={() => nav('/psy?sex=male')}><div className="ico"><Dog size={24} /></div><div><div className="value">{males}</div><div className="label">{males === 1 ? 'Pies' : 'Psy'}</div></div></a>
         {breeder && <a className="tile" onClick={() => nav('/mioty')}><div className="ico"><PawPrint size={24} /></div><div><div className="value">{state.litters.length}</div><div className="label">{state.litters.length === 1 ? 'Miot' : 'Mioty'} · {state.puppies.length} szczeniąt</div></div></a>}
         <a className="tile" onClick={() => nav('/finanse')}><div className="ico"><Wallet size={24} /></div><div><div className="value">{Math.round(monthExp)} zł</div><div className="label">Wydatki w tym miesiącu</div></div></a>
         {!breeder && <a className="tile" onClick={() => nav('/psy')}><div className="ico"><Trophy size={24} /></div><div><div className="value">{state.shows.length}</div><div className="label">Wystawy</div></div></a>}
@@ -68,13 +70,13 @@ export default function Dashboard() {
         </Link>); })}
 
       <div>
-        <h3>Szybki dostęp</h3>
+        <h3>Na skróty</h3>
         <div className="grid cols-3">
-          <Card onClick={() => nav('/psy')} icon={<Trophy size={18} />} title="Kariera"><div className="muted">{state.shows.length} wystaw · {state.championships.length} championatów</div></Card>
+          <Card onClick={() => nav('/psy')} icon={<Trophy size={18} />} title="Osiągnięcia"><div className="muted">{state.shows.length} wystaw · {state.championships.length} championatów</div></Card>
           {breeder && <Card onClick={() => nav('/dokumenty')} icon={<FileText size={18} />} title="Dokumenty"><div className="muted">Umowy, protokoły, karta miotu</div></Card>}
           <Card onClick={() => nav('/raporty')} icon={<BarChart3 size={18} />} title="Raporty"><div className="muted">Zestawienia i PDF</div></Card>
           <Card onClick={() => nav('/przypomnienia')} icon={<Bell size={18} />} title="Przypomnienia"><div className="muted">{state.reminders.filter(r => !r.done).length} aktywnych</div></Card>
-          <Card onClick={() => nav('/skanuj')} icon={<QrCode size={18} />} title="Skanuj Paw ID"><div className="muted">Odbierz dane szczenięcia</div></Card>
+          <Card onClick={() => nav('/skanuj')} icon={<QrCode size={18} />} title="Odbierz psa"><div className="muted">Zeskanuj kartę przekazania</div></Card>
           {breeder && <Card onClick={() => nav('/psy?sex=female')} icon={<Flower2 size={18} />} title="Cieczki"><div className="muted">{heatSoon.length ? `${heatSoon.length} spodziewane wkrótce` : 'Kalendarz i prognoza'}</div></Card>}
         </div>
       </div>

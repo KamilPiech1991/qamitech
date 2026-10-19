@@ -24,10 +24,10 @@ export default function DogProfile() {
   if (!dog) return <Card><Empty>Nie znaleziono psa. <Link to="/psy">Wróć do listy</Link></Empty></Card>;
   const breeder = state.profile.module === 'breeder';
   const tabs: { key: Tab; label: string }[] = [
-    { key: 'card', label: 'Metryka' }, { key: 'health', label: 'Zdrowie' },
+    { key: 'card', label: 'Dane' }, { key: 'health', label: 'Zdrowie' },
     ...(breeder ? [{ key: 'breeding' as Tab, label: dog.sex === 'female' ? 'Rozród' : 'Krycia' }] : []),
     { key: 'pedigree', label: 'Rodowód' },
-    { key: 'career', label: 'Kariera' }, { key: 'weight', label: 'Waga' }, { key: 'timeline', label: 'Oś czasu' },
+    { key: 'career', label: 'Osiągnięcia' }, { key: 'weight', label: 'Waga' }, { key: 'timeline', label: 'Kronika' },
   ];
   return (
     <div>
@@ -52,13 +52,13 @@ export default function DogProfile() {
           <div className="row" style={{ alignItems: 'flex-start' }}>
             <div className="avatar lg">{dog!.photo ? <img src={dog!.photo} alt="" /> : <PawPrint size={44} />}</div>
             <div style={{ flex: 1 }}>
-              <h3>Dane podstawowe</h3>
+              <h3>Podstawowe informacje</h3>
               <KV items={[['Rasa', dog!.breed], ['Data urodzenia', fmtDate(dog!.birthDate)], ['Umaszczenie', dog!.color], ['Waga', dog!.weightKg ? `${dog!.weightKg} kg` : '—'], ['Płeć', dog!.sex === 'male' ? 'Pies' : 'Suka'], ['Kastrowany', dog!.neutered ? 'Tak' : 'Nie']]} />
             </div>
           </div>
         </Card>
         <Card title="Rodzice"><KV items={[['Ojciec', dog!.fatherName], ['Matka', dog!.motherName]]} /></Card>
-        <Card title="Identyfikacja"><KV items={[['Nr rodowodu', dog!.pedigreeNo], ['Nr rejestracji oddziałowej', dog!.regNo], ['Nr chip', dog!.chip], ['Hodowla', dog!.kennelName], ['Paw ID', dog!.pawId]]} /></Card>
+        <Card title="Numery i dokumenty"><KV items={[['Nr rodowodu', dog!.pedigreeNo], ['Nr rejestracji oddziałowej', dog!.regNo], ['Nr chip', dog!.chip], ['Hodowla', dog!.kennelName], ['Nr karty przekazania', dog!.pawId]]} /></Card>
         {dog!.notes && <Card title="Notatki"><div style={{ whiteSpace: 'pre-wrap' }}>{dog!.notes}</div></Card>}
       </div>
     );
@@ -93,13 +93,13 @@ export default function DogProfile() {
     return (
       <div className="stack">
         <HeatSection />
-        <div className="row between no-print"><h3 style={{ margin: 0 }}>Skojarzenia</h3><button className="btn" onClick={() => setEdit({ id: uid(), femaleId: dog!.id, maleName: '', matings: [{ date: today(), type: 'natural', tie: true }], usg: [], progesterone: [], rtg: [] })}><Plus size={18} /> Dodaj skojarzenie</button></div>
+        <div className="row between no-print"><h3 style={{ margin: 0 }}>Plany kryć</h3><button className="btn" onClick={() => setEdit({ id: uid(), femaleId: dog!.id, maleName: '', matings: [{ date: today(), type: 'natural', tie: true }], usg: [], progesterone: [], rtg: [] })}><Plus size={18} /> Dodaj skojarzenie</button></div>
         {list.length === 0 && <Card><Empty icon={<Heart size={28} />}>Brak skojarzeń. Dodaj pierwsze, aby uruchomić kalendarz ciąży.</Empty></Card>}
         {list.map(b => { const first = [...b.matings].sort((x, y) => x.date.localeCompare(y.date))[0]; const info = first ? pregnancyInfo(first.date) : null; const litter = state.litters.find(l => l.id === b.litterId); return (
-          <Card key={b.id} title={<>Skojarzenie z <span style={{ color: 'var(--primary-600)' }}>{b.maleName}</span></>} right={<div className="row"><EditBtn onClick={() => setEdit(b)} /><DelBtn onClick={() => confirmDel() && remove('breedings', b.id)} /></div>}>
+          <Card key={b.id} title={<>Plan z <span style={{ color: 'var(--primary-600)' }}>{b.maleName}</span></>} right={<div className="row"><EditBtn onClick={() => setEdit(b)} /><DelBtn onClick={() => confirmDel() && remove('breedings', b.id)} /></div>}>
             {info && !litter && info.day <= 70 && info.day > 0 && (
               <Link to={`/ciaza/${b.id}`} className="card soft clickable" style={{ display: 'block', marginBottom: 10, background: 'var(--primary)', color: '#fff' }}>
-                <div className="row between"><div><b style={{ display: 'flex', alignItems: 'center', gap: 6 }}><Calendar size={16} /> Kalendarz ciąży</b><div style={{ opacity: .85, fontSize: 13 }}>{info.day}. dzień · {info.week}. tydzień · termin ok. {fmtDate(info.expected)}</div></div><span>→</span></div>
+                <div className="row between"><div><b style={{ display: 'flex', alignItems: 'center', gap: 6 }}><Calendar size={16} /> Monitor ciąży</b><div style={{ opacity: .85, fontSize: 13 }}>{info.day}. dzień · {info.week}. tydzień · termin ok. {fmtDate(info.expected)}</div></div><span>→</span></div>
               </Link>
             )}
             <KV items={[['Data rozpoczęcia cieczki', fmtDate(b.heatStartDate)], ['Krycia', b.matings.map(m => `${fmtDate(m.date)} – ${m.type === 'natural' ? 'naturalne' : 'inseminacja'}${m.tie ? ', zakleszczenie' : ''}`).join('; ') || '—'], ['Progesteron', b.progesterone.map(p => `${fmtDate(p.date)}: ${p.value}`).join('; ') || '—'], ['Badania USG', b.usg.map(p => `${fmtDate(p.date)}: ${p.value}`).join('; ') || '—'], ['Badania RTG', b.rtg.map(p => `${fmtDate(p.date)}: ${p.value}`).join('; ') || '—'], ['Miot', litter ? <Link key="litter" to={`/mioty/${litter.id}`}>{litter.name}</Link> : '—'], ['Notatki', b.notes]]} />
@@ -115,11 +115,11 @@ export default function DogProfile() {
     return (
       <div className="stack">
         <div className="row no-print"><button className="btn" onClick={() => setEdit({ id: uid(), maleId: dog!.id, femaleName: '', ownerFirst: '', ownerLast: '', place: 'kennel', type: 'natural', tie: true, dates: [today()] })}><Plus size={18} /> Dodaj krycie</button></div>
-        <Card title="Historia kryć reproduktora">
+        <Card title="Rejestr kryć reproduktora">
           {list.length === 0 ? <Empty>Brak zapisanych kryć.</Empty> : <div className="stack">{list.map(m => (
             <div key={m.id} className="card soft">
               <div className="row between"><b style={{ color: 'var(--primary-600)', fontSize: 16 }}>{m.femaleName}</b><div><EditBtn onClick={() => setEdit(m)} /><DelBtn onClick={() => confirmDel() && remove('studMatings', m.id)} /></div></div>
-              <KV items={[['Właściciel', `${m.ownerFirst} ${m.ownerLast}`], ['Liczba szczeniąt', m.puppiesCount ?? '—'], ['Rodzaj krycia', m.type === 'natural' ? 'Naturalne' : 'Inseminacja'], ['Czy było zakleszczenie', m.tie ? 'Tak' : 'Nie'], ['Miejsce krycia', m.place === 'kennel' ? 'Krycie w hodowli' : 'Krycie zewnętrzne'], ...m.dates.map((d, i) => [`Data krycia ${m.dates.length > 1 ? i + 1 : ''}`.trim(), fmtDate(d)] as [string, string]), ['Notatki', m.notes]]} />
+              <KV items={[['Właściciel', `${m.ownerFirst} ${m.ownerLast}`], ['Liczba szczeniąt', m.puppiesCount ?? '—'], ['Rodzaj krycia', m.type === 'natural' ? 'Naturalne' : 'Inseminacja'], ['Zawiązanie (tak/nie)', m.tie ? 'Tak' : 'Nie'], ['Miejsce krycia', m.place === 'kennel' ? 'Krycie w hodowli' : 'Krycie zewnętrzne'], ...m.dates.map((d, i) => [`Data krycia ${m.dates.length > 1 ? i + 1 : ''}`.trim(), fmtDate(d)] as [string, string]), ['Notatki', m.notes]]} />
             </div>))}</div>}
         </Card>
         {edit && <StudForm m={edit} onClose={() => setEdit(null)} onSave={m => { upsert('studMatings', m); setEdit(null); toast('Zapisano'); }} />}
@@ -180,7 +180,7 @@ export default function DogProfile() {
     return (
       <div className="stack">
         <div className="row no-print"><button className="btn" onClick={() => setEdit({ id: uid(), dogId: dog!.id, date: nowLocal(), grams: dog!.weightKg ? dog!.weightKg * 1000 : 0 })}><Plus size={18} /> Dodaj pomiar</button></div>
-        <Card title="Historia pomiarów">
+        <Card title="Krzywa wagi">
           {ws.length < 2 ? <div className="muted">Dodaj co najmniej dwa pomiary, aby zobaczyć wykres.</div> : (
             <div style={{ height: 220 }}><ResponsiveContainer><LineChart data={data}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="d" fontSize={11} /><YAxis fontSize={11} unit=" kg" /><Tooltip /><Line isAnimationActive={false} type="monotone" dataKey="kg" stroke="#32BF46" strokeWidth={2.5} dot={{ r: 4, fill: '#32BF46' }} /></LineChart></ResponsiveContainer></div>
           )}
@@ -301,14 +301,14 @@ function BreedingForm({ b, onClose, onSave }: { b: Breeding; onClose: () => void
     </Card>
   );
   return (
-    <Modal title="Skojarzenie" onClose={onClose} wide actions={<><button className="btn secondary" onClick={onClose}>Anuluj</button><button className="btn" disabled={!x.maleName.trim() || x.matings.length === 0} onClick={() => onSave(x)}>Zapisz</button></>}>
+    <Modal title="Plan krycia" onClose={onClose} wide actions={<><button className="btn secondary" onClick={onClose}>Anuluj</button><button className="btn" disabled={!x.maleName.trim() || x.matings.length === 0} onClick={() => onSave(x)}>Zapisz</button></>}>
       <div className="form-grid">
         <Field label="Reproduktor z moich psów"><select value={x.maleId ?? ''} onChange={e => { const m = males.find(d => d.id === e.target.value); setX({ ...x, maleId: m?.id, maleName: m ? `${m.name} (${m.pedigreeName})` : x.maleName }); }}><option value="">— inny / zewnętrzny —</option>{males.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}</select></Field>
         <Field label="Reproduktor (nazwa) *"><input value={x.maleName} onChange={e => setX({ ...x, maleName: e.target.value })} /></Field>
         <Field label="Hodowla reproduktora"><input value={x.maleKennel ?? ''} onChange={e => setX({ ...x, maleKennel: e.target.value })} /></Field>
         <Field label="Data rozpoczęcia cieczki"><input type="date" value={x.heatStartDate ?? ''} onChange={e => setX({ ...x, heatStartDate: e.target.value || undefined })} /></Field>
       </div>
-      <Card title="Krycia" className="soft" right={<button className="btn sm secondary" onClick={() => setX({ ...x, matings: [...x.matings, { date: today(), type: 'natural', tie: true }] })}>+ Dodaj kolejne krycie</button>}>
+      <Card title="Krycia" className="soft" right={<button className="btn sm secondary" onClick={() => setX({ ...x, matings: [...x.matings, { date: today(), type: 'natural', tie: true }] })}>+ + Kolejna data krycia</button>}>
         {x.matings.map((m, i) => <div key={i} className="row" style={{ marginBottom: 6 }}>
           <input type="date" value={m.date} onChange={e => setX({ ...x, matings: x.matings.map((o, j) => j === i ? { ...o, date: e.target.value } : o) })} style={{ padding: 8, borderRadius: 8, border: '1px solid var(--border)' }} />
           <select value={m.type} onChange={e => setX({ ...x, matings: x.matings.map((o, j) => j === i ? { ...o, type: e.target.value as 'natural' | 'insemination' } : o) })} style={{ padding: 8, borderRadius: 8, border: '1px solid var(--border)' }}><option value="natural">Naturalne</option><option value="insemination">Inseminacja</option></select>
@@ -335,7 +335,7 @@ function StudForm({ m, onClose, onSave }: { m: StudMating; onClose: () => void; 
         <Field label="Nazwisko właściciela"><input value={x.ownerLast} onChange={e => setX({ ...x, ownerLast: e.target.value })} /></Field>
         <Field label="Liczba szczeniąt"><input type="number" value={x.puppiesCount ?? ''} onChange={e => setX({ ...x, puppiesCount: e.target.value ? Number(e.target.value) : undefined })} /></Field>
         <Field label="Rodzaj krycia *"><select value={x.type} onChange={e => setX({ ...x, type: e.target.value as 'natural' | 'insemination' })}><option value="natural">Naturalne</option><option value="insemination">Inseminacja</option></select></Field>
-        <Field label="Czy było zakleszczenie"><select value={x.tie ? '1' : '0'} onChange={e => setX({ ...x, tie: e.target.value === '1' })}><option value="1">Tak</option><option value="0">Nie</option></select></Field>
+        <Field label="Zawiązanie (tak/nie)"><select value={x.tie ? '1' : '0'} onChange={e => setX({ ...x, tie: e.target.value === '1' })}><option value="1">Tak</option><option value="0">Nie</option></select></Field>
       </div>
       <Field label="Daty krycia">{x.dates.map((d, i) => <div key={i} className="row" style={{ marginBottom: 6 }}><input type="date" value={d} onChange={e => setX({ ...x, dates: x.dates.map((o, j) => j === i ? e.target.value : o) })} /><DelBtn onClick={() => setX({ ...x, dates: x.dates.filter((_, j) => j !== i) })} /></div>)}<button className="btn secondary sm" onClick={() => setX({ ...x, dates: [...x.dates, today()] })}>+ Dodaj datę</button></Field>
       <Field label="Notatki"><textarea value={x.notes ?? ''} onChange={e => setX({ ...x, notes: e.target.value })} /></Field>
@@ -349,7 +349,7 @@ function ShowForm({ s, onClose, onSave }: { s: Show; onClose: () => void; onSave
   const has = (key: 'titles' | 'certificates', v: string) => (x[key] ?? '').split(',').map(t => t.trim()).includes(v);
   return (
     <Modal title="Wystawa" onClose={onClose} wide actions={<><button className="btn secondary" onClick={onClose}>Anuluj</button><button className="btn" disabled={!x.city.trim() || !x.date} onClick={() => onSave(x)}>Zapisz</button></>}>
-      <h3>Dane podstawowe</h3>
+      <h3>Podstawowe informacje</h3>
       <div className="form-grid">
         <Field label="Kraj *"><select value={x.country} onChange={e => setX({ ...x, country: e.target.value })}>{COUNTRIES.map(c => <option key={c}>{c}</option>)}</select></Field>
         <Field label="Miejscowość *"><input value={x.city} onChange={e => setX({ ...x, city: e.target.value })} /></Field>

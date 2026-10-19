@@ -37,7 +37,7 @@ export default function Scan() {
     return () => { cancelled = true; clearTimeout(timer); stream?.getTracks().forEach(t => t.stop()); };
   }, [camera]);
 
-  const parse = () => { const p = decodePawId(text); if (!p) toast('To nie jest prawidłowy kod Paw ID'); setPayload(p); };
+  const parse = () => { const p = decodePawId(text); if (!p) toast('To nie jest prawidłowy kod przekazania'); setPayload(p); };
 
   const importPuppy = () => {
     if (!payload) return;
@@ -55,7 +55,7 @@ export default function Scan() {
 
   return (
     <div className="stack">
-      <PageHeader title="Skanuj Paw ID" sub="Odbierz dane szczenięcia od hodowcy – bez przepisywania" />
+      <PageHeader title="Odbierz psa" sub="Zeskanuj kod z karty przekazania – profil psa pojawi się sam" />
       {!payload && (
         <Card>
           {hasDetector ? (
@@ -64,7 +64,7 @@ export default function Scan() {
               {camErr && <div className="badge danger">{camErr}</div>}
             </div>
           ) : <p className="muted">Skanowanie kamerą jest dostępne w aplikacji mobilnej i w przeglądarkach z obsługą BarcodeDetector. Możesz też wkleić kod poniżej.</p>}
-          <Field label="Lub wklej kod Paw ID (tekst spod kodu QR)"><textarea value={text} onChange={e => setText(e.target.value)} placeholder="KNL1:..." /></Field>
+          <Field label="Lub wklej kod przekazania (tekst spod kodu QR)"><textarea value={text} onChange={e => setText(e.target.value)} placeholder="KNL1:..." /></Field>
           <button className="btn" disabled={!text.trim()} onClick={parse}>Odczytaj</button>
         </Card>
       )}
@@ -76,7 +76,7 @@ export default function Scan() {
             <KV items={[['Miot', payload.litter], ['Rasa', payload.breed], ['Płeć', payload.sex === 'male' ? 'Pies' : 'Suka'], ['Urodzony', fmtDateTime(payload.birth)], ['Umaszczenie', payload.color], ['Waga ur.', payload.bw ? `${payload.bw} g` : '—'], ['Ojciec', payload.father], ['Matka', payload.mother], ['Nr rodowodu', payload.pedigreeNo], ['Chip', payload.chip], ['Szczepienia', payload.vacc.map(v => `${v.n} (${v.d})`).join(', ') || '—'], ['Odrobaczenia', payload.deworm.map(v => `${v.n} (${v.d})`).join(', ') || '—'], ['Pomiary wagi', `${payload.weights.length} wpisów`]]} />
           </div>
           {payload.pack && (
-            <Card title="Cyfrowa wyprawka" icon={<Backpack size={18} />}>
+            <Card title="Pakiet na nowy dom" icon={<Backpack size={18} />}>
               <KV items={[['Karma', payload.pack.food], ['Porcja', payload.pack.portion], ['Posiłki', payload.pack.meals ? `${payload.pack.meals}× dziennie, godz. ${payload.pack.hours ?? ''}` : '—'], ['Suplementy', payload.pack.supplements], ['Pielęgnacja', payload.pack.grooming], ['Pierwsze dni', payload.pack.firstDays], ['Oswojony z', payload.pack.accustomed?.join(', ')], ['Charakter', payload.pack.character?.join(', ')], ['O szczenięciu', payload.pack.about]]} />
             </Card>
           )}

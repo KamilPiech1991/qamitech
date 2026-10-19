@@ -22,7 +22,7 @@ export default function Layout() {
     { to: '/raporty', label: 'Raporty', ico: <BarChart3 size={22} /> },
     ...(breeder ? [{ to: '/dokumenty', label: 'Dokumenty', ico: <FileText size={22} /> }] : []),
     { to: '/przypomnienia', label: 'Przypomnienia', ico: <Bell size={22} /> },
-    { to: '/skanuj', label: 'Skanuj Paw ID', ico: <QrCode size={22} /> },
+    { to: '/skanuj', label: 'Odbierz psa', ico: <QrCode size={22} /> },
     { to: '/ustawienia', label: 'Ustawienia', ico: <Settings size={22} /> },
   ];
   const go = (to: string) => { setSheet(false); nav(to); };
@@ -45,7 +45,7 @@ export default function Layout() {
         <button className="navlink" style={{ border: 0, background: 'transparent', cursor: 'pointer', textAlign: 'left' }} onClick={() => setProfile({ darkMode: !state.profile.darkMode })}><span className="ico">{state.profile.darkMode ? <Sun size={22} /> : <Moon size={22} />}</span>{state.profile.darkMode ? 'Tryb jasny' : 'Tryb ciemny'}</button>
         <div className="muted" style={{ padding: 10 }}>
           <div><b>{state.profile.kennelName || state.profile.breederName}</b></div>
-          <div>Moduł: {breeder ? 'Hodowca' : 'Właściciel'} · Plan: {state.profile.plan.toUpperCase()}</div>
+          <div>Tryb: {breeder ? 'hodowla' : 'mój pies'} · Plan: {state.profile.plan.toUpperCase()}</div>
         </div>
       </aside>
       <main className="main"><Outlet /></main>

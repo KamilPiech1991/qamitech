@@ -44,17 +44,17 @@ export default function Settings() {
 
       {p.module === 'breeder' && (
         <Card title="Zespół hodowli" icon={<Users size={18} />} right={<button className="btn sm" onClick={() => setInvite({ id: uid(), name: '', email: '', role: 'editor', status: 'invited' })}><Plus size={14} /> Zaproś</button>}>
-          <p className="muted">Współwłaściciele, rodzina i lekarz weterynarii mogą pracować na tej samej hodowli z własnymi kontami. Czego konkurencja nie ma.</p>
+          <p className="muted">Współwłaściciele, rodzina i lekarz weterynarii mogą pracować na tej samej hodowli z własnymi kontami.</p>
           <div className="list">{state.members.map(m => <div key={m.id} className="list-item"><div><div className="title">{m.name || m.email}</div><small>{m.email} · {roleLabel[m.role]}</small></div><div className="row"><span className={`badge ${m.status === 'active' ? 'success' : 'warn'}`}>{m.status === 'active' ? 'aktywny' : 'zaproszony'}</span>{m.role !== 'owner' && <DelBtn onClick={() => remove('members', m.id)} />}</div></div>)}</div>
           <small className="muted">Prototyp: zaproszenia są zapisywane lokalnie. W wersji produkcyjnej zaproszenie trafia e-mailem, a uprawnienia egzekwuje backend.</small>
         </Card>
       )}
 
-      <Card title="Moduł aplikacji">
-        <p className="muted">Właściciel: zdrowie, finanse, przypomnienia. Hodowca: dodatkowo rozród, mioty, szczenięta, Paw ID, dokumenty i raporty hodowlane.</p>
+      <Card title="Tryb pracy">
+        <p className="muted">Mam psa: zdrowie, wydatki, przypomnienia. Prowadzę hodowlę: dodatkowo rozród, mioty, szczenięta, karty przekazania, dokumenty i raporty hodowlane.</p>
         <div className="row">
-          <button className={`btn ${p.module === 'owner' ? '' : 'secondary'}`} onClick={() => setProfile({ module: 'owner' })}>Właściciel</button>
-          <button className={`btn ${p.module === 'breeder' ? '' : 'secondary'}`} onClick={() => setProfile({ module: 'breeder' })}>Hodowca</button>
+          <button className={`btn ${p.module === 'owner' ? '' : 'secondary'}`} onClick={() => setProfile({ module: 'owner' })}>Mam psa</button>
+          <button className={`btn ${p.module === 'breeder' ? '' : 'secondary'}`} onClick={() => setProfile({ module: 'breeder' })}>Prowadzę hodowlę</button>
         </div>
       </Card>
 
@@ -69,7 +69,7 @@ export default function Settings() {
         </div>
       </Card>
 
-      <Card title="Kopie zapasowe i dane" icon={<Shield size={18} />}>
+      <Card title="Bezpieczeństwo danych" icon={<Shield size={18} />}>
         <p className="muted">Dane są przechowywane lokalnie na tym urządzeniu. Pobierz kopię, aby przenieść je lub zabezpieczyć.</p>
         <div className="row">
           <button className="btn secondary" onClick={exportJson}><Download size={16} /> Pobierz kopię (JSON)</button>

@@ -19,7 +19,7 @@ export default function DogForm({ initial, onSave, onClose }: { initial?: Dog; o
         <label className="btn secondary sm">Zdjęcie<input type="file" accept="image/*" hidden onChange={e => onPhoto(e.target.files?.[0])} /></label>
         {d.photo && <button className="btn ghost sm" onClick={() => set('photo', undefined)}>Usuń zdjęcie</button>}
       </div>
-      <h3>Dane podstawowe</h3>
+      <h3>Podstawowe informacje</h3>
       <div className="form-grid">
         <Field label="Imię domowe *"><input value={d.name} onChange={e => set('name', e.target.value)} /></Field>
         <Field label="Nazwa rodowodowa"><input value={d.pedigreeName} onChange={e => set('pedigreeName', e.target.value)} placeholder="np. Bubi Dolina Krzemowa FCI" /></Field>
@@ -37,7 +37,7 @@ export default function DogForm({ initial, onSave, onClose }: { initial?: Dog; o
         <Field label="Matka z moich psów"><select value={d.motherId ?? ''} onChange={e => { const p = females.find(x => x.id === e.target.value); setD({ ...d, motherId: p?.id, motherName: p ? p.pedigreeName : d.motherName }); }}><option value="">— spoza bazy —</option>{females.map(x => <option key={x.id} value={x.id}>{x.name} ({x.pedigreeName})</option>)}</select></Field>
         <Field label="Matka (nazwa rodowodowa)"><input value={d.motherName ?? ''} onChange={e => set('motherName', e.target.value)} /></Field>
       </div>
-      <h3>Identyfikacja</h3>
+      <h3>Numery i dokumenty</h3>
       <div className="form-grid">
         <Field label="Nr rodowodu"><input value={d.pedigreeNo ?? ''} onChange={e => set('pedigreeNo', e.target.value)} /></Field>
         <Field label="Nr rejestracji oddziałowej"><input value={d.regNo ?? ''} onChange={e => set('regNo', e.target.value)} /></Field>

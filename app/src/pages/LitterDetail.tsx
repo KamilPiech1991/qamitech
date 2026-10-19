@@ -13,7 +13,7 @@ import { HealthForm } from './DogProfile';
 type Tab = 'puppies' | 'analysis' | 'care' | 'pack' | 'birth' | 'money';
 
 export function PuppyForm({ initial, litterId, index, onClose, onSave }: { initial?: Puppy; litterId: string; index: number; onClose: () => void; onSave: (p: Puppy) => void }) {
-  const [p, setP] = useState<Puppy>(initial ?? { id: uid(), litterId, name: '', sex: 'male', birthDateTime: nowLocal(), birthStatus: 'alive', markerColor: MARKER_COLORS[index % MARKER_COLORS.length], pawId: `KNL-P-${Date.now().toString(36).toUpperCase().slice(-6)}`, owners: [], character: [] });
+  const [p, setP] = useState<Puppy>(initial ?? { id: uid(), litterId, name: '', sex: 'male', birthDateTime: nowLocal(), birthStatus: 'alive', markerColor: MARKER_COLORS[index % MARKER_COLORS.length], pawId: `KN-${new Date().getFullYear()}-${Date.now().toString(36).toUpperCase().slice(-4)}`, owners: [], character: [] });
   return (
     <Modal title={initial ? 'Edytuj szczenię' : 'Dodaj szczenię'} onClose={onClose} actions={<><button className="btn secondary" onClick={onClose}>Anuluj</button><button className="btn" disabled={!p.name.trim()} onClick={() => onSave(p)}>Zapisz</button></>}>
       <div className="form-grid">
@@ -26,7 +26,7 @@ export function PuppyForm({ initial, litterId, index, onClose, onSave }: { initi
         <Field label="Nr rodowodu / metryki"><input value={p.pedigreeNo ?? ''} onChange={e => setP({ ...p, pedigreeNo: e.target.value })} /></Field>
         <Field label="Nr chipa"><input value={p.chip ?? ''} onChange={e => setP({ ...p, chip: e.target.value })} /></Field>
       </div>
-      <Field label="Kolor znacznika (obróżki)"><div className="chips">{MARKER_COLORS.map(c => <button type="button" key={c} className="chip" style={{ background: c, borderColor: p.markerColor === c ? '#000' : c, width: 34, height: 34, padding: 0, outline: p.markerColor === c ? '3px solid var(--primary-soft)' : 'none' }} onClick={() => setP({ ...p, markerColor: c })} aria-label={c} />)}</div></Field>
+      <Field label="Kolor obróżki"><div className="chips">{MARKER_COLORS.map(c => <button type="button" key={c} className="chip" style={{ background: c, borderColor: p.markerColor === c ? '#000' : c, width: 34, height: 34, padding: 0, outline: p.markerColor === c ? '3px solid var(--primary-soft)' : 'none' }} onClick={() => setP({ ...p, markerColor: c })} aria-label={c} />)}</div></Field>
     </Modal>
   );
 }
@@ -54,8 +54,8 @@ export default function LitterDetail() {
 
   return (
     <div>
-      <PageHeader back={() => nav('/mioty')} title={`Metryka miotu: ${litter.name}`} sub={<>Ur. {fmtDate(litter.birthDate)} ({age} dni) · Matka: {litter.motherName} · Ojciec: {litter.fatherName || '—'}</>} actions={<button className="btn secondary" onClick={() => setEditLitter(true)}><Pencil size={16} /> Edytuj miot</button>} />
-      <Tabs value={tab} onChange={setTab} items={[{ key: 'puppies', label: `Szczenięta (${pups.length})` }, { key: 'analysis', label: 'Analiza' }, { key: 'care', label: `Opieka (${pct}%)` }, { key: 'birth', label: 'Dziennik porodu' }, { key: 'money', label: 'Rentowność' }, { key: 'pack', label: 'Wyprawka' }]} />
+      <PageHeader back={() => nav('/mioty')} title={litter.name} sub={<>Ur. {fmtDate(litter.birthDate)} ({age} dni) · Matka: {litter.motherName} · Ojciec: {litter.fatherName || '—'}</>} actions={<button className="btn secondary" onClick={() => setEditLitter(true)}><Pencil size={16} /> Edytuj miot</button>} />
+      <Tabs value={tab} onChange={setTab} items={[{ key: 'puppies', label: `Szczenięta (${pups.length})` }, { key: 'analysis', label: 'Rozwój' }, { key: 'care', label: `Plan odchowu (${pct}%)` }, { key: 'birth', label: 'Dziennik porodu' }, { key: 'money', label: 'Rentowność' }, { key: 'pack', label: 'Nowy dom' }]} />
 
       {tab === 'puppies' && (
         <div className="stack">
@@ -72,9 +72,9 @@ export default function LitterDetail() {
                   {last ? <div className="card soft" style={{ padding: '6px 10px', textAlign: 'right' }}><b style={{ display: 'flex', gap: 4, alignItems: 'center' }}><Scale size={14} /> {last.grams} g</b>{diff !== null && <div style={{ fontSize: 12, color: diff >= 0 ? 'var(--success)' : 'var(--danger)' }}>{diff >= 0 ? '↑ +' : '↓ '}{diff} g</div>}</div> : <span className="badge gray">brak pomiaru</span>}
                 </div>
                 <div className="row" style={{ marginTop: 10, gap: 6 }}>
-                  <Link className="btn secondary sm" to={`/szczenieta/${p.id}`}><ClipboardList size={14} /> Metryka</Link>
+                  <Link className="btn secondary sm" to={`/szczenieta/${p.id}`}><ClipboardList size={14} /> Profil</Link>
                   <Link className="btn secondary sm" to={`/szczenieta/${p.id}?tab=weights`}><Scale size={14} /> Wagi</Link>
-                  <Link className="btn sm" to={`/szczenieta/${p.id}?tab=pawid`}><QrCode size={14} /> Karta Paw ID</Link>
+                  <Link className="btn sm" to={`/szczenieta/${p.id}?tab=pawid`}><QrCode size={14} /> Karta przekazania</Link>
                   {p.owners.length > 0 && <span className="badge">Właściciel: {p.owners[0].name}</span>}
                   {p.handoverDate && <span className="badge gray">Przekazany {fmtDate(p.handoverDate)}</span>}
                 </div>
@@ -87,11 +87,11 @@ export default function LitterDetail() {
 
       {tab === 'care' && (
         <div className="stack">
-          <Card title="Opieka nad miotem" right={<span className="badge">{doneCount} z {allKeys.length} etapów · {pct}%</span>}>
+          <Card title="Plan odchowu" right={<span className="badge">{doneCount} z {allKeys.length} etapów · {pct}%</span>}>
             <div className="progress" style={{ marginBottom: 12 }}><div style={{ width: `${pct}%` }} /></div>
             {LITTER_CHECKLIST.map(g => <div key={g.group} style={{ marginBottom: 12 }}><div style={{ fontWeight: 700, color: 'var(--primary-600)', fontSize: 12, textTransform: 'uppercase', letterSpacing: 1, borderLeft: '3px solid var(--primary)', paddingLeft: 8, marginBottom: 4 }}>{g.group}</div>{g.items.map(i => <label key={i.key} className="check"><input type="checkbox" checked={!!litter.checklist[i.key]} onChange={e => upsert('litters', { ...litter, checklist: { ...litter.checklist, [i.key]: e.target.checked } })} /><div><div className="t" style={{ color: litter.checklist[i.key] ? 'var(--primary-600)' : undefined }}>{i.title}</div><div className="d">{i.desc}</div></div></label>)}</div>)}
           </Card>
-          <Card title="Notatki do miotu" right={<span className="badge gray">{litter.notes.length}</span>}>
+          <Card title="Notatnik miotu" right={<span className="badge gray">{litter.notes.length}</span>}>
             {litter.notes.map((n, i) => <div key={i} className="list-item" style={{ marginBottom: 6 }}><div>{n}</div><DelBtn onClick={() => upsert('litters', { ...litter, notes: litter.notes.filter((_, j) => j !== i) })} /></div>)}
             <div className="row"><input value={note} onChange={e => setNote(e.target.value)} placeholder="Nowa notatka..." style={{ flex: 1, padding: 9, borderRadius: 10, border: '1px solid var(--border)' }} /><button className="btn" disabled={!note.trim()} onClick={() => { upsert('litters', { ...litter, notes: [...litter.notes, note.trim()] }); setNote(''); }}>Dodaj</button></div>
           </Card>
@@ -122,21 +122,21 @@ export default function LitterDetail() {
     const data = dates.map(d => { const row: Record<string, string | number> = { d: fmtDate(d) }; pups.forEach(p => { const w = state.weights.filter(x => x.puppyId === p.id && x.date.startsWith(d)).pop(); if (w) row[p.name] = w.grams; }); return row; });
     return (
       <div className="stack">
-        <Card title="Miot w liczbach">
+        <Card title="Miot w skrócie">
           <div className="grid cols-3"><div className="card soft stat"><div className="value">{pups.length}</div><div className="label">Szczenięta</div></div><div className="card soft stat"><div className="value">{pups.filter(p => p.sex === 'male').length}</div><div className="label">Psy</div></div><div className="card soft stat"><div className="value">{pups.filter(p => p.sex === 'female').length}</div><div className="label">Suki</div></div></div>
         </Card>
-        <Card title="Najcięższe i najlżejsze szczenię">
+        <Card title="Rekordy wagi">
           {heaviest && <Link to={`/szczenieta/${heaviest.p.id}`} className="list-item" style={{ color: 'inherit', marginBottom: 6, borderLeft: `4px solid ${heaviest.p.markerColor}` }}><div><small className="muted">NAJCIĘŻSZE SZCZENIĘ</small><div className="title">{heaviest.p.name}</div><small>Ostatni pomiar: {fmtDateTime(heaviest.last!.date)}</small></div><b style={{ fontSize: 18 }}>{heaviest.last!.grams} g</b></Link>}
           {lightest && <Link to={`/szczenieta/${lightest.p.id}`} className="list-item" style={{ color: 'inherit', borderLeft: `4px solid ${lightest.p.markerColor}` }}><div><small className="muted">NAJLŻEJSZE SZCZENIĘ</small><div className="title">{lightest.p.name}</div><small>Ostatni pomiar: {fmtDateTime(lightest.last!.date)}</small></div><b style={{ fontSize: 18 }}>{lightest.last!.grams} g</b></Link>}
-          {rows.length - withW.length > 0 && <div className="badge gray" style={{ marginTop: 8 }}>ℹ️ Szczenięta bez pomiaru masy: {rows.length - withW.length}</div>}
+          {rows.length - withW.length > 0 && <div className="badge gray" style={{ marginTop: 8 }}>ℹ️ Do zważenia: {rows.length - withW.length}</div>}
         </Card>
-        <Card title="Zmiana od poprzedniego pomiaru">
+        <Card title="Ostatni przyrost">
           <p className="muted">Porównanie dwóch ostatnich pomiarów każdego szczenięcia.</p>
           {bestGain && <div className="list-item" style={{ marginBottom: 6 }}><div><small className="muted">NAJWIĘKSZY WZROST</small><div className="title">{bestGain.p.name}</div></div><b style={{ color: 'var(--success)' }}>+{bestGain.diff} g</b></div>}
           {worstGain && <div className="list-item"><div><small className="muted">NAJMNIEJSZY WZROST</small><div className="title">{worstGain.p.name}</div></div><b style={{ color: worstGain.diff! < 0 ? 'var(--danger)' : undefined }}>{worstGain.diff! >= 0 ? '+' : ''}{worstGain.diff} g</b></div>}
           {!withD.length && <div className="muted">Potrzebne co najmniej dwa pomiary.</div>}
         </Card>
-        <Card title="Wykres wag szczeniąt">
+        <Card title="Krzywe wzrostu">
           <p className="muted">Porównaj rozwój wszystkich szczeniąt. Dotknij nazwy, aby ukryć lub pokazać linię.</p>
           {data.length < 2 ? <div className="muted">Za mało pomiarów.</div> : <div style={{ height: 260 }}><ResponsiveContainer><LineChart data={data}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="d" fontSize={11} /><YAxis fontSize={11} unit=" g" domain={['auto', 'auto']} /><Tooltip /><Legend onClick={e => { const k = String(e.value); setHidden(h => h.includes(k) ? h.filter(x => x !== k) : [...h, k]); }} />{pups.map(p => <Line key={p.id} type="monotone" dataKey={p.name} stroke={p.markerColor} strokeWidth={2} hide={hidden.includes(p.name)} connectNulls />)}</LineChart></ResponsiveContainer></div>}
         </Card>
@@ -149,7 +149,7 @@ export default function LitterDetail() {
     const set = <K extends keyof LitterPack>(k: K, v: LitterPack[K]) => setPack({ ...pack, [k]: v });
     return (
       <div className="stack">
-        <Card title="Informacje wspólne dla miotu"><p className="muted">Żywienie, pielęgnacja i zalecenia dotyczące wszystkich szczeniąt. Trafią do Paw ID każdego szczenięcia.</p>
+        <Card title="Dla całego miotu"><p className="muted">Żywienie, pielęgnacja i zalecenia dotyczące wszystkich szczeniąt. Trafią na kartę przekazania każdego szczenięcia.</p>
           <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Utensils size={18} style={{ color: 'var(--primary)' }} /> Żywienie</h3>
           <div className="form-grid">
             <Field label="Producent karmy"><input value={pack.foodBrand ?? ''} onChange={e => set('foodBrand', e.target.value)} /></Field>
@@ -158,13 +158,13 @@ export default function LitterDetail() {
             <Field label="Liczba posiłków dziennie"><div className="chips">{[2, 3, 4, 5].map(n => <button type="button" key={n} className={`chip ${pack.mealsPerDay === n ? 'on' : ''}`} onClick={() => set('mealsPerDay', n)}>{n}</button>)}</div></Field>
             <Field label="Godziny karmienia"><input value={pack.feedingHours ?? ''} onChange={e => set('feedingHours', e.target.value)} placeholder="np. 7, 11, 15, 19" /></Field>
           </div>
-          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Pill size={18} style={{ color: 'var(--primary)' }} /> Suplementacja</h3><Field label="Informacje i zalecenia"><textarea value={pack.supplements ?? ''} onChange={e => set('supplements', e.target.value)} /></Field>
-          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Bath size={18} style={{ color: 'var(--primary)' }} /> Pielęgnacja</h3><Field label="Codzienna opieka i zalecenia"><textarea value={pack.grooming ?? ''} onChange={e => set('grooming', e.target.value)} /></Field>
-          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Home size={18} style={{ color: 'var(--primary)' }} /> Pierwsze dni w nowym domu</h3><Field label="Wskazówki"><textarea value={pack.firstDays ?? ''} onChange={e => set('firstDays', e.target.value)} /></Field>
-          <Field label="Z czym szczenięta są już oswojone?"><Chips options={ACCUSTOMED_ITEMS} value={pack.accustomed} onChange={v => set('accustomed', v)} /></Field>
-          <button className="btn" onClick={() => { upsert('litters', { ...litter!, pack }); toast('Wyprawka zapisana'); }}>Zapisz wyprawkę</button>
+          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Pill size={18} style={{ color: 'var(--primary)' }} /> Suplementy</h3><Field label="Co i w jakiej dawce"><textarea value={pack.supplements ?? ''} onChange={e => set('supplements', e.target.value)} /></Field>
+          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Bath size={18} style={{ color: 'var(--primary)' }} /> Pielęgnacja</h3><Field label="Jak dbać na co dzień"><textarea value={pack.grooming ?? ''} onChange={e => set('grooming', e.target.value)} /></Field>
+          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Home size={18} style={{ color: 'var(--primary)' }} /> Start w nowym domu</h3><Field label="Rady na pierwsze dni"><textarea value={pack.firstDays ?? ''} onChange={e => set('firstDays', e.target.value)} /></Field>
+          <Field label="Co szczenięta już znają?"><Chips options={ACCUSTOMED_ITEMS} value={pack.accustomed} onChange={v => set('accustomed', v)} /></Field>
+          <button className="btn" onClick={() => { upsert('litters', { ...litter!, pack }); toast('Pakiet zapisany'); }}>Zapisz pakiet</button>
         </Card>
-        <Card title="Informacje o szczeniętach"><p className="muted">Charakter, socjalizacja i indywidualne przyzwyczajenia każdego szczenięcia uzupełnisz w metryce szczenięcia.</p><div className="list">{pups.map(p => <Link key={p.id} to={`/szczenieta/${p.id}?tab=pack`} className="list-item" style={{ color: 'inherit' }}><div className="row"><PawPrint size={20} style={{ color: p.markerColor }} /><div><div className="title">{p.name}</div><small>{p.character.length ? p.character.join(', ') : 'Informacje indywidualne – uzupełnij'}</small></div></div><span>→</span></Link>)}</div></Card>
+        <Card title="Każde szczenię osobno"><p className="muted">Charakter, socjalizacja i indywidualne przyzwyczajenia każdego szczenięcia uzupełnisz w profilu szczenięcia.</p><div className="list">{pups.map(p => <Link key={p.id} to={`/szczenieta/${p.id}?tab=pack`} className="list-item" style={{ color: 'inherit' }}><div className="row"><PawPrint size={20} style={{ color: p.markerColor }} /><div><div className="title">{p.name}</div><small>{p.character.length ? p.character.join(', ') : 'Brak opisu – dodaj'}</small></div></div><span>→</span></Link>)}</div></Card>
       </div>
     );
   }
@@ -234,7 +234,7 @@ export default function LitterDetail() {
         </Modal>}
         {exp && <Modal title="Koszt miotu" onClose={() => setExp(null)} actions={<><button className="btn secondary" onClick={() => setExp(null)}>Anuluj</button><button className="btn" disabled={!exp.amount} onClick={() => { upsert('expenses', exp); setExp(null); toast('Zapisano'); }}>Zapisz</button></>}>
           <div className="form-grid">
-            <Field label="Typ"><select value={exp.type} onChange={e => setExp({ ...exp, type: e.target.value })}>{['Krycie', 'Inseminacja', 'USG/RTG', 'Wyprawki', 'Chipowanie', 'Szczepienia', 'Odrobaczanie', 'Karma', 'Weterynarz', 'Inne'].map(c => <option key={c}>{c}</option>)}</select></Field>
+            <Field label="Typ"><select value={exp.type} onChange={e => setExp({ ...exp, type: e.target.value })}>{['Krycie', 'Inseminacja', 'USG/RTG', 'Akcesoria dla szczeniąt', 'Chipowanie', 'Szczepienia', 'Odrobaczanie', 'Karma', 'Weterynarz', 'Inne'].map(c => <option key={c}>{c}</option>)}</select></Field>
             <Field label="Data"><input type="date" value={exp.date} onChange={e => setExp({ ...exp, date: e.target.value })} /></Field>
             <Field label="Kwota (PLN)"><input type="number" value={exp.amount || ''} onChange={e => setExp({ ...exp, amount: Number(e.target.value) })} /></Field>
           </div>

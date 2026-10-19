@@ -8,7 +8,7 @@ import { HEALTH_LABEL } from '../app/types';
 
 const DOCS = [
   { kind: 'umowa', title: 'Umowa sprzedaży szczenięcia', desc: 'Dane stron, szczenię, cena, zaliczka, zobowiązania', ico: <FileSignature size={24} /> },
-  { kind: 'protokol', title: 'Protokół przekazania szczenięcia', desc: 'Stan zdrowia, dokumenty, wyprawka, podpisy', ico: <ClipboardCheck size={24} /> },
+  { kind: 'protokol', title: 'Protokół przekazania szczenięcia', desc: 'Stan zdrowia, dokumenty, pakiet na nowy dom, podpisy', ico: <ClipboardCheck size={24} /> },
   { kind: 'karta-miotu', title: 'Karta miotu', desc: 'Zestawienie miotu do dokumentacji oddziałowej', ico: <ListChecks size={24} /> },
   { kind: 'karta-zdrowia', title: 'Karta zdrowia szczenięcia', desc: 'Szczepienia, odrobaczenia, wagi – dla nowego właściciela', ico: <HeartPulse size={24} /> },
 ];
@@ -53,7 +53,7 @@ export default function Documents() {
           <Field label="Miejscowość"><input value={place} onChange={e => setPlace(e.target.value)} placeholder="np. Marki" /></Field>
           {kind === 'umowa' && <><Field label="Cena (PLN)"><input type="number" value={price} onChange={e => setPrice(e.target.value)} placeholder={String(puppy?.price ?? '')} /></Field><Field label="Zaliczka (PLN)"><input type="number" value={deposit} onChange={e => setDeposit(e.target.value)} /></Field></>}
         </div>
-        {needsPuppy && !owner && <div className="badge warn">Brak danych nabywcy – uzupełnij właściciela w metryce szczenięcia.</div>}
+        {needsPuppy && !owner && <div className="badge warn">Brak danych nabywcy – uzupełnij właściciela w profilu szczenięcia.</div>}
       </Card>
 
       <Card>
@@ -68,7 +68,7 @@ export default function Documents() {
               <p><b>§2.</b> Cena sprzedaży wynosi <b>{fmtMoney(priceVal)}</b>{depositVal ? <>, z czego zaliczka <b>{fmtMoney(depositVal)}</b> została wpłacona, a pozostała kwota <b>{fmtMoney(priceVal - depositVal)}</b> płatna jest przy odbiorze</> : ', płatna przy odbiorze'}. Odbiór szczenięcia nastąpi {puppy.handoverDate ? fmtDateLong(puppy.handoverDate) : '[DATA ODBIORU]'}.</p>
               <p><b>§3.</b> Hodowca oświadcza, że szczenię w dniu wydania jest zdrowe, odrobaczone i zaszczepione zgodnie z kartą zdrowia stanowiącą załącznik, posiada metrykę oraz jest oznakowane mikroczipem.</p>
               <p><b>§4.</b> Nabywca zobowiązuje się zapewnić szczenięciu właściwe warunki, opiekę weterynaryjną oraz nie przekazywać go osobom trzecim bez wiedzy Hodowcy. W razie niemożności dalszego utrzymania psa Nabywca w pierwszej kolejności poinformuje Hodowcę.</p>
-              <p><b>§5.</b> Hodowca przekazuje wraz ze szczenięciem cyfrową wyprawkę (żywienie, pielęgnacja, przyzwyczajenia) oraz kartę Paw ID.</p>
+              <p><b>§5.</b> Hodowca przekazuje wraz ze szczenięciem pakiet na nowy dom (żywienie, pielęgnacja, przyzwyczajenia) oraz kartę przekazania.</p>
               <p><b>§6.</b> W sprawach nieuregulowanych stosuje się przepisy Kodeksu cywilnego. Umowę sporządzono w dwóch jednobrzmiących egzemplarzach.</p>
             </div>
           )}
@@ -81,8 +81,8 @@ export default function Documents() {
                 <tr><th>Ostatnia waga</th><td>{state.weights.filter(w => w.puppyId === puppy.id).sort((a, b) => b.date.localeCompare(a.date))[0]?.grams ?? '—'} g</td></tr>
                 <tr><th>Szczepienia</th><td>{state.health.filter(h => h.puppyId === puppy.id && h.kind === 'vaccination').map(h => `${h.name} (${fmtDate(h.date)})`).join(', ') || '—'}</td></tr>
                 <tr><th>Odrobaczenia</th><td>{state.health.filter(h => h.puppyId === puppy.id && (h.kind === 'deworming' || h.kind === 'parasite')).map(h => `${h.name} (${fmtDate(h.date)})`).join(', ') || '—'}</td></tr>
-                <tr><th>Przekazane dokumenty</th><td>metryka ☐ · książeczka zdrowia ☐ · umowa ☐ · karta Paw ID ☐</td></tr>
-                <tr><th>Wyprawka</th><td>karma {[litter?.pack.foodBrand, litter?.pack.foodName].filter(Boolean).join(' ') || '—'} ☐ · kocyk ☐ · zabawka ☐ · cyfrowa wyprawka ☐</td></tr>
+                <tr><th>Przekazane dokumenty</th><td>metryka ☐ · książeczka zdrowia ☐ · umowa ☐ · karta przekazania ☐</td></tr>
+                <tr><th>Pakiet na nowy dom</th><td>karma {[litter?.pack.foodBrand, litter?.pack.foodName].filter(Boolean).join(' ') || '—'} ☐ · kocyk ☐ · zabawka ☐ · pakiet na nowy dom ☐</td></tr>
               </tbody></table>
               <p>Nabywca potwierdza odbiór szczenięcia w stanie opisanym powyżej.</p>
             </div>

@@ -374,7 +374,7 @@ npm run build && npm run preview          # build produkcyjny
 ```
 Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby zobaczyć aplikację z przykładową hodowlą (3 psy, miot z 4 szczeniętami i wagami, ciąża w toku, wystawy, finanse, przypomnienia).
 
-**Zaimplementowane ekrany:** wybór modułu i onboarding · Start (powiadomienia, liczniki, trwające ciąże, szybki dostęp) · Moje psy (widok pełny/kompaktowy, filtry, limity FREE) · Profil psa: Metryka, Zdrowie (5 kategorii, następny termin), Rozród (skojarzenia: krycia, progesteron, USG, RTG) / Krycia (reproduktor), Kariera (wystawy z certyfikatami i tytułami, championaty, statystyki, koszty wystawy), Waga (wykres), Oś czasu · Kalendarz ciąży (dzień/tydzień, termin, USG/RTG/obserwacja/przedział porodu, 9 tygodni treści, oś ciąży, oznaczanie badań) · Mioty → Metryka miotu: szczenięta (kolory znaczników, ostatnia waga i zmiana), ważenie całego miotu, wpis zdrowotny dla wszystkich, Analiza miotu (liczby, najcięższe/najlżejsze, przyrosty, wykres zbiorczy), Opieka nad miotem (17 etapów, %), notatki, Cyfrowa wyprawka · Szczenię: metryka, wagi, zdrowie, właściciele (do 2) + cena/notatki prywatne + data przekazania, **Karta Paw ID z kodem QR** (toggle karta/QR, kopiowanie kodu, druk), informacje indywidualne (charakter, opis) · Finanse: budżet, dodawanie wydatków (hodowla/wystawa, kategorie i typy), wykres 6 mies. z limitem FREE i przełącznikiem kosztów wystaw, historia grupowana (wystawy; rok → miesiąc), statystyki · Raporty (13 zestawień, druk/PDF) · Przypomnienia · Skanuj Paw ID (kamera przez BarcodeDetector lub wklejenie kodu → import psa z historią) · Ustawienia (profil, moduł, plan FREE/PRO demo, backup JSON eksport/import, dane demo, kasowanie).
+**Zaimplementowane ekrany:** wybór trybu pracy i onboarding · Start (najbliższe terminy, liczniki, trwające ciąże, na skróty) · Psy (widok pełny/kompaktowy, filtry, limity FREE) · Profil psa: Dane, Zdrowie (5 kategorii, następny termin), Rozród (plany kryć: krycia, progesteron, USG, RTG) / Krycia (reproduktor), Osiągnięcia (wystawy z certyfikatami i tytułami, championaty, statystyki, koszty wystawy), Waga (wykres), Kronika · Monitor ciąży (dzień/tydzień, termin, USG/RTG/obserwacja/przedział porodu, 9 tygodni treści, etapy ciąży, oznaczanie badań) · Mioty → profil miotu: szczenięta (kolory obróżek, ostatnia waga i zmiana), ważenie całego miotu, wpis zdrowotny dla wszystkich, Rozwój miotu (liczby, najcięższe/najlżejsze, przyrosty, wykres zbiorczy), Plan odchowu (19 etapów, %), notatki, Pakiet na nowy dom · Szczenię: metryka, wagi, zdrowie, właściciele (do 2) + cena/notatki prywatne + data przekazania, **Karta przekazania z kodem QR** (toggle karta/QR, kopiowanie kodu, druk), informacje indywidualne (charakter, opis) · Finanse: bilans, dodawanie wydatków (hodowla/wystawa, kategorie i typy), wykres 6 mies. z limitem FREE i przełącznikiem kosztów wystaw, rejestr grupowany (wystawy; rok → miesiąc), statystyki · Raporty (13 zestawień, druk/PDF) · Przypomnienia · Odbierz psa (kamera przez BarcodeDetector lub wklejenie kodu → import psa z historią) · Ustawienia (profil, tryb pracy, plan FREE/PRO demo, backup JSON eksport/import, dane demo, kasowanie).
 
 **Wyróżniki wdrożone w prototypie (wykorzystanie luk konkurenta z sekcji 8):**
 
@@ -467,4 +467,39 @@ Szybki przegląd sieci, sklepów i Instagrama pod kątem istniejących aplikacji
 | Psia Karta | Ogólne określenie używane w wielu aplikacjach i ofertach, nie do zastrzeżenia |
 
 **Rekomendacja:** jedna marka na wszystkie rynki to **Dogstry** z polskim hasłem, np. „Dogstry – psia księga Twojej hodowli”. Jeśli zostajemy tylko w Polsce, najlepsza jest **Psia Księga**. Przed decyzją: domeny (.com, .app, .pl), Google Play i App Store, bazy EUIPO i UPRP.
+
+---
+
+## 19. Własne nazewnictwo (żeby nie dublować konkurenta)
+
+W prototypie zmieniliśmy nazwy funkcji, nagłówki, listy słownikowe i teksty, które pokrywały się z Paw Managerem. Ogólne terminy kynologiczne (szczepienie, krycie, rodowód, CACIB, klasy wystawowe) zostają, bo są wspólne dla całej branży.
+
+| Paw Manager | Kennelo |
+|---|---|
+| Paw ID, Karta Paw ID, „PAW-P-001” | Karta przekazania, kod przekazania, „KN-2026-0001” |
+| Skanuj Paw ID | Odbierz psa |
+| Cyfrowa wyprawka | Pakiet na nowy dom (zakładka „Nowy dom”) |
+| Informacje wspólne dla miotu / Informacje o szczeniętach | Dla całego miotu / Każde szczenię osobno |
+| Pierwsze dni w nowym domu, „Z czym szczenięta są już oswojone?” | Start w nowym domu, „Co szczenięta już znają?” |
+| Metryka (psa, miotu, szczenięcia) | Dane, Profil |
+| Kariera | Osiągnięcia |
+| Oś czasu | Kronika |
+| Skojarzenia | Plany kryć |
+| Kalendarz ciąży, Najważniejsze terminy, Oś ciąży | Monitor ciąży, Kluczowe daty, Etapy ciąży |
+| Rozwój szczeniąt / Co dzieje się z suką? / Wskazówki dla hodowcy | Co rośnie w brzuchu / Samopoczucie suki / Do zrobienia w tym tygodniu |
+| Tytuły tygodni ciąży (np. „Wędrówka zarodków”) | Własne tytuły (np. „Droga do macicy”, „Odliczanie do porodu”) |
+| Opieka nad miotem (17 etapów) | Plan odchowu (19 etapów, inne grupy i opisy, m.in. sesja zdjęciowa i strony dla nabywców) |
+| Analiza miotu, Miot w liczbach, Najcięższe i najlżejsze | Rozwój miotu, Miot w skrócie, Rekordy wagi |
+| Kolor znacznika | Kolor obróżki |
+| Cena i notatki / Dane właściciela | Sprzedaż i notatki prywatne / Nabywca |
+| Budżet hodowli, Statystyki finansowe, Historia wydatków | Bilans hodowli, Analiza kosztów, Rejestr wydatków |
+| Kategorie wydatków (Karma i żywienie, Grooming i higiena, Usługa weterynaryjna…) | Żywienie, Pielęgnacja, Weterynarz, Wyposażenie, Opłaty i składki… |
+| Tagi charakteru (Spokojny, Energiczny, Łakomczuch…) | Spokojna dusza, Wulkan energii, Smakosz… |
+| Raporty (Spis psów, Spis miotów…) | Rejestr psów, Rejestr miotów, Szczepienia – całe stado… |
+| Moduł Właściciel / Hodowca, „Wybierz moduł” | Tryb „Mam psa” / „Prowadzę hodowlę”, „Jak korzystasz z aplikacji?” |
+| Szybki dostęp, Powiadomienia | Na skróty, Najbliższe terminy |
+| „Psy śpią czy wariują?” | Własne, zmienne hasła powitalne |
+| „Dotknij kartę, aby wyświetlić kod QR”, „Powered by…” | „Kliknij kartę, żeby ją odwrócić…”, „Kennelo · karta przekazania” |
+
+Kod wewnętrzny (pole `pawId`, plik `pawid.ts`) zostaje bez zmian, bo nie jest widoczny dla użytkownika.
 

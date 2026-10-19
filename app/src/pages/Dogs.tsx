@@ -25,7 +25,7 @@ export default function Dogs() {
 
   return (
     <div>
-      <PageHeader title="Moje psy" sub={`${females} ${females === 1 ? 'suka' : 'suk'} · ${males} ${males === 1 ? 'pies' : 'psów'}`} actions={<button className="btn" onClick={() => setAdding(true)}><Plus size={18} /> Dodaj psa</button>} />
+      <PageHeader title="Psy" sub={`${females} ${females === 1 ? 'suka' : 'suk'} · ${males} ${males === 1 ? 'pies' : 'psów'}`} actions={<button className="btn" onClick={() => setAdding(true)}><Plus size={18} /> Dodaj psa</button>} />
       <div className="row between no-print" style={{ marginBottom: 12 }}>
         <div className="tabs" style={{ margin: 0, padding: 0 }}>
           <button className={!sexFilter ? 'active' : ''} onClick={() => setParams({})}>Wszystkie</button>
@@ -38,7 +38,7 @@ export default function Dogs() {
         </div>
       </div>
       {nearLimit && <div className="card soft" style={{ marginBottom: 12 }}><div className="row between"><span>Plan FREE: do {FREE_LIMITS.females} suk i {FREE_LIMITS.males} psów. <ProBadge /> znosi limity.</span><Link to="/ustawienia" className="btn sm">Zobacz PRO</Link></div></div>}
-      {dogs.length === 0 ? <Card><Empty icon={<DogIcon size={28} />}>Nie masz jeszcze psów. Dodaj pierwszego lub zeskanuj Paw ID od hodowcy.</Empty></Card> : (
+      {dogs.length === 0 ? <Card><Empty icon={<DogIcon size={28} />}>Nie masz jeszcze psów. Dodaj pierwszego lub zeskanuj kod przekazania od hodowcy.</Empty></Card> : (
         <div className="stack">
           {dogs.map(d => (
             <Card key={d.id} onClick={() => nav(`/psy/${d.id}`)}>
@@ -54,9 +54,9 @@ export default function Dogs() {
                 <div className="row" style={{ marginTop: 12, gap: 6 }} onClick={e => e.stopPropagation()}>
                   <Link className="btn secondary sm" to={`/psy/${d.id}?tab=health`}><Syringe size={14} /> Zdrowie</Link>
                   {breeder && <Link className="btn secondary sm" to={`/psy/${d.id}?tab=breeding`}>{d.sex === 'female' ? <><Flower2 size={14} /> Rozród</> : <><Heart size={14} /> Krycia</>}</Link>}
-                  <Link className="btn secondary sm" to={`/psy/${d.id}?tab=career`}><Trophy size={14} /> Kariera</Link>
+                  <Link className="btn secondary sm" to={`/psy/${d.id}?tab=career`}><Trophy size={14} /> Osiągnięcia</Link>
                   <Link className="btn secondary sm" to={`/psy/${d.id}?tab=weight`}><Scale size={14} /> Waga</Link>
-                  <Link className="btn secondary sm" to={`/psy/${d.id}?tab=timeline`}><Clock size={14} /> Oś czasu</Link>
+                  <Link className="btn secondary sm" to={`/psy/${d.id}?tab=timeline`}><Clock size={14} /> Kronika</Link>
                 </div>
               )}
             </Card>
