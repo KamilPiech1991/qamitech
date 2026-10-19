@@ -1,12 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Bell, Dog, PawPrint, Trophy, Wallet, BarChart3, QrCode, Heart, FileText, Flower2, ArrowRight } from 'lucide-react';
+import { Bell, Dog, PawPrint, Trophy, Wallet, QrCode, Heart, FileText, Flower2, ArrowRight, Scale, Stethoscope, Globe, Sparkles, ChevronRight, Baby } from 'lucide-react';
 import { useStore } from '../app/store';
-import { Card } from '../components/ui';
-import { addDays, daysBetween, fmtDate, today } from '../app/format';
+import { addDays, daysBetween, fmtDate, fmtMoney, today } from '../app/format';
 import { HEALTH_LABEL } from '../app/types';
 import { heatStats } from '../app/heat';
 
 const TAGLINES = ['Co dziś w hodowli?', 'Wszystkie ogony policzone?', 'Miski pełne, plan gotowy?', 'Dobry dzień na spacer i ważenie.', 'Łapy w górę, zaczynamy!'];
+const MONTHS = ['styczniu', 'lutym', 'marcu', 'kwietniu', 'maju', 'czerwcu', 'lipcu', 'sierpniu', 'wrześniu', 'październiku', 'listopadzie', 'grudniu'];
 
 export default function Dashboard() {
   const { state } = useStore();
@@ -16,69 +16,168 @@ export default function Dashboard() {
   const t = today();
   const horizon = addDays(t, 14);
   const dogName = (id?: string) => state.dogs.find(d => d.id === id)?.name;
-  const heatSoon = state.dogs.filter(d => d.sex === 'female').map(d => ({ d, s: heatStats(state.heats.filter(h => h.dogId === d.id)) })).filter(x => x.s && x.s.nextFrom <= addDays(t, 30) && x.s.nextTo >= t);
+  const females = state.dogs.filter(d => d.sex === 'female');
+  const heatSoon = females.map(d => ({ d, s: heatStats(state.heats.filter(h => h.dogId === d.id)) })).filter(x => x.s && x.s.nextFrom <= addDays(t, 45) && x.s.nextTo >= t);
   const upcoming = [
     ...state.reminders.filter(r => !r.done && r.date <= horizon).map(r => ({ date: r.date, title: r.title, sub: dogName(r.dogId) ?? r.notes ?? '', to: '/przypomnienia' })),
     ...state.health.filter(h => h.nextDate && h.nextDate <= horizon && h.dogId).map(h => ({ date: h.nextDate!, title: `${HEALTH_LABEL[h.kind]}: ${h.name}`, sub: dogName(h.dogId) ?? '', to: `/psy/${h.dogId}?tab=health` })),
-    ...heatSoon.map(x => ({ date: x.s!.next, title: `Spodziewana cieczka: ${x.d.name}`, sub: `okno ${fmtDate(x.s!.nextFrom)} – ${fmtDate(x.s!.nextTo)}`, to: `/psy/${x.d.id}?tab=breeding` })),
-  ].sort((a, b) => a.date.localeCompare(b.date)).slice(0, 6);
-  const females = state.dogs.filter(d => d.sex === 'female').length;
-  const males = state.dogs.filter(d => d.sex === 'male').length;
+    ...heatSoon.filter(x => x.s!.nextFrom <= horizon).map(x => ({ date: x.s!.next, title: `Spodziewana cieczka: ${x.d.name}`, sub: `okno ${fmtDate(x.s!.nextFrom)} – ${fmtDate(x.s!.nextTo)}`, to: `/psy/${x.d.id}?tab=breeding` })),
+  ].sort((a, b) => a.date.localeCompare(b.date));
   const activePreg = state.breedings.filter(b => !b.litterId && b.matings.length && daysBetween(b.matings[0].date, t) < 70);
-  const monthExp = state.expenses.filter(e => e.date.slice(0, 7) === t.slice(0, 7)).reduce((a, e) => a + e.amount, 0);
+  const month = t.slice(0, 7);
+  const monthExp = state.expenses.filter(e => e.date.slice(0, 7) === month).reduce((a, e) => a + e.amount, 0);
+  const monthInc = state.incomes.filter(i => i.date.slice(0, 7) === month).reduce((a, i) => a + i.amount, 0);
+  const latestLitter = [...state.litters].sort((a, b) => b.birthDate.localeCompare(a.birthDate))[0];
+  const litterPups = latestLitter ? state.puppies.filter(x => x.litterId === latestLitter.id) : [];
+  const lastWeight = (puppyId: string) => state.weights.filter(w => w.puppyId === puppyId).sort((a, b) => b.date.localeCompare(a.date))[0];
+  const lastWeighDate = litterPups.map(x => lastWeight(x.id)?.date).filter(Boolean).sort().reverse()[0];
   const hour = new Date().getHours();
   const greet = hour < 12 ? 'Dzień dobry' : hour < 18 ? 'Cześć' : 'Dobry wieczór';
+  const initials = (p.breederName || p.kennelName || 'D').trim().slice(0, 1).toUpperCase();
+
+  const whenLabel = (d: string) => d < t ? 'zaległe' : daysBetween(t, d) === 0 ? 'dziś' : daysBetween(t, d) === 1 ? 'jutro' : `za ${daysBetween(t, d)} dni`;
+  const summary: string[] = [];
+  if (upcoming.length) summary.push(`${upcoming.length === 1 ? 'masz 1 termin' : `masz ${upcoming.length} ${upcoming.length < 5 ? 'terminy' : 'terminów'}`} w najbliższych 2 tygodniach`);
+  activePreg.forEach(b => { const f = state.dogs.find(d => d.id === b.femaleId); summary.push(`${f?.name ?? 'suka'} jest na ${daysBetween(b.matings[0].date, t) + 1}. dniu ciąży`); });
+  if (breeder && latestLitter && daysBetween(latestLitter.birthDate, t) <= 84) summary.push(`${latestLitter.name} ma ${daysBetween(latestLitter.birthDate, t)} dni`);
+  const bubble = summary.length ? `${TAGLINES[0]} ${summary.join(', ').replace(/^./, c => c.toUpperCase())}.` : `${TAGLINES[new Date().getDate() % TAGLINES.length]} Na dziś nie ma nic pilnego.`;
 
   return (
-    <div className="stack">
-      <div className="hero">
-        <div className="row between" style={{ position: 'relative' }}>
+    <div className="stack dash">
+      <div className="dash-top">
+        <div className="who">
+          <div className="avatar-lg">{initials}</div>
           <div>
-            <div className="muted" style={{ fontWeight: 800, fontSize: 13 }}>{greet}</div>
-            <h1>{p.breederName}{breeder && p.kennelName ? '' : '!'}</h1>
-            {breeder && <div style={{ fontSize: 15, fontWeight: 700, opacity: .95 }}>{p.kennelName}{p.kennelNo ? ` · nr ${p.kennelNo}` : ''}</div>}
-            <div className="muted" style={{ marginTop: 6 }}>{TAGLINES[new Date().getDate() % TAGLINES.length]}</div>
+            <div className="muted" style={{ fontSize: 12, fontWeight: 800 }}>{greet}{p.breederName ? `, ${p.breederName}` : ''}</div>
+            <div style={{ fontSize: 18, fontWeight: 900, lineHeight: 1.1 }}>{breeder && p.kennelName ? p.kennelName : 'Dogpilot'}</div>
           </div>
-          <span className={`badge ${p.plan === 'pro' ? 'pro' : ''}`} style={p.plan !== 'pro' ? { background: 'rgba(255,255,255,.2)', color: '#fff' } : undefined}>{p.plan.toUpperCase()}</span>
+        </div>
+        <div className="row" style={{ gap: 8 }}>
+          <span className={`badge ${p.plan === 'pro' ? 'pro' : ''}`}>{p.plan.toUpperCase()}</span>
+          <button className="icon-btn" aria-label="Odbierz psa" title="Odbierz psa" onClick={() => nav('/skanuj')}><QrCode size={20} /></button>
         </div>
       </div>
 
-      <Card title="Najbliższe terminy" icon={<Bell size={18} />} right={<Link to="/przypomnienia" className="muted" style={{ display: 'flex', alignItems: 'center', gap: 4 }}>Wszystkie <ArrowRight size={14} /></Link>}>
-        {upcoming.length === 0 ? <div className="muted">Brak nadchodzących terminów w ciągu 14 dni. Odpocznij z psami.</div> : (
-          <div className="list">{upcoming.map((u, i) => (
-            <Link key={i} to={u.to} className="list-item" style={{ color: 'inherit' }}>
-              <div><div className="title">{u.title}</div><small>{u.sub}</small></div>
-              <span className={`badge ${u.date < t ? 'danger' : daysBetween(t, u.date) <= 3 ? 'warn' : ''}`}>{u.date < t ? 'Zaległe' : daysBetween(t, u.date) === 0 ? 'Dziś' : daysBetween(t, u.date) === 1 ? 'Jutro' : fmtDate(u.date)}</span>
-            </Link>))}</div>
-        )}
-      </Card>
-
-      <div className="grid cols-2">
-        <a className="tile" onClick={() => nav('/psy?sex=female')}><div className="ico"><Dog size={24} /></div><div><div className="value">{females}</div><div className="label">{females === 1 ? 'Suka' : 'Suki'}</div></div></a>
-        <a className="tile" onClick={() => nav('/psy?sex=male')}><div className="ico"><Dog size={24} /></div><div><div className="value">{males}</div><div className="label">{males === 1 ? 'Pies' : 'Psy'}</div></div></a>
-        {breeder && <a className="tile" onClick={() => nav('/mioty')}><div className="ico"><PawPrint size={24} /></div><div><div className="value">{state.litters.length}</div><div className="label">{state.litters.length === 1 ? 'Miot' : 'Mioty'} · {state.puppies.length} szczeniąt</div></div></a>}
-        <a className="tile" onClick={() => nav('/finanse')}><div className="ico"><Wallet size={24} /></div><div><div className="value">{Math.round(monthExp)} zł</div><div className="label">Wydatki w tym miesiącu</div></div></a>
-        {!breeder && <a className="tile" onClick={() => nav('/psy')}><div className="ico"><Trophy size={24} /></div><div><div className="value">{state.shows.length}</div><div className="label">Wystawy</div></div></a>}
+      <div className="chips-row">
+        <Link to="/psy" className="chip"><Dog size={14} /> {state.dogs.length} {state.dogs.length === 1 ? 'pies' : state.dogs.length < 5 ? 'psy' : 'psów'}</Link>
+        {breeder && <Link to="/mioty" className="chip"><Baby size={14} /> {state.puppies.length} {state.puppies.length === 1 ? 'szczenię' : state.puppies.length < 5 ? 'szczenięta' : 'szczeniąt'}</Link>}
+        {activePreg.length > 0 && <Link to={`/ciaza/${activePreg[0].id}`} className="chip warm"><Heart size={14} /> {activePreg.length === 1 ? 'ciąża' : `${activePreg.length} ciąże`} · {daysBetween(activePreg[0].matings[0].date, t) + 1}. dzień</Link>}
+        <Link to="/finanse" className="chip"><Wallet size={14} /> {fmtMoney(monthExp)} w {MONTHS[new Date().getMonth()]}</Link>
+        <Link to="/przypomnienia" className="chip"><Bell size={14} /> {upcoming.length} do zrobienia</Link>
       </div>
 
-      {breeder && activePreg.length > 0 && activePreg.map(b => { const f = state.dogs.find(d => d.id === b.femaleId); const day = daysBetween(b.matings[0].date, t) + 1; const expected = addDays(b.matings[0].date, 62); return (
-        <Link key={b.id} to={`/ciaza/${b.id}`} className="hero" style={{ display: 'block' }}>
-          <div className="row between"><div className="muted" style={{ fontWeight: 800 }}><Heart size={14} style={{ verticalAlign: -2 }} /> Trwająca ciąża · {f?.name} × {b.maleName}</div><ArrowRight size={18} /></div>
-          <div style={{ fontSize: 24, fontWeight: 900, margin: '6px 0' }}>{day}. dzień · {Math.ceil(day / 7)}. tydzień</div>
-          <div className="progress"><div style={{ width: `${Math.min(100, (day / 63) * 100)}%` }} /></div>
-          <div className="muted" style={{ marginTop: 6, fontWeight: 700 }}>Przewidywany poród: {fmtDate(expected)} · zostało {63 - day} dni</div>
-        </Link>); })}
+      <div className="bubble-wrap">
+        <div className="bubble-ava"><PawPrint size={20} /></div>
+        <div className="bubble">{bubble}</div>
+      </div>
 
       <div>
-        <h3>Na skróty</h3>
-        <div className="grid cols-3">
-          <Card onClick={() => nav('/psy')} icon={<Trophy size={18} />} title="Osiągnięcia"><div className="muted">{state.shows.length} wystaw · {state.championships.length} championatów</div></Card>
-          {breeder && <Card onClick={() => nav('/dokumenty')} icon={<FileText size={18} />} title="Dokumenty"><div className="muted">Umowy, protokoły, karta miotu</div></Card>}
-          <Card onClick={() => nav('/raporty')} icon={<BarChart3 size={18} />} title="Raporty"><div className="muted">Zestawienia i PDF</div></Card>
-          <Card onClick={() => nav('/przypomnienia')} icon={<Bell size={18} />} title="Przypomnienia"><div className="muted">{state.reminders.filter(r => !r.done).length} aktywnych</div></Card>
-          <Card onClick={() => nav('/skanuj')} icon={<QrCode size={18} />} title="Odbierz psa"><div className="muted">Zeskanuj kartę przekazania</div></Card>
-          {breeder && <Card onClick={() => nav('/psy?sex=female')} icon={<Flower2 size={18} />} title="Cieczki"><div className="muted">{heatSoon.length ? `${heatSoon.length} spodziewane wkrótce` : 'Kalendarz i prognoza'}</div></Card>}
+        <h3 style={{ marginBottom: 10 }}>Czego dziś potrzebujesz?</h3>
+        <div className="quick">
+          {breeder && latestLitter && <a onClick={() => nav(`/mioty/${latestLitter.id}?weigh=1`)}><div className="ico"><Scale size={22} /></div>Zważ miot</a>}
+          <a onClick={() => nav('/psy?health=1')}><div className="ico"><Stethoscope size={22} /></div>Wpis zdrowotny</a>
+          <a onClick={() => nav('/finanse?add=1')}><div className="ico"><Wallet size={22} /></div>Wydatek</a>
+          <a onClick={() => nav('/przypomnienia?add=1')}><div className="ico"><Bell size={22} /></div>Nowy termin</a>
+          {!(breeder && latestLitter) && <a onClick={() => nav('/skanuj')}><div className="ico"><QrCode size={22} /></div>Odbierz psa</a>}
         </div>
+      </div>
+
+      <div className="feed">
+        {breeder && activePreg.map(b => { const f = state.dogs.find(d => d.id === b.femaleId); const day = daysBetween(b.matings[0].date, t) + 1; const expected = addDays(b.matings[0].date, 62); return (
+          <div key={b.id} className="fc dark span2" onClick={() => nav(`/ciaza/${b.id}`)}>
+            <Heart className="art" size={190} />
+            <div className="kicker">Ciąża · {f?.name} × {b.maleName}</div>
+            <h2>{day}. dzień, {Math.ceil(day / 7)}. tydzień</h2>
+            <div className="progress"><div style={{ width: `${Math.min(100, (day / 63) * 100)}%` }} /></div>
+            <p>Poród spodziewany ok. {fmtDate(expected)}. Zostało {Math.max(0, 63 - day)} dni.</p>
+            <span className="cta">Otwórz monitor ciąży <ArrowRight size={16} /></span>
+          </div>); })}
+
+        <div className={`fc sun ${upcoming.length ? '' : 'calm'}`} onClick={() => nav(upcoming[0]?.to ?? '/przypomnienia')}>
+          <Bell className="art" size={190} />
+          <div className="kicker">Najbliższy termin</div>
+          {upcoming.length ? (<>
+            <h2>{upcoming[0].title}</h2>
+            <p>{upcoming[0].sub ? `${upcoming[0].sub} · ` : ''}{whenLabel(upcoming[0].date)}, {fmtDate(upcoming[0].date)}</p>
+            {upcoming.length > 1 && <div className="mini-list">{upcoming.slice(1, 4).map((u, i) => <div key={i}><span>{u.title}</span><b>{whenLabel(u.date)}</b></div>)}</div>}
+          </>) : (<><h2>Spokojne dwa tygodnie</h2><p>Nie masz żadnych terminów. Dobry moment na spacer.</p></>)}
+          <span className="cta" onClick={e => { e.stopPropagation(); nav('/przypomnienia'); }}>Wszystkie terminy <ArrowRight size={16} /></span>
+        </div>
+
+        {breeder && latestLitter && (
+          <div className="fc green" onClick={() => nav(`/mioty/${latestLitter.id}`)}>
+            <PawPrint className="art" size={190} />
+            <div className="kicker">{latestLitter.name} · {daysBetween(latestLitter.birthDate, t)}. dzień</div>
+            <h2>{litterPups.length} {litterPups.length === 1 ? 'szczenię' : litterPups.length < 5 ? 'szczenięta' : 'szczeniąt'}</h2>
+            <p>{lastWeighDate ? `Ostatnie ważenie ${whenLabel(lastWeighDate.slice(0, 10)) === 'zaległe' ? daysBetween(lastWeighDate.slice(0, 10), t) + ' dni temu' : whenLabel(lastWeighDate.slice(0, 10))}.` : 'Jeszcze bez pomiarów wagi.'} {latestLitter.motherName} × {latestLitter.fatherName}</p>
+            <div className="pups">{litterPups.slice(0, 6).map(x => { const w = lastWeight(x.id); return <span key={x.id} className="pup"><i style={{ background: x.markerColor }} />{x.name}{w ? ` · ${w.grams} g` : ''}</span>; })}</div>
+            <span className="cta" onClick={e => { e.stopPropagation(); nav(`/mioty/${latestLitter.id}?weigh=1`); }}><Scale size={16} /> Zważ miot</span>
+          </div>)}
+
+        <div className="fc blue" onClick={() => nav('/finanse')}>
+          <Wallet className="art" size={190} />
+          <div className="kicker">Finanse w {MONTHS[new Date().getMonth()]}</div>
+          <h2>{fmtMoney(monthInc - monthExp)}</h2>
+          <p>Przychody {fmtMoney(monthInc)} · koszty {fmtMoney(monthExp)}{breeder ? '. Rentowność każdego miotu liczy się sama.' : '.'}</p>
+          <span className="cta">Finanse <ArrowRight size={16} /></span>
+        </div>
+
+        {breeder && (heatSoon.length ? (
+          <div className="fc rose" onClick={() => nav(`/psy/${heatSoon[0].d.id}?tab=breeding`)}>
+            <Flower2 className="art" size={190} />
+            <div className="kicker">Prognoza cieczki</div>
+            <h2>{heatSoon[0].d.name} ok. {fmtDate(heatSoon[0].s!.next)}</h2>
+            <p>Okno {fmtDate(heatSoon[0].s!.nextFrom)} – {fmtDate(heatSoon[0].s!.nextTo)}. Dni płodne prognozujemy od 9. do 15. dnia cieczki.</p>
+            <span className="cta">Kalendarz cieczek <ArrowRight size={16} /></span>
+          </div>) : (
+          <div className="fc rose" onClick={() => nav('/psy?sex=female')}>
+            <Flower2 className="art" size={190} />
+            <div className="kicker">Cieczki</div>
+            <h2>Zapisz cieczkę, a resztę policzymy</h2>
+            <p>Po dwóch wpisach Dogpilot prognozuje następną cieczkę i okno płodne każdej suki.</p>
+            <span className="cta">Moje suki <ArrowRight size={16} /></span>
+          </div>))}
+
+        <div className="fc lilac" onClick={() => nav('/psy')}>
+          <Trophy className="art" size={190} />
+          <div className="kicker">Osiągnięcia</div>
+          <h2>{state.shows.length} {state.shows.length === 1 ? 'wystawa' : state.shows.length < 5 ? 'wystawy' : 'wystaw'}, {state.championships.length} {state.championships.length === 1 ? 'championat' : state.championships.length < 5 ? 'championaty' : 'championatów'}</h2>
+          <p>Wyniki, certyfikaty i koszty wystaw w profilu każdego psa.</p>
+          <span className="cta">Profile psów <ArrowRight size={16} /></span>
+        </div>
+
+        {breeder && (
+          <div className="fc green" onClick={() => nav('/dokumenty')}>
+            <FileText className="art" size={190} />
+            <div className="kicker">Dokumenty</div>
+            <h2>Umowa gotowa w minutę</h2>
+            <p>Umowa sprzedaży, protokół przekazania, karta miotu i karta zdrowia wypełniają się Twoimi danymi.</p>
+            <span className="cta">Przygotuj dokument <ArrowRight size={16} /></span>
+          </div>)}
+
+        {breeder && litterPups.length > 0 && (
+          <div className="fc sun" onClick={() => nav(`/szczenieta/${litterPups[0].id}?tab=pawid`)}>
+            <Globe className="art" size={190} />
+            <div className="kicker">Dla nabywców</div>
+            <h2>Strona szczenięcia jednym linkiem</h2>
+            <p>Nowy opiekun widzi wagę, profilaktykę i odliczanie do odbioru. Mniej pytań, więcej zaufania.</p>
+            <span className="cta">Zobacz przykład <ArrowRight size={16} /></span>
+          </div>)}
+
+        {!breeder && (
+          <div className="fc green" onClick={() => nav('/skanuj')}>
+            <QrCode className="art" size={190} />
+            <div className="kicker">Odbiór psa</div>
+            <h2>Zeskanuj kartę przekazania</h2>
+            <p>Historia wag, szczepienia i zalecenia od hodowcy trafią do profilu Twojego psa.</p>
+            <span className="cta">Odbierz psa <ArrowRight size={16} /></span>
+          </div>)}
+      </div>
+
+      <div className="feed-end">
+        <Sparkles size={22} />
+        <div><b>To na razie tyle.</b><div className="muted">Zaglądaj tu codziennie. Nowe terminy i ważenia pojawią się same.</div></div>
+        <Link to="/szukaj" className="muted" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>Szukaj <ChevronRight size={16} /></Link>
       </div>
     </div>
   );
