@@ -1,5 +1,5 @@
 import { useMemo, useState, type ReactNode } from 'react';
-import { Pencil, Plus, Cake, Syringe, Trophy, Heart, PawPrint, Scale, Receipt, Calendar, Flower2, GitBranch, Award, Medal } from 'lucide-react';
+import { Pencil, Plus, Cake, Syringe, Trophy, Heart, PawPrint, Scale, Receipt, Calendar, Flower2, GitBranch, Award, Medal, CalendarDays } from 'lucide-react';
 import { buildPedigree, coefficientOfInbreeding, type PedNode } from '../app/pedigree';
 import { heatStats } from '../app/heat';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
@@ -146,7 +146,7 @@ export default function DogProfile() {
         {sub === 'shows' && (
           <>
             <div className="row between no-print">
-              <select value={year} onChange={e => setYear(e.target.value)} style={{ padding: 8, borderRadius: 8, border: '1px solid var(--border)' }}><option value="all">Rok: wszystkie</option>{years.map(y => <option key={y} value={y}>Rok: {y}</option>)}</select>
+              <div className="row" style={{ gap: 8 }}><select value={year} onChange={e => setYear(e.target.value)} style={{ padding: 8, borderRadius: 8, border: '1px solid var(--border)' }}><option value="all">Rok: wszystkie</option>{years.map(y => <option key={y} value={y}>Rok: {y}</option>)}</select><Link to="/wystawy" className="btn secondary sm"><CalendarDays size={16} /> Kalendarz wystaw</Link></div>
               <button className="btn" onClick={() => { if (!limits.canAddShow()) { toast('Plan FREE: maks. 5 wystaw. Przejdź na PRO.'); return; } setEditShow({ id: uid(), dogId: dog!.id, country: 'Polska', city: '', rank: SHOW_RANKS[0], date: today(), dogClass: SHOW_CLASSES[4] }); }}><Plus size={18} /> Dodaj wystawę</button>
             </div>
             {!limits.isPro && shows.length >= 5 && <div className="card soft">Limit 5 wystaw w planie FREE. <ProBadge /> znosi limit.</div>}

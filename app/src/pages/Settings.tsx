@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
-import { Users, Download, Upload, Moon, Sun, Shield, Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Users, Download, Upload, Moon, Sun, Shield, Plus, CalendarDays, Bell, QrCode, FileText } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Card, Field, ProBadge, Switch, DelBtn, Modal } from '../components/ui';
 import { PhotoPicker } from '../components/ui';
@@ -30,6 +31,12 @@ export default function Settings() {
   return (
     <div className="stack">
       <ArtHeader compact tone="slate" icon={<ArtIcon size={24} />} title="Ustawienia" sub="Profil, zespół, plan i dane" />
+      <div className="chips-row only-mobile" aria-label="Na skróty">
+        <Link to="/wystawy" className="chip"><CalendarDays size={14} /> Kalendarz wystaw</Link>
+        <Link to="/przypomnienia" className="chip"><Bell size={14} /> Przypomnienia</Link>
+        {p.module === 'breeder' && <Link to="/dokumenty" className="chip"><FileText size={14} /> Dokumenty</Link>}
+        <Link to="/skanuj" className="chip"><QrCode size={14} /> Odbierz psa</Link>
+      </div>
       <Card title="Wygląd" icon={p.darkMode ? <Moon size={18} /> : <Sun size={18} />}>
         <div className="row between"><div><b>Tryb ciemny</b><div className="muted">Oszczędza wzrok wieczorem przy porodzie.</div></div><Switch on={!!p.darkMode} onChange={v => setProfile({ darkMode: v })} label="Tryb ciemny" /></div>
       </Card>

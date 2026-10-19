@@ -538,3 +538,20 @@ Na kanwie z prototypem klikalnym (wariant A) doszły cztery artboardy odpowiadaj
 | Raporty (13 pozycji, w tym szczepienia i pasożyty osobno dla wszystkich / suk / reproduktorów) | moduł Raporty, płaska lista | dolny pasek → **Raporty** (`A-Raporty`) | jeden przełącznik zakresu (*Całe stado* / *Suki* / *Reproduktory*) zamiast trzech osobnych pozycji na liście; raporty pogrupowane (Hodowla, Zdrowie, Wystawy, Finanse) z przyciskiem PDF i logo hodowli w nagłówku wydruku |
 
 Dolny pasek ma teraz sześć pozycji: Start · Psy · „+” · Mioty · Finanse · Raporty (pozycja „Więcej” zniknęła, Karta przekazania jest dostępna z profilu miotu i szczenięcia).
+
+## 21. Kalendarz wystaw (terminarz ZKwP 2026)
+
+**Skąd dane.** Lista wystaw na wystawy.net jest dostępna dopiero po zalogowaniu, a regulamin tego systemu (§ 5 pkt 10) zabrania pobierania jego bazy danych. Dlatego źródłem jest publiczny terminarz Związku Kynologicznego w Polsce: `zkwp.pl/wystawy.php?rok=2026` (173 wystawy, stan na 19.10.2026; robots.txt pozwala na odczyt). W prototypie dane są zapisane w pliku `app/src/app/shows2026.ts`. Województwo dopisaliśmy na podstawie miejscowości lub oddziału ZKwP; dla czterech miejscowości klubowych zostało puste.
+
+**Ekran `/wystawy` w aplikacji:**
+- nagłówek z gradientem: liczba wystaw w roku, ile jeszcze przed nami, najbliższa wystawa, liczba zaplanowanych startów;
+- zakładki *Nadchodzące* / *Cały rok 2026* / *Moje plany*;
+- pasek 12 miesięcy z wykresem liczby wystaw (kliknięcie filtruje miesiąc);
+- wyszukiwarka (miasto, oddział, rasa), filtr województwa i rodzaju (CACIB, krajowe, klubowe, specjalistyczne, psy myśliwskie);
+- wiersz wystawy: kafelek z datą i dniem tygodnia w kolorze rodzaju wystawy, oddział, województwo, odznaki (DUO CACIB, nominacja na Crufts, odwołana), „za 3 tyg.”;
+- akcje: **gwiazdka** dodaje do planu startów (zapis w profilu), **dzwonek** tworzy przypomnienie 30 dni przed wystawą, **ⓘ** otwiera stronę organizatora, **Zgłoś** otwiera wystawy.net;
+- wejścia: menu boczne, szybka akcja „Wystawy” i karta „Najbliższa wystawa / Twój najbliższy start” na Starcie, przycisk w zakładce Osiągnięcia psa, skróty na ekranie „Więcej” w wersji mobilnej.
+
+**Kanwa:** artboard *A · Kalendarz wystaw* (pełne dane 2026, interaktywne zakładki, miesiące, rodzaje, gwiazdka, dzwonek), wejście z szybkiej akcji „Wystawy” na Starcie i z zakładki Osiągnięcia psa.
+
+**Wersja docelowa:** backend raz dziennie pobiera terminarz ZKwP na bieżący i kolejny rok, zapisuje w bazie i udostępnia aplikacji przez API. Przed uruchomieniem warto uzyskać zgodę ZKwP na korzystanie z terminarza i zapytać operatora wystawy.net (biuro@wystawy.net) o API lub linki prowadzące prosto do zgłoszenia na konkretną wystawę. Terminów zgłoszeń, sędziów i opłat terminarz ZKwP nie podaje.

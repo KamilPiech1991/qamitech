@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Home, Dog, PawPrint, Wallet, BarChart3, Settings, Bell, QrCode, Plus, Scale, Syringe, Receipt, AlarmClock, FileText, Search, Moon, Sun, Trophy, ExternalLink } from 'lucide-react';
+import { Home, Dog, PawPrint, Wallet, BarChart3, Settings, Bell, QrCode, Plus, Scale, Syringe, Receipt, AlarmClock, FileText, Search, Moon, Sun, Trophy, ExternalLink, CalendarDays } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Wordmark } from './ui';
 
@@ -20,6 +20,7 @@ export default function Layout() {
   const side = [
     main[0], main[1], ...(breeder ? [main[2], { to: '/finanse', label: 'Finanse', ico: <Wallet size={22} /> }] : [main[2]]),
     { to: '/raporty', label: 'Raporty', ico: <BarChart3 size={22} /> },
+    { to: '/wystawy', label: 'Kalendarz wystaw', ico: <CalendarDays size={22} /> },
     ...(breeder ? [{ to: '/dokumenty', label: 'Dokumenty', ico: <FileText size={22} /> }] : []),
     { to: '/przypomnienia', label: 'Przypomnienia', ico: <Bell size={22} /> },
     { to: '/skanuj', label: 'Odbierz psa', ico: <QrCode size={22} /> },

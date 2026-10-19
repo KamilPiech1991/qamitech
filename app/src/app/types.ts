@@ -241,6 +241,7 @@ export interface Profile {
   darkMode?: boolean;
   logo?: string; // logo hodowli (data URL)
   authProvider?: 'email' | 'google'; // prototyp: logowanie symulowane
+  plannedShows?: string[]; // id wystaw z kalendarza ZKwP, na które hodowca planuje start
 }
 
 export interface AppState {

@@ -375,3 +375,52 @@ table.tbl td a { font-weight: 700; }
 .auth-or::before, .auth-or::after { content: ""; flex: 1; height: 1px; background: var(--border); }
 .btn.google { width: 100%; height: 48px; background: var(--surface); color: var(--text); border: 2px solid var(--border); box-shadow: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
 .btn.google:hover { background: var(--surface-2); border-color: var(--soft-strong); transform: translateY(-1px); }
+
+/* ===== Kalendarz wystaw (terminarz ZKwP) ===== */
+.art-hero .hero-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.art-hero .hero-chips .badge { padding: 5px 11px; font-size: 12px; }
+.show-cal .next-plan { display: flex; align-items: center; gap: 14px; cursor: pointer; border-left: 5px solid var(--accent, #F2B84B); }
+.date-tile { width: 58px; min-width: 58px; height: 58px; border-radius: 18px; background: var(--soft); color: var(--primary-text); display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; }
+.date-tile b { font-size: 19px; font-weight: 900; letter-spacing: -.4px; white-space: nowrap; }
+.date-tile small { font-size: 11px; font-weight: 800; margin-top: 4px; opacity: .8; }
+.date-tile.sun { background: linear-gradient(135deg, #F2B84B, #C2410C); color: #fff; }
+.month-strip { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 10px 8px 8px; }
+.month-strip button { border: 0; background: transparent; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 2px 0; border-radius: 12px; font: inherit; color: var(--text); transition: background .15s; }
+.month-strip button:hover:not(:disabled) { background: var(--surface-2); }
+.month-strip button:disabled { cursor: default; opacity: .45; }
+.month-strip .bar { width: 14px; height: 40px; border-radius: 7px; background: var(--surface-2); display: flex; align-items: flex-end; overflow: hidden; }
+.month-strip .bar span { display: block; width: 100%; border-radius: 7px; background: var(--soft-strong); transition: height .3s var(--ease); }
+.month-strip button.on .bar span { background: var(--primary); }
+.month-strip .m { font-size: 11px; font-weight: 800; }
+.month-strip .n { font-size: 10px; font-weight: 700; color: var(--muted); }
+.month-strip button.on .m { color: var(--primary-text); }
+.show-cal .month-h { margin: 8px 0 0; display: flex; align-items: baseline; gap: 8px; }
+.show-cal .month-h .muted { font-size: 13px; font-weight: 700; }
+.show-row { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 20px; background: var(--surface); border: 1px solid var(--border); border-left: 5px solid var(--soft-strong); animation: fadeUp .3s var(--ease) both; }
+.show-row.k-cacib { border-left-color: #4F8EF7; } .show-row.k-cacib .date-tile { background: #E3EDFE; color: #1E3A8A; }
+.show-row.k-klubowa { border-left-color: #B26BF0; } .show-row.k-klubowa .date-tile { background: #F2E6FD; color: #6B21A8; }
+.show-row.k-specjalistyczna { border-left-color: #F27AB0; } .show-row.k-specjalistyczna .date-tile { background: #FDE7F1; color: #9D174D; }
+.show-row.k-inna { border-left-color: #F2B84B; } .show-row.k-inna .date-tile { background: #FDF1D8; color: #92400E; }
+.show-row.planned { box-shadow: 0 0 0 2px var(--primary) inset; }
+.show-row.past { opacity: .62; }
+.show-row.cancelled .city { text-decoration: line-through; }
+.show-row .info { flex: 1; min-width: 0; }
+.show-row .city { font-weight: 900; font-size: 16px; }
+.show-row .kind { font-size: 13px; font-weight: 700; color: var(--muted); }
+.show-row .meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 5px; font-size: 12px; color: var(--muted); }
+.show-row .meta > span:first-child { display: inline-flex; align-items: center; gap: 3px; }
+.show-row .acts { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.icon-btn.star-on { color: #E0A11B; }
+[data-theme="dark"] .show-row.k-cacib .date-tile { background: #1E2B4A; color: #A9C6FB; }
+[data-theme="dark"] .show-row.k-klubowa .date-tile { background: #2E2140; color: #D5B3F7; }
+[data-theme="dark"] .show-row.k-specjalistyczna .date-tile { background: #3A1E2C; color: #F7B3D2; }
+[data-theme="dark"] .show-row.k-inna .date-tile { background: #3A2E16; color: #F5D28E; }
+@media (max-width: 640px) {
+  .show-row { flex-wrap: wrap; }
+  .show-row .acts { width: 100%; justify-content: flex-end; border-top: 1px dashed var(--border); padding-top: 8px; }
+  .month-strip { gap: 2px; padding: 8px 4px 6px; }
+  .month-strip .bar { width: 10px; height: 32px; }
+  .month-strip .m { font-size: 10px; }
+}
+.show-cal .region-select { flex: 1 1 180px; height: 44px; padding: 0 12px; border-radius: 14px; border: 2px solid var(--border); background: var(--surface); font-weight: 700; font-size: 14px; cursor: pointer; }
+.show-cal .region-select:focus { outline: none; border-color: var(--primary-text); }

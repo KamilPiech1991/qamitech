@@ -17,6 +17,7 @@ import Scan from './pages/Scan';
 import Search from './pages/Search';
 import Documents from './pages/Documents';
 import Portal from './pages/Portal';
+import ShowCalendar from './pages/ShowCalendar';
 
 export default function App() {
   const { state } = useStore();
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/finanse" element={<Finance />} />
         <Route path="/raporty" element={<Reports />} />
         <Route path="/raporty/:kind" element={<Reports />} />
+        <Route path="/wystawy" element={<ShowCalendar />} />
         <Route path="/przypomnienia" element={<Reminders />} />
         <Route path="/ustawienia" element={<Settings />} />
         <Route path="/skanuj" element={<Scan />} />

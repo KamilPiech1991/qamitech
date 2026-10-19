@@ -1,9 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Bell, Dog, PawPrint, Trophy, Wallet, QrCode, Heart, FileText, Flower2, ArrowRight, Scale, Stethoscope, Globe, Sparkles, ChevronRight, Baby } from 'lucide-react';
+import { Bell, Dog, PawPrint, Trophy, Wallet, QrCode, Heart, FileText, Flower2, ArrowRight, Scale, Stethoscope, Globe, Sparkles, ChevronRight, Baby, CalendarDays } from 'lucide-react';
 import { useStore } from '../app/store';
 import { addDays, daysBetween, fmtDate, fmtMoney, today } from '../app/format';
 import { HEALTH_LABEL } from '../app/types';
 import { heatStats } from '../app/heat';
+import { SHOWS_2026 } from '../app/shows2026';
 
 const TAGLINES = ['Co dziś w hodowli?', 'Wszystkie ogony policzone?', 'Miski pełne, plan gotowy?', 'Dobry dzień na spacer i ważenie.', 'Łapy w górę, zaczynamy!'];
 const MONTHS = ['styczniu', 'lutym', 'marcu', 'kwietniu', 'maju', 'czerwcu', 'lipcu', 'sierpniu', 'wrześniu', 'październiku', 'listopadzie', 'grudniu'];
@@ -78,6 +79,7 @@ export default function Dashboard() {
           <a onClick={() => nav('/psy?health=1')}><div className="ico"><Stethoscope size={22} /></div>Wpis zdrowotny</a>
           <a onClick={() => nav('/finanse?add=1')}><div className="ico"><Wallet size={22} /></div>Wydatek</a>
           <a onClick={() => nav('/przypomnienia?add=1')}><div className="ico"><Bell size={22} /></div>Nowy termin</a>
+          <a onClick={() => nav('/wystawy')}><div className="ico"><CalendarDays size={22} /></div>Wystawy</a>
           {!(breeder && latestLitter) && <a onClick={() => nav('/skanuj')}><div className="ico"><QrCode size={22} /></div>Odbierz psa</a>}
         </div>
       </div>
@@ -138,6 +140,15 @@ export default function Dashboard() {
             <p>Po dwóch wpisach Dogpilot prognozuje następną cieczkę i okno płodne każdej suki.</p>
             <span className="cta">Moje suki <ArrowRight size={16} /></span>
           </div>))}
+
+        {(() => { const plannedIds = state.profile.plannedShows ?? []; const mine = SHOWS_2026.find(s => plannedIds.includes(s.id) && s.dateTo >= t); const next = mine ?? SHOWS_2026.find(s => s.dateTo >= t && !s.cancelled); if (!next) return null; const left = daysBetween(t, next.dateFrom); return (
+          <div className="fc sun" onClick={() => nav(mine ? '/wystawy?view=mine' : '/wystawy')}>
+            <CalendarDays className="art" size={190} />
+            <div className="kicker">{mine ? 'Twój najbliższy start' : 'Najbliższa wystawa ZKwP'}</div>
+            <h2>{next.city}, {fmtDate(next.dateFrom)}</h2>
+            <p>{next.kindLabel}{next.extra ? ` · ${next.extra}` : ''}. {left > 0 ? `Zostało ${left} dni.` : 'Trwa teraz.'}</p>
+            <span className="cta">Kalendarz wystaw <ArrowRight size={16} /></span>
+          </div>); })()}
 
         <div className="fc lilac" onClick={() => nav('/psy')}>
           <Trophy className="art" size={190} />
