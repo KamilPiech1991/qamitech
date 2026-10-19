@@ -13,6 +13,8 @@ npm run preview   # podgląd builda
 Na ekranie startowym wybierz moduł (Właściciel / Hodowca) lub kliknij **„Załaduj dane demonstracyjne”**.
 
 ## Zakres
+Ekran powitalny → wybór trybu („Mam psiaka” / „Prowadzę hodowlę”) → **logowanie lub bezpłatna rejestracja** (e-mail i hasło z podglądem, walidacja, przycisk Google) → dane hodowli. W prototypie logowanie jest symulowane: e-mail i sposób logowania zapisują się w profilu, backend (Supabase Auth z logowaniem Google) wejdzie w fazie 2.
+
 Psy i ich dane · zdrowie z przypomnieniami · rozród (plany kryć, progesteron, USG, RTG) i **monitor ciąży** · krycia reproduktora · mioty, szczenięta, wagi, rozwój miotu, plan odchowu, notatnik · **karta przekazania** (karta + kod QR + odbiór psa przez skan lub wklejenie) · pakiet na nowy dom · wystawy, championaty, osiągnięcia · finanse (bilans, kategorie, rejestr, analiza kosztów, wykres) · raporty do PDF (druk) · przypomnienia · plan FREE/PRO z limitami · backup JSON · dwa tryby pracy („Mam psa” / „Prowadzę hodowlę”).
 
 ## Funkcje, których konkurent nie ma (nasze wyróżniki)

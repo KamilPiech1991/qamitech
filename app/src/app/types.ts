@@ -240,6 +240,7 @@ export interface Profile {
   onboarded: boolean;
   darkMode?: boolean;
   logo?: string; // logo hodowli (data URL)
+  authProvider?: 'email' | 'google'; // prototyp: logowanie symulowane
 }
 
 export interface AppState {

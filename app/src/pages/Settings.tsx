@@ -55,9 +55,9 @@ export default function Settings() {
       )}
 
       <Card title="Tryb pracy">
-        <p className="muted">Mam psa: zdrowie, wydatki, przypomnienia. Prowadzę hodowlę: dodatkowo rozród, mioty, szczenięta, karty przekazania, dokumenty i raporty hodowlane.</p>
+        <p className="muted">Mam psiaka: zdrowie, wydatki, przypomnienia. Prowadzę hodowlę: dodatkowo rozród, mioty, szczenięta, karty przekazania, dokumenty i raporty hodowlane.</p>
         <div className="row">
-          <button className={`btn ${p.module === 'owner' ? '' : 'secondary'}`} onClick={() => setProfile({ module: 'owner' })}>Mam psa</button>
+          <button className={`btn ${p.module === 'owner' ? '' : 'secondary'}`} onClick={() => setProfile({ module: 'owner' })}>Mam psiaka</button>
           <button className={`btn ${p.module === 'breeder' ? '' : 'secondary'}`} onClick={() => setProfile({ module: 'breeder' })}>Prowadzę hodowlę</button>
         </div>
       </Card>

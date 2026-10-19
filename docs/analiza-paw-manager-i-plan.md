@@ -396,6 +396,8 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 
 **Metryka i rejestr miotów, logo (19.10.2026):** ekran miotu ma zakładkę „Metryka miotu” (oznaczenie, litera, rasa, nr zgłoszenia, data przeglądu, liczby szczeniąt wg płci i statusu, średnia waga urodzeniowa, przekazania, rodzice z linkami, plan krycia, przebieg porodu, postęp odchowu, link do karty miotu PDF). Ekran Mioty ma widok „Rejestr miotów”: tabela wszystkich miotów z filtrami (szukaj, rok, matka), podsumowaniem (mioty, szczenięta, średnia wielkość miotu, przekazania), zestawieniem po latach, eksportem CSV i drukiem. Hodowca może wgrać logo hodowli w Ustawieniach; logo pojawia się na Starcie, w pasku bocznym, na dokumentach, raportach, karcie przekazania i stronie dla nabywcy.
 
+**Logowanie (19.10.2026):** po wyborze trybu pojawia się panel z zakładkami „Załóż bezpłatne konto” / „Mam już konto”: e-mail, hasło z podglądem i walidacją (min. 8 znaków przy rejestracji), „Nie pamiętasz hasła?”, przycisk logowania kontem Google, nota o regulaminie. Prototyp symuluje logowanie (zapisuje e-mail i dostawcę w profilu); produkcyjnie: Supabase Auth (e-mail + Google OAuth), reset hasła e-mailem, sesja na urządzeniach.
+
 **Świadome uproszczenia prototypu (do fazy 2–3):** dane w localStorage jednej przeglądarki (brak kont i synchronizacji), PDF przez okno drukowania przeglądarki, QR koduje pełne dane (produkcyjnie: token), brak zdjęć szczeniąt, brak push, brak wielojęzyczności, nazwa i kolorystyka robocze.
 
 ---
