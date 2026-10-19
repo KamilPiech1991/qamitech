@@ -407,7 +407,7 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 
 ## 17. Pytania do Ciebie (potrzebne do dalszych prac)
 
-1. **Nazwa i marka** – „Kennelo” to placeholder. Propozycje: **Sfora**, **Łapka**, a międzynarodowe **Pawly**, **Breedly**, **Pawfolio** (patrz sekcja 18). Masz nazwę/domenę?
+1. **Nazwa i marka** – „Kennelo” to placeholder. Propozycje: **Sfora**, **Łapka**, **Pawly**, **Breedly**, a z „pies/dog” w nazwie **Dogstry** i **Psia Księga** (patrz sekcja 18). Masz nazwę/domenę?
 2. **Kto buduje** – Qamitech wewnętrznie (zespół webowy → rekomendacja React + Capacitor) czy zlecenie zewnętrzne (wtedy Flutter też w grze)?
 3. **Budżet i termin** – czy plan ~21 tygodni do 1.0 (ok. 155 roboczodni) jest akceptowalny, czy celujemy w „wąskie 1.0” w 10–12 tygodni (bez iOS lub bez wyróżników)?
 4. **iOS od startu** – potwierdzasz? (wymaga Apple Developer Program 99 USD/rok i Maca do buildów lub usługi chmurowej).
@@ -433,4 +433,38 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 | **Pawfolio** (międzynarodowa) | „paw” + „portfolio”: dokumentacja psa od rodowodu po karty zdrowia i Paw ID – spójne z naszymi wyróżnikami (dokumenty, rodowód, portal nabywcy) | Dłuższa i trudniejsza do zapisania ze słuchu; w Polsce wymaga krótkiego objaśnienia |
 
 Rekomendacja: jeśli start tylko w Polsce – **Sfora** (najmocniejsza marka); jeśli od początku rynek EN – **Kennelo** lub **Pawly** (po weryfikacji znaków towarowych). Przed decyzją: sprawdzić dostępność domen (.pl, .com, .app), nazw w Google Play / App Store i baz znaków towarowych.
+
+### 18.1. Nazwy z „pies” lub „dog” (sprawdzone w wyszukiwarce, 19.10.2026)
+
+Szybki przegląd sieci, sklepów i Instagrama pod kątem istniejących aplikacji dla psów. To nie jest badanie znaków towarowych.
+
+**Polskie (pies):**
+
+| Nazwa | Znaczenie i zalety | Co znaleziono | Ocena |
+|---|---|---|---|
+| **Psia Księga** | „Księga” kojarzy się z księgą hodowlaną i rodowodem; poważna, ale ciepła | Tylko książka z 1976 r., brak aplikacji | Mocna na rynek PL; domena bez polskich znaków (psiaksiega.pl) |
+| **Psiarnia** | Potocznie „miejsce z wieloma psami”, czyli hodowla; krótka i zapamiętywalna | Album muzyczny i paczka do Minecrafta, brak aplikacji | Ryzyko: w slangu to też określenie policji, bywa nacechowana negatywnie |
+
+**Angielskie i międzynarodowe (dog):**
+
+| Nazwa | Znaczenie i zalety | Co znaleziono | Ocena |
+|---|---|---|---|
+| **Dogstry** | „dog” + „ancestry/registry”, czyli psi rodowód i rejestr; pasuje do naszego wyróżnika (rodowód + COI) | Mała marka akcesoriów „Dogstry New York” i spółka nieruchomości, brak aplikacji | **Rekomendowana nazwa międzynarodowa** |
+| **Doggly** | „dog” + „-ly”, przyjazna i lekka, dobra dla modułu właściciela | Brak aplikacji o tej nazwie, ale rynek „doggy” jest zatłoczony | Słabsza odróżnialność |
+| **DogNest** | „dog” + „nest” (gniazdo), czyli miot i hodowla | Hotele dla psów, legowiska, projekt web3 | Średnie ryzyko kolizji |
+| **Doggery** | Stare angielskie słowo na psiarnię lub hodowlę | Sklepy z przysmakami i salony groomerskie | Słowo ogólne, trudne do zastrzeżenia |
+
+**Odrzucone, bo są zajęte przez aplikacje lub marki z branży:**
+
+| Nazwa | Kto jej używa |
+|---|---|
+| DogDesk | Aplikacja dla trenerów psów w Wielkiej Brytanii (dogdesk.app) |
+| PsiPlan | Polska aplikacja dla właścicieli psów w budowie (Instagram @_psiplan), bezpośredni konkurent |
+| DogLog | Popularna aplikacja do śledzenia opieki nad psem (Google Play, App Store) |
+| Dogfolio | Brytyjska aplikacja „dokumenty psa w jednym miejscu” (dogfolio.co.uk); osłabia też wcześniejszą propozycję Pawfolio |
+| Dogbase | Oprogramowanie do zarządzania psami służbowymi i hodowlami (dogbase.co) |
+| Canivo | Marka karmy dla psów |
+| Psia Karta | Ogólne określenie używane w wielu aplikacjach i ofertach, nie do zastrzeżenia |
+
+**Rekomendacja:** jedna marka na wszystkie rynki to **Dogstry** z polskim hasłem, np. „Dogstry – psia księga Twojej hodowli”. Jeśli zostajemy tylko w Polsce, najlepsza jest **Psia Księga**. Przed decyzją: domeny (.com, .app, .pl), Google Play i App Store, bazy EUIPO i UPRP.
 
