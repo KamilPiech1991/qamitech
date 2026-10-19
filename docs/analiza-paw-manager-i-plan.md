@@ -390,7 +390,7 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 | Brak wyszukiwarki | Wyszukiwarka globalna po wszystkich kolekcjach | Pasek boczny / `/szukaj` |
 | Brak trybu ciemnego | Tryb ciemny (przełącznik w pasku i Ustawieniach) | — |
 
-**Wygląd:** wariant A z makiet („Ciepła karta”) w palecie pastelowej zieleni (`#2E7D5B`, `#DFF5E8`, `#C8EFD9`, akcent `#F2B84B`), ikony Lucide, animacje wejścia i hover, przycisk „+” z arkuszem szybkich akcji, tryb ciemny. Makiety obu wariantów: kanwa projektowa (wariant A przebarwiony na zieleń).
+**Wygląd:** wariant A z makiet („Ciepła karta”) w zieleni (kolor główny `#32BF46`, hover `#28A33A`, tekst na jasnym tle `#1F8A30`, tła `#E4F8E8` / `#C9F0D1`, akcent `#F2B84B`), ikony Lucide, animacje wejścia i hover, przycisk „+” z arkuszem szybkich akcji, tryb ciemny. Makiety obu wariantów: kanwa projektowa (wariant A przebarwiony na zieleń).
 
 **Świadome uproszczenia prototypu (do fazy 2–3):** dane w localStorage jednej przeglądarki (brak kont i synchronizacji), PDF przez okno drukowania przeglądarki, QR koduje pełne dane (produkcyjnie: token), brak zdjęć szczeniąt, brak push, brak wielojęzyczności, nazwa i kolorystyka robocze.
 
@@ -407,7 +407,7 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 
 ## 17. Pytania do Ciebie (potrzebne do dalszych prac)
 
-1. **Nazwa i marka** – „Kennelo” to placeholder. Dwie dodatkowe propozycje: **Szczeniak** / **Sfora** (patrz sekcja 18). Masz nazwę/domenę?
+1. **Nazwa i marka** – „Kennelo” to placeholder. Propozycje: **Sfora**, **Łapka**, a międzynarodowe **Pawly**, **Breedly**, **Pawfolio** (patrz sekcja 18). Masz nazwę/domenę?
 2. **Kto buduje** – Qamitech wewnętrznie (zespół webowy → rekomendacja React + Capacitor) czy zlecenie zewnętrzne (wtedy Flutter też w grze)?
 3. **Budżet i termin** – czy plan ~21 tygodni do 1.0 (ok. 155 roboczodni) jest akceptowalny, czy celujemy w „wąskie 1.0” w 10–12 tygodni (bez iOS lub bez wyróżników)?
 4. **iOS od startu** – potwierdzasz? (wymaga Apple Developer Program 99 USD/rok i Maca do buildów lub usługi chmurowej).
@@ -428,5 +428,9 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 | **Sfora** | Krótkie polskie słowo („stado psów”), jedna wyraźna marka, pasuje do funkcji zespołu hodowli i wielu psów | Mocno polskie – na rynki EN potrzebny podtytuł („Sfora – breeder app”); sprawdzić kolizje z firmami o tej nazwie |
 | **Łapka** / **Lapka** | Ciepłe, przyjazne, zgodne z „pastelowym” wyglądem; naturalnie łączy właścicieli i hodowców; łatwa ikona (łapa) | Wersja bez ogonka (Lapka) do domeny i sklepów; sprawdzić, czy nie koliduje z istniejącymi markami zoologicznymi |
 
-Rekomendacja: jeśli start tylko w Polsce – **Sfora** (najmocniejsza marka); jeśli od początku rynek EN – **Kennelo**. Przed decyzją: sprawdzić dostępność domen (.pl, .com, .app), nazw w Google Play / App Store i baz znaków towarowych.
+| **Pawly** (międzynarodowa) | „paw” + przyjazna końcówka „-ly”; krótkie, łatwe do wymówienia w każdym języku, ikona łapy, dobrze brzmi w sklepach | Popularny schemat nazw – duże ryzyko kolizji z istniejącymi aplikacjami dla zwierząt; koniecznie sprawdzić znak towarowy i domenę .com/.app |
+| **Breedly** (międzynarodowa) | „breed” + „-ly”: mówi wprost „hodowla”, pozycjonuje produkt jako narzędzie profesjonalne, a nie zabawkę | Mniej ciepła dla samych właścicieli psów; przy module Owner potrzebny podtytuł („Breedly – psy, mioty, zdrowie”) |
+| **Pawfolio** (międzynarodowa) | „paw” + „portfolio”: dokumentacja psa od rodowodu po karty zdrowia i Paw ID – spójne z naszymi wyróżnikami (dokumenty, rodowód, portal nabywcy) | Dłuższa i trudniejsza do zapisania ze słuchu; w Polsce wymaga krótkiego objaśnienia |
+
+Rekomendacja: jeśli start tylko w Polsce – **Sfora** (najmocniejsza marka); jeśli od początku rynek EN – **Kennelo** lub **Pawly** (po weryfikacji znaków towarowych). Przed decyzją: sprawdzić dostępność domen (.pl, .com, .app), nazw w Google Play / App Store i baz znaków towarowych.
 

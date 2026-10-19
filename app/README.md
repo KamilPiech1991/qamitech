@@ -27,7 +27,7 @@ Psy i metryki · zdrowie z przypomnieniami · rozród (skojarzenia, progesteron,
 - Przycisk „+” z arkuszem szybkich akcji (waga, zdrowie, wydatek, przypomnienie, nowy pies) na desktopie i mobile.
 
 ## Wygląd
-Wariant A z makiet („Ciepła karta”) w palecie pastelowej zieleni: `--primary #2E7D5B`, tła `#DFF5E8` / `#C8EFD9`, akcent `#F2B84B`.
+Wariant A z makiet („Ciepła karta”) w zieleni: `--primary #32BF46` (hover `#28A33A`, tekst `#1F8A30`), tła `#E4F8E8` / `#C9F0D1`, akcent `#F2B84B`.
 Ikony Lucide, animacje wejścia (fadeUp/pop), kafle z efektem hover, tryb ciemny przełączany w pasku bocznym i w Ustawieniach.
 
 ## Struktura

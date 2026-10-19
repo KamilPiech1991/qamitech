@@ -52,7 +52,7 @@ export default function Finance() {
           <Card onClick={() => setTab('history')} icon={<History size={18} />} title="Historia"><div className="muted">Wszystkie wpisy</div></Card>
         </div>
         <Card title="Wydatki w ostatnich 6 miesiącach" right={!limits.isPro && <span className="badge gray">FREE: {limits.chartMonths} z 6 mies.</span>}>
-          <div style={{ height: 220 }}><ResponsiveContainer><BarChart data={months.map(m => ({ ...m, total: m.locked ? 0 : m.total }))}><XAxis dataKey="label" fontSize={12} /><YAxis hide /><Tooltip formatter={(v) => fmtMoney(Number(v))} /><Bar isAnimationActive={false} dataKey="total" fill="#2E7D5B" radius={[10, 10, 4, 4]}><LabelList dataKey="total" position="top" formatter={(v: unknown) => `${v} zł`} fontSize={11} /></Bar></BarChart></ResponsiveContainer></div>
+          <div style={{ height: 220 }}><ResponsiveContainer><BarChart data={months.map(m => ({ ...m, total: m.locked ? 0 : m.total }))}><XAxis dataKey="label" fontSize={12} /><YAxis hide /><Tooltip formatter={(v) => fmtMoney(Number(v))} /><Bar isAnimationActive={false} dataKey="total" fill="#32BF46" radius={[10, 10, 4, 4]}><LabelList dataKey="total" position="top" formatter={(v: unknown) => `${v} zł`} fontSize={11} /></Bar></BarChart></ResponsiveContainer></div>
           {!limits.isPro && <div className="muted" style={{ textAlign: 'center' }}>Pełny widok 6 miesięcy dostępny w <ProBadge /></div>}
           <div className="row between" style={{ marginTop: 8 }}><small>Bez kosztów wystaw</small><label className="row"><input type="checkbox" checked={withShows} onChange={e => setWithShows(e.target.checked)} /> Uwzględniaj koszty wystaw</label></div>
         </Card>

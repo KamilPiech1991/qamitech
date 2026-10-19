@@ -182,7 +182,7 @@ export default function DogProfile() {
         <div className="row no-print"><button className="btn" onClick={() => setEdit({ id: uid(), dogId: dog!.id, date: nowLocal(), grams: dog!.weightKg ? dog!.weightKg * 1000 : 0 })}><Plus size={18} /> Dodaj pomiar</button></div>
         <Card title="Historia pomiarów">
           {ws.length < 2 ? <div className="muted">Dodaj co najmniej dwa pomiary, aby zobaczyć wykres.</div> : (
-            <div style={{ height: 220 }}><ResponsiveContainer><LineChart data={data}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="d" fontSize={11} /><YAxis fontSize={11} unit=" kg" /><Tooltip /><Line isAnimationActive={false} type="monotone" dataKey="kg" stroke="#2E7D5B" strokeWidth={2.5} dot={{ r: 4, fill: '#2E7D5B' }} /></LineChart></ResponsiveContainer></div>
+            <div style={{ height: 220 }}><ResponsiveContainer><LineChart data={data}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="d" fontSize={11} /><YAxis fontSize={11} unit=" kg" /><Tooltip /><Line isAnimationActive={false} type="monotone" dataKey="kg" stroke="#32BF46" strokeWidth={2.5} dot={{ r: 4, fill: '#32BF46' }} /></LineChart></ResponsiveContainer></div>
           )}
           <div className="list" style={{ marginTop: 10 }}>{[...ws].reverse().map(w => <div key={w.id} className="list-item"><div><div className="title">{(w.grams / 1000).toFixed(2)} kg</div><small>{fmtDateTime(w.date)}</small></div><div><EditBtn onClick={() => setEdit(w)} /><DelBtn onClick={() => confirmDel() && remove('weights', w.id)} /></div></div>)}</div>
         </Card>
