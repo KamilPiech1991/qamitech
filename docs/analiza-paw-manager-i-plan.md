@@ -524,3 +524,17 @@ W prototypie zmieniliśmy nazwy funkcji, nagłówki, listy słownikowe i teksty,
 
 Kod wewnętrzny (pole `pawId`, plik `pawid.ts`) zostaje bez zmian, bo nie jest widoczny dla użytkownika.
 
+
+## 20. Makiety modułów hodowlanych na kanwie (19.10.2026)
+
+Na kanwie z prototypem klikalnym (wariant A) doszły cztery artboardy odpowiadające ekranom konkurenta z załącznika: **Moje mioty**, **Kalendarz ciąży**, **Rozród / Skojarzenia**, **Budżet hodowli + Statystyki finansowe**, **Raporty**. Każda funkcja z tych ekranów ma swoje miejsce w Dogpilocie, ale układ i nazewnictwo są własne. W aplikacji webowej (`app/`) te moduły działają już wcześniej (sekcja 15); makiety domykają prototyp klikalny.
+
+| Ekran Paw Managera | Gdzie to jest u konkurenta | Gdzie to jest w Dogpilocie | Czym się różni UX |
+|---|---|---|---|
+| Moje mioty (lista: oznaczenie, data, rodzice, liczba szczeniąt) | osobna pozycja menu modułów | dolny pasek → **Mioty** (`A-Mioty`): zakładki *Karty* / *Rejestr* | nagłówek z gradientem i chipami zbiorczymi (mioty, szczenięta ♂/♀, średnia, przekazane); karty z literą miotu, kropkami kolorów obróżek i statusem (odchów %, zakończony); rejestr jako tabela z filtrami rok/matka, CSV i drukiem |
+| Rozród / Skojarzenia (krycia, progesteron, USG, RTG) | zakładka suki → lista skojarzeń | profil suki → zakładka **Rozród** (`A-Rozrod`): *Plany kryć* / *Cieczki i prognoza* | plan krycia jako oś czasu kroków (cieczka → progesteron → krycia → USG → RTG) z odhaczaniem, a nie formularz; badania w rozwijanych sekcjach; prognoza następnej cieczki i okna płodnego (czego konkurent nie ma); przycisk *Monitor ciąży* |
+| Kalendarz ciąży (dzień, tydzień, termin, lista badań) | ze skojarzenia | **Monitor ciąży** (`A-Ciaza`), karta *Liczymy od* z datą krycia i linkiem *Inna data* do planu krycia | pasek postępu i karta tygodnia z treścią (szczenięta / suka / wskazówka), badania do oznaczenia, 9 tygodni do przeglądania |
+| Budżet hodowli (bilans miesiąca, koszty wystaw i hodowli, wykres 6 mies., wpisy) + Statystyki finansowe (okres, kategorie, przychody) | moduł Finanse + osobne Statystyki | dolny pasek → **Finanse** (`A-Finanse`): *Finanse* / *Analiza kosztów* / *Przychody* | nagłówek „Bilans hodowli” z kafelkami przychody / koszty / wynik; wykres słupkowy z przełącznikiem „tylko hodowla / razem z wystawami”; analiza kosztów i **rentowność miotów** (przychód ze sprzedaży szczeniąt minus koszty miotu) zamiast samych sum |
+| Raporty (13 pozycji, w tym szczepienia i pasożyty osobno dla wszystkich / suk / reproduktorów) | moduł Raporty, płaska lista | dolny pasek → **Raporty** (`A-Raporty`) | jeden przełącznik zakresu (*Całe stado* / *Suki* / *Reproduktory*) zamiast trzech osobnych pozycji na liście; raporty pogrupowane (Hodowla, Zdrowie, Wystawy, Finanse) z przyciskiem PDF i logo hodowli w nagłówku wydruku |
+
+Dolny pasek ma teraz sześć pozycji: Start · Psy · „+” · Mioty · Finanse · Raporty (pozycja „Więcej” zniknęła, Karta przekazania jest dostępna z profilu miotu i szczenięcia).
