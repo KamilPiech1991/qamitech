@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { PawPrint, Dog } from 'lucide-react';
 import { useStore } from '../app/store';
 import { demoState } from '../app/seed';
-import { APP_NAME, Field } from '../components/ui';
+import { Field, Wordmark } from '../components/ui';
 import type { Module } from '../app/types';
 
 export default function Onboarding() {
@@ -18,7 +18,12 @@ export default function Onboarding() {
   return (
     <div className="module-pick">
       <div className="box">
-        <div className="row" style={{ marginBottom: 20 }}><div className="avatar" style={{ width: 52, height: 52, background: 'var(--primary)', color: '#fff' }}><PawPrint size={28} className="wag" /></div><div><h1 style={{ margin: 0 }}>{APP_NAME}</h1><div className="muted">Hodowla i psy w jednym miejscu.</div></div></div>
+        <picture>
+          <source media="(max-width: 640px)" srcSet={`${import.meta.env.BASE_URL}brand/header-mobile.webp`} />
+          <img className="brand-hero" src={`${import.meta.env.BASE_URL}brand/header-1600.webp`} srcSet={`${import.meta.env.BASE_URL}brand/header-800.webp 800w, ${import.meta.env.BASE_URL}brand/header-1600.webp 1600w`} sizes="(max-width: 800px) 100vw, 760px" alt="dogpilot – hodowla i psy w jednym miejscu" />
+        </picture>
+        <div className="row only-mobile" style={{ marginBottom: 16, gap: 10 }}><div className="avatar" style={{ width: 44, height: 44, background: 'var(--primary)', color: '#fff' }}><PawPrint size={24} className="wag" /></div><Wordmark height={30} /></div>
+        <div className="muted" style={{ marginBottom: 18, fontWeight: 700 }}>Hodowla i psy w jednym miejscu.</div>
         {!module ? (
           <>
             <h2>Jak korzystasz z aplikacji?</h2>

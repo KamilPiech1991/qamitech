@@ -30,6 +30,7 @@ Psy i ich dane · zdrowie z przypomnieniami · rozród (plany kryć, progesteron
 - **Zdjęcia psów i szczeniąt** – wybór pliku w formularzu, zmniejszanie w przeglądarce do 640 px, zapis w danych; widoczne w listach, profilach, na Starcie, na karcie przekazania i stronie dla nabywcy.
 
 ## Wygląd
+Grafika marki leży w `public/brand/`: nagłówek (`header-1600.webp`, `header-800.webp`, kadr mobilny `header-mobile.webp`), znak słowny wycięty z nagłówka (`wordmark.png` ciemnozielony, `wordmark-white.png` na ciemne tło), ikona aplikacji (`icon-512.png`, `favicon-64.png`). Komponent `Wordmark` w `components/ui.tsx` dobiera wersję do trybu jasnego/ciemnego.
 Start to strumień dużych kolorowych kart (ciąża, terminy, miot, finanse…) z dymkiem asystenta i rzędem szybkich akcji. Każdy ekran ma gradientowy baner nagłówka z dużą ikoną w tle (`ArtHeader` w `components/ui.tsx`), a tło aplikacji ma delikatne gradientowe plamy.
 Wariant A z makiet („Ciepła karta”) w zieleni: `--primary #32BF46` (hover `#28A33A`, tekst `#1F8A30`), tła `#E4F8E8` / `#C9F0D1`, akcent `#F2B84B`.
 Ikony Lucide, animacje wejścia (fadeUp/pop), kafle z efektem hover, tryb ciemny przełączany w pasku bocznym i w Ustawieniach.

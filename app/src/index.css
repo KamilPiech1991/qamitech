@@ -347,3 +347,14 @@ table.tbl tfoot th { background: var(--surface-2); font-weight: 800; }
 table.tbl td a { font-weight: 700; }
 .grid.cols-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 @media (max-width: 760px) { .grid.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ===== Marka: znak słowny i nagłówek ===== */
+.wordmark { display: inline-flex; align-items: center; line-height: 0; }
+.wordmark img { width: auto; display: block; }
+.wordmark .wm-dark { display: none; }
+:root[data-theme="dark"] .wordmark .wm-light { display: none; }
+:root[data-theme="dark"] .wordmark .wm-dark { display: block; }
+.brand-hero { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; border-radius: 28px; box-shadow: var(--shadow-lg); margin-bottom: 18px; animation: fadeUp .5s var(--ease) both; }
+.only-mobile { display: none; }
+@media (max-width: 640px) { .brand-hero { aspect-ratio: 1100 / 887; object-position: center; border-radius: 22px; } .only-mobile { display: flex; } }
+@media print { .wordmark .wm-dark { display: none !important; } .wordmark .wm-light { display: block !important; } }

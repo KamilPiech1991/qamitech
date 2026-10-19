@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { Home, Dog, PawPrint, Wallet, BarChart3, Settings, Bell, QrCode, Plus, Scale, Syringe, Receipt, AlarmClock, FileText, Search, Moon, Sun } from 'lucide-react';
 import { useStore } from '../app/store';
-import { APP_NAME } from './ui';
+import { Wordmark } from './ui';
 
 export default function Layout() {
   const { state, setProfile } = useStore();
@@ -38,7 +38,7 @@ export default function Layout() {
   return (
     <div className="shell">
       <aside className="sidebar">
-        <div className="brand"><div className="logo"><PawPrint size={22} className="wag" /></div>{APP_NAME}</div>
+        <div className="brand"><div className="logo"><PawPrint size={22} className="wag" /></div><Wordmark height={24} /></div>
         <form className="search" onSubmit={submitSearch} style={{ marginBottom: 10 }}><Search size={18} /><input value={q} onChange={e => setQ(e.target.value)} placeholder="Szukaj psa, szczenięcia, wpisu…" aria-label="Szukaj" /></form>
         {side.map(i => <NavLink key={i.to} to={i.to} end={i.to === '/'} className={({ isActive }) => `navlink ${isActive ? 'active' : ''}`}><span className="ico">{i.ico}</span>{i.label}</NavLink>)}
         <div className="spacer" />

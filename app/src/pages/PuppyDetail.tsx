@@ -75,7 +75,7 @@ export default function PuppyDetail() {
               <div style={{ margin: '12px auto' }}><QRCodeSVG value={code} size={240} level="L" includeMargin /></div>
               <small className="muted">Po zeskanowaniu nowy opiekun dostaje gotowy profil: wagi, profilaktykę i pakiet na nowy dom.</small>
               {puppy.chip && <div className="muted" style={{ marginTop: 6 }}>Chip: {puppy.chip}</div>}
-              <div style={{ color: 'var(--primary-600)', fontWeight: 700, marginTop: 6 }}>Dogpilot · karta przekazania</div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 8, color: 'var(--primary-600)', fontWeight: 700 }}><img src={`${import.meta.env.BASE_URL}brand/wordmark.png`} alt="dogpilot" style={{ height: 18 }} /> · karta przekazania</div>
             </div>
           )}
         </div>

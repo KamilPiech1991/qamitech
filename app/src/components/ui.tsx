@@ -106,3 +106,10 @@ export function PhotoPicker({ value, onChange, label = 'Dodaj zdjęcie' }: { val
     </div>
   );
 }
+
+/** Znak słowny „dogpilot” z nagłówka marki; ciemnozielony w trybie jasnym, biały w ciemnym. */
+export function Wordmark({ height = 26, light }: { height?: number; light?: boolean }) {
+  const base = import.meta.env.BASE_URL;
+  if (light) return <span className="wordmark"><img src={`${base}brand/wordmark-white.png`} alt={APP_NAME} style={{ height }} /></span>;
+  return <span className="wordmark"><img className="wm-light" src={`${base}brand/wordmark.png`} alt={APP_NAME} style={{ height }} /><img className="wm-dark" src={`${base}brand/wordmark-white.png`} alt="" style={{ height }} /></span>;
+}

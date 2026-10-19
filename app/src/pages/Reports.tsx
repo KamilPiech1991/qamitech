@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { Dog, PawPrint, Baby, Syringe, Bug, Stethoscope, Microscope, Trophy, Wallet, Printer } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Card, Empty, PageHeader } from '../components/ui';
+import { Wordmark } from '../components/ui';
 import { ArtHeader } from '../components/ui';
 import { BarChart3 as ArtIcon } from 'lucide-react';
 import { ageText, fmtDate, fmtDateTime, fmtMoney, today } from '../app/format';
@@ -48,7 +49,7 @@ export default function Reports() {
       <Card>
         <div className="row between" style={{ marginBottom: 12 }}>
           <div className="row" style={{ gap: 12 }}>{state.profile.logo && <img className="kennel-logo lg" src={state.profile.logo} alt="" />}<div><b style={{ fontSize: 18 }}>{def.title.toUpperCase()}</b><div className="muted">{state.profile.kennelName || state.profile.breederName}{state.profile.kennelNo ? ` · Nr hodowli: ${state.profile.kennelNo}` : ''}</div></div></div>
-          <div className="muted" style={{ textAlign: 'right' }}>Data wygenerowania: {fmtDate(today())}<br />Dogpilot</div>
+          <div className="muted" style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}><span>Data wygenerowania: {fmtDate(today())}</span><Wordmark height={18} /></div>
         </div>
         <ReportBody kind={kind} />
       </Card>
