@@ -8,7 +8,8 @@ export interface PawIdPayload {
   pack?: { food?: string; portion?: string; meals?: number; hours?: string; supplements?: string; grooming?: string; firstDays?: string; accustomed?: string[]; character?: string[]; about?: string };
 }
 
-const PREFIX = 'KNL1:';
+const PREFIX = 'DGP1:';
+const LEGACY_PREFIXES = ['KNL1:'];
 
 function toB64(s: string) { return btoa(unescape(encodeURIComponent(s))); }
 function fromB64(s: string) { return decodeURIComponent(escape(atob(s))); }
@@ -35,8 +36,9 @@ export function encodePawId(payload: PawIdPayload): string { return PREFIX + toB
 export function decodePawId(text: string): PawIdPayload | null {
   try {
     const t = text.trim();
-    if (!t.startsWith(PREFIX)) return null;
-    const obj = JSON.parse(fromB64(t.slice(PREFIX.length)));
+    const pre = [PREFIX, ...LEGACY_PREFIXES].find(x => t.startsWith(x));
+    if (!pre) return null;
+    const obj = JSON.parse(fromB64(t.slice(pre.length)));
     if (obj?.v !== 1 || obj?.t !== 'puppy') return null;
     return obj as PawIdPayload;
   } catch { return null; }

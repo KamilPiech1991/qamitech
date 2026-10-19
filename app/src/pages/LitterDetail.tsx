@@ -13,7 +13,7 @@ import { HealthForm } from './DogProfile';
 type Tab = 'puppies' | 'analysis' | 'care' | 'pack' | 'birth' | 'money';
 
 export function PuppyForm({ initial, litterId, index, onClose, onSave }: { initial?: Puppy; litterId: string; index: number; onClose: () => void; onSave: (p: Puppy) => void }) {
-  const [p, setP] = useState<Puppy>(initial ?? { id: uid(), litterId, name: '', sex: 'male', birthDateTime: nowLocal(), birthStatus: 'alive', markerColor: MARKER_COLORS[index % MARKER_COLORS.length], pawId: `KN-${new Date().getFullYear()}-${Date.now().toString(36).toUpperCase().slice(-4)}`, owners: [], character: [] });
+  const [p, setP] = useState<Puppy>(initial ?? { id: uid(), litterId, name: '', sex: 'male', birthDateTime: nowLocal(), birthStatus: 'alive', markerColor: MARKER_COLORS[index % MARKER_COLORS.length], pawId: `DP-${new Date().getFullYear()}-${Date.now().toString(36).toUpperCase().slice(-4)}`, owners: [], character: [] });
   return (
     <Modal title={initial ? 'Edytuj szczenię' : 'Dodaj szczenię'} onClose={onClose} actions={<><button className="btn secondary" onClick={onClose}>Anuluj</button><button className="btn" disabled={!p.name.trim()} onClick={() => onSave(p)}>Zapisz</button></>}>
       <div className="form-grid">

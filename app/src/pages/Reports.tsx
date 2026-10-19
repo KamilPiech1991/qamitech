@@ -46,7 +46,7 @@ export default function Reports() {
       <Card>
         <div className="row between" style={{ marginBottom: 12 }}>
           <div><b style={{ fontSize: 18 }}>{def.title.toUpperCase()}</b><div className="muted">{state.profile.kennelName || state.profile.breederName}{state.profile.kennelNo ? ` · Nr hodowli: ${state.profile.kennelNo}` : ''}</div></div>
-          <div className="muted" style={{ textAlign: 'right' }}>Data wygenerowania: {fmtDate(today())}<br />Kennelo</div>
+          <div className="muted" style={{ textAlign: 'right' }}>Data wygenerowania: {fmtDate(today())}<br />Dogpilot</div>
         </div>
         <ReportBody kind={kind} />
       </Card>

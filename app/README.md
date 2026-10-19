@@ -1,4 +1,4 @@
-# Kennelo (nazwa robocza) – prototyp aplikacji webowej dla hodowców i właścicieli psów
+# Dogpilot – prototyp aplikacji webowej dla hodowców i właścicieli psów
 
 Prototyp odpowiadający zakresem aplikacji Paw Manager (analiza: `../docs/analiza-paw-manager-i-plan.md`).
 Jedna baza kodu (React + TypeScript + Vite) przygotowana pod PWA i opakowanie w Android/iOS (Capacitor).
@@ -34,7 +34,7 @@ Ikony Lucide, animacje wejścia (fadeUp/pop), kafle z efektem hover, tryb ciemny
 - `src/app/types.ts` – model danych i słowniki (kategorie, klasy wystaw, checklista…)
 - `src/app/store.tsx` – store (React context + reducer) z zapisem do `localStorage`, limity planu
 - `src/app/pregnancy.ts` – logika kalendarza ciąży i treści tygodni
-- `src/app/pawid.ts` – kodowanie/dekodowanie karty przekazania (prefiks `KNL1:`)
+- `src/app/pawid.ts` – kodowanie/dekodowanie karty przekazania (prefiks `DGP1:`, odczytuje też starszy `KNL1:`)
 - `src/app/heat.ts` – statystyki cieczek i prognoza następnej cieczki / okna płodnego
 - `src/app/pedigree.ts` – budowa rodowodu i współczynnik inbredu (wzór Wrighta)
 - `src/app/seed.ts` – dane demonstracyjne

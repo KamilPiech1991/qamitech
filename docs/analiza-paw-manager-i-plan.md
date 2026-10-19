@@ -3,7 +3,7 @@
 > **Data analizy:** 19.10.2026
 > **Źródła:** paw-manager.com (strona główna PL/EN + 7 podstron „Poradnik hodowcy”), regulamin, polityka prywatności, panel webowy app.paw-manager.com (kod HTML), wpis w Google Play (com.pawmanager.app), Capterra, KRS (bizraport), ok. 40 makiet ekranów aplikacji opublikowanych na stronie. Facebook (@PawManagerPL) niedostępny do automatycznego odczytu – dane z wyników wyszukiwania.
 > **Zasada:** fakty pochodzą ze źródeł. Wnioski i interpretacje są oznaczone jako **[wniosek]**.
-> **Nazwa robocza naszego produktu:** **Kennelo** (do zmiany – patrz sekcja 17).
+> **Nazwa naszego produktu:** **Dogpilot** (wcześniej robocza „Kennelo”; uwagi o kolizji nazwy – sekcja 18.2).
 
 ---
 
@@ -407,7 +407,7 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 
 ## 17. Pytania do Ciebie (potrzebne do dalszych prac)
 
-1. **Nazwa i marka** – „Kennelo” to placeholder. Propozycje: **Sfora**, **Łapka**, **Pawly**, **Breedly**, a z „pies/dog” w nazwie **Dogstry** i **Psia Księga** (patrz sekcja 18). Masz nazwę/domenę?
+1. **Nazwa i marka** – wybrana nazwa to **Dogpilot** (sekcja 18.2: nazwa jest już używana przez dwie firmy z branży psów). Wcześniejsze propozycje: Propozycje: **Sfora**, **Łapka**, **Pawly**, **Breedly**, a z „pies/dog” w nazwie **Dogstry** i **Psia Księga** (patrz sekcja 18). Masz nazwę/domenę?
 2. **Kto buduje** – Qamitech wewnętrznie (zespół webowy → rekomendacja React + Capacitor) czy zlecenie zewnętrzne (wtedy Flutter też w grze)?
 3. **Budżet i termin** – czy plan ~21 tygodni do 1.0 (ok. 155 roboczodni) jest akceptowalny, czy celujemy w „wąskie 1.0” w 10–12 tygodni (bez iOS lub bez wyróżników)?
 4. **iOS od startu** – potwierdzasz? (wymaga Apple Developer Program 99 USD/rok i Maca do buildów lub usługi chmurowej).
@@ -424,7 +424,7 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 
 | Nazwa | Dlaczego | Uwagi |
 |---|---|---|
-| **Kennelo** (obecna robocza) | „kennel” + miękka końcówka, międzynarodowa, łatwa do wymówienia po polsku i angielsku | Neutralna, bez skojarzenia z Polską; sprawdzić domeny .pl/.com i znak w UPRP/EUIPO |
+| **Kennelo** (poprzednia nazwa robocza) | „kennel” + miękka końcówka, międzynarodowa, łatwa do wymówienia po polsku i angielsku | Neutralna, bez skojarzenia z Polską; sprawdzić domeny .pl/.com i znak w UPRP/EUIPO |
 | **Sfora** | Krótkie polskie słowo („stado psów”), jedna wyraźna marka, pasuje do funkcji zespołu hodowli i wielu psów | Mocno polskie – na rynki EN potrzebny podtytuł („Sfora – breeder app”); sprawdzić kolizje z firmami o tej nazwie |
 | **Łapka** / **Lapka** | Ciepłe, przyjazne, zgodne z „pastelowym” wyglądem; naturalnie łączy właścicieli i hodowców; łatwa ikona (łapa) | Wersja bez ogonka (Lapka) do domeny i sklepów; sprawdzić, czy nie koliduje z istniejącymi markami zoologicznymi |
 
@@ -470,11 +470,26 @@ Szybki przegląd sieci, sklepów i Instagrama pod kątem istniejących aplikacji
 
 ---
 
+### 18.2. Wybrana nazwa: Dogpilot (19.10.2026)
+
+Aplikacja nazywa się teraz **Dogpilot** we wszystkich ekranach, dokumentach i makietach. Kod przekazania ma prefiks `DGP1:`, a numer karty format „DP-2026-0001”. Starsze kody `KNL1:` i dane zapisane pod starą nazwą nadal się wczytują.
+
+**Kolizja nazwy – do decyzji przed premierą:**
+
+| Kto | Co robi | Ryzyko |
+|---|---|---|
+| DogPilot (dogpilot.app, App Store) | Aplikacja dla szkół szkolenia psów: zajęcia, ćwiczenia, postępy, czat, widżety na Androida i iOS | Wysokie: ta sama nazwa, ta sama kategoria w sklepach (zwierzęta), działa już na iOS |
+| Dogpilot (dogpilot.fr) | Francuskie oprogramowanie do zarządzania hotelem dla psów i kotów | Średnie: inna grupa klientów, ale ta sama branża i rynek UE |
+
+Zalecenie: przed publikacją w sklepach sprawdzić znaki towarowe w EUIPO i UPRP oraz wolne domeny. Jeśli nazwa zostaje, warto ją wyróżnić, np. „Dogpilot Hodowla” lub „Dogpilot Breeder”, i zabezpieczyć domenę .pl. Bezpieczniejszą alternatywą bez znanych kolizji pozostaje **Dogstry** (sekcja 18.1).
+
+---
+
 ## 19. Własne nazewnictwo (żeby nie dublować konkurenta)
 
 W prototypie zmieniliśmy nazwy funkcji, nagłówki, listy słownikowe i teksty, które pokrywały się z Paw Managerem. Ogólne terminy kynologiczne (szczepienie, krycie, rodowód, CACIB, klasy wystawowe) zostają, bo są wspólne dla całej branży.
 
-| Paw Manager | Kennelo |
+| Paw Manager | Dogpilot |
 |---|---|
 | Paw ID, Karta Paw ID, „PAW-P-001” | Karta przekazania, kod przekazania, „KN-2026-0001” |
 | Skanuj Paw ID | Odbierz psa |
@@ -499,7 +514,7 @@ W prototypie zmieniliśmy nazwy funkcji, nagłówki, listy słownikowe i teksty,
 | Moduł Właściciel / Hodowca, „Wybierz moduł” | Tryb „Mam psa” / „Prowadzę hodowlę”, „Jak korzystasz z aplikacji?” |
 | Szybki dostęp, Powiadomienia | Na skróty, Najbliższe terminy |
 | „Psy śpią czy wariują?” | Własne, zmienne hasła powitalne |
-| „Dotknij kartę, aby wyświetlić kod QR”, „Powered by…” | „Kliknij kartę, żeby ją odwrócić…”, „Kennelo · karta przekazania” |
+| „Dotknij kartę, aby wyświetlić kod QR”, „Powered by…” | „Kliknij kartę, żeby ją odwrócić…”, „Dogpilot · karta przekazania” |
 
 Kod wewnętrzny (pole `pawId`, plik `pawid.ts`) zostaje bez zmian, bo nie jest widoczny dla użytkownika.
 

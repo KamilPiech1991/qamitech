@@ -70,11 +70,11 @@ export default function PuppyDetail() {
             <div className="row between" style={{ marginTop: 14 }}><div><small style={{ opacity: .8 }}>NR KARTY</small><div style={{ fontWeight: 800, fontSize: 18 }}>{puppy.pawId}</div></div><div style={{ textAlign: 'right' }}><small style={{ opacity: .8 }}>OBRÓŻKA</small><div style={{ width: 24, height: 24, borderRadius: 12, background: puppy.markerColor, marginLeft: 'auto', border: '2px solid #fff' }} /></div></div>
           </>) : (
             <div style={{ background: '#fff', borderRadius: 14, padding: 16, textAlign: 'center', color: 'var(--text)' }}>
-              <h3 style={{ color: 'var(--primary-600)' }}>{puppy.name}</h3><small className="muted">Nowy opiekun skanuje ten kod w Kennelo</small>
+              <h3 style={{ color: 'var(--primary-600)' }}>{puppy.name}</h3><small className="muted">Nowy opiekun skanuje ten kod w Dogpilot</small>
               <div style={{ margin: '12px auto' }}><QRCodeSVG value={code} size={240} level="L" includeMargin /></div>
               <small className="muted">Po zeskanowaniu nowy opiekun dostaje gotowy profil: wagi, profilaktykę i pakiet na nowy dom.</small>
               {puppy.chip && <div className="muted" style={{ marginTop: 6 }}>Chip: {puppy.chip}</div>}
-              <div style={{ color: 'var(--primary-600)', fontWeight: 700, marginTop: 6 }}>Kennelo · karta przekazania</div>
+              <div style={{ color: 'var(--primary-600)', fontWeight: 700, marginTop: 6 }}>Dogpilot · karta przekazania</div>
             </div>
           )}
         </div>

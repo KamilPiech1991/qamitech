@@ -64,7 +64,7 @@ export default function Scan() {
               {camErr && <div className="badge danger">{camErr}</div>}
             </div>
           ) : <p className="muted">Skanowanie kamerą jest dostępne w aplikacji mobilnej i w przeglądarkach z obsługą BarcodeDetector. Możesz też wkleić kod poniżej.</p>}
-          <Field label="Lub wklej kod przekazania (tekst spod kodu QR)"><textarea value={text} onChange={e => setText(e.target.value)} placeholder="KNL1:..." /></Field>
+          <Field label="Lub wklej kod przekazania (tekst spod kodu QR)"><textarea value={text} onChange={e => setText(e.target.value)} placeholder="DGP1:..." /></Field>
           <button className="btn" disabled={!text.trim()} onClick={parse}>Odczytaj</button>
         </Card>
       )}

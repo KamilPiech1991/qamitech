@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { ArrowLeft, Pencil, Trash2, X, PawPrint } from 'lucide-react';
 
-export const APP_NAME = 'Kennelo';
+export const APP_NAME = 'Dogpilot';
 
 export function PageHeader({ title, sub, actions, back }: { title: ReactNode; sub?: ReactNode; actions?: ReactNode; back?: () => void }) {
   return (

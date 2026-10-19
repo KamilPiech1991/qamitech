@@ -3,7 +3,8 @@ import type { AppState, Dog, Breeding, StudMating, Litter, Puppy, Weight, Show, 
 import { FREE_LIMITS } from './types';
 import { emptyState } from './seed';
 
-const KEY = 'kennelo.state.v1';
+const KEY = 'dogpilot.state.v1';
+const LEGACY_KEY = 'kennelo.state.v1';
 
 type Action =
   | { type: 'replace'; state: AppState }
@@ -32,7 +33,7 @@ function reducer(s: AppState, a: Action): AppState {
 
 function load(): AppState {
   try {
-    const raw = localStorage.getItem(KEY);
+    const raw = localStorage.getItem(KEY) ?? localStorage.getItem(LEGACY_KEY);
     if (raw) { const st = { ...emptyState(), ...JSON.parse(raw) } as AppState; st.litters = st.litters.map(l => ({ ...l, birthDiary: l.birthDiary ?? [] })); return st; }
   } catch { /* ignore */ }
   return emptyState();
