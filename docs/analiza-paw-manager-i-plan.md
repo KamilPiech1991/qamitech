@@ -376,6 +376,22 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 
 **Zaimplementowane ekrany:** wybór modułu i onboarding · Start (powiadomienia, liczniki, trwające ciąże, szybki dostęp) · Moje psy (widok pełny/kompaktowy, filtry, limity FREE) · Profil psa: Metryka, Zdrowie (5 kategorii, następny termin), Rozród (skojarzenia: krycia, progesteron, USG, RTG) / Krycia (reproduktor), Kariera (wystawy z certyfikatami i tytułami, championaty, statystyki, koszty wystawy), Waga (wykres), Oś czasu · Kalendarz ciąży (dzień/tydzień, termin, USG/RTG/obserwacja/przedział porodu, 9 tygodni treści, oś ciąży, oznaczanie badań) · Mioty → Metryka miotu: szczenięta (kolory znaczników, ostatnia waga i zmiana), ważenie całego miotu, wpis zdrowotny dla wszystkich, Analiza miotu (liczby, najcięższe/najlżejsze, przyrosty, wykres zbiorczy), Opieka nad miotem (17 etapów, %), notatki, Cyfrowa wyprawka · Szczenię: metryka, wagi, zdrowie, właściciele (do 2) + cena/notatki prywatne + data przekazania, **Karta Paw ID z kodem QR** (toggle karta/QR, kopiowanie kodu, druk), informacje indywidualne (charakter, opis) · Finanse: budżet, dodawanie wydatków (hodowla/wystawa, kategorie i typy), wykres 6 mies. z limitem FREE i przełącznikiem kosztów wystaw, historia grupowana (wystawy; rok → miesiąc), statystyki · Raporty (13 zestawień, druk/PDF) · Przypomnienia · Skanuj Paw ID (kamera przez BarcodeDetector lub wklejenie kodu → import psa z historią) · Ustawienia (profil, moduł, plan FREE/PRO demo, backup JSON eksport/import, dane demo, kasowanie).
 
+**Wyróżniki wdrożone w prototypie (wykorzystanie luk konkurenta z sekcji 8):**
+
+| Luka u Paw Manager | Co mamy w prototypie | Gdzie |
+|---|---|---|
+| Brak kalendarza cieczek | Rejestr cieczek, średni odstęp i długość, prognoza następnej cieczki (±14 dni) i okna płodnego (9–15 dzień), terminy na Start | Profil suki → Rozród |
+| Brak rodowodu i COI | Rodzice wybierani z własnej bazy, rodowód 3 pokolenia, współczynnik inbredu (Wright, 5 pokoleń) z listą wspólnych przodków | Profil psa → Rodowód |
+| Tylko wydatki, brak rentowności | Przychody (zaliczka, sprzedaż, krycie, inne), wynik hodowli, rentowność i prognoza miotu, koszty przypięte do miotu | Finanse → Przychody; Miot → Finanse |
+| Brak dokumentów | Umowa sprzedaży, protokół przekazania, karta miotu, karta zdrowia – wypełniane danymi, do PDF | Dokumenty |
+| Brak dziennika porodu | Oś zdarzeń porodu (start, szczenię, notatka, wet, koniec), czas porodu, średni odstęp | Miot → Poród |
+| Jedno konto na hodowlę | Zespół hodowli: zaproszenia, role właściciel / edytor / podgląd | Ustawienia |
+| Brak portalu nabywcy | Publiczna strona szczenięcia (wagi, profilaktyka, karma, charakter, odliczanie do odbioru), kopiowanie linku i druk | Szczenię → Strona dla nabywcy |
+| Brak wyszukiwarki | Wyszukiwarka globalna po wszystkich kolekcjach | Pasek boczny / `/szukaj` |
+| Brak trybu ciemnego | Tryb ciemny (przełącznik w pasku i Ustawieniach) | — |
+
+**Wygląd:** wariant A z makiet („Ciepła karta”) w palecie pastelowej zieleni (`#2E7D5B`, `#DFF5E8`, `#C8EFD9`, akcent `#F2B84B`), ikony Lucide, animacje wejścia i hover, przycisk „+” z arkuszem szybkich akcji, tryb ciemny. Makiety obu wariantów: kanwa projektowa (wariant A przebarwiony na zieleń).
+
 **Świadome uproszczenia prototypu (do fazy 2–3):** dane w localStorage jednej przeglądarki (brak kont i synchronizacji), PDF przez okno drukowania przeglądarki, QR koduje pełne dane (produkcyjnie: token), brak zdjęć szczeniąt, brak push, brak wielojęzyczności, nazwa i kolorystyka robocze.
 
 ---
@@ -391,7 +407,7 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 
 ## 17. Pytania do Ciebie (potrzebne do dalszych prac)
 
-1. **Nazwa i marka** – „Kennelo” to placeholder. Masz nazwę/domenę? Czy chcesz, żebym zaproponował 10 nazw z dostępnością domen .pl/.com?
+1. **Nazwa i marka** – „Kennelo” to placeholder. Dwie dodatkowe propozycje: **Szczeniak** / **Sfora** (patrz sekcja 18). Masz nazwę/domenę?
 2. **Kto buduje** – Qamitech wewnętrznie (zespół webowy → rekomendacja React + Capacitor) czy zlecenie zewnętrzne (wtedy Flutter też w grze)?
 3. **Budżet i termin** – czy plan ~21 tygodni do 1.0 (ok. 155 roboczodni) jest akceptowalny, czy celujemy w „wąskie 1.0” w 10–12 tygodni (bez iOS lub bez wyróżników)?
 4. **iOS od startu** – potwierdzasz? (wymaga Apple Developer Program 99 USD/rok i Maca do buildów lub usługi chmurowej).
@@ -401,3 +417,16 @@ Na ekranie startowym kliknij „Załaduj dane demonstracyjne (hodowla)”, aby z
 8. **Priorytet wyróżników** – które 2–3 z sekcji 9 wchodzą do 1.0, a które do 1.1?
 9. **Dostęp do hodowców** – masz kontakt do 3–5 hodowców do wywiadów i bety?
 10. Czy prototyp ma zostać w tym repozytorium (`qamitech/app`), czy zakładamy osobne repo produktu?
+
+---
+
+## 18. Propozycje nazwy aplikacji
+
+| Nazwa | Dlaczego | Uwagi |
+|---|---|---|
+| **Kennelo** (obecna robocza) | „kennel” + miękka końcówka, międzynarodowa, łatwa do wymówienia po polsku i angielsku | Neutralna, bez skojarzenia z Polską; sprawdzić domeny .pl/.com i znak w UPRP/EUIPO |
+| **Sfora** | Krótkie polskie słowo („stado psów”), jedna wyraźna marka, pasuje do funkcji zespołu hodowli i wielu psów | Mocno polskie – na rynki EN potrzebny podtytuł („Sfora – breeder app”); sprawdzić kolizje z firmami o tej nazwie |
+| **Łapka** / **Lapka** | Ciepłe, przyjazne, zgodne z „pastelowym” wyglądem; naturalnie łączy właścicieli i hodowców; łatwa ikona (łapa) | Wersja bez ogonka (Lapka) do domeny i sklepów; sprawdzić, czy nie koliduje z istniejącymi markami zoologicznymi |
+
+Rekomendacja: jeśli start tylko w Polsce – **Sfora** (najmocniejsza marka); jeśli od początku rynek EN – **Kennelo**. Przed decyzją: sprawdzić dostępność domen (.pl, .com, .app), nazw w Google Play / App Store i baz znaków towarowych.
+

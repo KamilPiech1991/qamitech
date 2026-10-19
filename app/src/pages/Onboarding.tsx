@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { PawPrint, Dog } from 'lucide-react';
 import { useStore } from '../app/store';
 import { demoState } from '../app/seed';
 import { APP_NAME, Field } from '../components/ui';
@@ -17,18 +18,18 @@ export default function Onboarding() {
   return (
     <div className="module-pick">
       <div className="box">
-        <div className="row" style={{ marginBottom: 20 }}><div className="avatar" style={{ width: 48, height: 48, fontSize: 24 }}>🐾</div><div><h1 style={{ margin: 0 }}>{APP_NAME}</h1><div className="muted">Jeden system. Dwa dopasowane moduły.</div></div></div>
+        <div className="row" style={{ marginBottom: 20 }}><div className="avatar" style={{ width: 52, height: 52, background: 'var(--primary)', color: '#fff' }}><PawPrint size={28} className="wag" /></div><div><h1 style={{ margin: 0 }}>{APP_NAME}</h1><div className="muted">Jeden system. Dwa dopasowane moduły.</div></div></div>
         {!module ? (
           <>
             <h2>Wybierz moduł</h2>
             <p className="muted">Wybierz panel, z którego chcesz korzystać. Moduł możesz później zmienić w ustawieniach.</p>
             <div className="grid cols-2 stack-m" style={{ marginTop: 16 }}>
               <div className="module-card" onClick={() => setModule('owner')}>
-                <div style={{ fontSize: 34 }}>🐶</div><h3>Właściciel</h3>
+                <div className="avatar" style={{ width: 52, height: 52, marginBottom: 8 }}><Dog size={28} /></div><h3>Właściciel</h3>
                 <p className="muted">Panel właściciela psa – dane, zdrowie, finanse, przypomnienia i codzienna opieka. Odbierz Paw ID od hodowcy.</p>
               </div>
               <div className="module-card dark" onClick={() => setModule('breeder')}>
-                <div style={{ fontSize: 34 }}>🐾</div><h3>Hodowca</h3>
+                <div className="avatar" style={{ width: 52, height: 52, marginBottom: 8, background: 'rgba(255,255,255,.2)', color: '#fff' }}><PawPrint size={28} /></div><h3>Hodowca</h3>
                 <p style={{ opacity: .85 }}>Panel hodowcy – psy, rozród, kalendarz ciąży, mioty, szczenięta, wystawy, finanse, raporty i Paw ID.</p>
               </div>
             </div>

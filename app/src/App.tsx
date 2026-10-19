@@ -14,10 +14,15 @@ import Reports from './pages/Reports';
 import Reminders from './pages/Reminders';
 import Settings from './pages/Settings';
 import Scan from './pages/Scan';
+import Search from './pages/Search';
+import Documents from './pages/Documents';
+import Portal from './pages/Portal';
 
 export default function App() {
   const { state } = useStore();
   if (!state.profile.onboarded) return <Onboarding />;
+  const path = window.location.hash;
+  if (path.startsWith('#/portal/')) return <Routes><Route path="/portal/:id" element={<Portal />} /></Routes>;
   const breeder = state.profile.module === 'breeder';
   return (
     <Routes>
@@ -35,6 +40,9 @@ export default function App() {
         <Route path="/przypomnienia" element={<Reminders />} />
         <Route path="/ustawienia" element={<Settings />} />
         <Route path="/skanuj" element={<Scan />} />
+        <Route path="/szukaj" element={<Search />} />
+        {breeder && <Route path="/dokumenty" element={<Documents />} />}
+        {breeder && <Route path="/dokumenty/:kind" element={<Documents />} />}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

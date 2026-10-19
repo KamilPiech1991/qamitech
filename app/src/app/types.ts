@@ -21,7 +21,44 @@ export interface Dog {
   photo?: string;
   notes?: string;
   pawId?: string;
+  fatherId?: string;
+  motherId?: string;
   createdAt: string;
+}
+
+export interface Heat {
+  id: string;
+  dogId: string;
+  startDate: string;
+  endDate?: string;
+  notes?: string;
+}
+
+export interface Income {
+  id: string;
+  date: string;
+  amount: number;
+  category: string;
+  description?: string;
+  dogId?: string;
+  litterId?: string;
+  puppyId?: string;
+}
+
+export interface BirthEvent {
+  id: string;
+  time: string;
+  kind: 'start' | 'puppy' | 'note' | 'vet' | 'end';
+  puppyName?: string;
+  note?: string;
+}
+
+export interface Member {
+  id: string;
+  name: string;
+  email: string;
+  role: 'owner' | 'editor' | 'viewer';
+  status: 'active' | 'invited';
 }
 
 export type HealthKind = 'vaccination' | 'deworming' | 'parasite' | 'procedure' | 'exam';
@@ -102,6 +139,7 @@ export interface Litter {
   notes: string[];
   checklist: Record<string, boolean>;
   pack: LitterPack;
+  birthDiary: BirthEvent[];
   createdAt: string;
 }
 
@@ -175,6 +213,7 @@ export interface Expense {
   description?: string;
   dogId?: string;
   showId?: string;
+  litterId?: string;
 }
 
 export interface Reminder {
@@ -194,6 +233,7 @@ export interface Profile {
   breederName: string;
   email?: string;
   onboarded: boolean;
+  darkMode?: boolean;
 }
 
 export interface AppState {
@@ -209,7 +249,13 @@ export interface AppState {
   championships: Championship[];
   expenses: Expense[];
   reminders: Reminder[];
+  heats: Heat[];
+  incomes: Income[];
+  members: Member[];
 }
+
+export const INCOME_CATEGORIES = ['Sprzedaż szczenięcia', 'Zaliczka za szczenię', 'Krycie (opłata)', 'Nagroda / wystawa', 'Inne'];
+export const HEAT_DEFAULT_INTERVAL_DAYS = 180;
 
 export const FREE_LIMITS = { females: 2, males: 2, shows: 5, championships: 6, chartMonths: 4 };
 

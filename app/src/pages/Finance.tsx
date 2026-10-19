@@ -1,24 +1,28 @@
-import { useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Plus, Receipt, Trophy, History, TrendingUp, Wallet } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList } from 'recharts';
 import { useStore } from '../app/store';
-import { Card, Empty, Field, Modal, PageHeader, ProBadge, Tabs, confirmDel } from '../components/ui';
+import { Card, Empty, Field, Modal, PageHeader, ProBadge, Tabs, confirmDel, EditBtn, DelBtn } from '../components/ui';
 import { fmtDate, fmtMoney, monthKey, MONTHS_SHORT, today, uid } from '../app/format';
-import { EXPENSE_CATEGORIES, SHOW_EXPENSE_TYPES, type Expense } from '../app/types';
+import { EXPENSE_CATEGORIES, SHOW_EXPENSE_TYPES, INCOME_CATEGORIES, type Expense, type Income } from '../app/types';
 
-type Tab = 'budget' | 'history' | 'stats';
+type Tab = 'budget' | 'history' | 'income' | 'stats';
 
 export default function Finance() {
   const { state, upsert, remove, toast, limits } = useStore();
-  const [params] = useSearchParams();
+  const [params, setParams] = useSearchParams();
   const showId = params.get('show');
   const [tab, setTab] = useState<Tab>(showId ? 'history' : 'budget');
   const [edit, setEdit] = useState<Expense | null>(null);
+  const [editInc, setEditInc] = useState<Income | null>(null);
   const [withShows, setWithShows] = useState(true);
+  useEffect(() => { if (params.get('add')) { setEdit(newExpense('kennel')); setParams({}); } /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [params]);
   const t = today();
   const cur = monthKey(t);
   const ex = state.expenses;
   const total = ex.reduce((a, e) => a + e.amount, 0);
+  const totalInc = state.incomes.reduce((a, i) => a + i.amount, 0);
   const showMonth = ex.filter(e => e.scope === 'show' && monthKey(e.date) === cur).reduce((a, e) => a + e.amount, 0);
   const kennelMonth = ex.filter(e => e.scope === 'kennel' && monthKey(e.date) === cur).reduce((a, e) => a + e.amount, 0);
   const months = useMemo(() => { const arr: { key: string; label: string; total: number; locked: boolean }[] = []; for (let i = 5; i >= 0; i--) { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); const key = d.toISOString().slice(0, 7); const tot = ex.filter(e => monthKey(e.date) === key && (withShows || e.scope === 'kennel')).reduce((a, e) => a + e.amount, 0); arr.push({ key, label: MONTHS_SHORT[d.getMonth()], total: Math.round(tot), locked: i >= limits.chartMonths }); } return arr; }, [ex, withShows, limits.chartMonths]);
@@ -28,23 +32,27 @@ export default function Finance() {
 
   return (
     <div>
-      <PageHeader title="Budżet hodowli" sub="Wydatki na hodowlę i wystawy" actions={<button className="btn" onClick={() => setEdit(newExpense('kennel'))}>+ Dodaj wydatek</button>} />
-      <Tabs value={tab} onChange={setTab} items={[{ key: 'budget', label: 'Finanse' }, { key: 'history', label: 'Historia wydatków' }, { key: 'stats', label: 'Statystyki' }]} />
+      <PageHeader title="Budżet hodowli" sub="Wydatki, przychody i wynik hodowli" actions={<><button className="btn secondary" onClick={() => setEditInc({ id: uid(), date: t, amount: 0, category: INCOME_CATEGORIES[0] })}><Plus size={16} /> Przychód</button><button className="btn" onClick={() => setEdit(newExpense('kennel'))}><Plus size={18} /> Wydatek</button></>} />
+      <Tabs value={tab} onChange={setTab} items={[{ key: 'budget', label: 'Finanse' }, { key: 'history', label: 'Historia wydatków' }, { key: 'income', label: 'Przychody' }, { key: 'stats', label: 'Statystyki' }]} />
 
       {tab === 'budget' && <div className="stack">
-        <div className="card" style={{ borderLeft: '5px solid var(--primary)' }}><small className="muted">Suma wprowadzonych wydatków</small><div style={{ fontSize: 30, fontWeight: 800, color: 'var(--primary-600)' }}>{fmtMoney(total)}</div><small className="muted">Wydatki na hodowlę + wystawy · PLN</small></div>
+        <div className="grid cols-3">
+          <div className="card"><small className="muted">Wydatki łącznie</small><div style={{ fontSize: 22, fontWeight: 900, color: 'var(--danger)' }}>{fmtMoney(total)}</div><small className="muted">hodowla + wystawy</small></div>
+          <div className="card"><small className="muted">Przychody łącznie</small><div style={{ fontSize: 22, fontWeight: 900, color: 'var(--success)' }}>{fmtMoney(totalInc)}</div><small className="muted">szczenięta, krycia</small></div>
+          <div className="card" style={{ background: 'var(--soft)', borderColor: 'transparent' }}><small className="muted">Wynik hodowli</small><div style={{ fontSize: 22, fontWeight: 900, color: totalInc - total >= 0 ? 'var(--primary-600)' : 'var(--danger)' }}>{fmtMoney(totalInc - total)}</div><small className="muted">przychody − wydatki</small></div>
+        </div>
         <div className="grid cols-2">
           <div className="card clickable" onClick={() => setTab('history')} style={{ borderLeft: '5px solid var(--accent)' }}><small className="muted">Wydatki na wystawy</small><div style={{ fontSize: 22, fontWeight: 800 }}>{fmtMoney(showMonth)}</div><small style={{ color: 'var(--primary-600)' }}>Bieżący miesiąc: {monthName}</small></div>
           <div className="card clickable" onClick={() => setTab('history')} style={{ borderLeft: '5px solid var(--primary)' }}><small className="muted">Wydatki na hodowlę</small><div style={{ fontSize: 22, fontWeight: 800 }}>{fmtMoney(kennelMonth)}</div><small style={{ color: 'var(--primary-600)' }}>Bieżący miesiąc: {monthName}</small></div>
         </div>
         <h3>Szybkie akcje</h3>
         <div className="grid cols-3">
-          <Card onClick={() => setEdit(newExpense('kennel'))}><div style={{ fontSize: 24 }}>🧾</div><b>Dodaj wydatek na hodowlę</b><div className="muted">Nowa pozycja</div></Card>
-          <Card onClick={() => setEdit(newExpense('show'))}><div style={{ fontSize: 24 }}>🏆</div><b>Dodaj koszt wystawy</b><div className="muted">Zgłoszenia, dojazd, nocleg</div></Card>
-          <Card onClick={() => setTab('history')}><div style={{ fontSize: 24 }}>📜</div><b>Historia</b><div className="muted">Wszystkie wpisy</div></Card>
+          <Card onClick={() => setEdit(newExpense('kennel'))} icon={<Receipt size={18} />} title="Wydatek na hodowlę"><div className="muted">Nowa pozycja</div></Card>
+          <Card onClick={() => setEdit(newExpense('show'))} icon={<Trophy size={18} />} title="Koszt wystawy"><div className="muted">Zgłoszenia, dojazd, nocleg</div></Card>
+          <Card onClick={() => setTab('history')} icon={<History size={18} />} title="Historia"><div className="muted">Wszystkie wpisy</div></Card>
         </div>
         <Card title="Wydatki w ostatnich 6 miesiącach" right={!limits.isPro && <span className="badge gray">FREE: {limits.chartMonths} z 6 mies.</span>}>
-          <div style={{ height: 220 }}><ResponsiveContainer><BarChart data={months.map(m => ({ ...m, total: m.locked ? 0 : m.total }))}><XAxis dataKey="label" fontSize={12} /><YAxis hide /><Tooltip formatter={(v) => fmtMoney(Number(v))} /><Bar isAnimationActive={false} dataKey="total" fill="#0f766e" radius={[8, 8, 0, 0]}><LabelList dataKey="total" position="top" formatter={(v: unknown) => `${v} zł`} fontSize={11} /></Bar></BarChart></ResponsiveContainer></div>
+          <div style={{ height: 220 }}><ResponsiveContainer><BarChart data={months.map(m => ({ ...m, total: m.locked ? 0 : m.total }))}><XAxis dataKey="label" fontSize={12} /><YAxis hide /><Tooltip formatter={(v) => fmtMoney(Number(v))} /><Bar isAnimationActive={false} dataKey="total" fill="#2E7D5B" radius={[10, 10, 4, 4]}><LabelList dataKey="total" position="top" formatter={(v: unknown) => `${v} zł`} fontSize={11} /></Bar></BarChart></ResponsiveContainer></div>
           {!limits.isPro && <div className="muted" style={{ textAlign: 'center' }}>Pełny widok 6 miesięcy dostępny w <ProBadge /></div>}
           <div className="row between" style={{ marginTop: 8 }}><small>Bez kosztów wystaw</small><label className="row"><input type="checkbox" checked={withShows} onChange={e => setWithShows(e.target.checked)} /> Uwzględniaj koszty wystaw</label></div>
         </Card>
@@ -53,14 +61,25 @@ export default function Finance() {
         </Card>
       </div>}
 
-      {tab === 'history' && <History />}
+      {tab === 'history' && <HistoryTab />}
+      {tab === 'income' && <IncomeTab />}
       {tab === 'stats' && <Stats />}
 
       {edit && <ExpenseForm e={edit} onClose={() => setEdit(null)} onSave={e => { upsert('expenses', e); setEdit(null); toast('Wydatek zapisany'); }} />}
+      {editInc && <Modal title="Przychód" onClose={() => setEditInc(null)} actions={<><button className="btn secondary" onClick={() => setEditInc(null)}>Anuluj</button><button className="btn" disabled={!editInc.amount || !editInc.date} onClick={() => { upsert('incomes', editInc); setEditInc(null); toast('Przychód zapisany'); }}>Zapisz</button></>}>
+        <div className="form-grid">
+          <Field label="Kategoria"><select value={editInc.category} onChange={ev => setEditInc({ ...editInc, category: ev.target.value })}>{INCOME_CATEGORIES.map(c => <option key={c}>{c}</option>)}</select></Field>
+          <Field label="Miot (opcjonalnie)"><select value={editInc.litterId ?? ''} onChange={ev => setEditInc({ ...editInc, litterId: ev.target.value || undefined })}><option value="">—</option>{state.litters.map(l => <option key={l.id} value={l.id}>{l.name}</option>)}</select></Field>
+          <Field label="Data *"><input type="date" value={editInc.date} onChange={ev => setEditInc({ ...editInc, date: ev.target.value })} /></Field>
+          <Field label="Kwota (PLN) *"><input type="number" step="0.01" value={editInc.amount || ''} onChange={ev => setEditInc({ ...editInc, amount: Number(ev.target.value) })} /></Field>
+          <Field label="Pies (opcjonalnie)"><select value={editInc.dogId ?? ''} onChange={ev => setEditInc({ ...editInc, dogId: ev.target.value || undefined })}><option value="">—</option>{state.dogs.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}</select></Field>
+        </div>
+        <Field label="Opis"><input value={editInc.description ?? ''} onChange={ev => setEditInc({ ...editInc, description: ev.target.value })} placeholder="np. zaliczka za Red Boya" /></Field>
+      </Modal>}
     </div>
   );
 
-  function History() {
+  function HistoryTab() {
     const [year, setYear] = useState('all');
     const [month, setMonth] = useState('all');
     const years = Array.from(new Set(ex.map(e => e.date.slice(0, 4)))).sort().reverse();
@@ -81,7 +100,7 @@ export default function Finance() {
           {showGroups.length === 0 ? <Empty>Brak wydatków wystawowych.</Empty> : showGroups.map(([k, arr]) => { const show = state.shows.find(s => s.id === k); const o = open[k] ?? !!showId; return (
             <div key={k} className="card soft" style={{ marginBottom: 8 }}>
               <div className="row between" style={{ cursor: 'pointer' }} onClick={() => tog(k)}><div><b style={{ color: 'var(--primary-600)' }}>{show ? `${show.country} • ${show.city}` : 'Wystawa (bez przypisania)'}</b><div className="muted" style={{ fontSize: 12 }}>{fmtDate(arr[0].date)} • Suma: {fmtMoney(sum(arr))} • Pozycji: {arr.length}{dogName(arr[0].dogId) ? ` • ${dogName(arr[0].dogId)}` : ''}</div></div><span>{o ? '▲' : '▼'}</span></div>
-              {o && <div className="list" style={{ marginTop: 8 }}>{arr.map(e => <div key={e.id} className="list-item"><div className="title" style={{ color: 'var(--primary-600)' }}>{e.type}{e.description ? <small className="muted"> · {e.description}</small> : ''}</div><div className="row"><b>{fmtMoney(e.amount)}</b><button className="icon-btn" onClick={() => setEdit(e)}>✏️</button><button className="icon-btn" onClick={() => confirmDel() && remove('expenses', e.id)}>🗑️</button></div></div>)}</div>}
+              {o && <div className="list" style={{ marginTop: 8 }}>{arr.map(e => <div key={e.id} className="list-item"><div className="title" style={{ color: 'var(--primary-600)' }}>{e.type}{e.description ? <small className="muted"> · {e.description}</small> : ''}</div><div className="row"><b>{fmtMoney(e.amount)}</b><EditBtn onClick={() => setEdit(e)} /><DelBtn onClick={() => confirmDel() && remove('expenses', e.id)} /></div></div>)}</div>}
             </div>); })}
         </Card>
         <Card title="Wydatki na hodowlę">
@@ -91,10 +110,24 @@ export default function Finance() {
               {oy && Array.from(mm.entries()).sort((a, b) => b[0].localeCompare(a[0])).map(([mo, arr]) => { const om = open[mo] ?? mo === cur; return (
                 <div key={mo} style={{ marginTop: 8, paddingLeft: 8, borderLeft: '3px solid var(--border)' }}>
                   <div className="row between" style={{ cursor: 'pointer' }} onClick={() => tog(mo)}><b>{new Date(mo + '-01').toLocaleDateString('pl-PL', { month: 'long', year: 'numeric' })}</b><span style={{ color: 'var(--primary-600)', fontWeight: 700 }}>{fmtMoney(sum(arr))} {om ? '▲' : '▼'}</span></div>
-                  {om && <div className="list" style={{ marginTop: 6 }}>{arr.sort((a, b) => b.date.localeCompare(a.date)).map(e => <div key={e.id} className="list-item"><div><div className="title">{e.type ?? e.category}</div><small>{e.category} · {fmtDate(e.date)}{dogName(e.dogId) ? ` · ${dogName(e.dogId)}` : ''}{e.description ? ` · ${e.description}` : ''}</small></div><div className="row"><b>{fmtMoney(e.amount)}</b><button className="icon-btn" onClick={() => setEdit(e)}>✏️</button><button className="icon-btn" onClick={() => confirmDel() && remove('expenses', e.id)}>🗑️</button></div></div>)}</div>}
+                  {om && <div className="list" style={{ marginTop: 6 }}>{arr.sort((a, b) => b.date.localeCompare(a.date)).map(e => <div key={e.id} className="list-item"><div><div className="title">{e.type ?? e.category}</div><small>{e.category} · {fmtDate(e.date)}{dogName(e.dogId) ? ` · ${dogName(e.dogId)}` : ''}{e.description ? ` · ${e.description}` : ''}</small></div><div className="row"><b>{fmtMoney(e.amount)}</b><EditBtn onClick={() => setEdit(e)} /><DelBtn onClick={() => confirmDel() && remove('expenses', e.id)} /></div></div>)}</div>}
                 </div>); })}
             </div>); })}
         </Card>
+      </div>
+    );
+  }
+
+  function IncomeTab() {
+    const list = [...state.incomes].sort((a, b) => b.date.localeCompare(a.date));
+    const byCat = new Map<string, number>(); list.forEach(i => byCat.set(i.category, (byCat.get(i.category) ?? 0) + i.amount));
+    return (
+      <div className="stack">
+        <Card title="Przychody" icon={<TrendingUp size={18} />} right={<b style={{ color: 'var(--success)' }}>{fmtMoney(totalInc)}</b>}>
+          {list.length === 0 ? <Empty icon={<Wallet size={28} />}>Brak przychodów. Zapisuj sprzedaż szczeniąt, zaliczki i opłaty za krycia – zobaczysz prawdziwy wynik hodowli.</Empty> : <div className="list">{list.map(i => <div key={i.id} className="list-item"><div><div className="title">{i.category}</div><small>{fmtDate(i.date)}{i.description ? ` · ${i.description}` : ''}{i.litterId ? ` · ${state.litters.find(l => l.id === i.litterId)?.name ?? ''}` : ''}{dogName(i.dogId) ? ` · ${dogName(i.dogId)}` : ''}</small></div><div className="row"><b style={{ color: 'var(--success)' }}>+{fmtMoney(i.amount)}</b><EditBtn onClick={() => setEditInc(i)} /><DelBtn onClick={() => confirmDel() && remove('incomes', i.id)} /></div></div>)}</div>}
+        </Card>
+        {byCat.size > 0 && <Card title="Źródła przychodów"><div className="list">{Array.from(byCat.entries()).sort((a, b) => b[1] - a[1]).map(([c, v]) => <div key={c}><div className="row between"><span>{c}</span><b>{fmtMoney(v)}</b></div><div className="progress"><div style={{ width: `${(v / (totalInc || 1)) * 100}%`, background: 'var(--success)' }} /></div></div>)}</div></Card>}
+        <Card title="Rentowność miotów"><div className="list">{state.litters.map(l => { const inc = state.incomes.filter(i => i.litterId === l.id).reduce((a, i) => a + i.amount, 0); const exp = state.expenses.filter(e => e.litterId === l.id).reduce((a, e) => a + e.amount, 0); return <Link key={l.id} to={`/mioty/${l.id}?tab=money`} className="list-item" style={{ color: 'inherit' }}><div><div className="title">{l.name}</div><small>przychody {fmtMoney(inc)} · koszty {fmtMoney(exp)}</small></div><b style={{ color: inc - exp >= 0 ? 'var(--primary-600)' : 'var(--danger)' }}>{fmtMoney(inc - exp)}</b></Link>; })}{state.litters.length === 0 && <div className="muted">Brak miotów.</div>}</div></Card>
       </div>
     );
   }
@@ -144,6 +177,7 @@ function ExpenseForm({ e, onClose, onSave }: { e: Expense; onClose: () => void; 
         <Field label="Data wydatku *"><input type="date" value={x.date} onChange={ev => setX({ ...x, date: ev.target.value })} /></Field>
         <Field label="Kwota wydatku (PLN) *"><input type="number" step="0.01" value={x.amount || ''} onChange={ev => setX({ ...x, amount: Number(ev.target.value) })} placeholder="Podaj kwotę" /></Field>
         <Field label="Pies (opcjonalnie)"><select value={x.dogId ?? ''} onChange={ev => setX({ ...x, dogId: ev.target.value || undefined })}><option value="">—</option>{state.dogs.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}</select></Field>
+        {x.scope === 'kennel' && <Field label="Miot (do rentowności)"><select value={x.litterId ?? ''} onChange={ev => setX({ ...x, litterId: ev.target.value || undefined })}><option value="">—</option>{state.litters.map(l => <option key={l.id} value={l.id}>{l.name}</option>)}</select></Field>}
       </div>
       <Field label="Opis (opcjonalnie)"><textarea value={x.description ?? ''} onChange={ev => setX({ ...x, description: ev.target.value })} placeholder="Np. marka, ilość, szczegóły..." /></Field>
     </Modal>

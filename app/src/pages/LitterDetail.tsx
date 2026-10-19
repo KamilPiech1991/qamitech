@@ -1,14 +1,16 @@
-import { useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Pencil, Plus, Scale, Syringe, Baby, ClipboardList, Utensils, Pill, Bath, Home, QrCode, PiggyBank, BookOpen, PawPrint } from 'lucide-react';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from 'recharts';
 import { useStore } from '../app/store';
-import { Card, Chips, Empty, Field, Modal, PageHeader, Tabs, confirmDel, sexIcon } from '../components/ui';
+import { Card, Chips, Empty, Field, Modal, PageHeader, Tabs, confirmDel, sexIcon, DelBtn, EditBtn } from '../components/ui';
 import { LitterForm } from './Litters';
 import { daysBetween, fmtDate, fmtDateTime, nowLocal, today, uid } from '../app/format';
-import { ACCUSTOMED_ITEMS, LITTER_CHECKLIST, MARKER_COLORS, type HealthKind, type LitterPack, type Puppy } from '../app/types';
+import { ACCUSTOMED_ITEMS, LITTER_CHECKLIST, MARKER_COLORS, INCOME_CATEGORIES, type HealthKind, type LitterPack, type Puppy, type BirthEvent, type Income, type Expense } from '../app/types';
+import { fmtMoney } from '../app/format';
 import { HealthForm } from './DogProfile';
 
-type Tab = 'puppies' | 'analysis' | 'care' | 'pack';
+type Tab = 'puppies' | 'analysis' | 'care' | 'pack' | 'birth' | 'money';
 
 export function PuppyForm({ initial, litterId, index, onClose, onSave }: { initial?: Puppy; litterId: string; index: number; onClose: () => void; onSave: (p: Puppy) => void }) {
   const [p, setP] = useState<Puppy>(initial ?? { id: uid(), litterId, name: '', sex: 'male', birthDateTime: nowLocal(), birthStatus: 'alive', markerColor: MARKER_COLORS[index % MARKER_COLORS.length], pawId: `KNL-P-${Date.now().toString(36).toUpperCase().slice(-6)}`, owners: [], character: [] });
@@ -31,15 +33,17 @@ export function PuppyForm({ initial, litterId, index, onClose, onSave }: { initi
 
 export default function LitterDetail() {
   const { id } = useParams();
-  const { state, upsert, dispatch, toast } = useStore();
+  const { state, upsert, remove, dispatch, toast } = useStore();
   const nav = useNavigate();
   const litter = state.litters.find(l => l.id === id);
-  const [tab, setTab] = useState<Tab>('puppies');
+  const [params, setParams] = useSearchParams();
+  const [tab, setTab] = useState<Tab>((params.get('tab') as Tab) || 'puppies');
   const [editLitter, setEditLitter] = useState(false);
   const [addPup, setAddPup] = useState(false);
   const [bulkWeight, setBulkWeight] = useState(false);
   const [bulkHealth, setBulkHealth] = useState(false);
   const [note, setNote] = useState('');
+  useEffect(() => { const t = params.get('tab') as Tab | null; if (t) setTab(t); if (params.get('weigh')) { setBulkWeight(true); setParams({}); } }, [params, setParams]);
   if (!litter) return <Card><Empty>Nie znaleziono miotu. <Link to="/mioty">Wróć</Link></Empty></Card>;
   const pups = state.puppies.filter(p => p.litterId === litter.id).sort((a, b) => a.birthDateTime.localeCompare(b.birthDateTime));
   const lastWeights = (pid: string) => state.weights.filter(w => w.puppyId === pid).sort((a, b) => a.date.localeCompare(b.date));
@@ -50,27 +54,27 @@ export default function LitterDetail() {
 
   return (
     <div>
-      <PageHeader back={() => nav('/mioty')} title={`Metryka miotu: ${litter.name}`} sub={<>Ur. {fmtDate(litter.birthDate)} ({age} dni) · Matka: {litter.motherName} · Ojciec: {litter.fatherName || '—'}</>} actions={<button className="btn secondary" onClick={() => setEditLitter(true)}>✏️ Edytuj miot</button>} />
-      <Tabs value={tab} onChange={setTab} items={[{ key: 'puppies', label: `Szczenięta (${pups.length})` }, { key: 'analysis', label: 'Analiza miotu' }, { key: 'care', label: `Opieka nad miotem (${pct}%)` }, { key: 'pack', label: 'Cyfrowa wyprawka' }]} />
+      <PageHeader back={() => nav('/mioty')} title={`Metryka miotu: ${litter.name}`} sub={<>Ur. {fmtDate(litter.birthDate)} ({age} dni) · Matka: {litter.motherName} · Ojciec: {litter.fatherName || '—'}</>} actions={<button className="btn secondary" onClick={() => setEditLitter(true)}><Pencil size={16} /> Edytuj miot</button>} />
+      <Tabs value={tab} onChange={setTab} items={[{ key: 'puppies', label: `Szczenięta (${pups.length})` }, { key: 'analysis', label: 'Analiza' }, { key: 'care', label: `Opieka (${pct}%)` }, { key: 'birth', label: 'Dziennik porodu' }, { key: 'money', label: 'Rentowność' }, { key: 'pack', label: 'Wyprawka' }]} />
 
       {tab === 'puppies' && (
         <div className="stack">
           <div className="row no-print">
-            <button className="btn" onClick={() => setAddPup(true)}>+ Dodaj szczenię</button>
-            {pups.length > 0 && <><button className="btn secondary" onClick={() => setBulkWeight(true)}>⚖️ Ważenie całego miotu</button><button className="btn secondary" onClick={() => setBulkHealth(true)}>💉 Wpis dla wszystkich</button></>}
+            <button className="btn" onClick={() => setAddPup(true)}><Plus size={18} /> Dodaj szczenię</button>
+            {pups.length > 0 && <><button className="btn secondary" onClick={() => setBulkWeight(true)}><Scale size={16} /> Ważenie całego miotu</button><button className="btn secondary" onClick={() => setBulkHealth(true)}><Syringe size={16} /> Wpis dla wszystkich</button></>}
           </div>
-          {pups.length === 0 && <Card><Empty>Brak szczeniąt. Dodaj pierwsze szczenię z miotu.</Empty></Card>}
+          {pups.length === 0 && <Card><Empty icon={<Baby size={28} />}>Brak szczeniąt. Dodaj pierwsze szczenię z miotu.</Empty></Card>}
           {pups.map(p => { const ws = lastWeights(p.id); const last = ws[ws.length - 1]; const prev = ws[ws.length - 2]; const diff = last && prev ? last.grams - prev.grams : null; return (
             <Card key={p.id} className="" >
               <div style={{ borderLeft: `5px solid ${p.markerColor}`, paddingLeft: 12 }}>
                 <div className="row between">
                   <div><b style={{ fontSize: 17, color: 'var(--primary-600)' }}>{p.name}</b><div className="muted">{sexIcon(p.sex)} {p.sex === 'male' ? 'Pies' : 'Suka'} · Ur. {fmtDateTime(p.birthDateTime)}{p.birthStatus !== 'alive' ? ' · ' + (p.birthStatus === 'stillborn' ? 'martwo urodzony' : 'padł') : ''}</div></div>
-                  {last ? <div className="card soft" style={{ padding: '6px 10px', textAlign: 'right' }}><b>⚖️ {last.grams} g</b>{diff !== null && <div style={{ fontSize: 12, color: diff >= 0 ? 'var(--success)' : 'var(--danger)' }}>{diff >= 0 ? '↑ +' : '↓ '}{diff} g</div>}</div> : <span className="badge gray">brak pomiaru</span>}
+                  {last ? <div className="card soft" style={{ padding: '6px 10px', textAlign: 'right' }}><b style={{ display: 'flex', gap: 4, alignItems: 'center' }}><Scale size={14} /> {last.grams} g</b>{diff !== null && <div style={{ fontSize: 12, color: diff >= 0 ? 'var(--success)' : 'var(--danger)' }}>{diff >= 0 ? '↑ +' : '↓ '}{diff} g</div>}</div> : <span className="badge gray">brak pomiaru</span>}
                 </div>
                 <div className="row" style={{ marginTop: 10, gap: 6 }}>
-                  <Link className="btn secondary sm" to={`/szczenieta/${p.id}`}>📋 Metryka</Link>
-                  <Link className="btn secondary sm" to={`/szczenieta/${p.id}?tab=weights`}>⚖️ Wagi</Link>
-                  <Link className="btn sm" to={`/szczenieta/${p.id}?tab=pawid`}>🔳 Karta Paw ID</Link>
+                  <Link className="btn secondary sm" to={`/szczenieta/${p.id}`}><ClipboardList size={14} /> Metryka</Link>
+                  <Link className="btn secondary sm" to={`/szczenieta/${p.id}?tab=weights`}><Scale size={14} /> Wagi</Link>
+                  <Link className="btn sm" to={`/szczenieta/${p.id}?tab=pawid`}><QrCode size={14} /> Karta Paw ID</Link>
                   {p.owners.length > 0 && <span className="badge">Właściciel: {p.owners[0].name}</span>}
                   {p.handoverDate && <span className="badge gray">Przekazany {fmtDate(p.handoverDate)}</span>}
                 </div>
@@ -88,13 +92,15 @@ export default function LitterDetail() {
             {LITTER_CHECKLIST.map(g => <div key={g.group} style={{ marginBottom: 12 }}><div style={{ fontWeight: 700, color: 'var(--primary-600)', fontSize: 12, textTransform: 'uppercase', letterSpacing: 1, borderLeft: '3px solid var(--primary)', paddingLeft: 8, marginBottom: 4 }}>{g.group}</div>{g.items.map(i => <label key={i.key} className="check"><input type="checkbox" checked={!!litter.checklist[i.key]} onChange={e => upsert('litters', { ...litter, checklist: { ...litter.checklist, [i.key]: e.target.checked } })} /><div><div className="t" style={{ color: litter.checklist[i.key] ? 'var(--primary-600)' : undefined }}>{i.title}</div><div className="d">{i.desc}</div></div></label>)}</div>)}
           </Card>
           <Card title="Notatki do miotu" right={<span className="badge gray">{litter.notes.length}</span>}>
-            {litter.notes.map((n, i) => <div key={i} className="list-item" style={{ marginBottom: 6 }}><div>{n}</div><button className="icon-btn" onClick={() => upsert('litters', { ...litter, notes: litter.notes.filter((_, j) => j !== i) })}>🗑️</button></div>)}
+            {litter.notes.map((n, i) => <div key={i} className="list-item" style={{ marginBottom: 6 }}><div>{n}</div><DelBtn onClick={() => upsert('litters', { ...litter, notes: litter.notes.filter((_, j) => j !== i) })} /></div>)}
             <div className="row"><input value={note} onChange={e => setNote(e.target.value)} placeholder="Nowa notatka..." style={{ flex: 1, padding: 9, borderRadius: 10, border: '1px solid var(--border)' }} /><button className="btn" disabled={!note.trim()} onClick={() => { upsert('litters', { ...litter, notes: [...litter.notes, note.trim()] }); setNote(''); }}>Dodaj</button></div>
           </Card>
         </div>
       )}
 
       {tab === 'pack' && <PackEditor />}
+      {tab === 'birth' && <BirthDiary />}
+      {tab === 'money' && <Profitability />}
 
       {editLitter && <LitterForm initial={litter} onClose={() => setEditLitter(false)} onSave={l => { upsert('litters', l); setEditLitter(false); toast('Zapisano'); }} />}
       {addPup && <PuppyForm litterId={litter.id} index={pups.length} onClose={() => setAddPup(false)} onSave={p => { upsert('puppies', p); if (p.birthWeightG) upsert('weights', { id: uid(), puppyId: p.id, date: p.birthDateTime, grams: p.birthWeightG }); setAddPup(false); toast('Szczenię dodane'); }} />}
@@ -144,7 +150,7 @@ export default function LitterDetail() {
     return (
       <div className="stack">
         <Card title="Informacje wspólne dla miotu"><p className="muted">Żywienie, pielęgnacja i zalecenia dotyczące wszystkich szczeniąt. Trafią do Paw ID każdego szczenięcia.</p>
-          <h3>🍖 Żywienie</h3>
+          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Utensils size={18} style={{ color: 'var(--primary)' }} /> Żywienie</h3>
           <div className="form-grid">
             <Field label="Producent karmy"><input value={pack.foodBrand ?? ''} onChange={e => set('foodBrand', e.target.value)} /></Field>
             <Field label="Nazwa karmy"><input value={pack.foodName ?? ''} onChange={e => set('foodName', e.target.value)} /></Field>
@@ -152,13 +158,88 @@ export default function LitterDetail() {
             <Field label="Liczba posiłków dziennie"><div className="chips">{[2, 3, 4, 5].map(n => <button type="button" key={n} className={`chip ${pack.mealsPerDay === n ? 'on' : ''}`} onClick={() => set('mealsPerDay', n)}>{n}</button>)}</div></Field>
             <Field label="Godziny karmienia"><input value={pack.feedingHours ?? ''} onChange={e => set('feedingHours', e.target.value)} placeholder="np. 7, 11, 15, 19" /></Field>
           </div>
-          <h3>💊 Suplementacja</h3><Field label="Informacje i zalecenia"><textarea value={pack.supplements ?? ''} onChange={e => set('supplements', e.target.value)} /></Field>
-          <h3>🛁 Pielęgnacja</h3><Field label="Codzienna opieka i zalecenia"><textarea value={pack.grooming ?? ''} onChange={e => set('grooming', e.target.value)} /></Field>
-          <h3>🏠 Pierwsze dni w nowym domu</h3><Field label="Wskazówki"><textarea value={pack.firstDays ?? ''} onChange={e => set('firstDays', e.target.value)} /></Field>
+          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Pill size={18} style={{ color: 'var(--primary)' }} /> Suplementacja</h3><Field label="Informacje i zalecenia"><textarea value={pack.supplements ?? ''} onChange={e => set('supplements', e.target.value)} /></Field>
+          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Bath size={18} style={{ color: 'var(--primary)' }} /> Pielęgnacja</h3><Field label="Codzienna opieka i zalecenia"><textarea value={pack.grooming ?? ''} onChange={e => set('grooming', e.target.value)} /></Field>
+          <h3 style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Home size={18} style={{ color: 'var(--primary)' }} /> Pierwsze dni w nowym domu</h3><Field label="Wskazówki"><textarea value={pack.firstDays ?? ''} onChange={e => set('firstDays', e.target.value)} /></Field>
           <Field label="Z czym szczenięta są już oswojone?"><Chips options={ACCUSTOMED_ITEMS} value={pack.accustomed} onChange={v => set('accustomed', v)} /></Field>
           <button className="btn" onClick={() => { upsert('litters', { ...litter!, pack }); toast('Wyprawka zapisana'); }}>Zapisz wyprawkę</button>
         </Card>
-        <Card title="Informacje o szczeniętach"><p className="muted">Charakter, socjalizacja i indywidualne przyzwyczajenia każdego szczenięcia uzupełnisz w metryce szczenięcia.</p><div className="list">{pups.map(p => <Link key={p.id} to={`/szczenieta/${p.id}?tab=pack`} className="list-item" style={{ color: 'inherit' }}><div className="row"><span style={{ color: p.markerColor, fontSize: 20 }}>🐾</span><div><div className="title">{p.name}</div><small>{p.character.length ? p.character.join(', ') : 'Informacje indywidualne – uzupełnij'}</small></div></div><span>→</span></Link>)}</div></Card>
+        <Card title="Informacje o szczeniętach"><p className="muted">Charakter, socjalizacja i indywidualne przyzwyczajenia każdego szczenięcia uzupełnisz w metryce szczenięcia.</p><div className="list">{pups.map(p => <Link key={p.id} to={`/szczenieta/${p.id}?tab=pack`} className="list-item" style={{ color: 'inherit' }}><div className="row"><PawPrint size={20} style={{ color: p.markerColor }} /><div><div className="title">{p.name}</div><small>{p.character.length ? p.character.join(', ') : 'Informacje indywidualne – uzupełnij'}</small></div></div><span>→</span></Link>)}</div></Card>
+      </div>
+    );
+  }
+
+  function BirthDiary() {
+    const [ev, setEv] = useState<BirthEvent | null>(null);
+    const diary = [...litter!.birthDiary].sort((a, b) => a.time.localeCompare(b.time));
+    const kindLabel: Record<BirthEvent['kind'], string> = { start: 'Początek porodu', puppy: 'Szczenię', note: 'Notatka', vet: 'Kontakt z lekarzem', end: 'Koniec porodu' };
+    const save = (e: BirthEvent) => { upsert('litters', { ...litter!, birthDiary: [...litter!.birthDiary.filter(x => x.id !== e.id), e] }); setEv(null); toast('Zapisano'); };
+    const del = (id: string) => upsert('litters', { ...litter!, birthDiary: litter!.birthDiary.filter(x => x.id !== id) });
+    const first = diary[0], lastE = diary[diary.length - 1];
+    const durationMin = first && lastE ? Math.round((new Date(lastE.time).getTime() - new Date(first.time).getTime()) / 60000) : 0;
+    return (
+      <div className="stack">
+        <div className="row between no-print"><div className="muted">Zapisuj przebieg porodu na bieżąco: godziny, kolejność szczeniąt, komplikacje. Przyda się przy kolejnych miotach i dla lekarza.</div><button className="btn" onClick={() => setEv({ id: uid(), time: nowLocal(), kind: diary.length ? 'puppy' : 'start' })}><Plus size={18} /> Dodaj wpis</button></div>
+        {diary.length > 0 && <div className="grid cols-3"><div className="card stat"><div className="value">{diary.filter(e => e.kind === 'puppy').length}</div><div className="label">urodzonych</div></div><div className="card stat"><div className="value">{Math.floor(durationMin / 60)}h {durationMin % 60}m</div><div className="label">czas porodu</div></div><div className="card stat"><div className="value">{diary.filter(e => e.kind === 'puppy').length > 1 ? Math.round(durationMin / Math.max(1, diary.filter(e => e.kind === 'puppy').length - 1)) + ' min' : '—'}</div><div className="label">śr. odstęp</div></div></div>}
+        <Card title="Dziennik porodu" icon={<BookOpen size={18} />}>
+          {diary.length === 0 ? <Empty icon={<BookOpen size={28} />}>Brak wpisów. Dodaj „Początek porodu”, gdy zaczną się skurcze.</Empty> : <div className="timeline">{diary.map(e => <div key={e.id} className="tl"><div className="row between"><b>{kindLabel[e.kind]}{e.puppyName ? `: ${e.puppyName}` : ''}</b><div className="row"><small className="muted">{fmtDateTime(e.time)}</small><EditBtn onClick={() => setEv(e)} /><DelBtn onClick={() => confirmDel() && del(e.id)} /></div></div>{e.note && <small className="muted">{e.note}</small>}</div>)}</div>}
+        </Card>
+        {ev && <Modal title="Wpis w dzienniku porodu" onClose={() => setEv(null)} actions={<><button className="btn secondary" onClick={() => setEv(null)}>Anuluj</button><button className="btn" onClick={() => save(ev)}>Zapisz</button></>}>
+          <div className="form-grid">
+            <Field label="Rodzaj"><select value={ev.kind} onChange={e => setEv({ ...ev, kind: e.target.value as BirthEvent['kind'] })}>{(Object.keys(kindLabel) as BirthEvent['kind'][]).map(k => <option key={k} value={k}>{kindLabel[k]}</option>)}</select></Field>
+            <Field label="Godzina"><input type="datetime-local" value={ev.time} onChange={e => setEv({ ...ev, time: e.target.value })} /></Field>
+            {ev.kind === 'puppy' && <Field label="Szczenię (imię / oznaczenie)"><input value={ev.puppyName ?? ''} onChange={e => setEv({ ...ev, puppyName: e.target.value })} list="pupnames" /><datalist id="pupnames">{pups.map(p => <option key={p.id} value={p.name} />)}</datalist></Field>}
+          </div>
+          <Field label="Notatka"><textarea value={ev.note ?? ''} onChange={e => setEv({ ...ev, note: e.target.value })} placeholder="np. waga, łożysko, pozycja, interwencja" /></Field>
+        </Modal>}
+      </div>
+    );
+  }
+
+  function Profitability() {
+    const [inc, setInc] = useState<Income | null>(null);
+    const [exp, setExp] = useState<Expense | null>(null);
+    const incomes = state.incomes.filter(i => i.litterId === litter!.id);
+    const expenses = state.expenses.filter(e => e.litterId === litter!.id);
+    const expected = pups.reduce((a, p) => a + (p.price ?? 0), 0);
+    const received = incomes.reduce((a, i) => a + i.amount, 0);
+    const spent = expenses.reduce((a, e) => a + e.amount, 0);
+    const soldCount = pups.filter(p => p.price).length;
+    return (
+      <div className="stack">
+        <div className="grid cols-3">
+          <div className="card stat"><div className="value" style={{ color: 'var(--success)' }}>{fmtMoney(received)}</div><div className="label">przychody</div></div>
+          <div className="card stat"><div className="value" style={{ color: 'var(--danger)' }}>{fmtMoney(spent)}</div><div className="label">koszty miotu</div></div>
+          <div className="card stat"><div className="value" style={{ color: received - spent >= 0 ? 'var(--primary-600)' : 'var(--danger)' }}>{fmtMoney(received - spent)}</div><div className="label">wynik</div></div>
+        </div>
+        <Card title="Prognoza" icon={<PiggyBank size={18} />}>
+          <div className="muted">Ceny ustalone dla {soldCount} z {pups.length} szczeniąt. Planowany przychód ze sprzedaży: <b>{fmtMoney(expected)}</b>. Prognozowany wynik po sprzedaży wszystkich: <b>{fmtMoney(expected - spent)}</b>{pups.length ? <> · koszt odchowu na szczenię: <b>{fmtMoney(spent / pups.length)}</b></> : null}.</div>
+          <div className="progress" style={{ marginTop: 10 }}><div style={{ width: `${expected ? Math.min(100, (received / expected) * 100) : 0}%`, background: 'var(--success)' }} /></div>
+          <small className="muted">Otrzymano {expected ? Math.round((received / expected) * 100) : 0}% planowanych wpływów.</small>
+        </Card>
+        <Card title="Przychody" right={<button className="btn sm" onClick={() => setInc({ id: uid(), date: today(), amount: 0, category: INCOME_CATEGORIES[0], litterId: litter!.id })}><Plus size={14} /> Przychód</button>}>
+          {incomes.length === 0 ? <div className="muted">Brak przychodów. Dodaj zaliczkę lub sprzedaż.</div> : <div className="list">{incomes.sort((a, b) => b.date.localeCompare(a.date)).map(i => <div key={i.id} className="list-item"><div><div className="title">{i.category}{i.puppyId ? ` · ${pups.find(p => p.id === i.puppyId)?.name ?? ''}` : ''}</div><small>{fmtDate(i.date)}{i.description ? ` · ${i.description}` : ''}</small></div><div className="row"><b style={{ color: 'var(--success)' }}>+{fmtMoney(i.amount)}</b><EditBtn onClick={() => setInc(i)} /><DelBtn onClick={() => confirmDel() && remove('incomes', i.id)} /></div></div>)}</div>}
+        </Card>
+        <Card title="Koszty przypisane do miotu" right={<button className="btn sm secondary" onClick={() => setExp({ id: uid(), date: today(), amount: 0, scope: 'kennel', category: 'Rozród i miot', type: 'Inne', litterId: litter!.id })}><Plus size={14} /> Koszt</button>}>
+          {expenses.length === 0 ? <div className="muted">Brak kosztów przypisanych do miotu. Przy dodawaniu wydatku wybierz miot.</div> : <div className="list">{expenses.sort((a, b) => b.date.localeCompare(a.date)).map(e => <div key={e.id} className="list-item"><div><div className="title">{e.type ?? e.category}</div><small>{e.category} · {fmtDate(e.date)}{e.description ? ` · ${e.description}` : ''}</small></div><div className="row"><b style={{ color: 'var(--danger)' }}>−{fmtMoney(e.amount)}</b><DelBtn onClick={() => confirmDel() && remove('expenses', e.id)} /></div></div>)}</div>}
+        </Card>
+        {inc && <Modal title="Przychód" onClose={() => setInc(null)} actions={<><button className="btn secondary" onClick={() => setInc(null)}>Anuluj</button><button className="btn" disabled={!inc.amount} onClick={() => { upsert('incomes', inc); setInc(null); toast('Zapisano'); }}>Zapisz</button></>}>
+          <div className="form-grid">
+            <Field label="Kategoria"><select value={inc.category} onChange={e => setInc({ ...inc, category: e.target.value })}>{INCOME_CATEGORIES.map(c => <option key={c}>{c}</option>)}</select></Field>
+            <Field label="Szczenię"><select value={inc.puppyId ?? ''} onChange={e => setInc({ ...inc, puppyId: e.target.value || undefined })}><option value="">—</option>{pups.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}</select></Field>
+            <Field label="Data"><input type="date" value={inc.date} onChange={e => setInc({ ...inc, date: e.target.value })} /></Field>
+            <Field label="Kwota (PLN)"><input type="number" value={inc.amount || ''} onChange={e => setInc({ ...inc, amount: Number(e.target.value) })} /></Field>
+          </div>
+          <Field label="Opis"><input value={inc.description ?? ''} onChange={e => setInc({ ...inc, description: e.target.value })} /></Field>
+        </Modal>}
+        {exp && <Modal title="Koszt miotu" onClose={() => setExp(null)} actions={<><button className="btn secondary" onClick={() => setExp(null)}>Anuluj</button><button className="btn" disabled={!exp.amount} onClick={() => { upsert('expenses', exp); setExp(null); toast('Zapisano'); }}>Zapisz</button></>}>
+          <div className="form-grid">
+            <Field label="Typ"><select value={exp.type} onChange={e => setExp({ ...exp, type: e.target.value })}>{['Krycie', 'Inseminacja', 'USG/RTG', 'Wyprawki', 'Chipowanie', 'Szczepienia', 'Odrobaczanie', 'Karma', 'Weterynarz', 'Inne'].map(c => <option key={c}>{c}</option>)}</select></Field>
+            <Field label="Data"><input type="date" value={exp.date} onChange={e => setExp({ ...exp, date: e.target.value })} /></Field>
+            <Field label="Kwota (PLN)"><input type="number" value={exp.amount || ''} onChange={e => setExp({ ...exp, amount: Number(e.target.value) })} /></Field>
+          </div>
+          <Field label="Opis"><input value={exp.description ?? ''} onChange={e => setExp({ ...exp, description: e.target.value })} /></Field>
+        </Modal>}
       </div>
     );
   }

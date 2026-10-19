@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
+import { ChevronUp, ChevronDown, Pencil, Plus, Copy, Printer, Globe, Syringe, Scale, PawPrint } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { useStore } from '../app/store';
-import { Card, Chips, Empty, Field, KV, Modal, PageHeader, Tabs, confirmDel, sexLabel } from '../components/ui';
+import { Card, Chips, Empty, Field, KV, Modal, PageHeader, Tabs, confirmDel, sexLabel, EditBtn, DelBtn } from '../components/ui';
 import { fmtDate, fmtDateTime, fmtMoney, nowLocal, today, uid } from '../app/format';
 import { CHARACTER_TAGS, HEALTH_LABEL, type HealthRecord, type Puppy, type PuppyOwner, type Weight } from '../app/types';
 import { buildPawIdPayload, encodePawId } from '../app/pawid';
@@ -34,28 +35,28 @@ export default function PuppyDetail() {
 
   return (
     <div>
-      <PageHeader back={() => nav(`/mioty/${litter.id}`)} title={<><span style={{ color: puppy.markerColor }}>●</span> {puppy.name}</> as unknown as string} sub={<>{litter.name} · {sexLabel(puppy.sex)} · ur. {fmtDateTime(puppy.birthDateTime)}</>} actions={<><button className="btn secondary" onClick={() => setEditing(true)}>✏️ Edytuj</button><button className="btn danger" onClick={() => removePuppy(puppy.id) && nav(`/mioty/${litter.id}`)}>Usuń</button></>} />
+      <PageHeader back={() => nav(`/mioty/${litter.id}`)} title={<><span style={{ display: 'inline-block', width: 14, height: 14, borderRadius: 7, background: puppy.markerColor, marginRight: 8 }} />{puppy.name}</>} sub={<>{litter.name} · {sexLabel(puppy.sex)} · ur. {fmtDateTime(puppy.birthDateTime)}</>} actions={<><button className="btn secondary" onClick={() => setEditing(true)}><Pencil size={16} /> Edytuj</button><button className="btn danger" onClick={() => removePuppy(puppy.id) && nav(`/mioty/${litter.id}`)}>Usuń</button></>} />
       <Tabs value={tab} onChange={t => setParams({ tab: t })} items={[{ key: 'card', label: 'Metryka' }, { key: 'weights', label: 'Wagi' }, { key: 'health', label: 'Zdrowie' }, { key: 'owner', label: 'Właściciel i cena' }, { key: 'pawid', label: 'Karta Paw ID' }, { key: 'pack', label: 'Wyprawka' }]} />
 
       {tab === 'card' && <div className="stack">
         <Card title="Dane podstawowe"><KV items={[['Imię', puppy.name], ['Data urodzenia', fmtDateTime(puppy.birthDateTime)], ['Płeć', sexLabel(puppy.sex)], ['Umaszczenie', puppy.color], ['Waga ur. (g)', puppy.birthWeightG], ['Status urodzenia', puppy.birthStatus === 'alive' ? 'Żywy' : puppy.birthStatus === 'stillborn' ? 'Martwo urodzony' : 'Padł']]} /></Card>
         <Card title="Rodzice"><KV items={[['Ojciec', litter.fatherName], ['Matka', litter.motherName], ['Rasa', mother?.breed]]} /></Card>
-        <Card title="Dane identyfikacyjne"><KV items={[['Numer rodowodu', puppy.pedigreeNo], ['Numer chip', puppy.chip], ['Paw ID', puppy.pawId], ['Kolor znacznika', <span style={{ display: 'inline-block', width: 18, height: 18, borderRadius: 9, background: puppy.markerColor, verticalAlign: 'middle' }} />]]} /></Card>
+        <Card title="Dane identyfikacyjne"><KV items={[['Numer rodowodu', puppy.pedigreeNo], ['Numer chip', puppy.chip], ['Paw ID', puppy.pawId], ['Kolor znacznika', <span key="tag" style={{ display: 'inline-block', width: 18, height: 18, borderRadius: 9, background: puppy.markerColor, verticalAlign: 'middle' }} />]]} /></Card>
       </div>}
 
       {tab === 'weights' && <div className="stack">
-        <div className="row no-print"><button className="btn" onClick={() => setEditW({ id: uid(), puppyId: puppy.id, date: nowLocal(), grams: weights[weights.length - 1]?.grams ?? puppy.birthWeightG ?? 0 })}>+ Dodaj pomiar</button></div>
+        <div className="row no-print"><button className="btn" onClick={() => setEditW({ id: uid(), puppyId: puppy.id, date: nowLocal(), grams: weights[weights.length - 1]?.grams ?? puppy.birthWeightG ?? 0 })}><Plus size={18} /> Dodaj pomiar</button></div>
         <Card title="Historia pomiarów">
           {weights.length >= 2 && <div style={{ height: 220 }}><ResponsiveContainer><LineChart data={weights.map(w => ({ d: fmtDate(w.date), g: w.grams }))}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="d" fontSize={11} /><YAxis fontSize={11} unit=" g" domain={['auto', 'auto']} /><Tooltip /><Line isAnimationActive={false} type="monotone" dataKey="g" stroke={puppy.markerColor} strokeWidth={2} /></LineChart></ResponsiveContainer></div>}
-          <div className="list" style={{ marginTop: 10 }}>{[...weights].reverse().map((w, i, arr) => { const prev = arr[i + 1]; return <div key={w.id} className="list-item" style={{ borderLeft: `4px solid ${puppy.markerColor}` }}><div><div className="title">{w.grams} g {prev && <small style={{ color: w.grams - prev.grams >= 0 ? 'var(--success)' : 'var(--danger)' }}>({w.grams - prev.grams >= 0 ? '+' : ''}{w.grams - prev.grams} g)</small>}</div><small>{fmtDateTime(w.date)}</small></div><div><button className="icon-btn" onClick={() => setEditW(w)}>✏️</button><button className="icon-btn" onClick={() => confirmDel() && remove('weights', w.id)}>🗑️</button></div></div>; })}</div>
-          {weights.length === 0 && <Empty>Brak pomiarów.</Empty>}
+          <div className="list" style={{ marginTop: 10 }}>{[...weights].reverse().map((w, i, arr) => { const prev = arr[i + 1]; return <div key={w.id} className="list-item" style={{ borderLeft: `4px solid ${puppy.markerColor}` }}><div><div className="title">{w.grams} g {prev && <small style={{ color: w.grams - prev.grams >= 0 ? 'var(--success)' : 'var(--danger)' }}>({w.grams - prev.grams >= 0 ? '+' : ''}{w.grams - prev.grams} g)</small>}</div><small>{fmtDateTime(w.date)}</small></div><div><EditBtn onClick={() => setEditW(w)} /><DelBtn onClick={() => confirmDel() && remove('weights', w.id)} /></div></div>; })}</div>
+          {weights.length === 0 && <Empty icon={<Scale size={28} />}>Brak pomiarów.</Empty>}
         </Card>
       </div>}
 
       {tab === 'health' && <div className="stack">
-        <div className="row no-print"><button className="btn" onClick={() => setEditH({ id: uid(), puppyId: puppy.id, kind: 'deworming', date: today(), name: '' })}>+ Dodaj wpis</button></div>
+        <div className="row no-print"><button className="btn" onClick={() => setEditH({ id: uid(), puppyId: puppy.id, kind: 'deworming', date: today(), name: '' })}><Plus size={18} /> Dodaj wpis</button></div>
         <Card title="Odrobaczenia i szczepienia">
-          {health.length === 0 ? <Empty>Brak wpisów. Dodaj odrobaczenie lub szczepienie.</Empty> : <div className="list">{health.map(h => <div key={h.id} className="list-item"><div><div className="title">{HEALTH_LABEL[h.kind]}: {h.name}</div><small>{fmtDate(h.date)}{h.nextDate ? ` · następne: ${fmtDate(h.nextDate)}` : ''}{h.vet ? ` · ${h.vet}` : ''}</small></div><div><button className="icon-btn" onClick={() => setEditH(h)}>✏️</button><button className="icon-btn" onClick={() => confirmDel() && remove('health', h.id)}>🗑️</button></div></div>)}</div>}
+          {health.length === 0 ? <Empty icon={<Syringe size={28} />}>Brak wpisów. Dodaj odrobaczenie lub szczepienie.</Empty> : <div className="list">{health.map(h => <div key={h.id} className="list-item"><div><div className="title">{HEALTH_LABEL[h.kind]}: {h.name}</div><small>{fmtDate(h.date)}{h.nextDate ? ` · następne: ${fmtDate(h.nextDate)}` : ''}{h.vet ? ` · ${h.vet}` : ''}</small></div><div><EditBtn onClick={() => setEditH(h)} /><DelBtn onClick={() => confirmDel() && remove('health', h.id)} /></div></div>)}</div>}
         </Card>
       </div>}
 
@@ -64,7 +65,7 @@ export default function PuppyDetail() {
       {tab === 'pawid' && <div className="stack">
         <div className="pawid" onClick={() => setShowQr(s => !s)} style={{ cursor: 'pointer' }}>
           {!showQr ? (<>
-            <div className="row between"><div><small style={{ opacity: .8 }}>Karta szczenięcia</small><h2 style={{ color: '#fff', fontSize: 26 }}>{puppy.name}</h2></div><div style={{ fontSize: 40, opacity: .5 }}>🐾</div></div>
+            <div className="row between"><div><small style={{ opacity: .8 }}>Karta szczenięcia</small><h2 style={{ color: '#fff', fontSize: 26 }}>{puppy.name}</h2></div><PawPrint size={44} style={{ opacity: .4 }} /></div>
             <KV items={[['Nazwa miotu', litter.name], ['Rasa', mother?.breed], ['Data i godzina ur.', fmtDateTime(puppy.birthDateTime)], ['Płeć', sexLabel(puppy.sex)], ['Umaszczenie', puppy.color], ['Waga ur. (g)', puppy.birthWeightG], ['Ojciec', litter.fatherName], ['Matka', litter.motherName], ['Numer rodowodu', puppy.pedigreeNo], ['Numer chipa', puppy.chip], ['Szczepienia', payload.vacc.map(v => `${v.n} ${fmtDate(v.d)}`).join(', ') || '—'], ['Odrobaczenia', payload.deworm.map(v => `${v.n} ${fmtDate(v.d)}`).join(', ') || '—']]} />
             <div className="row between" style={{ marginTop: 14 }}><div><small style={{ opacity: .8 }}>PAW ID</small><div style={{ fontWeight: 800, fontSize: 18 }}>{puppy.pawId}</div></div><div style={{ textAlign: 'right' }}><small style={{ opacity: .8 }}>KOLOR ZNACZNIKA</small><div style={{ width: 24, height: 24, borderRadius: 12, background: puppy.markerColor, marginLeft: 'auto', border: '2px solid #fff' }} /></div></div>
           </>) : (
@@ -78,7 +79,8 @@ export default function PuppyDetail() {
           )}
         </div>
         <div className="muted" style={{ textAlign: 'center' }}>Dotknij kartę, aby {showQr ? 'zobaczyć dane szczenięcia' : 'wyświetlić kod QR'}.</div>
-        <div className="row no-print" style={{ justifyContent: 'center' }}><button className="btn secondary" onClick={() => { navigator.clipboard?.writeText(code); toast('Kod Paw ID skopiowany do schowka'); }}>📋 Kopiuj kod (do testu importu)</button><button className="btn secondary" onClick={() => window.print()}>🖨️ Drukuj kartę</button></div>
+        <div className="row no-print" style={{ justifyContent: 'center' }}><button className="btn secondary" onClick={() => { navigator.clipboard?.writeText(code); toast('Kod Paw ID skopiowany do schowka'); }}><Copy size={16} /> Kopiuj kod</button><button className="btn secondary" onClick={() => window.print()}><Printer size={16} /> Drukuj kartę</button><a className="btn" href={`#/portal/${puppy.id}`} target="_blank" rel="noreferrer"><Globe size={16} /> Strona dla nabywcy</a></div>
+        <Card title="Strona dla nabywcy" icon={<Globe size={18} />}><p className="muted">Link, który wysyłasz przyszłemu właścicielowi: widzi zdjęcie, aktualną wagę, postępy i odliczanie do odbioru. Buduje zaufanie i oszczędza pytania. Konkurencja tego nie ma.</p><div className="row"><code style={{ background: 'var(--surface-2)', padding: '6px 10px', borderRadius: 8, fontSize: 12, wordBreak: 'break-all' }}>{window.location.origin}{window.location.pathname}#/portal/{puppy.id}</code><button className="btn sm secondary" onClick={() => { navigator.clipboard?.writeText(`${window.location.origin}${window.location.pathname}#/portal/${puppy.id}`); toast('Link skopiowany'); }}><Copy size={14} /> Kopiuj link</button></div></Card>
         <small className="muted">Cena sprzedaży, prywatne notatki i dane właścicieli NIE są przekazywane w Paw ID.</small>
       </div>}
 
@@ -96,7 +98,7 @@ export default function PuppyDetail() {
     const setOwner = (i: number, patch: Partial<PuppyOwner>) => setP({ ...p, owners: p.owners.map((o, j) => j === i ? { ...o, ...patch } : o) });
     return (
       <div className="stack">
-        <Card title="Cena i notatki" right={<button className="icon-btn" onClick={() => setShowPriv(s => !s)}>{showPriv ? '▲' : '▼'}</button>}>
+        <Card title="Cena i notatki" right={<button className="icon-btn" onClick={() => setShowPriv(s => !s)}>{showPriv ? <ChevronUp size={18} /> : <ChevronDown size={18} />}</button>}>
           <small className="muted">Cena sprzedaży i prywatne informacje – tylko dla hodowcy.</small>
           {showPriv && <div className="form-grid" style={{ marginTop: 8 }}>
             <Field label="Cena sprzedaży (PLN)"><input type="number" value={p.price ?? ''} onChange={e => setP({ ...p, price: e.target.value ? Number(e.target.value) : undefined })} /></Field>
@@ -107,7 +109,7 @@ export default function PuppyDetail() {
         </Card>
         <Card title="Dane właściciela" right={<span className="badge gray">{p.owners.length === 0 ? 'brak' : `${p.owners.length} ${p.owners.length === 1 ? 'właściciel' : 'właścicieli'}`}</span>}>
           {p.owners.map((o, i) => <div key={i} className="card soft" style={{ marginBottom: 8 }}>
-            <div className="row between"><b>Właściciel {i + 1}</b><button className="icon-btn" onClick={() => setP({ ...p, owners: p.owners.filter((_, j) => j !== i) })}>🗑️</button></div>
+            <div className="row between"><b>Właściciel {i + 1}</b><DelBtn onClick={() => setP({ ...p, owners: p.owners.filter((_, j) => j !== i) })} /></div>
             <div className="form-grid">
               <Field label="Imię i nazwisko"><input value={o.name} onChange={e => setOwner(i, { name: e.target.value })} /></Field>
               <Field label="Adres"><input value={o.address ?? ''} onChange={e => setOwner(i, { address: e.target.value })} /></Field>

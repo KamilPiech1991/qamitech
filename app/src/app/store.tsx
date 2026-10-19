@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useReducer, useState, type ReactNode } from 'react';
-import type { AppState, Dog, Breeding, StudMating, Litter, Puppy, Weight, Show, Championship, Expense, Reminder, HealthRecord, Profile } from './types';
+import type { AppState, Dog, Breeding, StudMating, Litter, Puppy, Weight, Show, Championship, Expense, Reminder, HealthRecord, Profile, Heat, Income, Member } from './types';
 import { FREE_LIMITS } from './types';
 import { emptyState } from './seed';
 
@@ -12,8 +12,8 @@ type Action =
   | { type: 'remove'; coll: CollKey; id: string }
   | { type: 'bulk'; fn: (s: AppState) => AppState };
 
-type CollKey = 'dogs' | 'health' | 'breedings' | 'studMatings' | 'litters' | 'puppies' | 'weights' | 'shows' | 'championships' | 'expenses' | 'reminders';
-type AnyItem = Dog | HealthRecord | Breeding | StudMating | Litter | Puppy | Weight | Show | Championship | Expense | Reminder;
+type CollKey = 'dogs' | 'health' | 'breedings' | 'studMatings' | 'litters' | 'puppies' | 'weights' | 'shows' | 'championships' | 'expenses' | 'reminders' | 'heats' | 'incomes' | 'members';
+type AnyItem = Dog | HealthRecord | Breeding | StudMating | Litter | Puppy | Weight | Show | Championship | Expense | Reminder | Heat | Income | Member;
 
 function reducer(s: AppState, a: Action): AppState {
   switch (a.type) {
@@ -33,7 +33,7 @@ function reducer(s: AppState, a: Action): AppState {
 function load(): AppState {
   try {
     const raw = localStorage.getItem(KEY);
-    if (raw) return { ...emptyState(), ...JSON.parse(raw) };
+    if (raw) { const st = { ...emptyState(), ...JSON.parse(raw) } as AppState; st.litters = st.litters.map(l => ({ ...l, birthDiary: l.birthDiary ?? [] })); return st; }
   } catch { /* ignore */ }
   return emptyState();
 }
@@ -55,6 +55,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, undefined, load);
   const [toastMsg, setToast] = useState<string | null>(null);
   useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* quota */ } }, [state]);
+  useEffect(() => { document.documentElement.dataset.theme = state.profile.darkMode ? 'dark' : 'light'; }, [state.profile.darkMode]);
   useEffect(() => { if (!toastMsg) return; const t = setTimeout(() => setToast(null), 2500); return () => clearTimeout(t); }, [toastMsg]);
 
   const ctx = useMemo<Ctx>(() => {

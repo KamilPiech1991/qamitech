@@ -1,13 +1,14 @@
 import { useState } from 'react';
+import { PawPrint, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../app/store';
-import { Card, Empty, Field, Modal, PageHeader, confirmDel } from '../components/ui';
+import { Card, Empty, Field, Modal, PageHeader, confirmDel, DelBtn } from '../components/ui';
 import { fmtDate, today, uid } from '../app/format';
 import type { Litter } from '../app/types';
 
 export function LitterForm({ initial, onClose, onSave }: { initial?: Litter; onClose: () => void; onSave: (l: Litter) => void }) {
   const { state } = useStore();
-  const [l, setL] = useState<Litter>(initial ?? { id: uid(), name: '', motherName: '', fatherName: '', birthDate: today(), notes: [], checklist: {}, pack: { accustomed: [] }, createdAt: today() });
+  const [l, setL] = useState<Litter>(initial ?? { id: uid(), name: '', motherName: '', fatherName: '', birthDate: today(), notes: [], checklist: {}, pack: { accustomed: [] }, birthDiary: [], createdAt: today() });
   const females = state.dogs.filter(d => d.sex === 'female'), males = state.dogs.filter(d => d.sex === 'male');
   const breedings = state.breedings.filter(b => b.femaleId === l.motherId);
   return (
@@ -33,13 +34,13 @@ export default function Litters() {
   const del = (id: string) => { if (!confirmDel('Usunąć miot wraz ze szczeniętami?')) return; dispatch({ type: 'bulk', fn: s => { const pids = s.puppies.filter(p => p.litterId === id).map(p => p.id); return { ...s, litters: s.litters.filter(l => l.id !== id), puppies: s.puppies.filter(p => p.litterId !== id), weights: s.weights.filter(w => !w.puppyId || !pids.includes(w.puppyId)), health: s.health.filter(h => !h.puppyId || !pids.includes(h.puppyId)), breedings: s.breedings.map(b => b.litterId === id ? { ...b, litterId: undefined } : b) }; } }); };
   return (
     <div>
-      <PageHeader title="Moje mioty" sub="Lista Twoich miotów" actions={<button className="btn" onClick={() => setAdding(true)}>+ Nowy miot</button>} />
-      {litters.length === 0 ? <Card><Empty>Brak miotów. Dodaj pierwszy miot, aby prowadzić metrykę szczeniąt.</Empty></Card> : (
+      <PageHeader title="Moje mioty" sub="Lista Twoich miotów" actions={<button className="btn" onClick={() => setAdding(true)}><Plus size={18} /> Nowy miot</button>} />
+      {litters.length === 0 ? <Card><Empty icon={<PawPrint size={28} />}>Brak miotów. Dodaj pierwszy miot, aby prowadzić metrykę szczeniąt.</Empty></Card> : (
         <div className="stack">{litters.map(l => { const pups = state.puppies.filter(p => p.litterId === l.id); return (
           <Card key={l.id} onClick={() => nav(`/mioty/${l.id}`)}>
             <div className="row between">
               <div><b style={{ fontSize: 18, color: 'var(--primary-600)' }}>{l.name}</b><div className="muted">Ur. {fmtDate(l.birthDate)}</div><div><span className="muted">Ojciec:</span> {l.fatherName || '—'}</div><div><span className="muted">Matka:</span> {l.motherName}</div><div><span className="muted">Liczba szczeniąt:</span> <b>{pups.length}</b> ({pups.filter(p => p.sex === 'male').length} ♂ / {pups.filter(p => p.sex === 'female').length} ♀)</div></div>
-              <button className="icon-btn" onClick={e => { e.stopPropagation(); del(l.id); }}>🗑️</button>
+              <DelBtn onClick={() => del(l.id)} />
             </div>
           </Card>); })}</div>
       )}

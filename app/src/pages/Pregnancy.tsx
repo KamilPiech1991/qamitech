@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Calendar, Heart, Check, Baby, Dog, Lightbulb } from 'lucide-react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../app/store';
 import { Card, Empty, PageHeader } from '../components/ui';
@@ -25,27 +26,27 @@ export default function Pregnancy() {
       <PageHeader back={() => nav(`/psy/${female.id}?tab=breeding`)} title="Kalendarz ciąży" sub={<>{female.name} ({female.pedigreeName})</>} />
       <Card title="Podstawa obliczeń">
         <div className="card soft"><small className="muted">Zapisane skojarzenie</small><div><b>Krycie:</b> {fmtDateLong(first.date)}</div><div><b>Reproduktor:</b> {b.maleName}</div></div>
-        <Link className="btn secondary sm" to={`/psy/${female.id}?tab=breeding`} style={{ marginTop: 8 }}>📅 Zmień datę krycia</Link>
+        <Link className="btn secondary sm" to={`/psy/${female.id}?tab=breeding`} style={{ marginTop: 8 }}><Calendar size={14} /> Zmień datę krycia</Link>
       </Card>
       <div className="hero">
-        <div className="row"><div style={{ fontSize: 34 }}>❤️</div><div><div style={{ fontSize: 24, fontWeight: 800 }}>{info.day}. dzień ciąży</div><div className="muted">{info.week}. tydzień</div></div></div>
+        <div className="row"><div className="avatar" style={{ width: 56, height: 56, background: 'rgba(255,255,255,.18)', color: '#fff' }}><Heart size={28} /></div><div><div style={{ fontSize: 24, fontWeight: 800 }}>{info.day}. dzień ciąży</div><div className="muted">{info.week}. tydzień</div></div></div>
         <div className="progress" style={{ margin: '14px 0 6px', background: 'rgba(255,255,255,.25)' }}><div style={{ width: `${info.progress}%`, background: '#fff' }} /></div>
         <div className="row between muted" style={{ fontSize: 12 }}><span>Krycie</span><span>63. dzień</span></div>
         <div style={{ marginTop: 14 }}><div className="muted">Przewidywany termin porodu</div><div style={{ fontSize: 22, fontWeight: 800 }}>{fmtDateLong(info.expected)}</div><div className="muted">{info.remaining > 0 ? `Do przewidywanego terminu pozostało ${info.remaining} dni` : info.remaining === 0 ? 'To dziś!' : `${-info.remaining} dni po przewidywanym terminie`}</div></div>
       </div>
       <Card title="Najważniejsze terminy">
         <div className="list">
-          <div className="list-item"><div><small className="muted">Orientacyjny czas na USG</small><div className="title">{fmtDate(info.usgFrom)} – {fmtDate(info.usgTo)}</div><small>około 25.–30. dnia</small></div><button className={`btn sm ${done('usg') ? 'secondary' : ''}`} onClick={() => markDone('usg')}>{done('usg') ? `✓ ${fmtDate(b.usg[0].date)}` : 'Oznacz wykonane'}</button></div>
-          <div className="list-item"><div><small className="muted">Orientacyjny czas na RTG</small><div className="title">od {fmtDate(info.rtgFrom)}</div><small>zwykle od około 45. dnia; liczba szczeniąt najdokładniej po 55. dniu</small></div><button className={`btn sm ${done('rtg') ? 'secondary' : ''}`} onClick={() => markDone('rtg')}>{done('rtg') ? `✓ ${fmtDate(b.rtg[0].date)}` : 'Oznacz wykonane'}</button></div>
+          <div className="list-item"><div><small className="muted">Orientacyjny czas na USG</small><div className="title">{fmtDate(info.usgFrom)} – {fmtDate(info.usgTo)}</div><small>około 25.–30. dnia</small></div><button className={`btn sm ${done('usg') ? 'secondary' : ''}`} onClick={() => markDone('usg')}>{done('usg') ? <><Check size={14} /> {fmtDate(b.usg[0].date)}</> : 'Oznacz wykonane'}</button></div>
+          <div className="list-item"><div><small className="muted">Orientacyjny czas na RTG</small><div className="title">od {fmtDate(info.rtgFrom)}</div><small>zwykle od około 45. dnia; liczba szczeniąt najdokładniej po 55. dniu</small></div><button className={`btn sm ${done('rtg') ? 'secondary' : ''}`} onClick={() => markDone('rtg')}>{done('rtg') ? <><Check size={14} /> {fmtDate(b.rtg[0].date)}</> : 'Oznacz wykonane'}</button></div>
           <div className="list-item"><div><small className="muted">Początek obserwacji porodu</small><div className="title">{fmtDate(info.observeFrom)}</div><small>58. dzień ciąży</small></div></div>
           <div className="list-item"><div><small className="muted">Orientacyjny przedział porodu</small><div className="title">{fmtDate(info.birthFrom)} – {fmtDate(info.birthTo)}</div><small>58.–68. dzień od krycia</small></div></div>
         </div>
       </Card>
       <div className="tabs">{PREGNANCY_WEEKS.map(x => <button key={x.week} className={x.week === week ? 'active' : ''} onClick={() => setSelWeek(x.week)}>{x.week}. tydz.</button>)}</div>
       <div className="card" style={{ background: 'var(--primary-soft)', borderColor: 'var(--primary-soft)' }}><div className="row"><div className="avatar" style={{ width: 48, height: 48, background: 'var(--primary)', color: '#fff', fontSize: 20, fontWeight: 800 }}>{w.week}</div><div><small className="muted" style={{ textTransform: 'uppercase', letterSpacing: 1 }}>Tydzień {w.week}</small><div style={{ fontSize: 18, fontWeight: 700 }}>{w.title}</div><small className="muted">{w.days}</small></div></div></div>
-      <Card title="🐶 Rozwój szczeniąt">{w.development}</Card>
-      <Card title="🐕 Co dzieje się z suką?">{w.female}</Card>
-      <Card title="💡 Wskazówki dla hodowcy">{w.tips}</Card>
+      <Card title="Rozwój szczeniąt" icon={<Baby size={18} />}>{w.development}</Card>
+      <Card title="Co dzieje się z suką?" icon={<Dog size={18} />}>{w.female}</Card>
+      <Card title="Wskazówki dla hodowcy" icon={<Lightbulb size={18} />}>{w.tips}</Card>
       <Card title="Oś ciąży">
         <div className="timeline">{info.timeline.map(e => <div key={e.title} className={`tl ${e.date > t ? 'future' : ''}`}><div className="row between"><b style={{ color: e.date > t ? 'var(--muted)' : 'var(--primary-600)' }}>{e.title}</b><small className="muted">{fmtDate(e.date)}</small></div><small className="muted">{e.desc} · {e.day}. dzień ciąży</small></div>)}</div>
       </Card>

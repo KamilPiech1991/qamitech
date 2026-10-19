@@ -4,7 +4,7 @@ import { addDays, today, uid } from './format';
 export function emptyState(): AppState {
   return {
     profile: { module: 'breeder', plan: 'free', kennelName: '', breederName: '', onboarded: false },
-    dogs: [], health: [], breedings: [], studMatings: [], litters: [], puppies: [], weights: [], shows: [], championships: [], expenses: [], reminders: [],
+    dogs: [], health: [], breedings: [], studMatings: [], litters: [], puppies: [], weights: [], shows: [], championships: [], expenses: [], reminders: [], heats: [], incomes: [], members: [],
   };
 }
 
@@ -13,8 +13,9 @@ export function demoState(): AppState {
   const s = emptyState();
   s.profile = { module: 'breeder', plan: 'free', kennelName: 'Hodowla z Zielonego Wzgórza', kennelNo: 'PL6455678', breederName: 'Michał', email: 'michal@example.com', onboarded: true };
   const bubek = { id: uid(), name: 'Bubek', pedigreeName: 'Bubi Dolina Krzemowa FCI', breed: 'Basset Hound', sex: 'male' as const, birthDate: '2021-12-10', color: 'Łaciaty', weightKg: 17, neutered: false, fatherName: 'Grinch z Bordeaux', motherName: 'Fiona Królestwo Rusałek', pedigreeNo: '637378383', regNo: '8873663', chip: '6363737e', createdAt: t };
-  const diana = { id: uid(), name: 'Diana', pedigreeName: 'Diana zza Miedzy', breed: 'Basset Hound', sex: 'female' as const, birthDate: '2022-05-03', color: 'Tricolor', weightKg: 21, fatherName: 'Rocky z San Francisco', motherName: 'Daisy from Royal Castle', pedigreeNo: '65566', chip: '25668', createdAt: t };
+  const diana = { id: uid(), name: 'Diana', pedigreeName: 'Diana zza Miedzy', breed: 'Basset Hound', sex: 'female' as const, birthDate: '2022-05-03', color: 'Tricolor', weightKg: 21, fatherName: 'Rocky z San Francisco', motherName: 'Daisy from Royal Castle', pedigreeNo: '65566', chip: '25668', createdAt: t, fatherId: undefined as string | undefined };
   const rocky = { id: uid(), name: 'Rocky', pedigreeName: 'Rocky z San Francisco', breed: 'Chart Szkocki Deerhound', sex: 'male' as const, birthDate: '2024-06-07', color: 'Pręgowany', weightKg: 38, createdAt: t };
+  diana.fatherId = rocky.id;
   s.dogs = [bubek, diana, rocky];
   s.health = [
     { id: uid(), dogId: bubek.id, kind: 'vaccination', date: addDays(t, -200), nextDate: addDays(t, 165), name: 'Nobivac DHPPi + L', vet: 'lek. wet. Anna Kowal' },
@@ -31,7 +32,7 @@ export function demoState(): AppState {
   s.studMatings = [{ id: uid(), maleId: bubek.id, femaleName: 'Luna z Birmingham', ownerFirst: 'John', ownerLast: 'Kowalsky', place: 'external', type: 'insemination', dates: [addDays(t, -98)], puppiesCount: 6 }];
   const litterId = uid();
   const lb = addDays(t, -40);
-  s.litters = [{ id: litterId, name: 'Miot D', motherId: diana.id, motherName: 'Diana zza Miedzy', fatherId: bubek.id, fatherName: 'Bubi Dolina Krzemowa FCI', birthDate: lb, notes: ['Poród naturalny, bez komplikacji. 4 szczenięta.'], checklist: { deworm1: true, vacc1: true, bw: true, vet: true, solid: true }, pack: { foodBrand: 'Royal Canin', foodName: 'Mini Puppy', portion: '75 g', mealsPerDay: 4, feedingHours: '7, 11, 15, 19', supplements: 'Olej z łososia 1 łyżeczka dziennie', grooming: 'Czesanie 2× w tygodniu, pazury co 2 tygodnie', firstDays: 'Pierwsze dni pozwól szczeniakowi odpocząć, wprowadzaj nowe bodźce stopniowo.', accustomed: ['Dzieci', 'Klatka kennelowa', 'Jazda samochodem', 'Smycz / obroża', 'Domowe dźwięki'] }, createdAt: t }];
+  s.litters = [{ id: litterId, name: 'Miot D', motherId: diana.id, motherName: 'Diana zza Miedzy', fatherId: bubek.id, fatherName: 'Bubi Dolina Krzemowa FCI', birthDate: lb, notes: ['Poród naturalny, bez komplikacji. 4 szczenięta.'], birthDiary: [{ id: uid(), time: `${lb}T02:10`, kind: 'start', note: 'Pierwsze skurcze, suka niespokojna' }, { id: uid(), time: `${lb}T03:00`, kind: 'puppy', puppyName: 'Blue Boy', note: '250 g, żywy, ssie' }, { id: uid(), time: `${lb}T04:00`, kind: 'puppy', puppyName: 'Red Boy', note: '262 g' }, { id: uid(), time: `${lb}T05:00`, kind: 'puppy', puppyName: 'Turkusik', note: '240 g' }, { id: uid(), time: `${lb}T06:00`, kind: 'puppy', puppyName: 'Fioletowy', note: '231 g, suka' }, { id: uid(), time: `${lb}T07:30`, kind: 'end', note: 'Łożyska policzone (4), suka spokojna' }], checklist: { deworm1: true, vacc1: true, bw: true, vet: true, solid: true }, pack: { foodBrand: 'Royal Canin', foodName: 'Mini Puppy', portion: '75 g', mealsPerDay: 4, feedingHours: '7, 11, 15, 19', supplements: 'Olej z łososia 1 łyżeczka dziennie', grooming: 'Czesanie 2× w tygodniu, pazury co 2 tygodnie', firstDays: 'Pierwsze dni pozwól szczeniakowi odpocząć, wprowadzaj nowe bodźce stopniowo.', accustomed: ['Dzieci', 'Klatka kennelowa', 'Jazda samochodem', 'Smycz / obroża', 'Domowe dźwięki'] }, createdAt: t }];
   const pups = [
     { name: 'Blue Boy', sex: 'male' as const, color: 'Pręgus', bw: 250, marker: '#2563eb', start: 250, gain: 22 },
     { name: 'Red Boy', sex: 'male' as const, color: 'Tricolor', bw: 262, marker: '#dc2626', start: 262, gain: 27 },
@@ -56,8 +57,11 @@ export function demoState(): AppState {
   s.expenses = [
     ex(3, 95, 'Usługa weterynaryjna', 'Szczepienie', 'kennel', bubek.id), ex(12, 180, 'Karma i żywienie', 'Karma sucha', 'kennel', undefined, 'Royal Canin 15 kg'), ex(20, 55, 'Suplementy', 'Witaminy'),
     ex(37, 180, 'Opłaty/Zgłoszenia', 'Zgłoszenia psów', 'show', diana.id, undefined, showWaw), ex(37, 520, 'Opłaty/Zgłoszenia', 'Paliwo / dojazd', 'show', diana.id, undefined, showWaw), ex(37, 80, 'Opłaty/Zgłoszenia', 'Wyżywienie na miejscu', 'show', diana.id, undefined, showWaw),
-    ex(48, 320, 'Rozród i miot', 'USG/RTG', 'kennel', diana.id), ex(75, 175, 'Karma i żywienie', 'Karma sucha'), ex(100, 156, 'Grooming i higiena', 'Groomer', 'kennel', rocky.id), ex(130, 115, 'Sprzęt i akcesoria', 'Legowisko'), ex(190, 1350, 'Opłaty/Zgłoszenia', 'Nocleg', 'show', diana.id, undefined, showSatu), ex(190, 400, 'Opłaty/Zgłoszenia', 'Zgłoszenia psów', 'show', diana.id, undefined, showSatu), ex(190, 900, 'Opłaty/Zgłoszenia', 'Paliwo / dojazd', 'show', diana.id, undefined, showSatu),
+    { ...ex(48, 320, 'Rozród i miot', 'USG/RTG', 'kennel', diana.id), litterId }, { ...ex(30, 260, 'Rozród i miot', 'Chipowanie', 'kennel', undefined, 'chipowanie 4 szczeniąt'), litterId }, { ...ex(25, 410, 'Karma i żywienie', 'Karma sucha', 'kennel', undefined, 'Mini Puppy 2× 4 kg'), litterId }, ex(75, 175, 'Karma i żywienie', 'Karma sucha'), ex(100, 156, 'Grooming i higiena', 'Groomer', 'kennel', rocky.id), ex(130, 115, 'Sprzęt i akcesoria', 'Legowisko'), ex(190, 1350, 'Opłaty/Zgłoszenia', 'Nocleg', 'show', diana.id, undefined, showSatu), ex(190, 400, 'Opłaty/Zgłoszenia', 'Zgłoszenia psów', 'show', diana.id, undefined, showSatu), ex(190, 900, 'Opłaty/Zgłoszenia', 'Paliwo / dojazd', 'show', diana.id, undefined, showSatu),
   ];
+  s.heats = [{ id: uid(), dogId: diana.id, startDate: addDays(t, -31), endDate: addDays(t, -12), notes: 'krycie 29.09 i 01.10' }, { id: uid(), dogId: diana.id, startDate: addDays(t, -219), endDate: addDays(t, -200) }, { id: uid(), dogId: diana.id, startDate: addDays(t, -405), endDate: addDays(t, -386) }];
+  s.incomes = [{ id: uid(), date: addDays(t, -10), amount: 1000, category: 'Zaliczka za szczenię', description: 'Red Boy – Jan Kowalski', litterId, puppyId: s.puppies[1].id }, { id: uid(), date: addDays(t, -98), amount: 1500, category: 'Krycie (opłata)', description: 'Luna z Birmingham', dogId: bubek.id }];
+  s.members = [{ id: uid(), name: 'Michał', email: 'michal@example.com', role: 'owner', status: 'active' }, { id: uid(), name: 'Anna (współwłaścicielka)', email: 'anna@example.com', role: 'editor', status: 'active' }, { id: uid(), name: 'lek. wet. A. Kowal', email: 'kowal@lecznica.pl', role: 'viewer', status: 'invited' }];
   s.reminders = [
     { id: uid(), title: 'Klubowa terenówka – weekend', date: addDays(t, 5), done: false, notes: 'W sobotę i niedzielę w Kiełku.' },
     { id: uid(), title: 'USG Diana – potwierdzenie ciąży', date: addDays(matingDate, 26), dogId: diana.id, done: false },

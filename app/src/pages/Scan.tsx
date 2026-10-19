@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Camera, Backpack } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../app/store';
 import { Card, Field, KV, PageHeader } from '../components/ui';
@@ -59,7 +60,7 @@ export default function Scan() {
         <Card>
           {hasDetector ? (
             <div className="stack">
-              {!camera ? <button className="btn" onClick={() => { setCamErr(''); setCamera(true); }}>📷 Uruchom kamerę i zeskanuj kod QR</button> : <><video ref={video} style={{ width: '100%', borderRadius: 12, background: '#000' }} muted playsInline /><button className="btn secondary" onClick={() => setCamera(false)}>Zatrzymaj</button></>}
+              {!camera ? <button className="btn" onClick={() => { setCamErr(''); setCamera(true); }}><Camera size={18} /> Uruchom kamerę i zeskanuj kod QR</button> : <><video ref={video} style={{ width: '100%', borderRadius: 12, background: '#000' }} muted playsInline /><button className="btn secondary" onClick={() => setCamera(false)}>Zatrzymaj</button></>}
               {camErr && <div className="badge danger">{camErr}</div>}
             </div>
           ) : <p className="muted">Skanowanie kamerą jest dostępne w aplikacji mobilnej i w przeglądarkach z obsługą BarcodeDetector. Możesz też wkleić kod poniżej.</p>}
@@ -75,7 +76,7 @@ export default function Scan() {
             <KV items={[['Miot', payload.litter], ['Rasa', payload.breed], ['Płeć', payload.sex === 'male' ? 'Pies' : 'Suka'], ['Urodzony', fmtDateTime(payload.birth)], ['Umaszczenie', payload.color], ['Waga ur.', payload.bw ? `${payload.bw} g` : '—'], ['Ojciec', payload.father], ['Matka', payload.mother], ['Nr rodowodu', payload.pedigreeNo], ['Chip', payload.chip], ['Szczepienia', payload.vacc.map(v => `${v.n} (${v.d})`).join(', ') || '—'], ['Odrobaczenia', payload.deworm.map(v => `${v.n} (${v.d})`).join(', ') || '—'], ['Pomiary wagi', `${payload.weights.length} wpisów`]]} />
           </div>
           {payload.pack && (
-            <Card title="🎒 Cyfrowa wyprawka">
+            <Card title="Cyfrowa wyprawka" icon={<Backpack size={18} />}>
               <KV items={[['Karma', payload.pack.food], ['Porcja', payload.pack.portion], ['Posiłki', payload.pack.meals ? `${payload.pack.meals}× dziennie, godz. ${payload.pack.hours ?? ''}` : '—'], ['Suplementy', payload.pack.supplements], ['Pielęgnacja', payload.pack.grooming], ['Pierwsze dni', payload.pack.firstDays], ['Oswojony z', payload.pack.accustomed?.join(', ')], ['Charakter', payload.pack.character?.join(', ')], ['O szczenięciu', payload.pack.about]]} />
             </Card>
           )}

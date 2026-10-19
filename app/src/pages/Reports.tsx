@@ -1,24 +1,26 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import type { ReactNode } from 'react';
+import { Dog, PawPrint, Baby, Syringe, Bug, Stethoscope, Microscope, Trophy, Wallet, Printer } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Card, Empty, PageHeader } from '../components/ui';
 import { ageText, fmtDate, fmtDateTime, fmtMoney, today } from '../app/format';
 import { HEALTH_LABEL, type HealthKind } from '../app/types';
 
-interface ReportDef { kind: string; title: string; desc: string; group: string; ico: string; breederOnly?: boolean }
+interface ReportDef { kind: string; title: string; desc: string; group: string; ico: ReactNode; breederOnly?: boolean }
 const REPORTS: ReportDef[] = [
-  { kind: 'dogs', title: 'Spis psów', desc: 'Raport z bazy psów', group: 'Psy i mioty', ico: '🐕' },
-  { kind: 'litters', title: 'Spis miotów', desc: 'Spis wszystkich miotów', group: 'Psy i mioty', ico: '🐾', breederOnly: true },
-  { kind: 'puppies', title: 'Szczenięta', desc: 'Lista szczeniąt w hodowli (raport szczeniąt)', group: 'Psy i mioty', ico: '🐶', breederOnly: true },
-  { kind: 'vacc-male', title: 'Szczepienia psów', desc: 'Historia szczepień psów', group: 'Zdrowie', ico: '💉' },
-  { kind: 'vacc-female', title: 'Szczepienia suk', desc: 'Historia szczepień suk', group: 'Zdrowie', ico: '💉' },
-  { kind: 'vacc-all', title: 'Raport zbiorczy szczepień', desc: 'Psy i suki', group: 'Zdrowie', ico: '💉' },
-  { kind: 'parasite-male', title: 'Profilaktyka psów', desc: 'Odrobaczenia i profilaktyka pasożytnicza', group: 'Zdrowie', ico: '🐛' },
-  { kind: 'parasite-female', title: 'Profilaktyka suk', desc: 'Odrobaczenia i profilaktyka pasożytnicza', group: 'Zdrowie', ico: '🐛' },
-  { kind: 'parasite-all', title: 'Raport zbiorczy profilaktyki', desc: 'Psy i suki', group: 'Zdrowie', ico: '🐛' },
-  { kind: 'procedures', title: 'Zabiegi', desc: 'Wizyty, zabiegi i zestawienia', group: 'Zdrowie', ico: '🩺' },
-  { kind: 'exams', title: 'Badania i wyniki badań', desc: 'Wykonane badania i ich wyniki', group: 'Zdrowie', ico: '🔬' },
-  { kind: 'shows', title: 'Kariera wystawowa', desc: 'Wyniki wystaw wszystkich psów', group: 'Osiągnięcia i finanse', ico: '🏆' },
-  { kind: 'expenses', title: 'Wydatki', desc: 'Zestawienie wydatków w bieżącym roku', group: 'Osiągnięcia i finanse', ico: '💰' },
+  { kind: 'dogs', title: 'Spis psów', desc: 'Raport z bazy psów', group: 'Psy i mioty', ico: <Dog size={24} /> },
+  { kind: 'litters', title: 'Spis miotów', desc: 'Spis wszystkich miotów', group: 'Psy i mioty', ico: <PawPrint size={24} />, breederOnly: true },
+  { kind: 'puppies', title: 'Szczenięta', desc: 'Lista szczeniąt w hodowli (raport szczeniąt)', group: 'Psy i mioty', ico: <Baby size={24} />, breederOnly: true },
+  { kind: 'vacc-male', title: 'Szczepienia psów', desc: 'Historia szczepień psów', group: 'Zdrowie', ico: <Syringe size={24} /> },
+  { kind: 'vacc-female', title: 'Szczepienia suk', desc: 'Historia szczepień suk', group: 'Zdrowie', ico: <Syringe size={24} /> },
+  { kind: 'vacc-all', title: 'Raport zbiorczy szczepień', desc: 'Psy i suki', group: 'Zdrowie', ico: <Syringe size={24} /> },
+  { kind: 'parasite-male', title: 'Profilaktyka psów', desc: 'Odrobaczenia i profilaktyka pasożytnicza', group: 'Zdrowie', ico: <Bug size={24} /> },
+  { kind: 'parasite-female', title: 'Profilaktyka suk', desc: 'Odrobaczenia i profilaktyka pasożytnicza', group: 'Zdrowie', ico: <Bug size={24} /> },
+  { kind: 'parasite-all', title: 'Raport zbiorczy profilaktyki', desc: 'Psy i suki', group: 'Zdrowie', ico: <Bug size={24} /> },
+  { kind: 'procedures', title: 'Zabiegi', desc: 'Wizyty, zabiegi i zestawienia', group: 'Zdrowie', ico: <Stethoscope size={24} /> },
+  { kind: 'exams', title: 'Badania i wyniki badań', desc: 'Wykonane badania i ich wyniki', group: 'Zdrowie', ico: <Microscope size={24} /> },
+  { kind: 'shows', title: 'Kariera wystawowa', desc: 'Wyniki wystaw wszystkich psów', group: 'Osiągnięcia i finanse', ico: <Trophy size={24} /> },
+  { kind: 'expenses', title: 'Wydatki', desc: 'Zestawienie wydatków w bieżącym roku', group: 'Osiągnięcia i finanse', ico: <Wallet size={24} /> },
 ];
 
 export default function Reports() {
@@ -32,7 +34,7 @@ export default function Reports() {
     return (
       <div className="stack">
         <PageHeader title="Raporty" sub="Zbiorcze zestawienia gotowe do zapisu jako PDF (drukuj → zapisz jako PDF)" />
-        {groups.map(g => <div key={g}><h3 style={{ textAlign: 'center', color: 'var(--muted)' }}>— {g} —</h3><div className="grid cols-2">{defs.filter(r => r.group === g).map(r => <Card key={r.kind} onClick={() => nav(`/raporty/${r.kind}`)}><div style={{ fontSize: 24 }}>{r.ico}</div><b>{r.title}</b><div className="muted">{r.desc}</div></Card>)}</div></div>)}
+        {groups.map(g => <div key={g}><h3 style={{ textAlign: 'center', color: 'var(--muted)' }}>— {g} —</h3><div className="grid cols-2">{defs.filter(r => r.group === g).map(r => <Card key={r.kind} onClick={() => nav(`/raporty/${r.kind}`)}><div className="row" style={{ alignItems: 'flex-start' }}><div className="avatar" style={{ width: 44, height: 44, borderRadius: 14 }}>{r.ico}</div><div><b>{r.title}</b><div className="muted">{r.desc}</div></div></div></Card>)}</div></div>)}
       </div>
     );
   }
@@ -40,7 +42,7 @@ export default function Reports() {
   if (!def) return <Card><Empty>Nieznany raport.</Empty></Card>;
   return (
     <div>
-      <PageHeader back={() => nav('/raporty')} title={def.title} sub={def.desc} actions={<button className="btn" onClick={() => window.print()}>🖨️ Drukuj / zapisz PDF</button>} />
+      <PageHeader back={() => nav('/raporty')} title={def.title} sub={def.desc} actions={<button className="btn" onClick={() => window.print()}><Printer size={16} /> Drukuj / zapisz PDF</button>} />
       <Card>
         <div className="row between" style={{ marginBottom: 12 }}>
           <div><b style={{ fontSize: 18 }}>{def.title.toUpperCase()}</b><div className="muted">{state.profile.kennelName || state.profile.breederName}{state.profile.kennelNo ? ` · Nr hodowli: ${state.profile.kennelNo}` : ''}</div></div>
