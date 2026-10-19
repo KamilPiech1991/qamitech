@@ -4,6 +4,7 @@ import { useStore } from '../app/store';
 import { daysBetween, fmtDate, fmtDateTime, today } from '../app/format';
 import { HEALTH_LABEL } from '../app/types';
 import { Wordmark } from '../components/ui';
+import { FacebookMark, InstagramMark } from '../components/Social';
 
 export default function Portal() {
   const { id } = useParams();
@@ -46,6 +47,15 @@ export default function Portal() {
           {puppy.character.length > 0 && <div style={{ marginTop: 8 }}><b><Heart size={14} style={{ verticalAlign: -2 }} /> Charakter:</b> {puppy.character.join(', ')}</div>}
           {puppy.aboutText && <div className="card soft" style={{ marginTop: 8 }}>{puppy.aboutText}</div>}
         </div>
+        {state.profile.social?.showOnPortal && (state.profile.social.facebook?.connected || state.profile.social.instagram?.connected) && (
+          <div className="card" style={{ textAlign: 'center' }}>
+            <b>Śledź hodowlę</b>
+            <div className="row" style={{ justifyContent: 'center', gap: 10, marginTop: 8, flexWrap: 'wrap' }}>
+              {state.profile.social.facebook?.connected && <a className="btn secondary" href={state.profile.social.facebook.url} target="_blank" rel="noopener noreferrer"><FacebookMark size={18} /> {state.profile.social.facebook.name}</a>}
+              {state.profile.social.instagram?.connected && <a className="btn secondary" href={state.profile.social.instagram.url} target="_blank" rel="noopener noreferrer"><InstagramMark size={18} /> {state.profile.social.instagram.name}</a>}
+            </div>
+          </div>
+        )}
         <div className="muted" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}><span>Strona przygotowana przez hodowcę w</span><Wordmark height={22} /><span>Dane sprzedaży i kontakty pozostają prywatne.</span></div>
       </div>
     </div>

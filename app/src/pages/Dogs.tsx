@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { Dog as DogIcon, Syringe, Heart, Trophy, Scale, Clock, Plus, Flower2 } from 'lucide-react';
+import { Dog as DogIcon, Syringe, Heart, Trophy, Scale, Clock, Plus, Flower2, QrCode } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Card, Empty, ProBadge, sexIcon } from '../components/ui';
 import { ArtHeader } from '../components/ui';
 import { Dog as ArtIcon } from 'lucide-react';
-import DogForm from '../components/DogForm';
 import { ageText } from '../app/format';
 import { FREE_LIMITS } from '../app/types';
 import { HealthForm } from './DogProfile';
@@ -17,9 +16,8 @@ export default function Dogs() {
   const [params, setParams] = useSearchParams();
   const sexFilter = params.get('sex');
   const [compact, setCompact] = useState(false);
-  const [adding, setAdding] = useState(false);
   const [healthFor, setHealthFor] = useState<string | null>(null);
-  useEffect(() => { if (params.get('add')) { setAdding(true); setParams({}); } if (params.get('health')) { setHealthFor(state.dogs[0]?.id ?? ''); setParams({}); } }, [params, setParams, state.dogs]);
+  useEffect(() => { if (params.get('add')) { nav(`/psy/nowy${sexFilter ? `?sex=${sexFilter}` : ''}`, { replace: true }); return; } if (params.get('health')) { setHealthFor(state.dogs[0]?.id ?? ''); setParams({}); } }, [params, setParams, state.dogs, nav, sexFilter]);
   const dogs = state.dogs.filter(d => !sexFilter || d.sex === sexFilter).sort((a, b) => a.name.localeCompare(b.name));
   const breeder = state.profile.module === 'breeder';
   const females = state.dogs.filter(d => d.sex === 'female').length, males = state.dogs.filter(d => d.sex === 'male').length;
@@ -27,7 +25,7 @@ export default function Dogs() {
 
   return (
     <div>
-      <ArtHeader compact tone="green" icon={<ArtIcon size={24} />} title="Psy" sub={`${females} ${females === 1 ? 'suka' : 'suk'} · ${males} ${males === 1 ? 'pies' : 'psów'}`} actions={<button className="btn" onClick={() => setAdding(true)}><Plus size={18} /> Dodaj psa</button>} />
+      <ArtHeader compact tone="green" icon={<ArtIcon size={24} />} title="Psy" sub={`${females} ${females === 1 ? 'suka' : 'suk'} · ${males} ${males === 1 ? 'pies' : 'psów'}`} actions={<button className="btn" onClick={() => nav(`/psy/nowy${sexFilter ? `?sex=${sexFilter}` : ''}`)}><Plus size={18} /> Dodaj psa</button>} />
       <div className="row between no-print" style={{ marginBottom: 12 }}>
         <div className="tabs" style={{ margin: 0, padding: 0 }}>
           <button className={!sexFilter ? 'active' : ''} onClick={() => setParams({})}>Wszystkie</button>
@@ -40,7 +38,14 @@ export default function Dogs() {
         </div>
       </div>
       {nearLimit && <div className="card soft" style={{ marginBottom: 12 }}><div className="row between"><span>Plan FREE: do {FREE_LIMITS.females} suk i {FREE_LIMITS.males} psów. <ProBadge /> znosi limity.</span><Link to="/ustawienia" className="btn sm">Zobacz PRO</Link></div></div>}
-      {dogs.length === 0 ? <Card><Empty icon={<DogIcon size={28} />}>Nie masz jeszcze psów. Dodaj pierwszego lub zeskanuj kod przekazania od hodowcy.</Empty></Card> : (
+      {dogs.length === 0 ? <Card><Empty icon={<DogIcon size={28} />}>
+          {sexFilter === 'female' ? 'Nie masz jeszcze suk.' : sexFilter === 'male' ? 'Nie masz jeszcze psów.' : 'Nie masz jeszcze psów ani suk.'}
+          <div className="row" style={{ justifyContent: 'center', flexWrap: 'wrap', gap: 8, marginTop: 14 }}>
+            {sexFilter !== 'male' && <button className="btn" onClick={() => nav('/psy/nowy?sex=female')}><Plus size={16} /> Dodaj pierwszą sukę</button>}
+            {sexFilter !== 'female' && <button className="btn" onClick={() => nav('/psy/nowy?sex=male')}><Plus size={16} /> Dodaj pierwszego psa</button>}
+            <button className="btn secondary" onClick={() => nav('/skanuj')}><QrCode size={16} /> Odbierz psa kodem QR</button>
+          </div>
+        </Empty></Card> : (
         <div className="stack">
           {dogs.map(d => (
             <Card key={d.id} onClick={() => nav(`/psy/${d.id}`)}>
@@ -65,7 +70,6 @@ export default function Dogs() {
           ))}
         </div>
       )}
-      {adding && <DogForm onClose={() => setAdding(false)} onSave={d => { if (!limits.canAddDog(d.sex)) { toast('Limit planu FREE osiągnięty. Przejdź na PRO, aby dodać więcej psów.'); return; } upsert('dogs', d); setAdding(false); toast('Pies dodany'); nav(`/psy/${d.id}`); }} />}
       {healthFor !== null && <HealthForm rec={{ id: uid(), dogId: healthFor || undefined, kind: 'vaccination', date: today(), name: '' }} pickDog onClose={() => setHealthFor(null)} onSave={r => { if (!r.dogId) { toast('Wybierz psa'); return; } upsert('health', r); setHealthFor(null); toast('Wpis zapisany'); }} />}
     </div>
   );

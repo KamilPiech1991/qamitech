@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { Home, Dog, PawPrint, Wallet, BarChart3, Settings, Bell, QrCode, Plus, Scale, Syringe, Receipt, AlarmClock, FileText, Search, Moon, Sun, Trophy, ExternalLink, CalendarDays } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Wordmark } from './ui';
+import { collectNotifications, maybeSystemNotify } from '../app/notifications';
+import { today, daysBetween } from '../app/format';
+import { saveCloud } from '../app/cloud';
 
 export default function Layout() {
   const { state, setProfile } = useStore();
@@ -17,15 +20,30 @@ export default function Layout() {
     ...(breeder ? [{ to: '/mioty', label: 'Mioty', ico: <PawPrint size={22} /> }] : [{ to: '/finanse', label: 'Finanse', ico: <Wallet size={22} /> }]),
     { to: '/raporty', label: 'Raporty', ico: <BarChart3 size={22} /> },
   ];
+  // dolny pasek (telefon): Start, Mioty, „+” na środku, Raporty, Ustawienia; w trybie „Mam psiaka” zamiast Miotów są Psy
+  const bottom = [
+    { to: '/', label: 'Start', ico: <Home size={22} /> },
+    breeder ? { to: '/mioty', label: 'Mioty', ico: <PawPrint size={22} /> } : { to: '/psy', label: 'Psy', ico: <Dog size={22} /> },
+    { to: '/raporty', label: 'Raporty', ico: <BarChart3 size={22} /> },
+    { to: '/ustawienia', label: 'Ustawienia', ico: <Settings size={22} /> },
+  ];
   const side = [
     main[0], main[1], ...(breeder ? [main[2], { to: '/finanse', label: 'Finanse', ico: <Wallet size={22} /> }] : [main[2]]),
     { to: '/raporty', label: 'Raporty', ico: <BarChart3 size={22} /> },
     { to: '/wystawy', label: 'Kalendarz wystaw', ico: <CalendarDays size={22} /> },
     ...(breeder ? [{ to: '/dokumenty', label: 'Dokumenty', ico: <FileText size={22} /> }] : []),
-    { to: '/przypomnienia', label: 'Przypomnienia', ico: <Bell size={22} /> },
+    { to: '/powiadomienia', label: 'Powiadomienia', ico: <Bell size={22} /> },
     { to: '/skanuj', label: 'Odbierz psa', ico: <QrCode size={22} /> },
     { to: '/ustawienia', label: 'Ustawienia', ico: <Settings size={22} /> },
   ];
+  const notifCount = useMemo(() => collectNotifications(state, today()).length, [state]);
+  useEffect(() => { maybeSystemNotify(state, today()); }, [state]);
+  // automatyczna kopia w chmurze raz w tygodniu (prototyp: w pamięci przeglądarki)
+  useEffect(() => {
+    const last = state.profile.lastCloudBackup;
+    if (!state.profile.autoBackup || (last && daysBetween(last.slice(0, 10), today()) < 7)) return;
+    try { const info = saveCloud(state); setProfile({ lastCloudBackup: info.at }); } catch { /* brak miejsca */ }
+  }, [state, setProfile]);
   const go = (to: string, external?: boolean) => { setSheet(false); if (external) { window.open(to, '_blank', 'noopener'); return; } nav(to); };
   const actions = [
     ...(breeder && latestLitter ? [{ label: 'Pomiar wagi szczeniąt', sub: latestLitter.name, ico: <Scale size={20} />, to: `/mioty/${latestLitter.id}?weigh=1` }] : []),
@@ -43,7 +61,7 @@ export default function Layout() {
       <aside className="sidebar">
         <div className="brand"><div className="logo"><PawPrint size={22} className="wag" /></div><Wordmark height={24} /></div>
         <form className="search" onSubmit={submitSearch} style={{ marginBottom: 10 }}><Search size={18} /><input value={q} onChange={e => setQ(e.target.value)} placeholder="Szukaj psa, szczenięcia, wpisu…" aria-label="Szukaj" /></form>
-        {side.map(i => <NavLink key={i.to} to={i.to} end={i.to === '/'} className={({ isActive }) => `navlink ${isActive ? 'active' : ''}`}><span className="ico">{i.ico}</span>{i.label}</NavLink>)}
+        {side.map(i => <NavLink key={i.to} to={i.to} end={i.to === '/'} className={({ isActive }) => `navlink ${isActive ? 'active' : ''}`}><span className="ico">{i.ico}</span>{i.label}{i.to === '/powiadomienia' && notifCount > 0 && <span className="count">{notifCount}</span>}</NavLink>)}
         <div className="spacer" />
         <button className="navlink" style={{ border: 0, background: 'transparent', cursor: 'pointer', textAlign: 'left' }} onClick={() => setProfile({ darkMode: !state.profile.darkMode })}><span className="ico">{state.profile.darkMode ? <Sun size={22} /> : <Moon size={22} />}</span>{state.profile.darkMode ? 'Tryb jasny' : 'Tryb ciemny'}</button>
         <div className="muted" style={{ padding: 10, display: 'flex', gap: 10, alignItems: 'center' }}>
@@ -65,10 +83,9 @@ export default function Layout() {
       </>}
 
       <nav className="bottomnav" aria-label="Nawigacja">
-        {main.slice(0, 2).map(i => <NavLink key={i.to} to={i.to} end={i.to === '/'} className={({ isActive }) => (isActive ? 'active' : '')}>{i.ico}{i.label}</NavLink>)}
+        {bottom.slice(0, 2).map(i => <NavLink key={i.to} to={i.to} end={i.to === '/'} className={({ isActive }) => (isActive ? 'active' : '')}>{i.ico}{i.label}</NavLink>)}
         <button className={`fab ${sheet ? 'open' : ''}`} aria-label="Dodaj" onClick={() => setSheet(s => !s)}><Plus size={30} /></button>
-        {main.slice(2).map(i => <NavLink key={i.to} to={i.to} className={({ isActive }) => (isActive ? 'active' : '')}>{i.ico}{i.label}</NavLink>)}
-        <NavLink to="/ustawienia" className={({ isActive }) => (isActive ? 'active' : '')}><Settings size={22} />Więcej</NavLink>
+        {bottom.slice(2).map(i => <NavLink key={i.to} to={i.to} className={({ isActive }) => (isActive ? 'active' : '')}>{i.ico}{i.label}{i.to === '/ustawienia' && notifCount > 0 && <span className="nav-dot" aria-hidden />}</NavLink>)}
       </nav>
     </div>
   );

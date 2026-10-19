@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useReducer, useState, ty
 import type { AppState, Dog, Breeding, StudMating, Litter, Puppy, Weight, Show, Championship, Expense, Reminder, HealthRecord, Profile, Heat, Income, Member } from './types';
 import { FREE_LIMITS } from './types';
 import { emptyState } from './seed';
+import { setCurrency } from './format';
 
 const KEY = 'dogpilot.state.v1';
 const LEGACY_KEY = 'kennelo.state.v1';
@@ -55,6 +56,7 @@ const StoreCtx = createContext<Ctx | null>(null);
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, undefined, load);
   const [toastMsg, setToast] = useState<string | null>(null);
+  setCurrency(state.profile.currency ?? 'PLN'); // przed renderem dzieci, żeby kwoty od razu miały właściwą walutę
   useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* quota */ } }, [state]);
   useEffect(() => { document.documentElement.dataset.theme = state.profile.darkMode ? 'dark' : 'light'; }, [state.profile.darkMode]);
   useEffect(() => { if (!toastMsg) return; const t = setTimeout(() => setToast(null), 2500); return () => clearTimeout(t); }, [toastMsg]);

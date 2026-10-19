@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import { useStore } from './app/store';
 import Onboarding from './pages/Onboarding';
@@ -18,18 +18,21 @@ import Search from './pages/Search';
 import Documents from './pages/Documents';
 import Portal from './pages/Portal';
 import ShowCalendar from './pages/ShowCalendar';
+import DogWizard from './pages/DogWizard';
+import Notifications from './pages/Notifications';
 
 export default function App() {
   const { state } = useStore();
+  const loc = useLocation();
   if (!state.profile.onboarded) return <Onboarding />;
-  const path = window.location.hash;
-  if (path.startsWith('#/portal/')) return <Routes><Route path="/portal/:id" element={<Portal />} /></Routes>;
+  if (loc.pathname.startsWith('/portal/')) return <Routes><Route path="/portal/:id" element={<Portal />} /></Routes>;
   const breeder = state.profile.module === 'breeder';
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Dashboard />} />
         <Route path="/psy" element={<Dogs />} />
+        <Route path="/psy/nowy" element={<DogWizard />} />
         <Route path="/psy/:id" element={<DogProfile />} />
         {breeder && <Route path="/mioty" element={<Litters />} />}
         {breeder && <Route path="/mioty/:id" element={<LitterDetail />} />}
@@ -39,6 +42,7 @@ export default function App() {
         <Route path="/raporty" element={<Reports />} />
         <Route path="/raporty/:kind" element={<Reports />} />
         <Route path="/wystawy" element={<ShowCalendar />} />
+        <Route path="/powiadomienia" element={<Notifications />} />
         <Route path="/przypomnienia" element={<Reminders />} />
         <Route path="/ustawienia" element={<Settings />} />
         <Route path="/skanuj" element={<Scan />} />

@@ -555,3 +555,29 @@ Dolny pasek ma teraz sześć pozycji: Start · Psy · „+” · Mioty · Finans
 **Kanwa:** artboard *A · Kalendarz wystaw* (pełne dane 2026, interaktywne zakładki, miesiące, rodzaje, gwiazdka, dzwonek), wejście z szybkiej akcji „Wystawy” na Starcie i z zakładki Osiągnięcia psa.
 
 **Wersja docelowa:** backend raz dziennie pobiera terminarz ZKwP na bieżący i kolejny rok, zapisuje w bazie i udostępnia aplikacji przez API. Przed uruchomieniem warto uzyskać zgodę ZKwP na korzystanie z terminarza i zapytać operatora wystawy.net (biuro@wystawy.net) o API lub linki prowadzące prosto do zgłoszenia na konkretną wystawę. Terminów zgłoszeń, sędziów i opłat terminarz ZKwP nie podaje.
+
+## 22. Porównanie z nowymi ekranami konkurenta i nowe funkcje (19.10.2026)
+
+| Ekran konkurenta | Co mieliśmy | Co dodaliśmy |
+|---|---|---|
+| Start z liczbą suk, psów i miotów, widżet „Powiadomienia” | chipy z liczbami, karta „Najbliższy termin” | **Centrum powiadomień** `/powiadomienia` i widżet na Starcie z liczbą pozycji z ustawień; dzwonek z licznikiem |
+| „Dodaj sukę” – długi formularz w sekcjach | jeden formularz w oknie | **Kreator krok po kroku** `/psy/nowy`: płeć → dane podstawowe → rodzice → identyfikacja → podsumowanie, z kartą podglądu na żywo i paskiem kompletności |
+| „Moje suki” – pusty stan, widok pełny/kompaktowy, pobieranie psa kodem | lista, filtry płci, widok pełny/kompaktowy, skanowanie kodu | przyciski „Dodaj pierwszą sukę / psa” i „Odbierz psa kodem QR” w pustym stanie |
+| Raporty z kłódkami w planie darmowym | 13 raportów, druk/PDF | bez zmian (wszystkie raporty dostępne w prototypie) |
+| Ustawienia: kopia w chmurze, język, waluta, wyprzedzenie powiadomień, liczba na ekranie głównym, usunięcie konta | tryb ciemny, kopia JSON, usuwanie danych | **Ustawienia w zakładkach**: Profil, Powiadomienia, Aplikacja, Facebook i Instagram, Dane i konto |
+
+**Kreator dodawania psa.** Duże karty „Suka” i „Pies” (kolory różowy i niebieski przechodzą na cały kreator), skrót „Mam kartę przekazania” do skanera. Rasa z wyszukiwarką (90 ras po polsku, własne rasy z hodowli na górze, można wpisać dowolną), umaszczenie z podpowiedzi, waga z przyciskami −/+, przełącznik sterylizacji, wiek liczony na żywo, rodzice wybierani z psów hodowli lub wpisani ręcznie z mini-rodowodem, walidacja chipa (15 cyfr, kod 616 = Polska). Podsumowanie pozwala kliknąć dowolny wiersz, żeby wrócić do kroku. Po zapisie krótka animacja i przejście do karty psa.
+
+**Powiadomienia.** Jedno źródło terminów: zdrowie (szczepienia, badania, zabiegi, profilaktyka), prognoza cieczki, ciąża (USG, RTG, czuwanie, poród), zaplanowane wystawy i przypomnienia. Dla każdego typu ustawiasz wyprzedzenie w dniach i możesz go wyłączyć. Zaległe są widoczne zawsze. Powiadomienia systemowe w przeglądarce (zgoda użytkownika, dzienne podsumowanie o wybranej godzinie, przycisk testowy). E-mail z podsumowaniem zapisany jako ustawienie; wysyłka ruszy z backendem.
+
+**Aplikacja.** Język polski / angielski (wybór także na ekranie powitalnym; powitanie, logowanie i dane hodowli są przetłumaczone, reszta prototypu zostaje po polsku), waluta PLN / EUR / USD (zmienia wyświetlanie kwot, bez przeliczania), tryb ciemny.
+
+**Facebook i Instagram.** Połączenie kont (w prototypie symulowane okno logowania Meta z listą uprawnień), odłączanie, kreator posta z podglądem w stylu Facebooka i Instagrama, wybór sieci, hasztagi, limit znaków, kopiowanie tekstu i udostępnianie systemowe. Gotowe szablony: „Ogłoś miot” w karcie miotu i „Udostępnij” przy wyniku z wystawy. Historia publikacji w ustawieniach. Opcjonalne linki do profili na stronie dla nabywcy szczenięcia. Docelowo: Facebook Login + Meta Graph API po stronie serwera (konto firmowe na Instagramie, weryfikacja aplikacji przez Meta).
+
+**Dane i konto.** Kopia w chmurze ze stanem (data, rozmiar, liczba psów i miotów), przywracanie, automatyczna kopia co tydzień (w prototypie w osobnym miejscu pamięci przeglądarki), plik JSON, usunięcie konta z potwierdzeniem przez wpisanie „USUŃ”.
+
+**Galeria psa.** W zakładce „Dane” profilu psa do 6 zdjęć: dodawanie kilku naraz, podgląd pełnoekranowy ze strzałkami i klawiaturą, zmiana kolejności, ustawienie zdjęcia głównego, usuwanie.
+
+**Dolny pasek (telefon):** Start · Mioty · „+” · Raporty · Ustawienia (w trybie „Mam psiaka” zamiast Miotów są Psy). Psy, Finanse, Kalendarz wystaw, Powiadomienia, Dokumenty i skaner są w skrótach na górze Ustawień, na Starcie i w menu bocznym na komputerze.
+
+**Intro.** Po uruchomieniu aplikacji (raz na sesję) logo Dogpilot pojawia się powoli z rozmycia, pod nim ścieżka sześciu łapek wypełnia się jak pasek ładowania z procentami. Intro jest w `index.html`, więc widać je od pierwszej klatki; szanuje ustawienie „ogranicz animacje” i tryb ciemny.

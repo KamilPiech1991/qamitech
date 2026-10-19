@@ -8,6 +8,9 @@ import { useStore } from '../app/store';
 import { Card, Empty, Field, KV, Modal, ProBadge, Stat, Tabs, confirmDel, EditBtn, DelBtn } from '../components/ui';
 import { ArtHeader } from '../components/ui';
 import DogForm from '../components/DogForm';
+import DogGallery from '../components/DogGallery';
+import { ShareComposer, type ShareDraft } from '../components/Social';
+import { Share2 } from 'lucide-react';
 import { ageText, fmtDate, fmtDateTime, fmtMoney, nowLocal, today, uid } from '../app/format';
 import { COUNTRIES, HEALTH_LABEL, SHOW_CERTS, SHOW_CLASSES, SHOW_GRADES, SHOW_RANKS, SHOW_TITLES, type Breeding, type Championship, type HealthKind, type HealthRecord, type Show, type StudMating, type Weight, type Heat } from '../app/types';
 import { pregnancyInfo } from '../app/pregnancy';
@@ -35,7 +38,7 @@ export default function DogProfile() {
       <ArtHeader tone={dog.sex === 'female' ? 'rose' : 'blue'} icon={<PawPrint size={24} />} photo={dog.photo ?? null} back={() => nav('/psy')} title={dog.name} sub={<>{dog.pedigreeName} · {dog.breed} · {dog.sex === 'male' ? 'Pies' : 'Suka'}, {ageText(dog.birthDate)}</>}
         actions={<><button className="btn secondary" onClick={() => setEditing(true)}><Pencil size={16} /> Edytuj</button><button className="btn danger" onClick={() => { if (confirmDel('Usunąć psa i wszystkie jego wpisy?')) { remove('dogs', dog.id); nav('/psy'); } }}>Usuń</button></>} />
       <Tabs value={tab} onChange={t => setParams({ tab: t })} items={tabs} />
-      {tab === 'card' && <CardTab />}
+      {tab === 'card' && CardTab()}
       {tab === 'health' && <HealthTab />}
       {tab === 'breeding' && (dog.sex === 'female' ? <BreedingTab /> : <StudTab />)}
       {tab === 'pedigree' && <PedigreeTab />}
@@ -61,6 +64,7 @@ export default function DogProfile() {
         <Card title="Rodzice"><KV items={[['Ojciec', dog!.fatherName], ['Matka', dog!.motherName]]} /></Card>
         <Card title="Numery i dokumenty"><KV items={[['Nr rodowodu', dog!.pedigreeNo], ['Nr rejestracji oddziałowej', dog!.regNo], ['Nr chip', dog!.chip], ['Hodowla', dog!.kennelName], ['Nr karty przekazania', dog!.pawId]]} /></Card>
         {dog!.notes && <Card title="Notatki"><div style={{ whiteSpace: 'pre-wrap' }}>{dog!.notes}</div></Card>}
+        <DogGallery dog={dog!} />
       </div>
     );
   }
@@ -130,6 +134,7 @@ export default function DogProfile() {
 
   function CareerTab() {
     const [sub, setSub] = useState<'shows' | 'champ'>('shows');
+    const [shareShow, setShareShow] = useState<ShareDraft | null>(null);
     const [editShow, setEditShow] = useState<Show | null>(null);
     const [editCh, setEditCh] = useState<Championship | null>(null);
     const [year, setYear] = useState('all');
@@ -154,7 +159,7 @@ export default function DogProfile() {
               <Card key={s.id}>
                 <div className="row between"><div><b style={{ color: 'var(--primary-600)', fontSize: 16 }}>{s.country}, {s.city}</b><div>{s.rank}</div></div><div><EditBtn onClick={() => setEditShow(s)} /><DelBtn onClick={() => confirmDel() && remove('shows', s.id)} /></div></div>
                 <KV items={[['Nr katalogowy', s.catalogNo], ['Data wystawy', fmtDate(s.date)], ['Klasa', s.dogClass], ['Lokata', s.place], ['Ocena', s.grade], ['Sędzia', s.judge], ['Tytuły', s.titles], ['Certyfikaty', s.certificates], ['Notatki', s.notes]]} />
-                <div className="row between" style={{ marginTop: 8 }}><small className="muted">Łączny koszt: <b>{fmtMoney(showCost(s))}</b></small><Link className="btn secondary sm" to={`/finanse?show=${s.id}`}>Koszty wystawy</Link></div>
+                <div className="row between" style={{ marginTop: 8 }}><small className="muted">Łączny koszt: <b>{fmtMoney(showCost(s))}</b></small><div className="row" style={{ gap: 6 }}><button className="btn secondary sm" onClick={() => setShareShow({ kind: 'Wynik z wystawy', title: `${dog!.name} · ${s.city}`, photo: dog!.photo ?? dog!.gallery?.[0], hashtags: ['wystawapsow', 'dogshow', (dog!.breed || 'psy').toLowerCase().replace(/[^a-ząćęłńóśźż]/g, ''), 'zkwp', 'fci', 'championship', 'dogpilot'], text: `🏆 ${dog!.pedigreeName || dog!.name} na wystawie: ${s.rank}, ${s.city} (${fmtDate(s.date)})\n\n${[s.dogClass, s.grade && `ocena ${s.grade.toLowerCase()}`, s.place && `${s.place}. lokata`, s.titles, s.certificates].filter(Boolean).join(' · ')}${s.judge ? `\nSędzia: ${s.judge}` : ''}\n\nDziękujemy za wspaniałą ocenę! 🐾` })}><Share2 size={14} /> Udostępnij</button><Link className="btn secondary sm" to={`/finanse?show=${s.id}`}>Koszty wystawy</Link></div></div>
               </Card>))}
           </>
         )}
@@ -165,6 +170,7 @@ export default function DogProfile() {
             <div className="row no-print"><button className="btn" onClick={() => { if (!limits.canAddChampionship()) { toast('Plan FREE: maks. 6 championatów. Przejdź na PRO.'); return; } setEditCh({ id: uid(), dogId: dog!.id, country: 'Polska', title: 'Champion' }); }}><Plus size={18} /> Dodaj championat</button></div>
           </>
         )}
+        {shareShow && <ShareComposer draft={shareShow} onClose={() => setShareShow(null)} />}
         {editShow && <ShowForm s={editShow} onClose={() => setEditShow(null)} onSave={s => { upsert('shows', s); setEditShow(null); toast('Zapisano'); }} />}
         {editCh && <Modal title="Championat" onClose={() => setEditCh(null)} actions={<><button className="btn secondary" onClick={() => setEditCh(null)}>Anuluj</button><button className="btn" onClick={() => { upsert('championships', editCh); setEditCh(null); }}>Zapisz</button></>}>
           <Field label="Kraj"><select value={editCh.country} onChange={e => setEditCh({ ...editCh, country: e.target.value })}>{COUNTRIES.map(c => <option key={c}>{c}</option>)}</select></Field>

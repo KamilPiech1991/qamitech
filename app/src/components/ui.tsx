@@ -1,4 +1,5 @@
 import { useEffect, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowLeft, Pencil, Trash2, X, PawPrint, Camera, ImagePlus } from 'lucide-react';
 import { readPhoto } from '../app/photo';
 
@@ -31,14 +32,15 @@ export function Field({ label, children, hint }: { label: string; children: Reac
 
 export function Modal({ title, onClose, children, actions, wide }: { title: string; onClose: () => void; children: ReactNode; actions?: ReactNode; wide?: boolean }) {
   useEffect(() => { const h = (e: KeyboardEvent) => e.key === 'Escape' && onClose(); window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h); }, [onClose]);
-  return (
+  return createPortal(
     <div className="modal-backdrop" onMouseDown={e => e.target === e.currentTarget && onClose()}>
       <div className="modal" style={wide ? { maxWidth: 860 } : undefined} role="dialog" aria-modal="true">
         <div className="row between"><h2>{title}</h2><button className="icon-btn" onClick={onClose} aria-label="Zamknij"><X size={20} /></button></div>
         {children}
         {actions && <div className="actions">{actions}</div>}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

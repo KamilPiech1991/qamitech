@@ -2,9 +2,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Bell, Dog, PawPrint, Trophy, Wallet, QrCode, Heart, FileText, Flower2, ArrowRight, Scale, Stethoscope, Globe, Sparkles, ChevronRight, Baby, CalendarDays } from 'lucide-react';
 import { useStore } from '../app/store';
 import { addDays, daysBetween, fmtDate, fmtMoney, today } from '../app/format';
-import { HEALTH_LABEL } from '../app/types';
 import { heatStats } from '../app/heat';
 import { SHOWS_2026 } from '../app/shows2026';
+import { collectNotifications, notifySettings } from '../app/notifications';
 
 const TAGLINES = ['Co dziś w hodowli?', 'Wszystkie ogony policzone?', 'Miski pełne, plan gotowy?', 'Dobry dzień na spacer i ważenie.', 'Łapy w górę, zaczynamy!'];
 const MONTHS = ['styczniu', 'lutym', 'marcu', 'kwietniu', 'maju', 'czerwcu', 'lipcu', 'sierpniu', 'wrześniu', 'październiku', 'listopadzie', 'grudniu'];
@@ -15,15 +15,10 @@ export default function Dashboard() {
   const p = state.profile;
   const breeder = p.module === 'breeder';
   const t = today();
-  const horizon = addDays(t, 14);
-  const dogName = (id?: string) => state.dogs.find(d => d.id === id)?.name;
   const females = state.dogs.filter(d => d.sex === 'female');
   const heatSoon = females.map(d => ({ d, s: heatStats(state.heats.filter(h => h.dogId === d.id)) })).filter(x => x.s && x.s.nextFrom <= addDays(t, 45) && x.s.nextTo >= t);
-  const upcoming = [
-    ...state.reminders.filter(r => !r.done && r.date <= horizon).map(r => ({ date: r.date, title: r.title, sub: dogName(r.dogId) ?? r.notes ?? '', to: '/przypomnienia' })),
-    ...state.health.filter(h => h.nextDate && h.nextDate <= horizon && h.dogId).map(h => ({ date: h.nextDate!, title: `${HEALTH_LABEL[h.kind]}: ${h.name}`, sub: dogName(h.dogId) ?? '', to: `/psy/${h.dogId}?tab=health` })),
-    ...heatSoon.filter(x => x.s!.nextFrom <= horizon).map(x => ({ date: x.s!.next, title: `Spodziewana cieczka: ${x.d.name}`, sub: `okno ${fmtDate(x.s!.nextFrom)} – ${fmtDate(x.s!.nextTo)}`, to: `/psy/${x.d.id}?tab=breeding` })),
-  ].sort((a, b) => a.date.localeCompare(b.date));
+  const ncfg = notifySettings(p);
+  const upcoming = collectNotifications(state, t);
   const activePreg = state.breedings.filter(b => !b.litterId && b.matings.length && daysBetween(b.matings[0].date, t) < 70);
   const month = t.slice(0, 7);
   const monthExp = state.expenses.filter(e => e.date.slice(0, 7) === month).reduce((a, e) => a + e.amount, 0);
@@ -38,7 +33,7 @@ export default function Dashboard() {
 
   const whenLabel = (d: string) => d < t ? 'zaległe' : daysBetween(t, d) === 0 ? 'dziś' : daysBetween(t, d) === 1 ? 'jutro' : `za ${daysBetween(t, d)} dni`;
   const summary: string[] = [];
-  if (upcoming.length) summary.push(`${upcoming.length === 1 ? 'masz 1 termin' : `masz ${upcoming.length} ${upcoming.length < 5 ? 'terminy' : 'terminów'}`} w najbliższych 2 tygodniach`);
+  if (upcoming.length) summary.push(`${upcoming.length === 1 ? 'masz 1 termin' : `masz ${upcoming.length} ${upcoming.length < 5 ? 'terminy' : 'terminów'}`} do ogarnięcia`);
   activePreg.forEach(b => { const f = state.dogs.find(d => d.id === b.femaleId); summary.push(`${f?.name ?? 'suka'} jest na ${daysBetween(b.matings[0].date, t) + 1}. dniu ciąży`); });
   if (breeder && latestLitter && daysBetween(latestLitter.birthDate, t) <= 84) summary.push(`${latestLitter.name} ma ${daysBetween(latestLitter.birthDate, t)} dni`);
   const bubble = summary.length ? `${TAGLINES[0]} ${summary.join(', ').replace(/^./, c => c.toUpperCase())}.` : `${TAGLINES[new Date().getDate() % TAGLINES.length]} Na dziś nie ma nic pilnego.`;
@@ -55,6 +50,7 @@ export default function Dashboard() {
         </div>
         <div className="row" style={{ gap: 8 }}>
           <span className={`badge ${p.plan === 'pro' ? 'pro' : ''}`}>{p.plan.toUpperCase()}</span>
+          <button className="icon-btn bell-btn" aria-label={`Powiadomienia: ${upcoming.length}`} title="Powiadomienia" onClick={() => nav('/powiadomienia')}><Bell size={20} />{upcoming.length > 0 && <span className="dot">{upcoming.length > 9 ? '9+' : upcoming.length}</span>}</button>
           <button className="icon-btn" aria-label="Odbierz psa" title="Odbierz psa" onClick={() => nav('/skanuj')}><QrCode size={20} /></button>
         </div>
       </div>
@@ -64,7 +60,7 @@ export default function Dashboard() {
         {breeder && <Link to="/mioty" className="chip"><Baby size={14} /> {state.puppies.length} {state.puppies.length === 1 ? 'szczenię' : state.puppies.length < 5 ? 'szczenięta' : 'szczeniąt'}</Link>}
         {activePreg.length > 0 && <Link to={`/ciaza/${activePreg[0].id}`} className="chip warm"><Heart size={14} /> {activePreg.length === 1 ? 'ciąża' : `${activePreg.length} ciąże`} · {daysBetween(activePreg[0].matings[0].date, t) + 1}. dzień</Link>}
         <Link to="/finanse" className="chip"><Wallet size={14} /> {fmtMoney(monthExp)} w {MONTHS[new Date().getMonth()]}</Link>
-        <Link to="/przypomnienia" className="chip"><Bell size={14} /> {upcoming.length} do zrobienia</Link>
+        <Link to="/powiadomienia" className="chip"><Bell size={14} /> {upcoming.length} do zrobienia</Link>
       </div>
 
       <div className="bubble-wrap">
@@ -96,16 +92,16 @@ export default function Dashboard() {
             <span className="cta">Otwórz monitor ciąży <ArrowRight size={16} /></span>
           </div>); })}
 
-        <div className={`fc sun ${upcoming.length ? '' : 'calm'}`} onClick={() => nav(upcoming[0]?.to ?? '/przypomnienia')}>
+        {ncfg.widget && <div className={`fc sun ${upcoming.length ? '' : 'calm'}`} onClick={() => nav(upcoming[0]?.to ?? '/powiadomienia')}>
           <Bell className="art" size={190} />
-          <div className="kicker">Najbliższy termin</div>
+          <div className="kicker">Powiadomienia{upcoming.length ? ` · ${upcoming.length}` : ''}</div>
           {upcoming.length ? (<>
             <h2>{upcoming[0].title}</h2>
             <p>{upcoming[0].sub ? `${upcoming[0].sub} · ` : ''}{whenLabel(upcoming[0].date)}, {fmtDate(upcoming[0].date)}</p>
-            {upcoming.length > 1 && <div className="mini-list">{upcoming.slice(1, 4).map((u, i) => <div key={i}><span>{u.title}</span><b>{whenLabel(u.date)}</b></div>)}</div>}
-          </>) : (<><h2>Spokojne dwa tygodnie</h2><p>Nie masz żadnych terminów. Dobry moment na spacer.</p></>)}
-          <span className="cta" onClick={e => { e.stopPropagation(); nav('/przypomnienia'); }}>Wszystkie terminy <ArrowRight size={16} /></span>
-        </div>
+            {ncfg.homeCount > 1 && upcoming.length > 1 && <div className="nlist">{upcoming.slice(1, ncfg.homeCount).map(u => <div key={u.id} className={u.overdue ? 'od' : ''} onClick={e => { e.stopPropagation(); nav(u.to); }}><span>{u.title}</span><b>{whenLabel(u.date)}</b></div>)}</div>}
+          </>) : (<><h2>Spokojnie, nic pilnego</h2><p>Terminy pojawią się tu z wyprzedzeniem, które ustawisz w ustawieniach powiadomień.</p></>)}
+          <span className="cta" onClick={e => { e.stopPropagation(); nav('/powiadomienia'); }}>Przegląd <ArrowRight size={16} /></span>
+        </div>}
 
         {breeder && latestLitter && (
           <div className="fc green" onClick={() => nav(`/mioty/${latestLitter.id}`)}>

@@ -19,6 +19,7 @@ export interface Dog {
   chip?: string;
   kennelName?: string;
   photo?: string;
+  gallery?: string[]; // galeria zdjęć psa, maks. GALLERY_MAX (data URL)
   notes?: string;
   pawId?: string;
   fatherId?: string;
@@ -242,6 +243,38 @@ export interface Profile {
   logo?: string; // logo hodowli (data URL)
   authProvider?: 'email' | 'google'; // prototyp: logowanie symulowane
   plannedShows?: string[]; // id wystaw z kalendarza ZKwP, na które hodowca planuje start
+  language?: 'pl' | 'en';
+  currency?: Currency;
+  notify?: NotifySettings;
+  dismissedNotifications?: string[];
+  social?: SocialSettings;
+  lastCloudBackup?: string;
+  autoBackup?: boolean;
+}
+
+export type Currency = 'PLN' | 'EUR' | 'USD';
+export type NotifKind = 'vaccination' | 'exam' | 'procedure' | 'prevention' | 'heat' | 'pregnancy' | 'show' | 'general';
+export const NOTIF_LABEL: Record<NotifKind, string> = { vaccination: 'Szczepienia', exam: 'Badania', procedure: 'Zabiegi', prevention: 'Profilaktyka (odrobaczanie, pasożyty)', heat: 'Cieczki', pregnancy: 'Ciąża i poród', show: 'Wystawy', general: 'Przypomnienia ogólne' };
+export interface NotifySettings {
+  widget: boolean;           // sekcja z terminami na Starcie
+  homeCount: number;         // ile pozycji pokazywać na Starcie
+  lead: Record<NotifKind, number>; // z ilu dni wyprzedzeniem pokazywać dany typ
+  off: NotifKind[];          // wyłączone typy
+  push: boolean;             // powiadomienia systemowe (przeglądarka / telefon)
+  pushHour: number;          // o której godzinie dzienne podsumowanie
+  emailDigest: 'off' | 'daily' | 'weekly';
+}
+export const DEFAULT_NOTIFY: NotifySettings = {
+  widget: true, homeCount: 3, off: [], push: false, pushHour: 8, emailDigest: 'weekly',
+  lead: { vaccination: 14, exam: 7, procedure: 7, prevention: 7, heat: 21, pregnancy: 7, show: 30, general: 3 },
+};
+export interface SocialAccount { connected: boolean; name: string; url?: string; connectedAt?: string }
+export interface SocialPost { id: string; date: string; text: string; networks: ('facebook' | 'instagram')[]; kind: string }
+export interface SocialSettings {
+  facebook?: SocialAccount;
+  instagram?: SocialAccount;
+  showOnPortal?: boolean;    // linki do profili na stronie dla nabywcy
+  posts?: SocialPost[];
 }
 
 export interface AppState {
@@ -264,6 +297,7 @@ export interface AppState {
 
 export const INCOME_CATEGORIES = ['Sprzedaż szczenięcia', 'Zaliczka za szczenię', 'Krycie (opłata)', 'Nagroda / wystawa', 'Inne'];
 export const HEAT_DEFAULT_INTERVAL_DAYS = 180;
+export const GALLERY_MAX = 6;
 
 export const FREE_LIMITS = { females: 2, males: 2, shows: 5, championships: 6, chartMonths: 4 };
 

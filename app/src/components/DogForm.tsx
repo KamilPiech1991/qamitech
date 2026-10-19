@@ -16,13 +16,13 @@ export default function DogForm({ initial, onSave, onClose }: { initial?: Dog; o
       <h3>Podstawowe informacje</h3>
       <div className="form-grid">
         <Field label="Imię domowe *"><input value={d.name} onChange={e => set('name', e.target.value)} /></Field>
-        <Field label="Nazwa rodowodowa"><input value={d.pedigreeName} onChange={e => set('pedigreeName', e.target.value)} placeholder="np. Bubi Dolina Krzemowa FCI" /></Field>
+        <Field label="Imię hodowlane (z rodowodu)"><input value={d.pedigreeName} onChange={e => set('pedigreeName', e.target.value)} placeholder="np. Bubi Dolina Krzemowa FCI" /></Field>
         <Field label="Rasa *"><input value={d.breed} onChange={e => set('breed', e.target.value)} /></Field>
         <Field label="Płeć *"><select value={d.sex} onChange={e => set('sex', e.target.value as Dog['sex'])}><option value="female">Suka</option><option value="male">Pies</option></select></Field>
         <Field label="Data urodzenia *"><input type="date" value={d.birthDate} onChange={e => set('birthDate', e.target.value)} /></Field>
         <Field label="Umaszczenie"><input value={d.color ?? ''} onChange={e => set('color', e.target.value)} /></Field>
         <Field label="Waga (kg)"><input type="number" step="0.1" value={d.weightKg ?? ''} onChange={e => set('weightKg', e.target.value ? Number(e.target.value) : undefined)} /></Field>
-        <Field label="Kastrowany / sterylizowana"><select value={d.neutered ? '1' : '0'} onChange={e => set('neutered', e.target.value === '1')}><option value="0">Nie</option><option value="1">Tak</option></select></Field>
+        <Field label={d.sex === 'female' ? 'Sterylizowana' : 'Kastrowany'}><select value={d.neutered ? '1' : '0'} onChange={e => set('neutered', e.target.value === '1')}><option value="0">Nie</option><option value="1">Tak</option></select></Field>
       </div>
       <h3>Rodzice (do drzewa rodowodu)</h3>
       <div className="form-grid">
