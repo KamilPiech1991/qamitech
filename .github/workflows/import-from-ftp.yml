@@ -97,6 +97,28 @@ jobs:
               '$FTP_SERVER_DIR' site;
             quit"
 
+          # Nazwy plików zapisane na serwerze w starym kodowaniu (np. ISO-8859-2: „Zas\xf3b 19.svg”)
+          # psują deploy (FTP-Deploy-Action nie umie ich odczytać). Takie pliki zostają tylko na serwerze.
+          python3 - <<'PY' > skipped.txt
+          import os
+          for root, dirs, files in os.walk(b"site"):
+              for name in files:
+                  try:
+                      name.decode("utf-8")
+                  except UnicodeDecodeError:
+                      path = os.path.join(root, name)
+                      os.remove(path)
+                      print(path.decode("utf-8", "replace"))
+          PY
+          if [ -s skipped.txt ]; then
+            {
+              echo "### ℹ️ Pominięte pliki z nazwą w złym kodowaniu (zostają na serwerze)"
+              echo "Zmień ich nazwy na serwerze (bez polskich znaków), jeśli mają trafić do repozytorium:"
+              echo
+              sed 's/^/- `/; s/$/`/' skipped.txt
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
           count=$(find site -type f | wc -l)
           echo "Pobrano plików: $count"
           if [ "$count" -eq 0 ]; then

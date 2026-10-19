@@ -58,6 +58,24 @@ jobs:
             exit 1
           fi
 
+      - name: Sprawdź nazwy plików
+        # FTP-Deploy-Action przerywa się na nazwach, które nie są poprawnym UTF-8
+        # (np. pliki zapisane na serwerze w ISO-8859-2) — lepiej wskazać je od razu.
+        run: |
+          python3 - <<'PY'
+          import os, sys
+          bad = []
+          for root, dirs, files in os.walk(b"site"):
+              for name in dirs + files:
+                  try:
+                      name.decode("utf-8")
+                  except UnicodeDecodeError:
+                      bad.append(os.path.join(root, name).decode("utf-8", "replace"))
+          for path in bad:
+              print(f"::error::Nazwa pliku nie jest poprawnym UTF-8: {path} — zmień nazwę (bez polskich znaków) albo usuń plik z repozytorium.")
+          sys.exit(1 if bad else 0)
+          PY
+
       - name: Wyślij pliki
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
