@@ -43,9 +43,11 @@ Każdy push na `main`, który zmienia coś w `site/`, automatycznie wgrywa zmien
 (workflow **Deploy strony na FTP**). Ręcznie: Actions → Deploy strony na FTP → Run workflow
 (domyślnie próba na sucho — pokazuje, co zostałoby wysłane).
 
-- Pierwszy deploy wysyła wszystkie pliki z `site/`; kolejne — tylko zmienione.
-- Pliki istniejące wyłącznie na serwerze (np. config z hasłami) nie są usuwane.
-- Na serwerze powstaje plik stanu `.ftp-deploy-sync-state.json`; warto zablokować do niego dostęp w `.htaccess`.
+- Pliki wysyła `lftp` (to samo narzędzie co import), więc działa z serwerami FTPS wymagającymi ponownego użycia sesji TLS.
+- Pierwszy deploy wysyła wszystkie pliki z `site/`; kolejne — tylko zmienione od ostatniego wdrożenia.
+  Commit ostatniego deployu zapisuje się na serwerze w pliku `.deploy-sha`. Ręcznie można wymusić pełne wysłanie (opcja „Wyślij wszystkie pliki”).
+- Po wysłaniu workflow porównuje rozmiary plików na serwerze z repozytorium; przy niezgodności ponawia wysyłkę, a potem zgłasza błąd.
+- Pliki istniejące wyłącznie na serwerze (np. config z hasłami) nie są usuwane. Pliki usunięte z repozytorium też zostają na serwerze.
 - Deploy działa w środowisku `production` — w Settings → Environments możesz dodać wymóg ręcznego zatwierdzenia.
 
 ## Wydajność strony (PageSpeed)

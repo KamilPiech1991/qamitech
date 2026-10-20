@@ -1,20 +1,25 @@
-# Wgrywa zawartość katalogu site/ na serwer FTP.
-# - automatycznie po każdym pushu na main, który zmienia coś w site/
+# Wgrywa zawartość katalogu site/ na serwer FTP (przez lftp — tak jak import).
+# - automatycznie po każdym pushu na main, który zmienia coś w site/ (albo ten workflow)
 # - ręcznie: Actions → "Deploy strony na FTP" → Run workflow (domyślnie próba na sucho)
-# Wysyłane są tylko pliki zmienione od poprzedniego wdrożenia. Pliki istniejące
-# wyłącznie na serwerze (np. config z hasłami, wykluczony z repo) nie są usuwane.
+# Wysyłane są tylko pliki zmienione od poprzedniego wdrożenia: na serwerze leży plik
+# .deploy-sha z commitem ostatniego deployu. Bez niego (pierwszy raz) idą wszystkie pliki.
+# Pliki istniejące wyłącznie na serwerze (np. config z hasłami) nie są usuwane.
 name: Deploy strony na FTP
 
 on:
   push:
     branches: [main]
-    paths: ["site/**"]
+    paths: ["site/**", ".github/workflows/deploy-ftp.yml"]
   workflow_dispatch:
     inputs:
       dry_run:
         description: "Próba na sucho — tylko pokaż, co zostałoby wysłane"
         type: boolean
         default: true
+      full:
+        description: "Wyślij wszystkie pliki z site/, nie tylko zmienione"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -28,18 +33,22 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR }}
+      FTP_PROTOCOL: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+      FTP_PORT: ${{ vars.FTP_PORT || '21' }}
+      FTP_SECURITY: ${{ vars.FTP_SECURITY || 'strict' }}
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+      FULL: ${{ github.event_name == 'workflow_dispatch' && inputs.full }}
     steps:
       - name: Sprawdź konfigurację
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
           missing=""
           [ -n "$FTP_SERVER" ]     || missing="$missing secret:FTP_SERVER"
           [ -n "$FTP_USERNAME" ]   || missing="$missing secret:FTP_USERNAME"
-          [ -n "$FTP_PASSWORD" ]   || missing="$missing secret:FTP_PASSWORD"
+          [ -n "$LFTP_PASSWORD" ]  || missing="$missing secret:FTP_PASSWORD"
           [ -n "$FTP_SERVER_DIR" ] || missing="$missing variable:FTP_SERVER_DIR"
           if [ -n "$missing" ]; then
             echo "::error::Brakuje ustawień w Settings → Secrets and variables → Actions:$missing"
@@ -48,8 +57,13 @@ jobs:
           case "$FTP_SERVER_DIR" in */) ;; *)
             echo "::error::FTP_SERVER_DIR musi kończyć się ukośnikiem, np. /public_html/"; exit 1 ;;
           esac
+          case "$FTP_PROTOCOL" in ftps|ftp) ;; *)
+            echo "::error::FTP_PROTOCOL musi mieć wartość ftps albo ftp (jest: $FTP_PROTOCOL)"; exit 1 ;;
+          esac
 
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Sprawdź katalog site/
         run: |
@@ -59,8 +73,8 @@ jobs:
           fi
 
       - name: Sprawdź nazwy plików
-        # FTP-Deploy-Action przerywa się na nazwach, które nie są poprawnym UTF-8
-        # (np. pliki zapisane na serwerze w ISO-8859-2) — lepiej wskazać je od razu.
+        # Nazwy, które nie są poprawnym UTF-8 (np. pliki zapisane na serwerze w ISO-8859-2),
+        # psują listy plików — lepiej wskazać je od razu.
         run: |
           python3 - <<'PY'
           import os, sys
@@ -76,19 +90,93 @@ jobs:
           sys.exit(1 if bad else 0)
           PY
 
+      - name: Zainstaluj lftp i rsync
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp rsync
+
+      - name: Przygotuj połączenie
+        run: |
+          if [ "$FTP_PROTOCOL" = "ftps" ]; then
+            tls="set ftp:ssl-force true; set ftp:ssl-protect-data true;"
+          else
+            tls="set ftp:ssl-allow false;"
+          fi
+          if [ "$FTP_SECURITY" = "loose" ]; then verify=no; else verify=yes; fi
+          # ftp:list-options -a — listingi z plikami ukrytymi (.htaccess), potrzebne do kontroli po wysłaniu
+          echo "LFTP_SETTINGS=$tls set ssl:verify-certificate $verify; set net:max-retries 3; set net:timeout 30; set ftp:list-options -a;" >> "$GITHUB_ENV"
+
+      - name: Ustal pliki do wysłania
+        run: |
+          prev=$(lftp --env-password -u "$FTP_USERNAME" -p "$FTP_PORT" "ftp://$FTP_SERVER" \
+                   -e "$LFTP_SETTINGS cat '${FTP_SERVER_DIR}.deploy-sha'; quit" 2>/dev/null \
+                 | tr -dc '0-9a-f' | head -c 40) || true
+
+          mkdir deploy
+          if [ "$FULL" != "true" ] && [ -n "$prev" ] && git cat-file -e "${prev}^{commit}" 2>/dev/null; then
+            echo "Ostatni deploy: $prev — wysyłam pliki zmienione od tego commita."
+            git diff --name-only --diff-filter=ACMRT -z "$prev" HEAD -- site/ > changed.list
+            rsync -a --from0 --files-from=changed.list . deploy/
+          else
+            echo "Brak informacji o poprzednim deployu (albo wybrano pełny) — wysyłam wszystkie pliki z site/."
+            mkdir -p deploy/site
+            rsync -a --exclude '.git*' --exclude 'node_modules/' site/ deploy/site/
+          fi
+
+          count=$(find deploy -type f | wc -l)
+          echo "FILE_COUNT=$count" >> "$GITHUB_ENV"
+          {
+            echo "### Pliki do wysłania: $count"
+            echo
+            (cd deploy/site 2>/dev/null && find . -type f | sed 's|^\./||' | sort | head -n 300 | sed 's/^/- `/; s/$/`/') || true
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Wyślij pliki
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
-          port: ${{ vars.FTP_PORT || '21' }}
-          security: ${{ vars.FTP_SECURITY || 'strict' }}
-          local-dir: ./site/
-          server-dir: ${{ vars.FTP_SERVER_DIR }}
-          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
+        if: env.DRY_RUN != 'true' && env.FILE_COUNT != '0'
+        run: |
+          ftp() { lftp --env-password -u "$FTP_USERNAME" -p "$FTP_PORT" "ftp://$FTP_SERVER" -e "$LFTP_SETTINGS $1; quit"; }
+          # Cel bez końcowego ukośnika — inaczej lftp tworzy w nim podkatalog „site/”.
+          target="${FTP_SERVER_DIR%/}"; target="${target:-/}"
+
+          # Porównuje rozmiary wysłanych plików z tymi na serwerze; wypisuje niezgodne.
+          verify() {
+            ftp "cd '$target'; find -l ." > remote.txt
+            python3 - <<'PY'
+          import os
+          remote = {}
+          for line in open("remote.txt", encoding="utf-8", errors="replace"):
+              parts = line.split()
+              if len(parts) >= 6 and line.startswith("-"):
+                  remote[" ".join(parts[5:]).removeprefix("./")] = int(parts[2])
+          for root, _, files in os.walk("deploy/site"):
+              for name in files:
+                  local = os.path.join(root, name)
+                  rel = os.path.relpath(local, "deploy/site")
+                  if remote.get(rel) != os.path.getsize(local):
+                      print(rel)
+          PY
+          }
+
+          ftp "mirror --reverse --verbose --parallel=4 --transfer-all --no-perms deploy/site '$target'"
+          bad=$(verify)
+          if [ -n "$bad" ]; then
+            echo "::warning::Niezgodne rozmiary po wysłaniu — ponawiam: $bad"
+            ftp "mirror --reverse --verbose --parallel=2 --transfer-all --no-perms deploy/site '$target'"
+            bad=$(verify)
+          fi
+          if [ -n "$bad" ]; then
+            echo "::error::Pliki na serwerze różnią się od repozytorium: $bad"
+            exit 1
+          fi
+
+          git rev-parse HEAD > deploy-sha.txt
+          ftp "put deploy-sha.txt -o '${FTP_SERVER_DIR}.deploy-sha'"
+          echo "### ✅ Wysłano i sprawdzono $FILE_COUNT plików" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Zapisz commit jako wdrożony
+        # Nic do wysłania (np. zmieniono tylko usunięte pliki) — mimo to zapamiętaj commit.
+        if: env.DRY_RUN != 'true' && env.FILE_COUNT == '0'
+        run: |
+          git rev-parse HEAD > deploy-sha.txt
+          lftp --env-password -u "$FTP_USERNAME" -p "$FTP_PORT" "ftp://$FTP_SERVER" -e "
+            $LFTP_SETTINGS
+            put deploy-sha.txt -o '${FTP_SERVER_DIR}.deploy-sha';
+            quit"
