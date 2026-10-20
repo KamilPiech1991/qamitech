@@ -8,7 +8,7 @@
    $metaHost = $_SERVER['HTTP_HOST'] ?? parse_url(ABS_URL, PHP_URL_HOST);
    $metaPath = strtok($_SERVER['REQUEST_URI'] ?? '/', '?') ?: '/';
    $metaUrl = $metaScheme . '://' . $metaHost . $metaPath;
-   $metaImage = ABS_URL . 'assets/img/opengraph.png';
+   $metaImage = $ogImage ?? (ABS_URL . 'assets/img/opengraph.png');
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -29,9 +29,11 @@
    <meta property="og:url" content="<?php echo htmlspecialchars($metaUrl, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta property="og:image" content="<?php echo htmlspecialchars($metaImage, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta property="og:image:secure_url" content="<?php echo htmlspecialchars($metaImage, ENT_QUOTES, 'UTF-8'); ?>" />
+<?php if (! isset($ogImage)) : ?>
    <meta property="og:image:type" content="image/png" />
    <meta property="og:image:width" content="1436" />
    <meta property="og:image:height" content="823" />
+<?php endif; ?>
    <meta name="twitter:card" content="summary_large_image" />
    <meta name="twitter:title" content="<?php echo htmlspecialchars($metaFullTitle, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta name="twitter:description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>" />
@@ -41,7 +43,7 @@
    <!-- Stylesheet: *.min.css budowane z vendor.css / main.css (tools/css, npm run build) -->
    <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/vendor.min.css?v=20261018" />
    <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/main.min.css?v=20261018" />
-   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css?v=20261021" />
+   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css?v=20261022" />
    <!-- Favicons & App Icons -->
    <link rel="apple-touch-icon" sizes="57x57" href="<?php home_url(); ?>assets/img/favicons/apple-icon-57x57.png" />
    <link rel="apple-touch-icon" sizes="60x60" href="<?php home_url(); ?>assets/img/favicons/apple-icon-60x60.png" />

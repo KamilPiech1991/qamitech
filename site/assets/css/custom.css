@@ -974,3 +974,262 @@
   top: 0;
   left: 0;
 }
+
+/* Realizacje — podstrona case study (part/case-study.php)
+------------------------------------------------ */
+
+.case-hero .breadcrumbs-wrap a {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.case-hero__label {
+  margin: 0 0 .5em;
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+}
+
+.case-hero__title {
+  margin-top: 0;
+}
+
+.case-hero__lead {
+  max-width: 640px;
+  font-size: 1.15em;
+}
+
+.case-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  margin: 48px 0 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-gray-4);
+}
+
+.case-facts dt {
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+}
+
+.case-facts dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Ramki zrzutów: okno przeglądarki i telefon */
+.case-frame {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-light-1);
+}
+
+.case-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.case-frame_browser {
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .14);
+}
+
+.case-frame__bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 16px;
+  background: var(--color-gray-4);
+}
+
+.case-frame__bar span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #c8c8c8;
+}
+
+.case-frame__bar span:first-child {
+  background: var(--color-accent-1);
+}
+
+.case-frame__bar em {
+  margin-left: 14px;
+  font-size: 12px;
+  font-style: normal;
+  color: var(--color-gray-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.case-frame_phone {
+  max-width: 300px;
+  margin: 0 auto;
+  border: 10px solid var(--color-dark-3);
+  border-radius: 36px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+}
+
+.case-gallery__caption {
+  margin-top: 1.2em;
+  font-size: 14px;
+  text-align: center;
+  color: var(--color-gray-1);
+}
+
+/* Historia: O kliencie / Wyzwanie / Rozwiązanie */
+.case-story__row {
+  padding: 40px 0;
+  border-top: 1px solid var(--color-gray-4);
+}
+
+.case-story__row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.case-story__num {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent-1);
+}
+
+.case-story h2 {
+  margin-top: .3em;
+}
+
+.case-points {
+  margin: 1.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-points li {
+  position: relative;
+  margin: 0 0 .7em;
+  padding-left: 32px;
+}
+
+.case-points li::before {
+  position: absolute;
+  top: .15em;
+  left: 0;
+  content: "check";
+  font-family: 'Material Icons';
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-accent-1);
+}
+
+/* Technologie i funkcje */
+.case-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-chips li {
+  margin: 0;
+  padding: 8px 16px;
+  border: 1px solid var(--color-gray-4);
+  border-radius: 40px;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.case-chips_accent li {
+  border-color: transparent;
+  background: var(--color-accent-1);
+  color: var(--color-dark-1);
+  font-weight: 500;
+}
+
+/* CTA */
+.case-cta__box {
+  padding: 40px 24px;
+  border-radius: 22px;
+  color: var(--color-light-1);
+}
+
+.case-cta__box h2 {
+  margin-top: 0;
+  color: inherit;
+}
+
+.case-cta__box p {
+  margin-bottom: 0;
+  color: var(--color-gray-1);
+}
+
+@media (min-width: 768px) {
+  .case-cta__box {
+    padding: 64px 80px;
+  }
+}
+
+/* Inne realizacje */
+.case-related__all {
+  font-weight: 500;
+  color: inherit;
+}
+
+.case-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.case-card__img {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  aspect-ratio: 43 / 30;
+}
+
+.case-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.case-card:hover .case-card__img img {
+  transform: scale(1.05);
+}
+
+.case-card__label {
+  display: block;
+  margin-top: 16px;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+}
+
+.case-card__title {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+/* Lista realizacji: kategoria i branża bez linków, w kolorze dawnych linków */
+.figure-project .post-meta span {
+  color: var(--color-gray-3);
+  white-space: nowrap;
+}
