@@ -7,6 +7,10 @@
   top: 0;
   left: 0;
   width: 100%;
+  /* na telefonie kolumny układają się jedna pod drugą (4 × 100vh) — bez przycięcia
+     wydłużały krótkie podstrony i pod stopką zostawała biała plama */
+  height: 100vh;
+  overflow: hidden;
   pointer-events: none;
   z-index: 999;
 }

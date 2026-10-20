@@ -41,7 +41,7 @@
    <!-- Stylesheet: *.min.css budowane z vendor.css / main.css (tools/css, npm run build) -->
    <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/vendor.min.css?v=20261018" />
    <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/main.min.css?v=20261018" />
-   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css?v=20261020" />
+   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css?v=20261021" />
    <!-- Favicons & App Icons -->
    <link rel="apple-touch-icon" sizes="57x57" href="<?php home_url(); ?>assets/img/favicons/apple-icon-57x57.png" />
    <link rel="apple-touch-icon" sizes="60x60" href="<?php home_url(); ?>assets/img/favicons/apple-icon-60x60.png" />
