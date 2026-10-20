@@ -12,13 +12,7 @@
 <!-- BLOG SINGLE PAGE CONTENT -->
 
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" 
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
     <p>
     W dzisiejszym świecie coraz więcej naszych codziennych czynności odbywa się w sieci. Pracujemy, uczymy się, robimy zakupy, korzystamy z rozrywki i usług publicznych online. To sprawia, że jesteśmy bardziej niż kiedykolwiek narażeni na zagrożenia cybernetyczne. W dzisiejszym globalnym krajobrazie cyfrowym, bezpieczeństwo wirtualne staje się kluczowym elementem funkcjonowania społeczeństw i firm. Cyberbezpieczeństwo nie tylko chroni dane i systemy, ale także jest niewidzialną tarczą, która broni nas przed nieustającymi atakami cyberprzestępców.
     </p>

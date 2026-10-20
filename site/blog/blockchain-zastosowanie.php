@@ -12,13 +12,7 @@
 <!-- BLOG SINGLE PAGE CONTENT -->
 
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" 
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
     <p>
     Blockchain to technologia, która stała się jednym z najgorętszych tematów w dzisiejszej erze cyfrowej. Została ona opracowana w 2008 roku przez nieznanego programistę lub grupę programistów pod pseudonimem Satoshi Nakamoto jako podstawa kryptowaluty Bitcoin. Jednak blockchain to o wiele więcej niż tylko narzędzie do transakcji kryptowalut. W tym artykule przyjrzymy się, czym jest blockchain i jakie są jego zastosowania w dzisiejszej erze cyfrowej.
     </p>

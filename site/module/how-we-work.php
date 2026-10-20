@@ -2,18 +2,13 @@
   <div class="container">
     <div class="row row-reverse">
       <div class="col-md-7">
-        <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true"
-          data-arts-os-animation-name="animateText"
-          data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-          data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+        <div class="section-content__content content arts-split-text">
           <h2 class="h1 mb-5 z-500">
             Jak <span class="underline-text"> działamy?</span>
           </h2>
         </div>
 
-        <div class="section-content__content content" data-arts-os-animation="true"
-          data-arts-os-animation-name="animateJump"
-          data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+        <div class="section-content__content content">
 
         <div class="q-tabs">
           <input type="radio" id="tab1" name="tab" checked>
@@ -77,8 +72,7 @@
 
       </div>
       <div class="col-md-5">
-        <div class="section-content__content content" data-arts-os-animation="true"
-          data-arts-os-animation-name="animateJump">
+        <div class="section-content__content content">
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 668 606">
               <defs>

@@ -18,10 +18,7 @@
    <div class="container">
       <div class="row">
          <div class="col-md-8">
-         <div class="section-content__content content js-arts-split-text arts-split-text"
-            data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-            data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+         <div class="section-content__content content arts-split-text">
 
             <p>
             Qamitech to lokalny partner IT dla firm z <strong>Warszawa</strong> i okolic. Świadczymy pełen zakres usług informatycznych i marketingowych — od tworzenia stron internetowych, przez obsługę IT i kampanie Google Ads, po pozycjonowanie SEO, AEO i GEO. Działamy szybko, lokalnie i skutecznie.

@@ -15,10 +15,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-8">
-                     <div class="section-content__content content js-arts-split-text arts-split-text"
-                        data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                        data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                        data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+                     <div class="section-content__content content arts-split-text">
                         <p>
                         Kampanie Google Ads to jeden z najskuteczniejszych sposobów na dotarcie do nowych klientów w internecie. Reklamy pojawiają się dokładnie wtedy, gdy potencjalny klient szuka produktów lub usług, które oferujesz - co oznacza, że platisz tylko za realne zainteresowanie. Qamitech kompleksowo zarządza kampaniami Google Ads dla firm z różnych branż, dbając o maksymalny zwrot z inwestycji.
                         </p>

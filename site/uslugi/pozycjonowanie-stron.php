@@ -16,10 +16,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-8">
-                     <div class="section-content__content content js-arts-split-text arts-split-text"
-                        data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                        data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                        data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+                     <div class="section-content__content content arts-split-text">
 
                         <p>
                         Oferujemy kompleksowe usługi pozycjonowania stron internetowych dla firm z <strong>Piaseczna, Warszawy, Konstancina, Pruszkowa, Grodziska Mazowieckiego</strong> i całego Mazowsza. Skuteczne SEO to dziś nie tylko optymalizacja dla Google — to także przygotowanie strony na erę sztucznej inteligencji (AEO, GEO) i wyszukiwania głosowego.

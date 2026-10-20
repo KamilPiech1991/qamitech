@@ -12,13 +12,7 @@
 <!-- BLOG SINGLE PAGE CONTENT -->
 
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" 
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
     <p>
     Wirusy i <a href="https://pl.wikipedia.org/wiki/Z%C5%82o%C5%9Bliwe_oprogramowanie"> malware</a> to coraz większe zagrożenie dla użytkowników urządzeń elektronicznych. W dzisiejszych czasach, gdy większość naszych codziennych czynności odbywa się online, ochrona naszych urządzeń przed szkodliwym oprogramowaniem jest niezwykle ważna. W tym artykule przedstawimy kilka sposobów, jak zabezpieczyć swoje urządzenia przed wirusami i malware.
     </p>

@@ -12,13 +12,7 @@
 <!-- BLOG SINGLE PAGE CONTENT -->
 
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" 
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
     <p>
     Stopka to ważny element każdej strony internetowej. Zazwyczaj zawiera ona informacje o prawach autorskich, linki do innych stron internetowych, dane kontaktowe i wiele innych. W tym artykule omówimy, jak stworzyć stopkę w łatwy i skuteczny sposób.
     </p>

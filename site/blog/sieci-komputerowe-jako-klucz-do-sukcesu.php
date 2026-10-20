@@ -12,13 +12,7 @@
 <!-- BLOG SINGLE PAGE CONTENT -->
 
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" 
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
     <p>
     W dzisiejszym dynamicznym świecie biznesu, sieci komputerowe są nie tylko elementem technologicznym, ale wręcz niezbędnym fundamentem każdej nowoczesnej firmy, łączą urządzenia takie jak komputery, serwery, urządzenia mobilne i urządzenia peryferyjne. Umożliwiają pracownikom komunikować się ze sobą, wymianę danych i dostęp do wspólnych zasobów. Bez sieci komputerowej trudno byłoby wyobrazić sobie skuteczną i efektywną pracę. Czy więc warto zainwestować w profesjonalnie zaprojektowaną sieć komputerową, która zapewni niezawodność, bezpieczeństwo i wydajność działania systemów informatycznych?
     </p>

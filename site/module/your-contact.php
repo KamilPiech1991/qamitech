@@ -3,11 +3,7 @@
         <div class="your-contact-wrap">
             <div class="row element-1">
                 <div class="col-md-6">
-                    <div class="section-content__content content js-arts-split-text arts-split-text mb-5"
-                        data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                        data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines"
-                        data-arts-split-text-overflow-wrap="lines">
+                    <div class="section-content__content content arts-split-text mb-5">
                         <h3>
                             Zostaw swój numer, oddzwonimy!
                         </h3>
@@ -18,9 +14,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="section-content__content content" data-arts-os-animation="true"
-                        data-arts-os-animation-name="animateJump"
-                        data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+                    <div class="section-content__content content">
                         <form class="form form-contact js-ajax-form w-100" id="formOne"
                             action="forms/form-phone.php" method="POST"
                             data-message-success="Dziękujemy za wiadomość! Wkrótce otrzymasz odpowiedź."

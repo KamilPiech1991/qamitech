@@ -22,8 +22,7 @@
             </div>
          </div>
          <div class="col-md-5 col-lg-6 mt-5 mt-md-0">
-            <div class="section-content__content content" data-arts-os-animation="true"
-               data-arts-os-animation-name="animateJump">
+            <div class="section-content__content content">
                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                   viewBox="0 0 651.344 596.211">
                   <defs>
