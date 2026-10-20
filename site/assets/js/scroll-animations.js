@@ -81,8 +81,14 @@
       '.contact-us-wrap',
       '.rank-math-list-item',
       '.section-content .row.g-3 > [class*="col-"]',
-      '.q-tabs'
+      '.q-tabs',
+      '.case-frame',
+      '.case-card',
+      '.case-cta__box'
     ].join(',')), { opacity: 0, y: 60, scale: 0.96 }, 0.12);
+
+    // Drobne elementy podstron realizacji: fakty i „chipsy” technologii wskakują kolejno.
+    batch(pick('.case-facts__item, .case-chips li, .case-points li'), { opacity: 0, y: 16 }, 0.05);
 
     // Slider usług jako całość (pojedynczych slajdów nie ruszamy — przesuwa je Swiper).
     batch(pick('.js-slider-projects__slider'), { opacity: 0, y: 80 }, 0);

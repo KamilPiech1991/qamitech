@@ -218,7 +218,7 @@
           // skryptów wywołujemy je ponownie (inne nasłuchy DOMContentLoaded sprawdzają __themeLateInit).
           (function () {
             var base = '<?php home_url(); ?>assets/js/';
-            var files = ['vendor.js', 'components.js?v=20260623-ajaxfix', 'scroll-animations.js?v=20261021'];
+            var files = ['vendor.js', 'components.js?v=20260623-ajaxfix', 'scroll-animations.js?v=20261022'];
             function loadThemeScripts() {
               files.forEach(function (file, i) {
                 var s = document.createElement('script');

@@ -67,3 +67,10 @@ Każdy push na `main`, który zmienia coś w `site/`, automatycznie wgrywa zmien
 - **Obrazki ładowane leniwie** (`data-src`) mają w `src` przezroczysty GIF w `data:` — nie wpisuj tam `#`, bo przeglądarka pobiera wtedy całą stronę jeszcze raz.
 - **Fonty:** Noir Pro w WOFF2 ograniczonym do znaków łacińskich (`*-latin.woff2`) z `font-display: swap`.
 - **`.htaccess`:** kompresja gzip i cache przeglądarki (CSS/JS/obrazki 1 miesiąc, fonty 1 rok).
+
+## Realizacje (case study)
+
+- Lista `site/realizacje/index.php` i podstrony `site/realizacje/<slug>.php` biorą treści z `site/realizacje/data.php` (kolejność w tablicy = kolejność na liście).
+- Szablon podstrony: `site/part/case-study.php`. Zrzuty: `site/assets/img/realizacje/<slug>/` (`hero.webp` 1200×750, `shot-N.webp` 1200×750, `mobile.webp` 390×844, `thumb.webp` 860×600).
+- Nowa realizacja: dopisz wpis w `data.php`, dodaj folder ze zrzutami i plik `<slug>.php` (3 linie, jak pozostałe), a adres dopisz do `sitemap.xml`.
+- `'page' => false` — realizacja tylko na liście, bez podstrony i bez linku (np. strona klienta przestała działać).
