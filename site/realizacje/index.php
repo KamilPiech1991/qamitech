@@ -47,15 +47,21 @@
    <div class="container">
       <div class="grid js-grid grid_fluid-2">
          <?php foreach ($projects as $slug => $p) :
-            $thumb = preg_match('#^https?://#', $p['thumb']) ? $p['thumb'] : '../' . $p['thumb']; ?>
+            if (isset($p['images']['thumb'])) {
+               $thumb = '../assets/img/realizacje/' . $slug . '/' . $p['images']['thumb'];
+            } else {
+               $thumb = preg_match('#^https?://#', $p['thumb']) ? $p['thumb'] : '../' . $p['thumb'];
+            }
+            // realizacje bez podstrony (strona klienta już nie działa) — karta bez linku
+            $tag   = $p['page'] ? 'a' : 'div';
+            $href  = $p['page'] ? ' href="' . $slug . '.php"' : ''; ?>
          <div class="grid__item js-grid__item grid__item_fluid-2 grid__item_desktop-4 grid__item_tablet-6 grid__item_mobile-12 cat-<?php echo $p['cat']; ?>">
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
-               <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
-                  href="<?php echo $slug; ?>.php"
+               <<?php echo $tag; ?> class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"<?php echo $href; ?>
                   data-arts-hover="trigger"
-                  data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
+                  data-arts-parallax-factor-y="0.05"<?php if ($p['page']) : ?> data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Zobacz" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
-                  data-arts-cursor-background-color="var(--color-accent-1)">
+                  data-arts-cursor-background-color="var(--color-accent-1)"<?php endif; ?>>
                   <div class="hover-zoom__inner">
                      <div class="mask-reveal__layer mask-reveal__layer-1">
                         <div class="mask-reveal__layer mask-reveal__layer-2">
@@ -69,17 +75,19 @@
                         </div>
                      </div>
                   </div>
-               </a>
+               </<?php echo $tag; ?>>
                <div class="figure-project__content pt-4">
                   <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><span><?php echo htmlspecialchars($p['label'], ENT_QUOTES, 'UTF-8'); ?></span><div class="post-meta__divider"></div></li>
+                        <?php if ($p['industry']) : ?>
                         <li><span><?php echo htmlspecialchars($p['industry'], ENT_QUOTES, 'UTF-8'); ?></span></li>
+                        <?php endif; ?>
                      </ul>
                   </div>
-                  <a class="d-inline-block js-arts-cursor-no-highlight" href="<?php echo $slug; ?>.php">
+                  <<?php echo $tag; ?> class="d-inline-block js-arts-cursor-no-highlight"<?php echo $href; ?>>
                      <h3 class="h4 arts-split-text underline-hover__target"><?php echo htmlspecialchars($p['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                  </a>
+                  </<?php echo $tag; ?>>
                </div>
             </div>
          </div>

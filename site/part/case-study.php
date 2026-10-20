@@ -3,8 +3,9 @@
  * Podstrona pojedynczej realizacji (case study).
  * Plik realizacje/<slug>.php ustawia $slug i dołącza ten szablon; treści są w realizacje/data.php.
  */
+require_once __DIR__ . '/../include/functions.php';
 $projects = require __DIR__ . '/../realizacje/data.php';
-if (! isset($projects[$slug])) {
+if (! isset($projects[$slug]) || ! $projects[$slug]['page']) {
     http_response_code(404);
     exit;
 }
@@ -20,7 +21,7 @@ $img = function ($file) use ($slug) { return ABS_URL . 'assets/img/realizacje/' 
 $ogImage = isset($p['images']['hero']) ? $img($p['images']['hero']) : null;
 
 // Inne realizacje: trzy kolejne z listy (z zawinięciem na początek).
-$slugs   = array_keys($projects);
+$slugs   = array_keys(array_filter($projects, function ($item) { return $item['page']; }));
 $index   = array_search($slug, $slugs, true);
 $related = [];
 for ($i = 1; count($related) < 3 && $i < count($slugs); $i++) {
@@ -47,14 +48,12 @@ require __DIR__ . '/../include/header.php';
       </div>
       <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
         <?php if ($p['live']) : ?>
-        <a class="button button_icon btn-radial btn-radial-color" href="<?php echo $e($p['url']); ?>" target="_blank" rel="noopener nofollow">
+        <a class="button btn-dark" href="<?php echo $e($p['url']); ?>" target="_blank" rel="noopener nofollow">
           <span class="button__label button__label-normal">
-            <span class="button__icon button__icon_after knz-arrow-right"></span>
-            <span class="button__title">Zobacz stronę</span>
+            <span class="button__title">Zobacz stronę na żywo</span>
           </span>
           <span class="button__label button__label-hover">
-            <span class="button__icon button__icon_after knz-arrow-right"></span>
-            <span class="button__title">Zobacz stronę</span>
+            <span class="button__title">Zobacz stronę na żywo</span>
           </span>
         </a>
         <?php endif; ?>
@@ -229,7 +228,7 @@ require __DIR__ . '/../include/header.php';
       <?php foreach ($related as $r) : $rp = $projects[$r]; ?>
       <div class="col-md-4">
         <a class="case-card" href="<?php home_url(); ?>realizacje/<?php echo $r; ?>.php">
-          <span class="case-card__img"><img src="<?php echo $e(preg_match('#^https?://#', $rp['thumb']) ? $rp['thumb'] : ABS_URL . $rp['thumb']); ?>"
+          <span class="case-card__img"><img src="<?php echo ABS_URL . 'assets/img/realizacje/' . $r . '/' . $rp['images']['thumb']; ?>"
             width="430" height="300" loading="lazy" alt="<?php echo $e($rp['name']); ?>" /></span>
           <span class="case-card__label"><?php echo $e($rp['label']); ?></span>
           <span class="case-card__title"><?php echo $e($rp['name']); ?></span>
