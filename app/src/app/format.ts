@@ -1,13 +1,16 @@
 export const uid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
 export const today = () => new Date().toISOString().slice(0, 10);
 export const nowLocal = () => { const d = new Date(); d.setSeconds(0, 0); return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16); };
-export const fmtDate = (s?: string) => { if (!s) return '—'; const d = new Date(s); if (isNaN(d.getTime())) return s; return d.toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit', year: 'numeric' }); };
-export const fmtDateTime = (s?: string) => { if (!s) return '—'; const d = new Date(s); if (isNaN(d.getTime())) return s; return d.toLocaleString('pl-PL', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }); };
-export const fmtDateLong = (s?: string) => { if (!s) return '—'; const d = new Date(s); return d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }); };
+let LOCALE = 'pl-PL';
+/** Ustawienia regionalne dat i kwot – zależą od języka aplikacji. */
+export const setLocale = (lang: 'pl' | 'en') => { LOCALE = lang === 'en' ? 'en-GB' : 'pl-PL'; };
+export const fmtDate = (s?: string) => { if (!s) return '—'; const d = new Date(s); if (isNaN(d.getTime())) return s; return d.toLocaleDateString(LOCALE, { day: '2-digit', month: '2-digit', year: 'numeric' }); };
+export const fmtDateTime = (s?: string) => { if (!s) return '—'; const d = new Date(s); if (isNaN(d.getTime())) return s; return d.toLocaleString(LOCALE, { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }); };
+export const fmtDateLong = (s?: string) => { if (!s) return '—'; const d = new Date(s); return d.toLocaleDateString(LOCALE, { day: 'numeric', month: 'long', year: 'numeric' }); };
 let CURRENCY = 'PLN';
 /** Waluta wyświetlania kwot (ustawienia aplikacji). Kwoty nie są przeliczane. */
 export const setCurrency = (c: string) => { CURRENCY = c; };
-export const fmtMoney = (n: number) => n.toLocaleString('pl-PL', { style: 'currency', currency: CURRENCY });
+export const fmtMoney = (n: number) => n.toLocaleString(LOCALE, { style: 'currency', currency: CURRENCY });
 export const addDays = (s: string, n: number) => { const d = new Date(s); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
 export const daysBetween = (a: string, b: string) => Math.round((new Date(b).setHours(0,0,0,0) - new Date(a).setHours(0,0,0,0)) / 86400000);
 export function ageText(birth: string): string {

@@ -92,13 +92,13 @@ export default function Litters() {
                     <td><Link to={`/mioty/${l.id}`}><b>{l.name}</b></Link></td><td>{l.letter ?? '—'}</td><td>{fmtDate(l.birthDate)}</td><td>{s.breed || '—'}</td><td>{s.mother ? <Link to={`/psy/${s.mother.id}`}>{l.motherName}</Link> : l.motherName}</td><td>{s.father ? <Link to={`/psy/${s.father.id}`}>{l.fatherName}</Link> : (l.fatherName || '—')}</td>
                     <td><b>{s.pups.length}</b> <span className="muted">({s.males} {sexIcon('male')} / {s.females} {sexIcon('female')})</span></td><td>{s.alive} / {s.stillborn}{s.died ? ` (+${s.died} padłe)` : ''}</td><td>{s.avgBw ? `${s.avgBw} g` : '—'}</td><td>{s.handed} / {s.pups.length}</td><td>{l.regNo ?? '—'}</td><td>{l.reviewDate ? fmtDate(l.reviewDate) : '—'}</td><td><span className={`badge ${s.carePct === 100 ? 'success' : s.carePct ? '' : 'gray'}`}>{s.carePct}%</span></td>
                   </tr>); })}</tbody>
-                {litters.length > 1 && <tfoot><tr><th colSpan={6}>Razem: {litters.length} {litters.length < 5 ? 'mioty' : 'miotów'}</th><th>{totals.pups} ({totals.males} / {totals.females})</th><th>{totals.alive} żywo</th><th></th><th>{totals.handed} / {totals.pups}</th><th colSpan={3}></th></tr></tfoot>}
+                {litters.length > 1 && <tfoot><tr><th colSpan={6}>{`Razem: ${litters.length} ${litters.length < 5 ? 'mioty' : 'miotów'}`}</th><th>{totals.pups} ({totals.males} / {totals.females})</th><th>{totals.alive} żywo</th><th></th><th>{totals.handed} / {totals.pups}</th><th colSpan={3}></th></tr></tfoot>}
               </table>
             </div>
             {litters.length === 0 && <div className="muted" style={{ marginTop: 8 }}>Żaden miot nie pasuje do filtrów.</div>}
           </Card>
           <Card title="Mioty w latach">
-            <div className="row" style={{ flexWrap: 'wrap', gap: 8 }}>{years.map(y => { const ls = all.filter(l => l.birthDate.startsWith(y)); const n = ls.reduce((a, l) => a + state.puppies.filter(p => p.litterId === l.id).length, 0); return <button key={y} className={`chip ${year === y ? 'warm' : ''}`} onClick={() => setYear(year === y ? '' : y)}>{y}: {ls.length} {ls.length === 1 ? 'miot' : ls.length < 5 ? 'mioty' : 'miotów'} · {n} szczeniąt</button>; })}</div>
+            <div className="row" style={{ flexWrap: 'wrap', gap: 8 }}>{years.map(y => { const ls = all.filter(l => l.birthDate.startsWith(y)); const n = ls.reduce((a, l) => a + state.puppies.filter(p => p.litterId === l.id).length, 0); return <button key={y} className={`chip ${year === y ? 'warm' : ''}`} onClick={() => setYear(year === y ? '' : y)}>{y}: {`${ls.length} ${ls.length === 1 ? 'miot' : ls.length < 5 ? 'mioty' : 'miotów'} · ${n} szczeniąt`}</button>; })}</div>
           </Card>
         </div>
       )}

@@ -58,8 +58,8 @@ export default function Dashboard() {
       <div className="chips-row">
         <Link to="/psy" className="chip"><Dog size={14} /> {state.dogs.length} {state.dogs.length === 1 ? 'pies' : state.dogs.length < 5 ? 'psy' : 'psów'}</Link>
         {breeder && <Link to="/mioty" className="chip"><Baby size={14} /> {state.puppies.length} {state.puppies.length === 1 ? 'szczenię' : state.puppies.length < 5 ? 'szczenięta' : 'szczeniąt'}</Link>}
-        {activePreg.length > 0 && <Link to={`/ciaza/${activePreg[0].id}`} className="chip warm"><Heart size={14} /> {activePreg.length === 1 ? 'ciąża' : `${activePreg.length} ciąże`} · {daysBetween(activePreg[0].matings[0].date, t) + 1}. dzień</Link>}
-        <Link to="/finanse" className="chip"><Wallet size={14} /> {fmtMoney(monthExp)} w {MONTHS[new Date().getMonth()]}</Link>
+        {activePreg.length > 0 && <Link to={`/ciaza/${activePreg[0].id}`} className="chip warm"><Heart size={14} /> {`${activePreg.length === 1 ? 'ciąża' : `${activePreg.length} ciąże`} · ${daysBetween(activePreg[0].matings[0].date, t) + 1}. dzień`}</Link>}
+        <Link to="/finanse" className="chip"><Wallet size={14} /> {`${fmtMoney(monthExp)} w ${MONTHS[new Date().getMonth()]}`}</Link>
         <Link to="/powiadomienia" className="chip"><Bell size={14} /> {upcoming.length} do zrobienia</Link>
       </div>
 
@@ -86,9 +86,9 @@ export default function Dashboard() {
             <Heart className="art" size={190} />
             {f?.photo && <img className="fc-photo" src={f.photo} alt="" />}
             <div className="kicker">Ciąża · {f?.name} × {b.maleName}</div>
-            <h2>{day}. dzień, {Math.ceil(day / 7)}. tydzień</h2>
+            <h2>{`${day}. dzień, ${Math.ceil(day / 7)}. tydzień`}</h2>
             <div className="progress"><div style={{ width: `${Math.min(100, (day / 63) * 100)}%` }} /></div>
-            <p>Poród spodziewany ok. {fmtDate(expected)}. Zostało {Math.max(0, 63 - day)} dni.</p>
+            <p>{`Poród spodziewany ok. ${fmtDate(expected)}. Zostało ${Math.max(0, 63 - day)} dni.`}</p>
             <span className="cta">Otwórz monitor ciąży <ArrowRight size={16} /></span>
           </div>); })}
 
@@ -106,7 +106,7 @@ export default function Dashboard() {
         {breeder && latestLitter && (
           <div className="fc green" onClick={() => nav(`/mioty/${latestLitter.id}`)}>
             <PawPrint className="art" size={190} />
-            <div className="kicker">{latestLitter.name} · {daysBetween(latestLitter.birthDate, t)}. dzień</div>
+            <div className="kicker">{`${latestLitter.name} · ${daysBetween(latestLitter.birthDate, t)}. dzień`}</div>
             <h2>{litterPups.length} {litterPups.length === 1 ? 'szczenię' : litterPups.length < 5 ? 'szczenięta' : 'szczeniąt'}</h2>
             <p>{lastWeighDate ? `Ostatnie ważenie ${whenLabel(lastWeighDate.slice(0, 10)) === 'zaległe' ? daysBetween(lastWeighDate.slice(0, 10), t) + ' dni temu' : whenLabel(lastWeighDate.slice(0, 10))}.` : 'Jeszcze bez pomiarów wagi.'} {latestLitter.motherName} × {latestLitter.fatherName}</p>
             <div className="pups">{litterPups.slice(0, 6).map(x => { const w = lastWeight(x.id); return <span key={x.id} className="pup">{x.photo ? <img src={x.photo} alt="" style={{ boxShadow: `0 0 0 2px ${x.markerColor}` }} /> : <i style={{ background: x.markerColor }} />}{x.name}{w ? ` · ${w.grams} g` : ''}</span>; })}</div>
@@ -142,7 +142,7 @@ export default function Dashboard() {
             <CalendarDays className="art" size={190} />
             <div className="kicker">{mine ? 'Twój najbliższy start' : 'Najbliższa wystawa ZKwP'}</div>
             <h2>{next.city}, {fmtDate(next.dateFrom)}</h2>
-            <p>{next.kindLabel}{next.extra ? ` · ${next.extra}` : ''}. {left > 0 ? `Zostało ${left} dni.` : 'Trwa teraz.'}</p>
+            <p>{`${next.kindLabel}${next.extra ? ` · ${next.extra}` : ''}. ${left > 0 ? `Zostało ${left} dni.` : 'Trwa teraz.'}`}</p>
             <span className="cta">Kalendarz wystaw <ArrowRight size={16} /></span>
           </div>); })()}
 

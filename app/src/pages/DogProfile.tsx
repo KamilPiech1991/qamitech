@@ -104,7 +104,7 @@ export default function DogProfile() {
           <Card key={b.id} title={<>Plan z <span style={{ color: 'var(--primary-600)' }}>{b.maleName}</span></>} right={<div className="row"><EditBtn onClick={() => setEdit(b)} /><DelBtn onClick={() => confirmDel() && remove('breedings', b.id)} /></div>}>
             {info && !litter && info.day <= 70 && info.day > 0 && (
               <Link to={`/ciaza/${b.id}`} className="card soft clickable" style={{ display: 'block', marginBottom: 10, background: 'var(--primary)', color: '#fff' }}>
-                <div className="row between"><div><b style={{ display: 'flex', alignItems: 'center', gap: 6 }}><Calendar size={16} /> Monitor ciąży</b><div style={{ opacity: .85, fontSize: 13 }}>{info.day}. dzień · {info.week}. tydzień · termin ok. {fmtDate(info.expected)}</div></div><span>→</span></div>
+                <div className="row between"><div><b style={{ display: 'flex', alignItems: 'center', gap: 6 }}><Calendar size={16} /> Monitor ciąży</b><div style={{ opacity: .85, fontSize: 13 }}>{`${info.day}. dzień · ${info.week}. tydzień · termin ok. ${fmtDate(info.expected)}`}</div></div><span>→</span></div>
               </Link>
             )}
             <KV items={[['Data rozpoczęcia cieczki', fmtDate(b.heatStartDate)], ['Krycia', b.matings.map(m => `${fmtDate(m.date)} – ${m.type === 'natural' ? 'naturalne' : 'inseminacja'}${m.tie ? ', zakleszczenie' : ''}`).join('; ') || '—'], ['Progesteron', b.progesterone.map(p => `${fmtDate(p.date)}: ${p.value}`).join('; ') || '—'], ['Badania USG', b.usg.map(p => `${fmtDate(p.date)}: ${p.value}`).join('; ') || '—'], ['Badania RTG', b.rtg.map(p => `${fmtDate(p.date)}: ${p.value}`).join('; ') || '—'], ['Miot', litter ? <Link key="litter" to={`/mioty/${litter.id}`}>{litter.name}</Link> : '—'], ['Notatki', b.notes]]} />
@@ -277,7 +277,7 @@ function HeatSectionImpl({ dogId }: { dogId: string }) {
           <div className="card soft" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0,1fr))', gap: 8, textAlign: 'center' }}>
             <div><div className="muted">Następna (ok.)</div><b style={{ fontSize: 17, color: 'var(--primary-600)' }}>{fmtDate(st.next)}</b></div>
             <div><div className="muted">Okno</div><b>{fmtDate(st.nextFrom)} – {fmtDate(st.nextTo)}</b></div>
-            <div><div className="muted">Cykl</div><b>{st.avgInterval} dni{st.estimated ? ' (szac.)' : ''}</b></div>
+            <div><div className="muted">Cykl</div><b>{`${st.avgInterval} dni${st.estimated ? ' (szac.)' : ''}`}</b></div>
           </div>
           <div className="muted">Orientacyjne dni płodne przy następnej cieczce: {fmtDate(st.fertileFrom)} – {fmtDate(st.fertileTo)} (9.–15. dzień). Średnia długość cieczki: {st.avgLength} dni. Potwierdzaj progesteronem.</div>
           <div className="list">{[...st.sorted].reverse().map(h => <div key={h.id} className="list-item"><div><div className="title">{fmtDate(h.startDate)}{h.endDate ? ` – ${fmtDate(h.endDate)}` : ' (trwa)'}</div><small>{h.notes}</small></div><div><EditBtn onClick={() => setEdit(h)} /><DelBtn onClick={() => confirmDel() && remove('heats', h.id)} /></div></div>)}</div>

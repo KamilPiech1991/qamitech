@@ -2,7 +2,8 @@ import { createContext, useContext, useEffect, useMemo, useReducer, useState, ty
 import type { AppState, Dog, Breeding, StudMating, Litter, Puppy, Weight, Show, Championship, Expense, Reminder, HealthRecord, Profile, Heat, Income, Member } from './types';
 import { FREE_LIMITS } from './types';
 import { emptyState } from './seed';
-import { setCurrency } from './format';
+import { setCurrency, setLocale } from './format';
+import { setLanguage, type Lang } from './i18n';
 
 const KEY = 'dogpilot.state.v1';
 const LEGACY_KEY = 'kennelo.state.v1';
@@ -53,12 +54,32 @@ interface Ctx {
 
 const StoreCtx = createContext<Ctx | null>(null);
 
+const readLang = (): Lang => { try { const v = localStorage.getItem('dogpilot.lang'); if (v === 'en') return 'en'; } catch { /* brak dostępu */ } return 'pl'; };
+
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, undefined, load);
   const [toastMsg, setToast] = useState<string | null>(null);
   setCurrency(state.profile.currency ?? 'PLN'); // przed renderem dzieci, żeby kwoty od razu miały właściwą walutę
+  // język: profil, a przed ukończeniem konfiguracji – wybór z ekranu powitalnego
+  const lang: Lang = state.profile.language ?? readLang();
+  setLocale(lang);
+  useEffect(() => { setLanguage(lang); }, [lang]);
   useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* quota */ } }, [state]);
-  useEffect(() => { document.documentElement.dataset.theme = state.profile.darkMode ? 'dark' : 'light'; }, [state.profile.darkMode]);
+  // motyw: jasny / ciemny / systemowy (reaguje na zmianę ustawień systemu)
+  const themeMode = state.profile.theme ?? (state.profile.darkMode ? 'dark' : 'light');
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const apply = () => {
+      const dark = themeMode === 'dark' || (themeMode === 'system' && mq.matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#0F1A15' : '#32BF46');
+      if (dark !== !!state.profile.darkMode) dispatch({ type: 'profile', patch: { darkMode: dark } });
+    };
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, [themeMode, state.profile.darkMode]);
   useEffect(() => { if (!toastMsg) return; const t = setTimeout(() => setToast(null), 2500); return () => clearTimeout(t); }, [toastMsg]);
 
   const ctx = useMemo<Ctx>(() => {

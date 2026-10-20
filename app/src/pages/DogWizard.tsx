@@ -252,7 +252,7 @@ export default function DogWizard() {
           <button className="btn secondary" onClick={back}><ArrowLeft size={18} /> Wstecz</button>
           {step < 4
             ? <button className="btn" onClick={next}>{step === 3 ? 'Podsumowanie' : 'Dalej'} <ArrowRight size={18} /></button>
-            : <button className="btn" onClick={save} disabled={saved}><Check size={18} /> Dodaj {word}</button>}
+            : <button className="btn" onClick={save} disabled={saved}><Check size={18} /> {`Dodaj ${word}`}</button>}
         </div>,
         document.body,
       )}

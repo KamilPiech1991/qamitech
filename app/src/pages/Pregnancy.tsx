@@ -30,7 +30,7 @@ export default function Pregnancy() {
         <Link className="btn secondary sm" to={`/psy/${female.id}?tab=breeding`} style={{ marginTop: 8 }}><Calendar size={14} /> Inna data krycia</Link>
       </Card>
       <div className="hero">
-        <div className="row"><div className="avatar" style={{ width: 56, height: 56, background: 'rgba(255,255,255,.18)', color: '#fff' }}><Heart size={28} /></div><div><div style={{ fontSize: 24, fontWeight: 800 }}>{info.day}. dzień ciąży</div><div className="muted">{info.week}. tydzień</div></div></div>
+        <div className="row"><div className="avatar" style={{ width: 56, height: 56, background: 'rgba(255,255,255,.18)', color: '#fff' }}><Heart size={28} /></div><div><div style={{ fontSize: 24, fontWeight: 800 }}>{`${info.day}. dzień ciąży`}</div><div className="muted">{`${info.week}. tydzień`}</div></div></div>
         <div className="progress" style={{ margin: '14px 0 6px', background: 'rgba(255,255,255,.25)' }}><div style={{ width: `${info.progress}%`, background: '#fff' }} /></div>
         <div className="row between muted" style={{ fontSize: 12 }}><span>Krycie</span><span>63. dzień</span></div>
         <div style={{ marginTop: 14 }}><div className="muted">Spodziewany poród</div><div style={{ fontSize: 22, fontWeight: 800 }}>{fmtDateLong(info.expected)}</div><div className="muted">{info.remaining > 0 ? `Do porodu zostało około ${info.remaining} dni` : info.remaining === 0 ? 'To dziś!' : `${-info.remaining} dni po przewidywanym terminie`}</div></div>
@@ -44,12 +44,12 @@ export default function Pregnancy() {
         </div>
       </Card>
       <div className="tabs">{PREGNANCY_WEEKS.map(x => <button key={x.week} className={x.week === week ? 'active' : ''} onClick={() => setSelWeek(x.week)}>{x.week}. tydz.</button>)}</div>
-      <div className="card" style={{ background: 'var(--primary-soft)', borderColor: 'var(--primary-soft)' }}><div className="row"><div className="avatar" style={{ width: 48, height: 48, background: 'var(--primary)', color: '#fff', fontSize: 20, fontWeight: 800 }}>{w.week}</div><div><small className="muted" style={{ textTransform: 'uppercase', letterSpacing: 1 }}>Tydzień {w.week}</small><div style={{ fontSize: 18, fontWeight: 700 }}>{w.title}</div><small className="muted">{w.days}</small></div></div></div>
+      <div className="card" style={{ background: 'var(--primary-soft)', borderColor: 'var(--primary-soft)' }}><div className="row"><div className="avatar" style={{ width: 48, height: 48, background: 'var(--primary)', color: '#fff', fontSize: 20, fontWeight: 800 }}>{w.week}</div><div><small className="muted" style={{ textTransform: 'uppercase', letterSpacing: 1 }}>{`Tydzień ${w.week}`}</small><div style={{ fontSize: 18, fontWeight: 700 }}>{w.title}</div><small className="muted">{w.days}</small></div></div></div>
       <Card title="Co rośnie w brzuchu" icon={<Baby size={18} />}>{w.development}</Card>
       <Card title="Samopoczucie suki" icon={<Dog size={18} />}>{w.female}</Card>
       <Card title="Do zrobienia w tym tygodniu" icon={<Lightbulb size={18} />}>{w.tips}</Card>
       <Card title="Etapy ciąży">
-        <div className="timeline">{info.timeline.map(e => <div key={e.title} className={`tl ${e.date > t ? 'future' : ''}`}><div className="row between"><b style={{ color: e.date > t ? 'var(--muted)' : 'var(--primary-600)' }}>{e.title}</b><small className="muted">{fmtDate(e.date)}</small></div><small className="muted">{e.desc} · {e.day}. dzień ciąży</small></div>)}</div>
+        <div className="timeline">{info.timeline.map(e => <div key={e.title} className={`tl ${e.date > t ? 'future' : ''}`}><div className="row between"><b style={{ color: e.date > t ? 'var(--muted)' : 'var(--primary-600)' }}>{e.title}</b><small className="muted">{fmtDate(e.date)}</small></div><small className="muted">{`${e.desc} · ${e.day}. dzień ciąży`}</small></div>)}</div>
       </Card>
       <p className="muted" style={{ fontSize: 12 }}>Terminy są orientacyjne i liczone od pierwszego krycia. Ciąża liczona od owulacji trwa ok. 62–64 dni. W sprawach zdrowia konsultuj się z lekarzem weterynarii.</p>
     </div>

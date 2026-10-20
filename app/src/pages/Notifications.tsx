@@ -59,7 +59,7 @@ export default function Notifications() {
 
       <div className="row between" style={{ flexWrap: 'wrap', gap: 8 }}>
         <div className="chips-row" style={{ margin: 0, flex: 1 }}>
-          <button className={`chip ${kind === 'all' ? 'on' : ''}`} onClick={() => setKind('all')}>Wszystkie {items.length}</button>
+          <button className={`chip ${kind === 'all' ? 'on' : ''}`} onClick={() => setKind('all')}>{`Wszystkie ${items.length}`}</button>
           {kinds.map(k => <button key={k} className={`chip ${kind === k ? 'on' : ''}`} onClick={() => setKind(k)}>{SHORT[k]} {items.filter(i => i.kind === k).length}</button>)}
         </div>
         <label className="row muted" style={{ gap: 6, fontSize: 13, fontWeight: 700, cursor: 'pointer' }}><input type="checkbox" checked={all} onChange={e => setAll(e.target.checked)} /> Pokaż też dalsze terminy</label>

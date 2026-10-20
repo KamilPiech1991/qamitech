@@ -109,7 +109,7 @@ export default function ShowCalendar() {
       <ArtHeader compact tone="sun" icon={<Trophy size={24} />} title={`Kalendarz wystaw ${SHOW_CALENDAR_SOURCE.year}`} sub="Terminarz wystaw psów rasowych ZKwP w całej Polsce"
         actions={<a className="btn" href={ENTRY_URL} target="_blank" rel="noopener noreferrer"><ExternalLink size={16} /> wystawy.net</a>}>
         <div className="hero-chips">
-          <span className="badge">{SHOWS_2026.length} wystaw w roku</span>
+          <span className="badge">{`${SHOWS_2026.length} wystaw w roku`}</span>
           <span className="badge">{upcomingCount} jeszcze przed nami</span>
           {nextShow && <span className="badge">najbliższa: {nextShow.city}, {fmtDate(nextShow.dateFrom)}</span>}
           <span className="badge"><Star size={12} /> {planned.length} w planie</span>
@@ -199,8 +199,7 @@ export default function ShowCalendar() {
       ))}
 
       <p className="muted" style={{ fontSize: 12, lineHeight: 1.5 }}>
-        Źródło: terminarz {SHOW_CALENDAR_SOURCE.name} (<a href={SHOW_CALENDAR_SOURCE.url} target="_blank" rel="noopener noreferrer">zkwp.pl</a>), stan na {fmtDate(SHOW_CALENDAR_SOURCE.fetchedAt)}. W prototypie lista jest zapisana w aplikacji; w wersji z serwerem będzie odświeżana codziennie.
-        Terminy zgłoszeń, sędziów i opłat podaje organizator i system wystawy.net. Województwo ustaliliśmy na podstawie miejscowości lub oddziału.
+        Źródło: terminarz {SHOW_CALENDAR_SOURCE.name} (<a href={SHOW_CALENDAR_SOURCE.url} target="_blank" rel="noopener noreferrer">zkwp.pl</a>){`, stan na ${fmtDate(SHOW_CALENDAR_SOURCE.fetchedAt)}. W prototypie lista jest zapisana w aplikacji; w wersji z serwerem będzie odświeżana codziennie. Terminy zgłoszeń, sędziów i opłat podaje organizator i system wystawy.net. Województwo ustaliliśmy na podstawie miejscowości lub oddziału.`}
       </p>
     </div>
   );

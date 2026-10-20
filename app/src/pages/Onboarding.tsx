@@ -4,6 +4,7 @@ import { useStore } from '../app/store';
 import { demoState } from '../app/seed';
 import { Field, Wordmark } from '../components/ui';
 import type { Module } from '../app/types';
+import { setLanguage } from '../app/i18n';
 
 type Step = 'module' | 'auth' | 'details';
 type Lang = 'pl' | 'en';
@@ -37,7 +38,7 @@ const TXT = {
     errEmail: 'Enter a valid e-mail address.', errPwLogin: 'Enter your password.', errPw: 'Password must be at least 8 characters.',
     back: 'Log in', kennelData: 'Kennel details', yourData: 'Your details', gLinked: 'Google account connected.', account: 'Account:', fewFields: 'Just a few fields and we are ready.',
     name: 'Your first name', namePh: 'e.g. Anna', kennel: 'Kennel name', kennelPh: 'e.g. Green Hill', kennelNo: 'Kennel number (optional)', gEmail: 'Google account e-mail', gEmailPh: 'e.g. anna@gmail.com', start: "Let's start",
-    enNote: 'The rest of the prototype is in Polish for now. The full English version is planned before the international launch.',
+    enNote: 'The whole app switches to English, including dates and amounts.',
   },
 };
 const initialLang = (): Lang => { try { const v = localStorage.getItem(LANG_KEY); if (v === 'pl' || v === 'en') return v; } catch { /* brak dostępu */ } return typeof navigator !== 'undefined' && navigator.language && !navigator.language.toLowerCase().startsWith('pl') ? 'en' : 'pl'; };
@@ -78,7 +79,7 @@ export default function Onboarding() {
   const [kennelNo, setKennelNo] = useState('');
   const [lang, setLangState] = useState<Lang>(initialLang);
   const L = TXT[lang];
-  const setLang = (l: Lang) => { setLangState(l); try { localStorage.setItem(LANG_KEY, l); } catch { /* ignore */ } document.documentElement.lang = l; };
+  const setLang = (l: Lang) => { setLangState(l); try { localStorage.setItem(LANG_KEY, l); } catch { /* ignore */ } setLanguage(l); };
 
   const loadDemo = () => { const s = demoState(); replace({ ...s, profile: { ...s.profile, language: lang } }); };
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());

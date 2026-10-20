@@ -50,7 +50,7 @@ export default function DogGallery({ dog }: { dog: Dog }) {
         {left > 0 && (
           <button type="button" className="g-tile g-add no-print" onClick={() => input.current?.click()} disabled={busy}>
             {busy ? <Loader2 size={26} className="spin" /> : <ImagePlus size={26} />}
-            <b>{pics.length ? 'Dodaj' : 'Dodaj zdjęcia'}</b><small>jeszcze {left}</small>
+            <b>{pics.length ? 'Dodaj' : 'Dodaj zdjęcia'}</b><small>{`jeszcze ${left}`}</small>
           </button>
         )}
         {Array.from({ length: Math.max(0, left - 1) }).map((_, i) => <span key={`e${i}`} className="g-tile g-empty" aria-hidden />)}

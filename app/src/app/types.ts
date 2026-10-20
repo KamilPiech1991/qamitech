@@ -239,7 +239,8 @@ export interface Profile {
   breederName: string;
   email?: string;
   onboarded: boolean;
-  darkMode?: boolean;
+  darkMode?: boolean; // wynikowy tryb (dla zgodności); źródłem prawdy jest `theme`
+  theme?: 'light' | 'dark' | 'system';
   logo?: string; // logo hodowli (data URL)
   authProvider?: 'email' | 'google'; // prototyp: logowanie symulowane
   plannedShows?: string[]; // id wystaw z kalendarza ZKwP, na które hodowca planuje start

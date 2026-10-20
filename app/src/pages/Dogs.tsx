@@ -37,7 +37,7 @@ export default function Dogs() {
           <button className={compact ? 'active' : ''} onClick={() => setCompact(true)}>Kompaktowy</button>
         </div>
       </div>
-      {nearLimit && <div className="card soft" style={{ marginBottom: 12 }}><div className="row between"><span>Plan FREE: do {FREE_LIMITS.females} suk i {FREE_LIMITS.males} psów. <ProBadge /> znosi limity.</span><Link to="/ustawienia" className="btn sm">Zobacz PRO</Link></div></div>}
+      {nearLimit && <div className="card soft" style={{ marginBottom: 12 }}><div className="row between"><span>{`Plan FREE: do ${FREE_LIMITS.females} suk i ${FREE_LIMITS.males} psów.`} <ProBadge /> znosi limity.</span><Link to="/ustawienia" className="btn sm">Zobacz PRO</Link></div></div>}
       {dogs.length === 0 ? <Card><Empty icon={<DogIcon size={28} />}>
           {sexFilter === 'female' ? 'Nie masz jeszcze suk.' : sexFilter === 'male' ? 'Nie masz jeszcze psów.' : 'Nie masz jeszcze psów ani suk.'}
           <div className="row" style={{ justifyContent: 'center', flexWrap: 'wrap', gap: 8, marginTop: 14 }}>

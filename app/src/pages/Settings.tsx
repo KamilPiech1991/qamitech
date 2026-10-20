@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Users, Download, Upload, Moon, Sun, Shield, Plus, CalendarDays, Bell, QrCode, FileText, Dog, Wallet, Cloud, CloudUpload, CloudDownload, Globe, Coins, BellRing, Mail, Trash2, Send, LayoutDashboard, Unlink, ExternalLink, AlertTriangle } from 'lucide-react';
+import { Users, Download, Upload, Moon, Sun, MonitorSmartphone, Shield, Plus, CalendarDays, Bell, QrCode, FileText, Dog, Wallet, Cloud, CloudUpload, CloudDownload, Globe, Coins, BellRing, Mail, Trash2, Send, LayoutDashboard, Unlink, ExternalLink, AlertTriangle } from 'lucide-react';
 import { useStore } from '../app/store';
 import { Card, Field, ProBadge, Switch, DelBtn, Modal, Tabs } from '../components/ui';
 import { PhotoPicker } from '../components/ui';
@@ -107,7 +107,7 @@ export default function Settings() {
 
         <Card title="Plan" right={p.plan === 'pro' ? <ProBadge /> : <span className="badge gray">FREE</span>}>
           <div className="grid cols-2 stack-m">
-            <div className="card soft"><b>FREE – 0 zł</b><ul className="muted" style={{ paddingLeft: 18 }}><li>do {FREE_LIMITS.females} suk i {FREE_LIMITS.males} psów</li><li>do {FREE_LIMITS.shows} wystaw, {FREE_LIMITS.championships} championatów</li><li>wykres wydatków: {FREE_LIMITS.chartMonths} z 6 miesięcy</li></ul></div>
+            <div className="card soft"><b>FREE – 0 zł</b><ul className="muted" style={{ paddingLeft: 18 }}><li>{`do ${FREE_LIMITS.females} suk i ${FREE_LIMITS.males} psów`}</li><li>do {FREE_LIMITS.shows} wystaw, {FREE_LIMITS.championships} championatów</li><li>wykres wydatków: {FREE_LIMITS.chartMonths} z 6 miesięcy</li></ul></div>
             <div className="card soft"><b>PRO – 89 zł/rok lub 12,99 zł/mies.</b><ul className="muted" style={{ paddingLeft: 18 }}><li>bez limitów psów, wystaw i championatów</li><li>pełne wykresy, raporty i dokumenty PDF</li><li>zespół hodowli, strona nabywcy, synchronizacja (w przygotowaniu)</li></ul></div>
           </div>
           <div className="row" style={{ marginTop: 10 }}>
@@ -154,11 +154,20 @@ export default function Settings() {
 
       {sec === 'aplikacja' && <>
         <Card title="Wygląd" icon={p.darkMode ? <Moon size={18} /> : <Sun size={18} />}>
-          <div className="row between"><div><b>Tryb ciemny</b><div className="muted">Oszczędza wzrok wieczorem przy porodzie.</div></div><Switch on={!!p.darkMode} onChange={v => setProfile({ darkMode: v })} label="Tryb ciemny" /></div>
+          <p className="muted" style={{ marginTop: -4 }}>Ciemny motyw oszczędza wzrok wieczorem przy porodzie i mniej świeci w nocy przy szczeniętach. „Systemowy” podąża za ustawieniem telefonu.</p>
+          <div className="theme-pick" role="radiogroup" aria-label="Motyw">
+            {([['light', 'Jasny', <Sun size={16} key="s" />], ['dark', 'Ciemny', <Moon size={16} key="m" />], ['system', 'Systemowy', <MonitorSmartphone size={16} key="d" />]] as const).map(([k, label, ico]) => (
+              <button key={k} type="button" role="radio" aria-checked={(p.theme ?? (p.darkMode ? 'dark' : 'light')) === k} className={`theme-opt ${k} ${(p.theme ?? (p.darkMode ? 'dark' : 'light')) === k ? 'on' : ''}`} onClick={() => setProfile({ theme: k })}>
+                <span className="tp-preview" aria-hidden><span className="tp-bar" /><span className="tp-card" /><span className="tp-card short" /><span className="tp-fab" /></span>
+                <span className="tp-label">{ico} {label}</span>
+              </button>
+            ))}
+          </div>
+          <div className="row between set-row"><div><b>Szybkie przełączanie</b><div className="muted">Ikona księżyca w pasku bocznym na komputerze.</div></div><Switch on={!!p.darkMode} onChange={v => setProfile({ theme: v ? 'dark' : 'light' })} label="Tryb ciemny" /></div>
         </Card>
         <Card title="Język aplikacji" icon={<Globe size={18} />}>
-          <div className="seg2 big">{(['pl', 'en'] as const).map(l => <button key={l} type="button" className={(p.language ?? 'pl') === l ? 'on' : ''} onClick={() => { setProfile({ language: l }); try { localStorage.setItem('dogpilot.lang', l); } catch { /* ignore */ } toast(l === 'en' ? 'Zapisano: English. Tłumaczenie interfejsu w przygotowaniu.' : 'Zapisano: polski'); }}>{l === 'pl' ? '🇵🇱 Polski' : '🇬🇧 English'}</button>)}</div>
-          {p.language === 'en' && <small className="muted">Prototyp zapamiętuje wybór. Angielska wersja ekranów pojawi się przed premierą za granicą.</small>}
+          <div className="seg2 big">{(['pl', 'en'] as const).map(l => <button key={l} type="button" className={(p.language ?? 'pl') === l ? 'on' : ''} onClick={() => { setProfile({ language: l }); try { localStorage.setItem('dogpilot.lang', l); } catch { /* ignore */ } toast(l === 'en' ? 'Saved: English' : 'Zapisano: polski'); }}>{l === 'pl' ? '🇵🇱 Polski' : '🇬🇧 English'}</button>)}</div>
+          <small className="muted">Interfejs, daty i kwoty przełączają się od razu. Twoje dane (imiona, notatki) zostają bez zmian.</small>
         </Card>
         <Card title="Waluta" icon={<Coins size={18} />}>
           <div className="seg2 big">{(['PLN', 'EUR', 'USD'] as Currency[]).map(c => <button key={c} type="button" className={(p.currency ?? 'PLN') === c ? 'on' : ''} onClick={() => setProfile({ currency: c })}>{c}</button>)}</div>
@@ -193,7 +202,7 @@ export default function Settings() {
         <Card title="Kopia w chmurze" icon={<Cloud size={18} />}>
           <div className={`cloud-state ${cloud ? 'ok' : 'none'}`}>
             <span className="cs-ico">{cloud ? <Cloud size={30} /> : <AlertTriangle size={28} />}</span>
-            <div><b>{cloud ? 'Kopia zapisana' : 'Nie masz jeszcze kopii w chmurze'}</b><div className="muted">{cloud ? <>{fmtDateTime(cloud.at)} · {fmtBytes(cloud.bytes)} · {cloud.dogs} psów, {cloud.litters} miotów, {cloud.puppies} szczeniąt</> : 'Zapisz kopię, żeby nie stracić danych przy zmianie telefonu.'}</div></div>
+            <div><b>{cloud ? 'Kopia zapisana' : 'Nie masz jeszcze kopii w chmurze'}</b><div className="muted">{cloud ? `${fmtDateTime(cloud.at)} · ${fmtBytes(cloud.bytes)} · ${cloud.dogs} psów, ${cloud.litters} miotów, ${cloud.puppies} szczeniąt` : 'Zapisz kopię, żeby nie stracić danych przy zmianie telefonu.'}</div></div>
           </div>
           <div className="row" style={{ gap: 8, marginTop: 12, flexWrap: 'wrap' }}>
             <button className="btn" onClick={backupNow}><CloudUpload size={16} /> Zapisz kopię w chmurze</button>
@@ -228,7 +237,7 @@ export default function Settings() {
       {connectFor && <ConnectModal network={connectFor} onClose={() => setConnectFor(null)} />}
       {composer && <ShareComposer draft={{ kind: 'post', title: p.kennelName || 'Hodowla', text: `Pozdrowienia z hodowli ${p.kennelName || ''}! 🐾`, photo: p.logo, hashtags: ['hodowla', 'psy', 'dogpilot', 'szczeniaki', 'zkwp'] }} onClose={() => setComposer(false)} />}
       {delOpen && <Modal title="Usunąć konto?" onClose={() => { setDelOpen(false); setDelText(''); }} actions={<><button className="btn secondary" onClick={() => { setDelOpen(false); setDelText(''); }}>Anuluj</button><button className="btn danger" disabled={delText.trim().toUpperCase() !== 'USUŃ'} onClick={() => { deleteCloud(); replace(emptyState()); }}><Trash2 size={16} /> Usuń na zawsze</button></>}>
-        <p>Stracisz {state.dogs.length} psów, {state.litters.length} miotów i {state.puppies.length} szczeniąt. Zanim usuniesz, możesz <button className="btn ghost sm" onClick={exportJson}><Download size={14} /> pobrać kopię</button>.</p>
+        <p>{`Stracisz ${state.dogs.length} psów, ${state.litters.length} miotów i ${state.puppies.length} szczeniąt.`} Zanim usuniesz, możesz <button className="btn ghost sm" onClick={exportJson}><Download size={14} /> pobrać kopię</button>.</p>
         <Field label='Wpisz „USUŃ”, aby potwierdzić'><input value={delText} onChange={e => setDelText(e.target.value)} autoFocus /></Field>
       </Modal>}
     </div>

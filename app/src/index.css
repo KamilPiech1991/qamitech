@@ -611,3 +611,39 @@ table.tbl td a { font-weight: 700; }
   .art-hero .art-actions { width: 100%; flex-wrap: wrap; gap: 6px; }
   .art-hero .art-actions .btn { flex: 1 1 auto; justify-content: center; }
 }
+
+/* ===== Wybór motywu + ciemne warianty nowych sekcji ===== */
+.theme-pick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.theme-opt { border: 2px solid var(--border); border-radius: 18px; padding: 8px; background: var(--surface); cursor: pointer; font: inherit; color: var(--text); display: flex; flex-direction: column; gap: 8px; transition: all .2s var(--ease); }
+.theme-opt.on { border-color: var(--primary); box-shadow: 0 0 0 4px var(--soft); }
+.tp-preview { --pbg: #F5FBF6; --pcard: #FFFFFF; --pline: #DCEFE0; position: relative; display: block; height: 78px; border-radius: 12px; background: var(--pbg); border: 1px solid var(--pline); overflow: hidden; }
+.theme-opt.dark .tp-preview { --pbg: #0F1A15; --pcard: #16241D; --pline: #27392F; }
+.theme-opt.system .tp-preview { background: linear-gradient(100deg, #F5FBF6 50%, #0F1A15 50%); }
+.theme-opt.system .tp-card { background: linear-gradient(100deg, #FFFFFF 50%, #16241D 50%); }
+.tp-bar { position: absolute; left: 8px; right: 8px; top: 8px; height: 14px; border-radius: 6px; background: linear-gradient(135deg, #32BF46, #1F5B43); }
+.tp-card { position: absolute; left: 8px; right: 8px; top: 28px; height: 18px; border-radius: 6px; background: var(--pcard); border: 1px solid var(--pline); }
+.tp-card.short { top: 50px; right: 40%; height: 14px; }
+.tp-fab { position: absolute; right: 10px; bottom: 8px; width: 16px; height: 16px; border-radius: 50%; background: #32BF46; }
+.tp-label { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 13px; font-weight: 800; }
+[data-theme="dark"] .np-ico { background: #3A2F13; color: #F5CD6B; }
+[data-theme="dark"] .t-green .nr-ico { background: #1E3A2D; color: #7ED3A6; } [data-theme="dark"] .t-blue .nr-ico { background: #1E2B4A; color: #A9C6FB; } [data-theme="dark"] .t-lilac .nr-ico { background: #2E2140; color: #D5B3F7; }
+[data-theme="dark"] .t-teal .nr-ico { background: #16332F; color: #8EE0D2; } [data-theme="dark"] .t-rose .nr-ico { background: #3A1E2C; color: #F7B3D2; } [data-theme="dark"] .t-sun .nr-ico { background: #3A2F13; color: #F5CD6B; } [data-theme="dark"] .t-slate .nr-ico { background: #26323A; color: #C3CFD8; }
+[data-theme="dark"] .notif-row.overdue { background: #2A1A17; }
+[data-theme="dark"] .fc .nlist div { background: rgba(0,0,0,.28); color: var(--text); } [data-theme="dark"] .fc .nlist div.od b { color: #F08A7A; }
+[data-theme="dark"] .post-preview { background: #242526; color: #E4E6EB; border-color: #3A3B3C; } [data-theme="dark"] .pp-head small { color: #B0B3B8; } [data-theme="dark"] .pp-ava { background: #3A3B3C; }
+[data-theme="dark"] .icon-btn.star-on { color: #F5CD6B; }
+[data-theme="dark"] .date-tile { background: var(--soft); color: var(--primary-text); }
+[data-theme="dark"] .next-plan .date-tile.sun { background: linear-gradient(135deg, #F2B84B, #C2410C); color: #fff; }
+[data-theme="dark"] .month-strip .bar { background: var(--surface-2); } [data-theme="dark"] .month-strip .bar span { background: var(--soft-strong); }
+[data-theme="dark"] .g-main { background: rgba(0,0,0,.7); }
+[data-theme="dark"] .pv-ava, [data-theme="dark"] .sex-ico { background: rgba(255,255,255,.14); }
+[data-theme="dark"] .wiz-box input:not([type="file"]), [data-theme="dark"] .wiz-box select, [data-theme="dark"] .combo { background: var(--surface-2); color: var(--text); }
+[data-theme="dark"] .chip-meter div { background: var(--warn); } [data-theme="dark"] .chip-meter div.ok { background: var(--wz); }
+[data-theme="dark"] .sum-row:hover b { color: var(--wz); }
+[data-theme="dark"] .mp-child { color: #fff; }
+[data-theme="dark"] .theme-opt.light .tp-preview { border-color: #DCEFE0; }
+[data-theme="dark"] .lang-switch button.on { color: #0F1A15; }
+[data-theme="dark"] .cloud-state.none .cs-ico { background: #3A1F1B; color: #F08A7A; }
+[data-theme="dark"] .danger-zone { border-color: #F08A7A !important; }
+[data-theme="dark"] .wiz-actions { background: color-mix(in srgb, var(--bg) 90%, transparent); }
+[data-theme="dark"] input[type="date"], [data-theme="dark"] input[type="time"], [data-theme="dark"] input[type="datetime-local"] { color-scheme: dark; }

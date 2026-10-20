@@ -68,7 +68,7 @@ export default function LitterDetail() {
   return (
     <div>
       {share && <ShareComposer draft={share} onClose={() => setShare(null)} />}
-      <ArtHeader tone="green" icon={<PawPrint size={24} />} back={() => nav('/mioty')} title={litter.name} sub={<>Ur. {fmtDate(litter.birthDate)} ({age} dni) · Matka: {litter.motherName} · Ojciec: {litter.fatherName || '—'}</>} actions={<><button className="btn secondary" onClick={announce}><Megaphone size={16} /> Ogłoś miot</button><button className="btn secondary" onClick={() => setEditLitter(true)}><Pencil size={16} /> Edytuj miot</button></>}>
+      <ArtHeader tone="green" icon={<PawPrint size={24} />} back={() => nav('/mioty')} title={litter.name} sub={`Ur. ${fmtDate(litter.birthDate)} (${age} dni) · Matka: ${litter.motherName} · Ojciec: ${litter.fatherName || '—'}`} actions={<><button className="btn secondary" onClick={announce}><Megaphone size={16} /> Ogłoś miot</button><button className="btn secondary" onClick={() => setEditLitter(true)}><Pencil size={16} /> Edytuj miot</button></>}>
         {pups.length > 0 && <div className="avatar-stack">{pups.slice(0, 8).map(x => <span key={x.id} title={x.name} style={{ borderColor: x.markerColor }}>{x.photo ? <img src={x.photo} alt="" /> : <PawPrint size={16} />}</span>)}<small>{pups.length} {pups.length === 1 ? 'szczenię' : pups.length < 5 ? 'szczenięta' : 'szczeniąt'}</small></div>}
       </ArtHeader>
       <Tabs value={tab} onChange={setTab} items={[{ key: 'card', label: 'Metryka miotu' }, { key: 'puppies', label: `Szczenięta (${pups.length})` }, { key: 'analysis', label: 'Rozwój' }, { key: 'care', label: `Plan odchowu (${pct}%)` }, { key: 'birth', label: 'Dziennik porodu' }, { key: 'money', label: 'Rentowność' }, { key: 'pack', label: 'Nowy dom' }]} />
@@ -258,7 +258,7 @@ export default function LitterDetail() {
           <div className="card stat"><div className="value" style={{ color: received - spent >= 0 ? 'var(--primary-600)' : 'var(--danger)' }}>{fmtMoney(received - spent)}</div><div className="label">wynik</div></div>
         </div>
         <Card title="Prognoza" icon={<PiggyBank size={18} />}>
-          <div className="muted">Ceny ustalone dla {soldCount} z {pups.length} szczeniąt. Planowany przychód ze sprzedaży: <b>{fmtMoney(expected)}</b>. Prognozowany wynik po sprzedaży wszystkich: <b>{fmtMoney(expected - spent)}</b>{pups.length ? <> · koszt odchowu na szczenię: <b>{fmtMoney(spent / pups.length)}</b></> : null}.</div>
+          <div className="muted">{`Ceny ustalone dla ${soldCount} z ${pups.length} szczeniąt.`} Planowany przychód ze sprzedaży: <b>{fmtMoney(expected)}</b>. Prognozowany wynik po sprzedaży wszystkich: <b>{fmtMoney(expected - spent)}</b>{pups.length ? <> · koszt odchowu na szczenię: <b>{fmtMoney(spent / pups.length)}</b></> : null}.</div>
           <div className="progress" style={{ marginTop: 10 }}><div style={{ width: `${expected ? Math.min(100, (received / expected) * 100) : 0}%`, background: 'var(--success)' }} /></div>
           <small className="muted">Otrzymano {expected ? Math.round((received / expected) * 100) : 0}% planowanych wpływów.</small>
         </Card>
