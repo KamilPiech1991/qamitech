@@ -10,8 +10,8 @@
 <section class="section section-blog section-grid pb-large">
 
    <div class="container pb-medium">
-      <div class="filter js-filter text-center" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-         <div class="filter__wrapper-dropdown d-lg-none" data-arts-os-animation="true" data-arts-os-animation-name="animateJump">
+      <div class="filter js-filter text-center">
+         <div class="filter__wrapper-dropdown d-lg-none">
             <select class="js-filter__select d-block w-100">
                <option value="*">Wszystkie [*]</option>
                <option value=".cat-site">Strona www</option>
@@ -23,19 +23,19 @@
             <div class="container-fluid no-gutters">
                <div class="row">
                   <div class="col-lg-auto col-12 filter__item filter__item_active js-filter__item js-arts-cursor-highlight" data-filter="*">
-                     <div class="filter__item-inner h6 block-counter arts-split-text js-arts-split-text" data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines"><span class="filter__item-label">Wszystkie</span><span class="block-counter__counter">*</span></div>
+                     <div class="filter__item-inner h6 block-counter arts-split-text"><span class="filter__item-label">Wszystkie</span><span class="block-counter__counter">*</span></div>
                   </div>
                   <div class="col-lg-auto col-12 filter__item js-filter__item js-arts-cursor-highlight" data-filter=".cat-site">
-                     <div class="filter__item-inner h6 block-counter arts-split-text js-arts-split-text" data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines"><span class="filter__item-label">Strona www</span></div>
+                     <div class="filter__item-inner h6 block-counter arts-split-text"><span class="filter__item-label">Strona www</span></div>
                   </div>
                   <div class="col-lg-auto col-12 filter__item js-filter__item js-arts-cursor-highlight" data-filter=".cat-shop">
-                     <div class="filter__item-inner h6 block-counter arts-split-text js-arts-split-text" data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines"><span class="filter__item-label">E-commerce</span></div>
+                     <div class="filter__item-inner h6 block-counter arts-split-text"><span class="filter__item-label">E-commerce</span></div>
                   </div>
                   <div class="col-lg-auto col-12 filter__item js-filter__item js-arts-cursor-highlight" data-filter=".cat-other">
-                     <div class="filter__item-inner h6 block-counter arts-split-text js-arts-split-text" data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines"><span class="filter__item-label">Inne</span></div>
+                     <div class="filter__item-inner h6 block-counter arts-split-text"><span class="filter__item-label">Inne</span></div>
                   </div>
                </div>
-               <div class="filter__underline js-filter__underline" data-arts-os-animation="true" data-arts-os-animation-name="animateHeadline" data-arts-os-animation-params="{transformOrigin: 'left center'}"></div>
+               <div class="filter__underline js-filter__underline"></div>
             </div>
          </div>
       </div>
@@ -52,7 +52,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.eurodomy.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -61,8 +61,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/eurodomy.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/eurodomy.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Eurodomy – strona internetowa" /></div>
                               </div>
                            </div>
@@ -70,17 +70,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Qamitech</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.eurodomy.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Eurodomy</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Eurodomy</h3>
                   </a>
                </div>
             </div>
@@ -91,7 +89,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://e-tabak.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -100,8 +98,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/e-tabak.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/e-tabak.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="e-tabak.pl – sklep internetowy" /></div>
                               </div>
                            </div>
@@ -109,17 +107,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">E-commerce</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Qamitech</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://e-tabak.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">e-tabak.pl</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">e-tabak.pl</h3>
                   </a>
                </div>
             </div>
@@ -130,7 +126,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://obok-lasu.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -139,8 +135,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/obok-lasu.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/obok-lasu.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Obok Lasu – strona internetowa" /></div>
                               </div>
                            </div>
@@ -148,17 +144,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Qamitech</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://obok-lasu.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Obok Lasu</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Obok Lasu</h3>
                   </a>
                </div>
             </div>
@@ -169,7 +163,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.marmostyl.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -178,8 +172,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/marmostyl.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/marmostyl.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Marmostyl – strona internetowa" /></div>
                               </div>
                            </div>
@@ -187,17 +181,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Qamitech</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.marmostyl.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Marmostyl</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Marmostyl</h3>
                   </a>
                </div>
             </div>
@@ -208,7 +200,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.purerehab.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -217,8 +209,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/purerehab.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/purerehab.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Pure Rehab fizjoterapia" /></div>
                               </div>
                            </div>
@@ -226,17 +218,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.purerehab.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Pure Rehab</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Pure Rehab</h3>
                   </a>
                </div>
             </div>
@@ -247,7 +237,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.sahraart.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -256,8 +246,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/sahraart.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/sahraart.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Sahra Art - sklep z dywanami" /></div>
                               </div>
                            </div>
@@ -265,17 +255,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">E-commerce</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.sahraart.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Sahra Art</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Sahra Art</h3>
                   </a>
                </div>
             </div>
@@ -286,7 +274,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.rancilioekspresy.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -295,8 +283,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/rancilio.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/rancilio.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Rancilio Ekspresy do kawy" /></div>
                               </div>
                            </div>
@@ -304,17 +292,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">E-commerce</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.rancilioekspresy.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Rancilio Ekspresy</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Rancilio Ekspresy</h3>
                   </a>
                </div>
             </div>
@@ -325,7 +311,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.smka.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -334,8 +320,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/smka.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/smka.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="SMKA Portal Producenta" /></div>
                               </div>
                            </div>
@@ -343,17 +329,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">E-commerce</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.smka.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">SMKA Portal</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">SMKA Portal</h3>
                   </a>
                </div>
             </div>
@@ -364,7 +348,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.regionzdrowia.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -373,8 +357,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/regionzdrowia.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/regionzdrowia.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Region Zdrowia - parki prozdrowotne" /></div>
                               </div>
                            </div>
@@ -382,17 +366,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.regionzdrowia.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Region Zdrowia</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Region Zdrowia</h3>
                   </a>
                </div>
             </div>
@@ -403,7 +385,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.psotelgracja.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -412,8 +394,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/psotelgracja.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/psotelgracja.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="PSO Tel Gracja" /></div>
                               </div>
                            </div>
@@ -421,17 +403,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.psotelgracja.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">PSO Tel Gracja</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">PSO Tel Gracja</h3>
                   </a>
                </div>
             </div>
@@ -442,7 +422,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.bogdangrzeszczyk.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -451,8 +431,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/bogdangrzeszczyk.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/bogdangrzeszczyk.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Bogdan Grzeszczyk" /></div>
                               </div>
                            </div>
@@ -460,17 +440,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.bogdangrzeszczyk.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Bogdan Grzeszczyk</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Bogdan Grzeszczyk</h3>
                   </a>
                </div>
             </div>
@@ -481,7 +459,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://ventoni.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -490,8 +468,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/ventoni.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/ventoni.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Ventoni sklep" /></div>
                               </div>
                            </div>
@@ -499,17 +477,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">E-commerce</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://ventoni.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Ventoni</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Ventoni</h3>
                   </a>
                </div>
             </div>
@@ -520,7 +496,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.fastclean.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -529,8 +505,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/fastclean.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/fastclean.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Fastclean czyszczenie wentylacji" /></div>
                               </div>
                            </div>
@@ -538,17 +514,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.fastclean.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Fastclean</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Fastclean</h3>
                   </a>
                </div>
             </div>
@@ -559,7 +533,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.cloudinsight.pl/pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -568,8 +542,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/cloudinsight.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/cloudinsight.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Cloud Insight" /></div>
                               </div>
                            </div>
@@ -577,17 +551,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.cloudinsight.pl/pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Cloud Insight</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Cloud Insight</h3>
                   </a>
                </div>
             </div>
@@ -598,7 +570,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://face2face.com.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -607,8 +579,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/face2face.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/face2face.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Face2Face" /></div>
                               </div>
                            </div>
@@ -616,17 +588,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://face2face.com.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Face2Face</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Face2Face</h3>
                   </a>
                </div>
             </div>
@@ -637,7 +607,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://veles-lighting.com/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -646,8 +616,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/veles.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/veles.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Veles Lighting oswietlenie" /></div>
                               </div>
                            </div>
@@ -655,17 +625,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">E-commerce</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://veles-lighting.com/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Veles Lighting</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Veles Lighting</h3>
                   </a>
                </div>
             </div>
@@ -676,7 +644,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://esivo.dfirma.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -685,8 +653,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/esivo.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/esivo.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Esivo" /></div>
                               </div>
                            </div>
@@ -694,17 +662,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://esivo.dfirma.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Esivo</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Esivo</h3>
                   </a>
                </div>
             </div>
@@ -715,7 +681,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://oligradskyi.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -724,8 +690,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="../assets/img/realizacje/oligradskyi.jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="../assets/img/realizacje/oligradskyi.jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Oligradskyi" /></div>
                               </div>
                            </div>
@@ -733,17 +699,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://oligradskyi.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Oligradskyi</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Oligradskyi</h3>
                   </a>
                </div>
             </div>
@@ -754,7 +718,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://elite-detailing.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -763,8 +727,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(11).jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/mockuper(11).jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Car detailing" /></div>
                               </div>
                            </div>
@@ -772,17 +736,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://elite-detailing.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Car detailing</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Car detailing</h3>
                   </a>
                </div>
             </div>
@@ -793,7 +755,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="http://www.rushingrivers.org/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -802,8 +764,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(13).jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/mockuper(13).jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Rushing Rivers" /></div>
                               </div>
                            </div>
@@ -811,17 +773,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="http://www.rushingrivers.org/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Rushing Rivers</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Rushing Rivers</h3>
                   </a>
                </div>
             </div>
@@ -832,7 +792,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://mcgoodwork.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -841,8 +801,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/4-good-work.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/4-good-work.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Instalacje grzewcze mcgoodwork" /></div>
                               </div>
                            </div>
@@ -850,17 +810,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://mcgoodwork.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Instalacje grzewcze mcgoodwork</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Instalacje grzewcze mcgoodwork</h3>
                   </a>
                </div>
             </div>
@@ -871,7 +829,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://reventontest.teststrona.com.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -880,8 +838,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(15).jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/mockuper(15).jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Reventon design" /></div>
                               </div>
                            </div>
@@ -889,17 +847,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://reventontest.teststrona.com.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Reventon design</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Reventon design</h3>
                   </a>
                </div>
             </div>
@@ -910,7 +866,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://3penergia.com/pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -919,8 +875,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/3penergia.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/3penergia.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="3P Energia" /></div>
                               </div>
                            </div>
@@ -928,17 +884,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://3penergia.com/pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">3P Energia</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">3P Energia</h3>
                   </a>
                </div>
             </div>
@@ -949,7 +903,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://e-littlefrank.com/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -958,8 +912,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/littlefrank.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/littlefrank.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Little Frank" /></div>
                               </div>
                            </div>
@@ -967,17 +921,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">E-commerce</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://e-littlefrank.com/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Little Frank</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Little Frank</h3>
                   </a>
                </div>
             </div>
@@ -988,7 +940,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="http://krprojekt.com.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -997,8 +949,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/krprojekt.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/krprojekt.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="KR Projekt" /></div>
                               </div>
                            </div>
@@ -1006,17 +958,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="http://krprojekt.com.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">KR Projekt</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">KR Projekt</h3>
                   </a>
                </div>
             </div>
@@ -1027,7 +977,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="http://opieka.plus/pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1036,8 +986,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/opiekaplus.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/opiekaplus.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Opieka Plus" /></div>
                               </div>
                            </div>
@@ -1045,17 +995,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="http://opieka.plus/pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Opieka Plus</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Opieka Plus</h3>
                   </a>
                </div>
             </div>
@@ -1066,7 +1014,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://zoloboklasu.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1075,8 +1023,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/oboklasu.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/oboklasu.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Obok Lasu" /></div>
                               </div>
                            </div>
@@ -1084,17 +1032,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://zoloboklasu.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Obok Lasu</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Obok Lasu</h3>
                   </a>
                </div>
             </div>
@@ -1105,7 +1051,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://emix.waw.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1114,8 +1060,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/emix.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/emix.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Emix" /></div>
                               </div>
                            </div>
@@ -1123,17 +1069,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://emix.waw.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Emix</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Emix</h3>
                   </a>
                </div>
             </div>
@@ -1144,7 +1088,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.visionandsound.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1153,8 +1097,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/visionandsound.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/visionandsound.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Vision And Sound" /></div>
                               </div>
                            </div>
@@ -1162,17 +1106,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.visionandsound.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Vision And Sound</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Vision And Sound</h3>
                   </a>
                </div>
             </div>
@@ -1183,7 +1125,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://agtesserwis.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1192,8 +1134,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/agtes.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/agtes.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Agtes Serwis" /></div>
                               </div>
                            </div>
@@ -1201,17 +1143,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://agtesserwis.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Agtes Serwis</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Agtes Serwis</h3>
                   </a>
                </div>
             </div>
@@ -1222,7 +1162,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://dynamic-marketing.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1231,8 +1171,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/dynamic-marketing.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/dynamic-marketing.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Dynamic marketing" /></div>
                               </div>
                            </div>
@@ -1240,17 +1180,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Inne</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://dynamic-marketing.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Dynamic marketing</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Dynamic marketing</h3>
                   </a>
                </div>
             </div>
@@ -1261,7 +1199,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.tseremonty.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1270,8 +1208,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/tseremonty.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/tseremonty.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Tse Remonty" /></div>
                               </div>
                            </div>
@@ -1279,17 +1217,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.tseremonty.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Tse Remonty</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Tse Remonty</h3>
                   </a>
                </div>
             </div>
@@ -1300,7 +1236,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://graschem.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1309,8 +1245,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/graschem.png"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/graschem.png"
+                                    loading="lazy"
                                     width="430" height="300" alt="Graschem" /></div>
                               </div>
                            </div>
@@ -1318,17 +1254,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://graschem.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Graschem</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Graschem</h3>
                   </a>
                </div>
             </div>
@@ -1339,7 +1273,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://conveycargo.com.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1348,8 +1282,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(8).jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/mockuper(8).jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Convey Cargo" /></div>
                               </div>
                            </div>
@@ -1357,17 +1291,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Transport</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://conveycargo.com.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Convey Cargo</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Convey Cargo</h3>
                   </a>
                </div>
             </div>
@@ -1378,7 +1310,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="http://wilczekkancelaria.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1387,8 +1319,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(9).jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/mockuper(9).jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Kancelaria prawna" /></div>
                               </div>
                            </div>
@@ -1396,17 +1328,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="http://wilczekkancelaria.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Kancelaria prawna</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Kancelaria prawna</h3>
                   </a>
                </div>
             </div>
@@ -1417,7 +1347,7 @@
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
                   href="https://www.studio-gracja.pl/" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-hover="trigger"
                   data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                   data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                   data-arts-cursor-background-color="var(--color-accent-1)">
@@ -1426,8 +1356,8 @@
                         <div class="mask-reveal__layer mask-reveal__layer-2">
                            <div class="js-arts-parallax__scrub w-100 h-100">
                               <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                    data-src="https://www.topstrony.pl/assets/img/mockup/mockuper(4).jpg"
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="https://www.topstrony.pl/assets/img/mockup/mockuper(4).jpg"
+                                    loading="lazy"
                                     width="430" height="300" alt="Studio Gracja" /></div>
                               </div>
                            </div>
@@ -1435,17 +1365,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Top Strony</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.studio-gracja.pl/" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Studio Gracja</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Studio Gracja</h3>
                   </a>
                </div>
             </div>
@@ -1454,17 +1382,15 @@
                      </div>
                   </div>
                </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+               <div class="figure-project__content pt-4">
+                  <div class="figure-project__wrapper-meta arts-split-text">
                      <ul class="post-meta post-meta_mini post-meta_mini-small">
                         <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
                         <li><a href="#">Qamitech</a></li>
                      </ul>
                   </div>
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.eurodomy.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Eurodomy</h3>
+                     <h3 class="h4 arts-split-text underline-hover__target">Eurodomy</h3>
                   </a>
                </div>
             </div>

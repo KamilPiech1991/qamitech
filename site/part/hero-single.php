@@ -26,7 +26,7 @@
   </div>
 </section>
 
-<section class="section section-masthead pb-small" data-arts-os-animation="true">
+<section class="section section-masthead pb-small">
   <div class="section__content">
     <div class="container">
       <div class="row">

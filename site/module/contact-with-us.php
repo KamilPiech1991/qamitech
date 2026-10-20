@@ -1,17 +1,12 @@
 <section class="section section-content contact-us">
     <div class="container">
         <div class="contact-us-wrap element-3" data-arts-theme-text="light">
-            <div class="section-content__content content js-arts-split-text arts-split-text"
-                data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+            <div class="section-content__content content arts-split-text">
                 <h2 class="h3">
                     Masz pytania? <br />Skontaktuj się z nami!
                 </h2>
             </div>
-            <div class="section-content__content content mt-5" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+            <div class="section-content__content content mt-5">
                 <div class="main-form">
                     <form class="form form-contact form-dark js-ajax-form" action="forms/form-contact.php" method="POST"
                         data-message-success="Dziękujemy za wiadomość! Wkrótce otrzymasz odpowiedź."

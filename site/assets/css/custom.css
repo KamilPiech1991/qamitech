@@ -950,3 +950,23 @@
     width: 150px;
   }
 }
+
+/* Miniatury (blog, realizacje, ostatnie wpisy): kadr 430×300 z przycięciem.
+   Wcześniej ustawiał go skrypt lazy-load motywu; obrazki ładują się teraz natywnie (loading="lazy"),
+   więc treść nie czeka na JavaScript. */
+.lazy-wrapper {
+  max-width: 430px;
+}
+
+.lazy-wrapper > .lazy {
+  position: relative;
+  height: 0;
+  padding-bottom: 69.7674%; /* 300 / 430 */
+  overflow: hidden;
+}
+
+.lazy-wrapper > .lazy > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

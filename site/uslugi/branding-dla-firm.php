@@ -16,10 +16,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-8">
-                     <div class="section-content__content content js-arts-split-text arts-split-text"
-                        data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                        data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                        data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+                     <div class="section-content__content content arts-split-text">
                         <p>
                         Nasza firma specjalizuje się w tworzeniu skutecznych i unikalnych rozwiązań brandingowych dla firm. Nasz zespół składa się z doświadczonych specjalistów z dziedzin takich jak projektowanie graficzne, komunikacja marketingowa, branding, a także strategia biznesowa.
                         </p>

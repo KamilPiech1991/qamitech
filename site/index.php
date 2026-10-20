@@ -17,10 +17,7 @@
    <!-- Sekcja lokalna - obsługiwane miasta -->
    <section class="section section-content py-large bg-dark-2" data-arts-theme-text="light">
       <div class="container">
-         <div class="section-content__content content js-arts-split-text arts-split-text pb-medium"
-            data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-            data-arts-split-text="lines" data-arts-split-text-set="lines"
-            data-arts-split-text-overflow-wrap="lines">
+         <div class="section-content__content content arts-split-text pb-medium">
             <h2>Działamy lokalnie — IT i strony www w Twoim mieście</h2>
             <p>Obsługujemy firmy z Piaseczna, Warszawy i okolic Mazowsza. Wybierz swoje miasto:</p>
          </div>

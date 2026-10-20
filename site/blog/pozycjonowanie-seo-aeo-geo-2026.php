@@ -11,11 +11,7 @@
 
 <!-- BLOG SINGLE PAGE CONTENT -->
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines" data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
 
     <p>
     Rok 2026 przyniósł fundamentalną zmianę w sposobie, w jaki ludzie szukają informacji w internecie. Google AI Overview, ChatGPT, Gemini i Perplexity stają się pierwszym punktem kontaktu z informacją — zanim użytkownik trafi na stronę internetową. Firmy, które nie dostosują swojej strategii widoczności do tej zmiany, zaczną tracić klientów na rzecz tych, które są obecne zarówno w tradycyjnych wynikach Google, jak i w odpowiedziach generowanych przez AI. W tym artykule wyjaśniamy, czym jest SEO, AEO i GEO oraz jak skutecznie pozycjonować firmę w <strong>Piasecznie, Warszawie i okolicach</strong> w 2026 roku.

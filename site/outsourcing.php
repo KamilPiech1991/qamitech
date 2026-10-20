@@ -28,8 +28,7 @@
             </div>
          </div>
          <div class="col-md-5 col-lg-6 mt-5 mt-md-0">
-            <div class="section-content__content content" data-arts-os-animation="true"
-               data-arts-os-animation-name="animateJump">
+            <div class="section-content__content content">
                <svg width="695" height="504" viewBox="0 0 695 504" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M328.928 173.824H320.693V182.102H328.928V173.824Z" fill="#F1F1F1" />
                   <path d="M328.928 158.191H320.693V166.468H328.928V158.191Z" fill="#F1F1F1" />
@@ -1004,10 +1003,7 @@
    <div class="container">
       <div class="row justify-content-center">
          <div class="col-md-8">
-            <div class="section-content__content content js-arts-split-text arts-split-text text-center"
-               data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-               data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-               data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+            <div class="section-content__content content arts-split-text text-center">
                <h2>Skorzystasz z naszego kalkulatora usług IT będziesz mógł również otrzymać konkretny kosztorys usług
                   informatycznych.</h2>
                <p>Aby odpowiedzieć na pytanie ile kosztuje outsourcing IT należy najpierw zgromadzić podstawowe dane o
@@ -1020,10 +1016,7 @@
 
 <section class="section section-content bg-dark-2 pt-large pb-medium" data-arts-theme-text="light">
    <div class="container element-2">
-      <div class="section-content__content content js-arts-split-text arts-split-text text-center"
-         data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-         data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-         data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+      <div class="section-content__content content arts-split-text text-center">
          <div class="row justify-content-center">
             <div class="col-md-10">
                <h2 class="h1">
@@ -1036,8 +1029,7 @@
          <div class="col-md-6 pb-small">
             <div class="d-flex">
                <div class="col-md-3">
-                  <div class="section-content__content content" data-arts-os-animation="true"
-                     data-arts-os-animation-name="animateJump">
+                  <div class="section-content__content content">
                      <svg width="120" height="120" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="120" height="120" rx="20" fill="#1F1F1F"/>
                         <path
@@ -1050,10 +1042,7 @@
                   </div>
                </div>
                <div class="col-md-9">
-                  <div class="section-content__content content js-arts-split-text arts-split-text"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                     data-arts-split-text="lines" data-arts-split-text-set="lines"
-                     data-arts-split-text-overflow-wrap="lines">
+                  <div class="section-content__content content arts-split-text">
                      <h3 class="h4 mb-4">
                         Utrzymywanie w dostępności powierzonego pod opiekę sprzętu IT
                      </h3>
@@ -1065,8 +1054,7 @@
                         <li>Wykonywanie kopii zapasowych kluczowych danych </li>
                      </ul>
                   </div>
-                  <div class="section-content__wrapper-button mt-4 mt-md-5 text-sm-start"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateJump">
+                  <div class="section-content__wrapper-button mt-4 mt-md-5 text-sm-start">
                      <a class="button button_icon btn-radial btn-radial-color" href="#">
                         <span class="button__label button__label-normal">
                            <span class="button__icon button__icon_after knz-arrow-right"></span>
@@ -1084,8 +1072,7 @@
          <div class="col-md-6">
             <div class="d-flex pb-small">
                <div class="col-md-3">
-                  <div class="section-content__content content" data-arts-os-animation="true"
-                     data-arts-os-animation-name="animateJump">
+                  <div class="section-content__content content">
                      <svg width="120" height="120" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="120" height="120" rx="20" fill="#1F1F1F" />
                         <path
@@ -1095,10 +1082,7 @@
                   </div>
                </div>
                <div class="col-md-9">
-                  <div class="section-content__content content js-arts-split-text arts-split-text"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                     data-arts-split-text="lines" data-arts-split-text-set="lines"
-                     data-arts-split-text-overflow-wrap="lines">
+                  <div class="section-content__content content arts-split-text">
                      <h3 class="h4 mb-4">
                         Wsparcie użytkowników w zakresie dostępu do usług IT świadczonych w firmie
                      </h3>
@@ -1109,8 +1093,7 @@
                         <li>Tworzenie udostępnianych folderów oraz zarządzanie prawami dostępu do nich</li>
                      </ul>
                   </div>
-                  <div class="section-content__wrapper-button mt-4 mt-md-5 text-sm-start"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateJump">
+                  <div class="section-content__wrapper-button mt-4 mt-md-5 text-sm-start">
                      <a class="button button_icon btn-radial btn-radial-color" href="#">
                         <span class="button__label button__label-normal">
                            <span class="button__icon button__icon_after knz-arrow-right"></span>
@@ -1128,8 +1111,7 @@
          <div class="col-md-6">
             <div class="d-flex pb-small">
                <div class="col-md-3">
-                  <div class="section-content__content content" data-arts-os-animation="true"
-                     data-arts-os-animation-name="animateJump">
+                  <div class="section-content__content content">
                      <svg width="120" height="120" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="120" height="120" rx="20" fill="#1F1F1F" />
                         <path
@@ -1142,10 +1124,7 @@
                   </div>
                </div>
                <div class="col-md-9">
-                  <div class="section-content__content content js-arts-split-text arts-split-text"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                     data-arts-split-text="lines" data-arts-split-text-set="lines"
-                     data-arts-split-text-overflow-wrap="lines">
+                  <div class="section-content__content content arts-split-text">
                      <h3 class="h4 mb-4">
                         Utrzymanie oprogramowania używanego w firmie
                      </h3>
@@ -1156,8 +1135,7 @@
                         <li>Obsługa poczty, zakładanie / usuwanie kont pocztowych, tworzenie autoresponderów, etc</li>
                      </ul>
                   </div>
-                  <div class="section-content__wrapper-button mt-4 mt-md-5 text-sm-start"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateJump">
+                  <div class="section-content__wrapper-button mt-4 mt-md-5 text-sm-start">
                      <a class="button button_icon btn-radial btn-radial-color" href="#">
                         <span class="button__label button__label-normal">
                            <span class="button__icon button__icon_after knz-arrow-right"></span>
@@ -1175,8 +1153,7 @@
          <div class="col-md-6">
             <div class="d-flex pb-small">
                <div class="col-md-3">
-                  <div class="section-content__content content" data-arts-os-animation="true"
-                     data-arts-os-animation-name="animateJump">
+                  <div class="section-content__content content">
                      <svg width="120" height="120" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="120" height="120" rx="20" fill="#1F1F1F" />
                         <path opacity="0.2"
@@ -1192,10 +1169,7 @@
                   </div>
                </div>
                <div class="col-md-9">
-                  <div class="section-content__content content js-arts-split-text arts-split-text"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                     data-arts-split-text="lines" data-arts-split-text-set="lines"
-                     data-arts-split-text-overflow-wrap="lines">
+                  <div class="section-content__content content arts-split-text">
                      <h3 class="h4 mb-4">
                         Konsultacje i doradztwo w zakresie zmian w środowisku IT
                      </h3>
@@ -1205,8 +1179,7 @@
                         <li>Tworzenie nowych stanowisk pracy dla nowych pracowników</li>
                      </ul>
                   </div>
-                  <div class="section-content__wrapper-button mt-4 mt-md-5 text-sm-start"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateJump">
+                  <div class="section-content__wrapper-button mt-4 mt-md-5 text-sm-start">
                      <a class="button button_icon btn-radial btn-radial-color" href="#">
                         <span class="button__label button__label-normal">
                            <span class="button__icon button__icon_after knz-arrow-right"></span>
@@ -1227,10 +1200,7 @@
 
 <section class="section section-content pt-large pb-medium">
    <div class="container">
-      <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true"
-         data-arts-os-animation-name="animateText"
-         data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-         data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+      <div class="section-content__content content arts-split-text">
          <h2 class="h1">
             Kalkulator <span class="underline-text"> Outsourcing IT</span>
          </h2>
@@ -1247,17 +1217,12 @@
 <section class="section section-content contact-us">
    <div class="container">
       <div class="contact-us-wrap element-4" data-arts-theme-text="light">
-         <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true"
-            data-arts-os-animation-name="animateText"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-            data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+         <div class="section-content__content content arts-split-text">
             <h2 class="h3 col-md-6">
                Kalkulator IT - wypełnij poniższe pola, żeby poinformować nas o Twoich potrzebach
             </h2>
          </div>
-         <div class="section-content__content content mt-5" data-arts-os-animation="true"
-            data-arts-os-animation-name="animateJump"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+         <div class="section-content__content content mt-5">
             <div class="main-form">
                <form class="form form-contact form-dark js-ajax-form" action="forms/form-contact.php" method="POST"
                   data-message-success="Dziękujemy za wiadomość! Wkrótce otrzymasz odpowiedź."
