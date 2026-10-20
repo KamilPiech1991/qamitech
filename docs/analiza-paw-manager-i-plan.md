@@ -581,3 +581,20 @@ Dolny pasek ma teraz sześć pozycji: Start · Psy · „+” · Mioty · Finans
 **Dolny pasek (telefon):** Start · Mioty · „+” · Raporty · Ustawienia (w trybie „Mam psiaka” zamiast Miotów są Psy). Psy, Finanse, Kalendarz wystaw, Powiadomienia, Dokumenty i skaner są w skrótach na górze Ustawień, na Starcie i w menu bocznym na komputerze.
 
 **Intro.** Po uruchomieniu aplikacji (raz na sesję) logo Dogpilot pojawia się powoli z rozmycia, pod nim ścieżka sześciu łapek wypełnia się jak pasek ładowania z procentami. Intro jest w `index.html`, więc widać je od pierwszej klatki; szanuje ustawienie „ogranicz animacje” i tryb ciemny.
+
+## 23. Tryb ciemny i wersja angielska (20.10.2026)
+
+**Tryb ciemny.** W Ustawieniach → Aplikacja → „Wygląd” są trzy motywy z podglądem: Jasny, Ciemny, Systemowy (podąża za ustawieniem telefonu i reaguje na jego zmianę bez przeładowania). Szybkie przełączanie zostaje w pasku bocznym na komputerze. Motyw ustawia `data-theme` na `<html>`, `color-scheme` (natywne kontrolki, pola dat) i kolor paska systemowego (`theme-color`: #0F1A15 ciemny / #32BF46 jasny). Paleta ciemna: tło #0F1A15, karty #16241D, drugi poziom #1D2F26, miękkie tła #1E3A2D / #27503C, tekst #EAF4EE, wyciszony #9FB5A9, obramowania #27392F, akcent #4FD463, tekst akcentu #74E085, ostrzeżenie #F5CD6B, błąd #F08A7A. Przejrzane wszystkie ekrany (pulpit i telefon): kafelki Startu, kreator psa, galeria i podgląd zdjęć, kalendarz wystaw (kafelki dat, pasek miesięcy), powiadomienia, kreator posta, ustawienia, dokumenty, intro.
+
+**Wersja angielska.** Przełącznik „Polski / English” w Ustawieniach → Aplikacja oraz na ekranie powitalnym przełącza cały interfejs od razu, bez przeładowania. W prototypie działa to jako **warstwa automatycznego tłumaczenia** (`app/src/app/i18n.ts`):
+
+- słownik ok. 1 300 dokładnych fraz interfejsu (`i18n-en.ts`) – nawigacja, formularze, podpowiedzi, komunikaty, nazwy ras, kategorie wydatków, rodzaje wpisów zdrowotnych, kraje;
+- reguły dla fraz z liczbami i datami (`i18n-rules.ts`) – „za 3 dni”, „4 szczenięta”, „Finanse w październiku”, „Diana jest na 21. dniu ciąży”, „Miot D ma 40 dni”, odmiana liczebników, nazwy miesięcy, ZKwP-owe rodzaje wystaw („klubowa jamników” → „club show – dachshunds”);
+- dzielenie fraz złożonych na segmenty (wiersze, „ · ”, „: ”, przecinki, „/”) i tłumaczenie każdego z nich, także wewnątrz nawiasów;
+- tłumaczone są węzły tekstowe, `placeholder`, `title`, `aria-label`, `alt` i tytuł karty; obserwator DOM dokłada tłumaczenia przy każdej zmianie ekranu;
+- daty i kwoty przechodzą na format angielski (`en-GB`: 21/10/2026, PLN 1,234.50);
+- dane użytkownika (imiona psów, nazwy hodowli, notatki, adresy wystaw, województwa) zostają w oryginale.
+
+Pomiar pokrycia: skrypt przeszedł wszystkie ekrany prototypu (ok. 2 000 unikalnych napisów) – po angielsku zostają wyłącznie nazwy własne i treści wpisane przez użytkownika. W wersji produkcyjnej słownik stanie się zwykłymi plikami językowymi (klucz → tekst), a reguły – funkcjami formatowania; obecna warstwa pozwala pokazać i przetestować pełny angielski interfejs bez przepisywania ekranów.
+
+**Kanwa makiet.** Do prototypu klikalnego doszły trzy rzędy: **Tryb ciemny** (y = 2000/3000), **English** (y = 4000/5000) i **English + dark** (y = 6000/7000) – po 16 ekranów każdy, generowane z polskich makiet tą samą mapą kolorów i tym samym słownikiem co w aplikacji. Przełącznik „Tryb ciemny” w Ustawieniach prowadzi do ciemnego wariantu tego samego ekranu, segment „Polski / English” (także na ekranie powitalnym) przełącza język; wszystkie linki między ekranami zostają w obrębie wybranego wariantu. Kody QR pozostają czarno-białe, gradienty kart i kolory statusów bez zmian.
