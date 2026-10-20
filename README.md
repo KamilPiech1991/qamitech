@@ -62,6 +62,7 @@ Każdy push na `main`, który zmienia coś w `site/`, automatycznie wgrywa zmien
   (ikony Material działają przez ligatury: `<i class="material-icons">phone</i>`). Gdyby w stopce wróciły
   ikony social z Font Awesome, usuń `fa` z `DEAD_SELECTOR` w `tools/css/build.mjs`.
 - **JS motywu** (`vendor.js`, `components.js`) ładuje się po pierwszym wyrenderowaniu strony — patrz komentarz w `site/include/footer.php`.
+- **Animacje przy przewijaniu** — `site/assets/js/scroll-animations.js` (GSAP + ScrollTrigger z `vendor.js`). Ukrywa tylko elementy leżące jeszcze pod ekranem, więc treść nie czeka na JS; przy „ogranicz ruch” w systemie animacji nie ma.
 - **Hero:** blok z `<h1>` nie ma animacji wejścia (`data-arts-os-animation`), żeby był widoczny od razu. Nie dodawaj jej z powrotem.
 - **Obrazki ładowane leniwie** (`data-src`) mają w `src` przezroczysty GIF w `data:` — nie wpisuj tam `#`, bo przeglądarka pobiera wtedy całą stronę jeszcze raz.
 - **Fonty:** Noir Pro w WOFF2 ograniczonym do znaków łacińskich (`*-latin.woff2`) z `font-display: swap`.
