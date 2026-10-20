@@ -9,7 +9,12 @@
                 <div class="col-md-6">
                   <section class="widget widget_text">
                     <div class="textwidget widget-logo">
-                      <img src="<?php home_url(); ?>assets/img/logo/logo-qamitech-white.png" width="360" height="80" loading="lazy" alt="Qamitech">
+                      <a href="<?php home_url(); ?>index.php" class="footer__logo" aria-label="Qamitech — strona główna">
+                        <picture>
+                          <source srcset="<?php home_url(); ?>assets/img/logo/logo-qamitech-light-440.webp" type="image/webp" />
+                          <img src="<?php home_url(); ?>assets/img/logo/logo-qamitech-light-440.png" width="220" height="63" loading="lazy" alt="Qamitech Creative Solution">
+                        </picture>
+                      </a>
                     </div>
                   </section>
                 </div>
@@ -213,7 +218,7 @@
           // skryptów wywołujemy je ponownie (inne nasłuchy DOMContentLoaded sprawdzają __themeLateInit).
           (function () {
             var base = '<?php home_url(); ?>assets/js/';
-            var files = ['vendor.js', 'components.js?v=20260623-ajaxfix'];
+            var files = ['vendor.js', 'components.js?v=20260623-ajaxfix', 'scroll-animations.js?v=20261021'];
             function loadThemeScripts() {
               files.forEach(function (file, i) {
                 var s = document.createElement('script');
