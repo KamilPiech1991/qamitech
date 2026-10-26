@@ -21,10 +21,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-8">
-                     <div class="section-content__content content js-arts-split-text arts-split-text"
-                        data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                        data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                        data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+                     <div class="section-content__content content arts-split-text">
                         <p>
                         Nasza firma oferuje kompleksową obsługę IT z dojazdem do domu klienta. Jesteśmy zespołem doświadczonych specjalistów, którzy szybko i skutecznie rozwiązują problemy związane z komputerami, laptopami oraz innymi urządzeniami elektronicznymi.
                         </p>

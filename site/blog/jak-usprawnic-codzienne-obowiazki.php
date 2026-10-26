@@ -13,13 +13,7 @@
 <!-- BLOG SINGLE PAGE CONTENT -->
 
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" 
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
     <p>
     W dzisiejszych czasach coraz więcej przedsiębiorstw zaczyna zwracać uwagę na automatyzację procesów biznesowych. Dzięki temu możliwe jest usprawnienie codziennych obowiązków i zwiększenie efektywności pracy. W niniejszym artykule przedstawione zostaną sposoby na usprawnienie codziennych obowiązków z pomocą automatyzacji procesów.
     </p>

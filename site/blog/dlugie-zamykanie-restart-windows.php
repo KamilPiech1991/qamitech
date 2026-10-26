@@ -13,13 +13,7 @@
 <!-- BLOG SINGLE PAGE CONTENT -->
 
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" 
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
     <p>
     Czasami użytkownicy systemu Windows 7 mogą napotkać problemy z długimi czasami oczekiwania na zapytania, restartem lub wylogowaniem. Istnieje wiele przyczyn takich problemów, w tym problemy z systemem, problemy z oprogramowaniem lub problemy sprzętowe. Poniżej przedstawiamy kilka sposobów na rozwiązanie tych problemów.
     </p>

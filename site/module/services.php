@@ -4,10 +4,7 @@
   <div class="container pb-medium">
     <div class="row">
       <div class="col-md-6">
-        <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true"
-          data-arts-os-animation-name="animateText"
-          data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-          data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+        <div class="section-content__content content arts-split-text">
           <h2>
             Kompleksowa obsługa IT dla Twojej firmy
           </h2>
@@ -17,18 +14,15 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="section-content__content content d-md-flex align-items-end justify-content-between"
-          data-arts-os-animation="true" data-arts-os-animation-name="animateJump">
+        <div class="section-content__content content d-md-flex align-items-end justify-content-between">
 
           <div class="slider-arrow-wrap text-center text-md-end">
-            <div class="slider__arrow js-slider__arrow-prev" data-arts-os-animation="true"
-              data-arts-os-animation-name="animateJump" data-arts-os-animation-params="{x: -30, y: 0}">
+            <div class="slider__arrow js-slider__arrow-prev">
               <div class="slider__arrow material-icons js-slider__arrow-prev" data-arts-cursor="data-arts-cursor"
                 data-arts-cursor-scale="1.7" data-arts-cursor-magnetic="data-arts-cursor-magnetic"
                 data-arts-cursor-hide-native="true">keyboard_arrow_left</div>
             </div>
-            <div class="slider__arrow js-slider__arrow-next" data-arts-os-animation="true"
-              data-arts-os-animation-name="animateJump" data-arts-os-animation-params="{x: 30, y: 0}">
+            <div class="slider__arrow js-slider__arrow-next">
               <div class="slider__arrow material-icons js-slider__arrow-next" data-arts-cursor="data-arts-cursor"
                 data-arts-cursor-scale="1.7" data-arts-cursor-magnetic="data-arts-cursor-magnetic"
                 data-arts-cursor-hide-native="true">keyboard_arrow_right</div>
@@ -63,9 +57,7 @@
         <div class="w-100" data-swiper-parallax-opacity="0.7">
           <div class="row gy-5">
             <div class="col-2 col-md-3">
-              <div class="section-content__content content" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+              <div class="section-content__content content">
                 <div class="swiper-card-img">
                   <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="180" height="180" rx="20" fill="#A3D900"/>
@@ -81,10 +73,7 @@
               </div>
             </div>
             <div class="col-8 col-md-9">
-              <div class="section-content__content content js-arts-split-text arts-split-text"
-                data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+              <div class="section-content__content content arts-split-text">
                 <h3 class="mt-0">
                   Tworzenie stron internetowych
                 </h3>
@@ -92,8 +81,7 @@
                 Projektujemy i wdrażamy nowoczesne strony internetowe oraz sklepy e-commerce. Tworzymy responsywne serwisy zoptymalizowane pod kątem SEO, szybkości działania i doświadczenia użytkownika. Od prostych wizytówek po rozbudowane systemy CMS.
                 </small>
               </div>
-              <div class="section-content__wrapper-button mt-4 mt-md-5" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump">
+              <div class="section-content__wrapper-button mt-4 mt-md-5">
                 <a class="button button_icon btn-radial btn-radial-color" href="<?php home_url(); ?>uslugi/tworzenie-stron-www.php">
                   <span class="button__label button__label-normal">
                     <span class="button__icon button__icon_after knz-arrow-right"></span>
@@ -115,9 +103,7 @@
         <div class="w-100" data-swiper-parallax-opacity="0.7">
           <div class="row gy-5">
             <div class="col-2 col-md-3">
-              <div class="section-content__content content" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+              <div class="section-content__content content">
                 <div class="swiper-card-img">
                   <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="180" height="180" rx="20" fill="#4285F4"/>
@@ -132,10 +118,7 @@
               </div>
             </div>
             <div class="col-8 col-md-9">
-              <div class="section-content__content content js-arts-split-text arts-split-text"
-                data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+              <div class="section-content__content content arts-split-text">
                 <h3 class="mt-0">
                   Kampanie Google Ads
                 </h3>
@@ -143,8 +126,7 @@
                 Skuteczne kampanie reklamowe w wyszukiwarce Google. Docieramy do klientów dokładnie w momencie, gdy szukają Twoich usług. Płacisz tylko za realne kliknięcia - bez marnowania budżetu.
                 </small>
               </div>
-              <div class="section-content__wrapper-button mt-4 mt-md-5" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump">
+              <div class="section-content__wrapper-button mt-4 mt-md-5">
                 <a class="button button_icon btn-radial btn-radial-color" href="<?php home_url(); ?>uslugi/kampanie-google-ads.php">
                   <span class="button__label button__label-normal">
                     <span class="button__icon button__icon_after knz-arrow-right"></span>
@@ -166,9 +148,7 @@
         <div class="w-100" data-swiper-parallax-opacity="0.1">
           <div class="row gy-5">
             <div class="col-2 col-md-3">
-              <div class="section-content__content content" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+              <div class="section-content__content content">
                 <div class="swiper-card-img">
                   <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="180" height="180" rx="20" fill="#1F1F1F" />
@@ -183,10 +163,7 @@
               </div>
             </div>
             <div class="col-8 col-md-9">
-              <div class="section-content__content content js-arts-split-text arts-split-text"
-                data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                data-arts-split-text="lines"
-                data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+              <div class="section-content__content content arts-split-text">
                 <h3 class="mt-0">
                   Serwis komputerowy
                 </h3>
@@ -194,8 +171,7 @@
                 Nasz serwis komputerowy oferuje szeroki zakres usług związanych z naprawą i konserwacją sprzętu komputerowego. Nasz zespół składa się z doświadczonych specjalistów, którzy szybko i skutecznie rozwiązują problemy związane z laptopami, komputerami stacjonarnymi, tabletami oraz innymi urządzeniami elektronicznymi. 
                 </small>
               </div>
-              <div class="section-content__wrapper-button mt-4 mt-md-5" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump">
+              <div class="section-content__wrapper-button mt-4 mt-md-5">
                 <a class="button button_icon btn-radial btn-radial-color" href="<?php home_url(); ?>uslugi/serwis-komputerowy.php">
                   <span class="button__label button__label-normal">
                     <span class="button__icon button__icon_after knz-arrow-right"></span>
@@ -217,9 +193,7 @@
         <div class="w-100" data-swiper-parallax-opacity="0.7">
           <div class="row gy-5">
             <div class="col-2 col-md-3">
-              <div class="section-content__content content" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+              <div class="section-content__content content">
                 <div class="swiper-card-img">
                   <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="180" height="180" rx="20" fill="#1F1F1F" />
@@ -234,10 +208,7 @@
               </div>
             </div>
             <div class="col-8 col-md-9">
-              <div class="section-content__content content js-arts-split-text arts-split-text"
-                data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+              <div class="section-content__content content arts-split-text">
                 <h3 class="mt-0">
                   Szkolenia IT
                 </h3>
@@ -245,8 +216,7 @@
                 Nasza firma specjalizuje się w organizacji profesjonalnych szkoleń z zakresu informatyki i technologii. Nasz zespół składa się z doświadczonych specjalistów, którzy posiadają szeroką wiedzę i doświadczenie z zakresu najnowszych technologii i trendów rynkowych. 
                 </small>
               </div>
-              <div class="section-content__wrapper-button mt-4 mt-md-5" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump">
+              <div class="section-content__wrapper-button mt-4 mt-md-5">
                 <a class="button button_icon btn-radial btn-radial-color" href="<?php home_url(); ?>uslugi/szkolenia-it.php">
                   <span class="button__label button__label-normal">
                     <span class="button__icon button__icon_after knz-arrow-right"></span>
@@ -268,9 +238,7 @@
         <div class="w-100" data-swiper-parallax-opacity="0.7">
           <div class="row gy-5">
             <div class="col-2 col-md-3">
-              <div class="section-content__content content" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+              <div class="section-content__content content">
                 <div class="swiper-card-img">
                   <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="180" height="180" rx="20" fill="#1F1F1F" />
@@ -285,10 +253,7 @@
               </div>
             </div>
             <div class="col-8 col-md-9">
-              <div class="section-content__content content js-arts-split-text arts-split-text"
-                data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+              <div class="section-content__content content arts-split-text">
                 <h3 class="mt-0">
                   Sieci Lan / Wlan
                 </h3>
@@ -296,8 +261,7 @@
                 Nasza firma specjalizuje się w projektowaniu, instalacji oraz serwisowaniu sieci LAN i WLAN. Jesteśmy zespołem doświadczonych specjalistów posiadających wiedzę i umiejętności niezbędne do dostarczenia rozwiązań sieciowych na najwyższym poziomie. 
                 </small>
               </div>
-              <div class="section-content__wrapper-button mt-4 mt-md-5" data-arts-os-animation="true"
-                data-arts-os-animation-name="animateJump">
+              <div class="section-content__wrapper-button mt-4 mt-md-5">
                 <a class="button button_icon btn-radial btn-radial-color" href="<?php home_url(); ?>uslugi/sieci-lan-wlan.php">
                   <span class="button__label button__label-normal">
                     <span class="button__icon button__icon_after knz-arrow-right"></span>

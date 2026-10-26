@@ -1,12 +1,6 @@
 <section class="section section-content page-hero-single pb-xsmall" data-arts-theme-text="dark">
   <div 
-    class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true"
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}"
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines"
-    data-arts-split-text-overflow-wrap="lines"
+    class="container-sm section-content__content content arts-split-text"
     >
 
     <div class="breadcrumbs-wrap">
@@ -31,7 +25,7 @@
   </div>
 </section>
 
-<section class="section section-masthead pb-small" data-arts-os-animation="true">
+<section class="section section-masthead pb-small">
   <div class="section__content">
     <div class="container">
       <div class="row">

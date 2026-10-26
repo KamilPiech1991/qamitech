@@ -12,11 +12,7 @@
 
 <!-- BLOG SINGLE PAGE CONTENT -->
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines" data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
 
     <p>
     Strona internetowa to dziś obowiązkowa wizytówka każdej firmy — niezależnie czy działasz w Piasecznie, Warszawie, czy w mniejszej miejscowości. Ale sama obecność w sieci to za mało. W 2026 roku dobra strona musi spełniać wymagania algorytmów Google, ładować się w ułamku sekundy, być zoptymalizowana pod AI i budować zaufanie klienta w ciągu pierwszych 3 sekund wizyty. W tym artykule wyjaśniamy, co powinna zawierać strona firmy w 2026 roku i ile kosztuje jej profesjonalne wykonanie.

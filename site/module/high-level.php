@@ -1,9 +1,6 @@
 <section class="section section-content high-level py-large bg-dark-2" data-arts-theme-text="light">
     <div class="container element-2">
-        <div class="section-content__content content js-arts-split-text arts-split-text text-center pb-medium w-75-d mx-auto"
-            data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-            data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+        <div class="section-content__content content arts-split-text text-center pb-medium w-75-d mx-auto">
             <h2 class="h1">
                 Obsługa informatyczna firm na najwyższym poziomie
             </h2>
@@ -11,9 +8,7 @@
                 fachową wiedzę na temat usług informatycznych i najnowszych technologii.</p>
         </div>
         <div class="high-level-wrap w-75-d mx-auto">
-        <div class="section-content__content content" data-arts-os-animation="true"
-            data-arts-os-animation-name="animateJump"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+        <div class="section-content__content content">
             <div class="high-level-card bg-dark-3 px-3 px-md-5 py-2 mb-2">
                 <h3 class="mb-0">
                     Szybka wycena
@@ -25,9 +20,7 @@
                 </p>
             </div>
         </div>
-        <div class="section-content__content content" data-arts-os-animation="true"
-            data-arts-os-animation-name="animateJump"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+        <div class="section-content__content content">
             <div class="high-level-card bg-dark-3 px-3 px-md-5 py-2 mb-2">
                 <h3 class="mb-0">
                     Obsługa klienta 5 dni w tygodniu
@@ -39,9 +32,7 @@
                 </p>
             </div>
         </div>
-        <div class="section-content__content content" data-arts-os-animation="true"
-            data-arts-os-animation-name="animateJump"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+        <div class="section-content__content content">
             <div class="high-level-card bg-dark-3 px-3 px-md-5 py-2 mb-2">
                 <h3 class="mb-0">
                     Bezpieczeństwo danych
@@ -53,9 +44,7 @@
                 </p>
             </div>
         </div>
-        <div class="section-content__content content" data-arts-os-animation="true"
-            data-arts-os-animation-name="animateJump"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+        <div class="section-content__content content">
             <div class="high-level-card bg-dark-3 px-3 px-md-5 py-2 mb-2">
                 <h3 class="mb-0">
                     Proste zasady współpracy
@@ -68,8 +57,7 @@
             </div>
         </div>
         </div>
-        <div class="section-content__wrapper-button mt-4 mt-md-5 text-center" data-arts-os-animation="true"
-            data-arts-os-animation-name="animateJump">
+        <div class="section-content__wrapper-button mt-4 mt-md-5 text-center">
             <a class="button btn-light" href="<?php home_url(); ?>oferta.php">
                   <span class="button__label button__label-normal">
                      <span class="button__title">Oferta</span>

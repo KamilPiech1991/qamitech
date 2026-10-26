@@ -1,24 +1,28 @@
 @font-face {
     font-family: "Noir Pro";
-    src: url("../fonts/NoirPro-Light.otf");
+    src: url("../fonts/NoirPro-Light-latin.woff2") format("woff2"), url("../fonts/NoirPro-Webfont/NoirPro-Light.woff") format("woff");
+    font-display: swap;
     font-weight: 300;
 }
 
 @font-face {
     font-family: "Noir Pro";
-    src: url("../fonts/NoirPro-Regular.otf");
+    src: url("../fonts/NoirPro-Regular-latin.woff2") format("woff2"), url("../fonts/NoirPro-Webfont/NoirPro-Regular.woff") format("woff");
+    font-display: swap;
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Noir Pro";
-    src: url("../fonts/NoirPro-Medium.otf");
+    src: url("../fonts/NoirPro-Medium-latin.woff2") format("woff2"), url("../fonts/NoirPro-Webfont/NoirPro-Medium.woff") format("woff");
+    font-display: swap;
     font-weight: 500;
 }
 
 @font-face {
     font-family: "Noir Pro";
-    src: url("../fonts/NoirPro-Bold.otf");
+    src: url("../fonts/NoirPro-Bold-latin.woff2") format("woff2"), url("../fonts/NoirPro-Webfont/NoirPro-Bold.woff") format("woff");
+    font-display: swap;
     font-weight: 600;
 }
 

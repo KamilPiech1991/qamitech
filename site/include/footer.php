@@ -9,7 +9,12 @@
                 <div class="col-md-6">
                   <section class="widget widget_text">
                     <div class="textwidget widget-logo">
-                      <img src="<?php home_url(); ?>assets/img/logo/logo-qamitech-white.png" alt="">
+                      <a href="<?php home_url(); ?>index.php" class="footer__logo" aria-label="Qamitech — strona główna">
+                        <picture>
+                          <source srcset="<?php home_url(); ?>assets/img/logo/logo-qamitech-light-440.webp" type="image/webp" />
+                          <img src="<?php home_url(); ?>assets/img/logo/logo-qamitech-light-440.png" width="220" height="63" loading="lazy" alt="Qamitech Creative Solution">
+                        </picture>
+                      </a>
                     </div>
                   </section>
                 </div>
@@ -213,10 +218,33 @@
             }
           });
         </script>
-        <script src="<?php home_url(); ?>assets/js/vendor.js"></script>
-        <script src="<?php home_url(); ?>assets/js/components.js?v=20260623-ajaxfix"></script>
         <script>
-          (function ($) {
+          // Skrypty motywu ładujemy dopiero po pierwszym wyrenderowaniu strony, żeby nie zabierały
+          // łącza i procesora tekstowi, CSS i fontom (szybsze FCP/LCP na telefonach).
+          // Motyw startuje na zdarzeniu DOMContentLoaded, które wtedy już minęło, więc po załadowaniu
+          // skryptów wywołujemy je ponownie (inne nasłuchy DOMContentLoaded sprawdzają __themeLateInit).
+          (function () {
+            var base = '<?php home_url(); ?>assets/js/';
+            var files = ['vendor.js', 'components.js?v=20260623-ajaxfix', 'scroll-animations.js?v=20261022'];
+            function loadThemeScripts() {
+              files.forEach(function (file, i) {
+                var s = document.createElement('script');
+                s.src = base + file;
+                s.async = false;
+                if (i === files.length - 1) s.onload = function () {
+                  window.__themeLateInit = true;
+                  document.dispatchEvent(new Event('DOMContentLoaded', { bubbles: true }));
+                  if (document.readyState === 'complete') window.dispatchEvent(new Event('load'));
+                  document.dispatchEvent(new Event('theme:loaded'));
+                };
+                document.body.appendChild(s);
+              });
+            }
+            requestAnimationFrame(function () { setTimeout(loadThemeScripts, 0); });
+          })();
+        </script>
+        <script>
+          document.addEventListener('theme:loaded', function () { (function ($) {
 
             var rankMath = {
               accordion: function () {
@@ -247,7 +275,7 @@
 
             rankMath.accordion();
 
-          })(jQuery);
+          })(jQuery); });
         </script>
 
         </body>

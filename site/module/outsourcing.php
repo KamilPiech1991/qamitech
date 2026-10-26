@@ -1,9 +1,6 @@
 <section class="section section-content py-medium">
     <div class="container">
-        <div class="section-content__content content js-arts-split-text arts-split-text text-center pb-medium"
-            data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-            data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+        <div class="section-content__content content arts-split-text text-center pb-medium">
             <h2 class="h1">
                 Outsourcing IT w wykonaniu QamiTech <br /><span class="underline-text"> to gwarancja najwyższej jakości usług!</span>
             </h2>
@@ -14,12 +11,9 @@
                     <div class="out-accordion">
                         <div id="rank-math-faq" class="rank-math-block mt-3">
                             <div class="rank-math-list section-content__content content">
-                                <div id="faq-question-1648217271739" class="rank-math-list-item"
-                                    data-arts-os-animation="true" data-arts-os-animation-name="animateJump" data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+                                <div id="faq-question-1648217271739" class="rank-math-list-item">
                                     <h4 class="rank-math-question">Dobieramy rozwiązania do Twojej firmy</h4>
-                                    <div class="section-content__content content js-arts-split-text arts-split-text"
-                                        data-arts-os-animation="true" data-arts-os-animation-name="animateScale"
-                                        data-arts-os-animation-params="{direction: 'left'}">
+                                    <div class="section-content__content content arts-split-text">
                                         <div class="border-x-white"></div>
                                     </div>
                                     <div class="rank-math-answer" id="accordion-panel-1648217456486"
@@ -29,8 +23,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div id="faq-question-1648216984336" class="rank-math-list-item"
-                                    data-arts-os-animation="true" data-arts-os-animation-name="animateJump" data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+                                <div id="faq-question-1648216984336" class="rank-math-list-item">
                                     <h4 class="rank-math-question">Dbamy o bezpieczeństwo danych</h4>
 
                                     <div class="rank-math-answer" id="accordion-panel-1648217456486"
@@ -40,8 +33,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div id="faq-question-1648217372854" class="rank-math-list-item"
-                                    data-arts-os-animation="true" data-arts-os-animation-name="animateJump" data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+                                <div id="faq-question-1648217372854" class="rank-math-list-item">
                                     <h4 class="rank-math-question">Reagujemy na problemy techniczne</h4>
 
                                     <div class="rank-math-answer" id="accordion-panel-1648217456486"
@@ -51,8 +43,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div id="faq-question-1648217404124" class="rank-math-list-item"
-                                    data-arts-os-animation="true" data-arts-os-animation-name="animateJump" data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+                                <div id="faq-question-1648217404124" class="rank-math-list-item">
                                     <h4 class="rank-math-question">Wspieramy rozwój infrastruktury IT</h4>
 
                                     <div class="rank-math-answer" id="accordion-panel-1648217456486"
@@ -78,9 +69,7 @@
         </script>
         
             <div class="col-md-6 d-flex align-items-center">
-                <div class="section-content__content content" data-arts-os-animation="true"
-                    data-arts-os-animation-name="animateJump"
-                    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+                <div class="section-content__content content">
                     <div>
                         <svg id="Group_42" data-name="Group 42" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 765.273 557.613">

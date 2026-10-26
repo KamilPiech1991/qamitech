@@ -266,17 +266,19 @@ function seo_graph(array $page): array
         $graph[] = [
             '@type'            => 'CreativeWork',
             '@id'              => $url . '#case',
-            'name'             => 'Strona internetowa ' . $case['client'],
+            'name'             => $page['full_title'],
             'description'      => $page['description'],
             'url'              => $case['url'],
-            'image'            => SEO_SITE_URL . $case['image'],
             'genre'            => $case['type'],
             'keywords'         => implode(', ', $case['tech']),
             'inLanguage'       => 'pl-PL',
             'creator'          => ['@id' => $orgId],
-            'about'            => ['@type' => 'Organization', 'name' => $case['client_legal'] ?? $case['client'], 'url' => $case['url']],
+            'about'            => ['@type' => 'Organization', 'name' => $case['client'], 'url' => $case['url']],
             'mainEntityOfPage' => ['@id' => $url . '#webpage'],
         ];
+        if (! empty($case['image'])) {
+            $graph[count($graph) - 1]['image'] = $case['image'];
+        }
     }
 
     return ['@context' => 'https://schema.org', '@graph' => $graph];

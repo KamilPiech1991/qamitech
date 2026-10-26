@@ -13,13 +13,7 @@
 <!-- BLOG SINGLE PAGE CONTENT -->
 
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" 
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
     <p>
     Zarządzanie projektami to proces, który wymaga skrupulatnego planowania, monitorowania postępu prac i koordynowania zespołu. Bez odpowiednich narzędzi do zarządzania projektami, zadanie to może okazać się skomplikowane i czasochłonne. Dlatego coraz więcej firm decyduje się na wykorzystanie oprogramowania, które ułatwia zarządzanie projektami. W tym artykule przedstawimy najważniejsze powody, dla których warto skorzystać z narzędzi do zarządzania projektami.
     </p>

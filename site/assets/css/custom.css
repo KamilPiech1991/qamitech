@@ -7,6 +7,10 @@
   top: 0;
   left: 0;
   width: 100%;
+  /* na telefonie kolumny układają się jedna pod drugą (4 × 100vh) — bez przycięcia
+     wydłużały krótkie podstrony i pod stopką zostawała biała plama */
+  height: 100vh;
+  overflow: hidden;
   pointer-events: none;
   z-index: 999;
 }
@@ -799,6 +803,11 @@
   flex-shrink: 0;
 }
 
+/* .material-icons ma kolor akcentu — na zielonym kółku ikona była niewidoczna */
+.header__mobile-phone .material-icons {
+  color: var(--color-dark-2);
+}
+
 /* Mobile overlay: submenu rozwijanie */
 .menu-overlay .sub-menu {
   display: none;
@@ -843,6 +852,386 @@
 
 .menu-overlay__item-arrow.is-open {
   transform: rotate(90deg);
+}
+
+/* Menu mobilne: rozwijana lista usług pod „Oferta firmy”.
+   Motyw ustawia elementy menu w wierszu (flex), więc lista musi zawinąć się do nowej linii. */
+.menu-overlay > li.menu-overlay__item-has-children {
+  flex-wrap: wrap;
+}
+
+.menu-overlay__toggle {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: auto; /* motyw ustawia button { width: 100% } */
+  padding: 10px 20px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu-overlay__services {
+  flex: 0 0 100%;
+  width: 100%;
+  margin: 0;
+  padding: 12px 0 4px;
+  list-style: none;
+}
+
+.menu-overlay__services li {
+  padding: 6px 0;
+}
+
+.menu-overlay__services a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 16px;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.menu-overlay__services a:hover {
+  color: #fff;
+}
+
+.menu-overlay__services .material-icons {
+  flex-shrink: 0;
+  font-size: 18px;
+  color: var(--color-accent-1);
+}
+
+/* Tablet (menu z hamburgera jest do 1199 px): układ jak na telefonie —
+   motyw dawał tu dwie kolumny bez odstępu od góry i menu wchodziło pod logo */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .menu-overlay {
+    display: block;
+    margin-top: 10em;
+  }
+
+  .menu-overlay > li {
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
+  .menu-overlay > li:first-child {
+    margin-top: 0;
+  }
+}
+
+/* Logo na ciemnym tle otwartego menu: jasna wersja */
+.header.opened .logo__img-primary {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.header.opened .logo__img-secondary {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Na telefonie napis „Menu / Zamknij” wchodził pod przycisk telefonu — zostaje sama ikona */
+@media (max-width: 1199.98px) {
+  .header__burger-label {
+    display: none;
+  }
+}
+
+/* Bardzo wąskie telefony: mniejsze logo, żeby telefon i hamburger mieściły się w jednym wierszu */
+@media (max-width: 374.98px) {
+  .logo__wrapper-img {
+    margin-right: 0;
+  }
+
+  .logo__wrapper-img img {
+    width: 150px;
+  }
+}
+
+/* Miniatury (blog, realizacje, ostatnie wpisy): kadr 430×300 z przycięciem.
+   Wcześniej ustawiał go skrypt lazy-load motywu; obrazki ładują się teraz natywnie (loading="lazy"),
+   więc treść nie czeka na JavaScript. */
+.lazy-wrapper {
+  max-width: 430px;
+}
+
+.lazy-wrapper > .lazy {
+  position: relative;
+  height: 0;
+  padding-bottom: 69.7674%; /* 300 / 430 */
+  overflow: hidden;
+}
+
+.lazy-wrapper > .lazy > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Realizacje — podstrona case study (part/case-study.php)
+------------------------------------------------ */
+
+.case-hero .breadcrumbs-wrap a {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.case-hero__label {
+  margin: 0 0 .5em;
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+}
+
+.case-hero__title {
+  margin-top: 0;
+}
+
+.case-hero__lead {
+  max-width: 640px;
+  font-size: 1.15em;
+}
+
+.case-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  margin: 48px 0 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-gray-4);
+}
+
+.case-facts dt {
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+}
+
+.case-facts dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Ramki zrzutów: okno przeglądarki i telefon */
+.case-frame {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-light-1);
+}
+
+.case-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.case-frame_browser {
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .14);
+}
+
+.case-frame__bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 16px;
+  background: var(--color-gray-4);
+}
+
+.case-frame__bar span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #c8c8c8;
+}
+
+.case-frame__bar span:first-child {
+  background: var(--color-accent-1);
+}
+
+.case-frame__bar em {
+  margin-left: 14px;
+  font-size: 12px;
+  font-style: normal;
+  color: var(--color-gray-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.case-frame_phone {
+  max-width: 300px;
+  margin: 0 auto;
+  border: 10px solid var(--color-dark-3);
+  border-radius: 36px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+}
+
+.case-gallery__caption {
+  margin-top: 1.2em;
+  font-size: 14px;
+  text-align: center;
+  color: var(--color-gray-1);
+}
+
+/* Historia: O kliencie / Wyzwanie / Rozwiązanie */
+.case-story__row {
+  padding: 40px 0;
+  border-top: 1px solid var(--color-gray-4);
+}
+
+.case-story__row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.case-story__num {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent-1);
+}
+
+.case-story h2 {
+  margin-top: .3em;
+}
+
+.case-points {
+  margin: 1.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-points li {
+  position: relative;
+  margin: 0 0 .7em;
+  padding-left: 32px;
+}
+
+.case-points li::before {
+  position: absolute;
+  top: .15em;
+  left: 0;
+  content: "check";
+  font-family: 'Material Icons';
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-accent-1);
+}
+
+/* Technologie i funkcje */
+.case-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-chips li {
+  margin: 0;
+  padding: 8px 16px;
+  border: 1px solid var(--color-gray-4);
+  border-radius: 40px;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.case-chips_accent li {
+  border-color: transparent;
+  background: var(--color-accent-1);
+  color: var(--color-dark-1);
+  font-weight: 500;
+}
+
+/* CTA */
+.case-cta__box {
+  padding: 40px 24px;
+  border-radius: 22px;
+  color: var(--color-light-1);
+}
+
+.case-cta__box h2 {
+  margin-top: 0;
+  color: inherit;
+}
+
+.case-cta__box p {
+  margin-bottom: 0;
+  color: var(--color-gray-1);
+}
+
+@media (min-width: 768px) {
+  .case-cta__box {
+    padding: 64px 80px;
+  }
+}
+
+/* Inne realizacje */
+.case-related__all {
+  font-weight: 500;
+  color: inherit;
+}
+
+.case-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.case-card__img {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  aspect-ratio: 43 / 30;
+}
+
+.case-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.case-card:hover .case-card__img img {
+  transform: scale(1.05);
+}
+
+.case-card__label {
+  display: block;
+  margin-top: 16px;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-gray-3);
+}
+
+.case-card__title {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+/* Lista realizacji: kategoria i branża bez linków, w kolorze dawnych linków */
+.figure-project .post-meta span {
+  color: var(--color-gray-3);
+  white-space: nowrap;
 }
 
 /* FAQ (SEO/AEO) */
@@ -1132,267 +1521,5 @@
   }
   .page-hero__crumbs a + .material-icons:nth-last-child(2) {
     display: none;
-  }
-}
-
-/* ===== Podstrony realizacji (part/case-study.php) ===== */
-.page-hero__visual_shot {
-  aspect-ratio: 6 / 5;
-  background: var(--color-dark-1);
-}
-.page-hero__shot {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: left top;
-}
-.case-study__row {
-  row-gap: 40px;
-}
-.case-study__heading {
-  margin: 0 0 24px;
-  font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem);
-  line-height: 1.15;
-}
-.case-study__text {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: #3d3d3d;
-}
-.case-facts {
-  padding: 32px;
-  border-radius: 24px;
-  background: var(--color-dark-1);
-  color: #ffffff;
-}
-.case-facts__list {
-  margin: 0;
-}
-.case-facts__item {
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-}
-.case-facts__item:first-child {
-  padding-top: 0;
-}
-.case-facts__item dt {
-  margin-bottom: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-accent-1);
-}
-.case-facts__item dd {
-  margin: 0;
-  line-height: 1.5;
-}
-.case-facts__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 24px;
-  padding: 12px 20px;
-  border-radius: 999px;
-  background: var(--color-accent-1);
-  color: var(--color-dark-1);
-  font-weight: 600;
-  text-decoration: none;
-}
-.case-facts__link .material-icons {
-  font-size: 18px;
-  color: var(--color-dark-1);
-}
-.case-facts__link:hover {
-  color: var(--color-dark-1);
-  filter: brightness(1.08);
-}
-
-/* zrzuty ekranu */
-.case-gallery__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.34fr);
-  align-items: end;
-  gap: clamp(20px, 3vw, 48px);
-}
-.case-gallery__grid_desktop {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.case-gallery__grid figure {
-  margin: 0;
-}
-.case-browser {
-  overflow: hidden;
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.14);
-}
-.case-browser__bar {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 12px 16px;
-  background: #ececec;
-}
-.case-browser__bar span {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #c9c9c9;
-}
-.case-browser__bar span:first-child {
-  background: var(--color-accent-1);
-}
-.case-browser__bar em {
-  margin-left: 12px;
-  padding: 3px 14px;
-  border-radius: 999px;
-  background: #ffffff;
-  font-size: 12px;
-  font-style: normal;
-  color: #6b6b6b;
-}
-.case-browser img,
-.case-phone img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.case-phone {
-  overflow: hidden;
-  max-width: 300px;
-  justify-self: center;
-  border: 10px solid var(--color-dark-1);
-  border-radius: 36px;
-  background: var(--color-dark-1);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
-}
-.case-phone img {
-  border-radius: 26px;
-}
-
-/* elementy strony */
-.case-features__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-.case-feature {
-  padding: 28px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  background: #ffffff;
-}
-.case-feature .case-feature__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 18px;
-  border-radius: 14px;
-  background: var(--color-accent-1);
-  color: var(--color-dark-1);
-  font-size: 24px;
-}
-.case-feature__title {
-  margin: 0 0 8px;
-  font-size: 1.15rem;
-  line-height: 1.3;
-}
-.case-feature__text {
-  margin: 0;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: #4a4a4a;
-}
-
-/* wezwanie do działania i nawigacja */
-.case-cta__box {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px 48px;
-  padding: clamp(28px, 4vw, 56px);
-  border-radius: 28px;
-  background: var(--color-dark-1);
-  color: #ffffff;
-}
-.case-cta__text {
-  flex: 1 1 420px;
-}
-.case-cta__title {
-  margin: 0 0 12px;
-  color: #ffffff;
-  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.3rem);
-}
-.case-cta__text p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
-}
-.case-cta__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 28px;
-}
-.case-cta__more {
-  color: var(--color-accent-1);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.case-cta__more:hover {
-  color: #ffffff;
-}
-.case-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 32px;
-}
-.case-nav a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  color: var(--color-dark-1);
-  text-decoration: none;
-}
-.case-nav .material-icons {
-  font-size: 20px;
-  color: var(--color-dark-1);
-}
-.case-nav a:hover span {
-  text-decoration: underline;
-}
-
-@media (max-width: 991.98px) {
-  .page-hero__visual_shot {
-    aspect-ratio: 16 / 10;
-  }
-  .case-features__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 767.98px) {
-  .case-gallery__grid,
-  .case-gallery__grid_desktop {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .case-phone {
-    width: 70%;
-    max-width: 260px;
-  }
-  .case-features__grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .case-facts {
-    padding: 24px;
   }
 }

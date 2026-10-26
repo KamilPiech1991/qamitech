@@ -12,18 +12,14 @@
 
 <section class="section section-content py-medium bg-dark-1" data-arts-theme-text="light">
    <div class="container">
-      <div class="section-content__content content js-arts-split-text arts-split-text pb-small"
-         data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-         data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-         data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+      <div class="section-content__content content arts-split-text pb-small">
          <h3 class="h1">Jak nas znaleźć</h3>
       </div>
       <div class="row contact-icons">
          <div class="col-md-3 mb-3 mb-md-0">
             <div class="d-flex">
                <div class="col-6">
-                  <div class="section-content__content content" data-arts-os-animation="true"
-                     data-arts-os-animation-name="animateJump">
+                  <div class="section-content__content content">
                      <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="110" height="110" rx="20" fill="#1F1F1F" />
                         <path d="M55 75C44 75 35 66 35 55C35 44 44 35 55 35C66 35 75 44 75 55C75 66 66 75 55 75Z"
@@ -37,10 +33,7 @@
                   </div>
                </div>
                <div class="col-6">
-                  <div class="section-content__content content js-arts-split-text arts-split-text"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                     data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                     data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+                  <div class="section-content__content content arts-split-text">
                      <h3>Email</h3>
                      <small>kontakt@qamitech.pl</small>
                   </div>
@@ -50,8 +43,7 @@
          <div class="col-md-3 mb-3 mb-md-0">
             <div class="d-flex">
                <div class="col-6">
-                  <div class="section-content__content content" data-arts-os-animation="true"
-                     data-arts-os-animation-name="animateJump">
+                  <div class="section-content__content content">
                      <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="110" height="110" rx="20" fill="#1F1F1F" />
                         <path
@@ -78,10 +70,7 @@
                   </div>
                </div>
                <div class="col-6">
-                  <div class="section-content__content content js-arts-split-text arts-split-text"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                     data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                     data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+                  <div class="section-content__content content arts-split-text">
                      <h3>Telefon</h3>
                      <small>
                         501 784 882
@@ -93,8 +82,7 @@
          <div class="col-md-3 mb-3 mb-md-0">
             <div class="d-flex">
                <div class="col-6">
-                  <div class="section-content__content content" data-arts-os-animation="true"
-                     data-arts-os-animation-name="animateJump">
+                  <div class="section-content__content content">
                      <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="110" height="110" rx="20" fill="#1F1F1F" />
                         <path
@@ -111,11 +99,7 @@
                </div>
                <div class="col-6">
                   <section class="section section-content">
-                     <div class="section-content__content content js-arts-split-text arts-split-text"
-                        data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                        data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines"
-                        data-arts-split-text-overflow-wrap="lines">
+                     <div class="section-content__content content arts-split-text">
                         <h3>Adres</h3>
                         <small>
                            ul. Cicha 3, <br />
@@ -129,8 +113,7 @@
          <div class="col-md-3 mb-3 mb-md-0">
             <div class="d-flex">
                <div class="col-6">
-                  <div class="section-content__content content" data-arts-os-animation="true"
-                     data-arts-os-animation-name="animateJump">
+                  <div class="section-content__content content">
                      <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="110" height="110" rx="20" fill="#1F1F1F" />
                         <path d="M55 75C44 75 35 66 35 55C35 44 44 35 55 35C66 35 75 44 75 55C75 66 66 75 55 75Z"
@@ -144,10 +127,7 @@
                   </div>
                </div>
                <div class="col-6">
-                  <div class="section-content__content content js-arts-split-text arts-split-text"
-                     data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-                     data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-                     data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+                  <div class="section-content__content content arts-split-text">
                      <h3>Godziny</h3>
                      <small>Pn-Pt 09:00 - 17:00</small>
                   </div>
@@ -171,10 +151,7 @@
    <div class="container">
       <div class="row">
          <div class="offset-md-6 col-md-6">
-            <div class="section-content__content content js-arts-split-text arts-split-text pb-medium"
-               data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-               data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-               data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+            <div class="section-content__content content arts-split-text pb-medium">
                <h2 class="h1">
                   Skonta<span class="underline-text">ktuj się z nami.</span>
                </h2>
@@ -185,17 +162,12 @@
          </div>
       </div>
       <div class="section contact-us-wrap element-5" data-arts-theme-text="light">
-         <div class="section-content__content content js-arts-split-text arts-split-text" data-arts-os-animation="true"
-            data-arts-os-animation-name="animateText"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-            data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+         <div class="section-content__content content arts-split-text">
             <h2 class="h3 col-md-6">
                Formularz kontaktowy
             </h2>
          </div>
-         <div class="section-content__content content mt-5" data-arts-os-animation="true"
-            data-arts-os-animation-name="animateJump"
-            data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}">
+         <div class="section-content__content content mt-5">
             <div class="main-form">
                <form class="form form-contact form-dark js-ajax-form" id="formContact" action="forms/form-contact.php"
                   method="POST" data-message-success="Dziękujemy za wiadomość! Wkrótce otrzymasz odpowiedź."

@@ -13,13 +13,7 @@
 <!-- BLOG SINGLE PAGE CONTENT -->
 
 <section class="section section-content pb-medium">
-  <div class="container-sm section-content__content content js-arts-split-text arts-split-text"
-    data-arts-os-animation="true" 
-    data-arts-os-animation-name="animateText"
-    data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" 
-    data-arts-split-text="lines"
-    data-arts-split-text-set="lines" 
-    data-arts-split-text-overflow-wrap="lines">
+  <div class="container-sm section-content__content content arts-split-text">
     <p>
     W dzisiejszych czasach strony internetowe są nie tylko wizytówką firm, ale również kluczowym narzędziem marketingowym i sprzedażowym. Projektowanie stron internetowych jest ciągle na fali rozwoju, a rosnąca liczba użytkowników internetu sprawia, że tworzenie stron internetowych musi spełniać coraz to nowe wymagania. Dlatego też, aby zaoferować użytkownikom najlepsze doświadczenia, projektanci i programiści ciągle wprowadzają nowe trendy w projektowaniu i tworzeniu stron internetowych. W tym artykule omówimy najnowsze trendy w projektowaniu i tworzeniu stron internetowych.
     </p>

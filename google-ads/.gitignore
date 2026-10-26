@@ -1,0 +1,7 @@
+# Dane logowania — nigdy do repozytorium
+google-ads.yaml
+client_secret*.json
+
+.venv/
+__pycache__/
+*.csv

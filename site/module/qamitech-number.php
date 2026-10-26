@@ -2,10 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-5">
-        <div class="section-content__content content js-arts-split-text arts-split-text mb-5 mb-md-0"
-          data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-          data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-          data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+        <div class="section-content__content content arts-split-text mb-5 mb-md-0">
           <h2 class="h1">
             Qamitech <span class="underline-text"> w liczbach </span>
           </h2>
@@ -13,8 +10,7 @@
             nasze możliwości.</p>
         </div>
 
-        <div class="section-content__wrapper-button mt-4 mt-md-5 mob-none" data-arts-os-animation="true"
-          data-arts-os-animation-name="animateJump">
+        <div class="section-content__wrapper-button mt-4 mt-md-5 mob-none">
           <a class="button btn-dark" href="<?php home_url(); ?>oferta.php">
             <span class="button__label button__label-normal">
               <span class="button__title">Oferta</span>
@@ -38,10 +34,7 @@
       <div class="col-md-7">
         <div class="row">
           <div class="col-md-6">
-            <div class="section-content__content content js-arts-split-text arts-split-text mb-4"
-              data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-              data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-              data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+            <div class="section-content__content content arts-split-text mb-4">
               <div class="row">
                 <div class="col-12">
                   <span class="h1">
@@ -62,10 +55,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="section-content__content content js-arts-split-text arts-split-text mb-4"
-              data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-              data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-              data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+            <div class="section-content__content content arts-split-text mb-4">
               <div class="row">
                 <div class="col-12">
                   <span class="h1">
@@ -86,10 +76,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="section-content__content content js-arts-split-text arts-split-text mb-4"
-              data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-              data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-              data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+            <div class="section-content__content content arts-split-text mb-4">
               <div class="row">
                 <div class="col-12">
                   <span class="h1">
@@ -110,10 +97,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="section-content__content content js-arts-split-text arts-split-text mb-4"
-              data-arts-os-animation="true" data-arts-os-animation-name="animateText"
-              data-arts-os-animation-params="{stagger: {amount: 0.3, from: 'left'}}" data-arts-split-text="lines"
-              data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">
+            <div class="section-content__content content arts-split-text mb-4">
               <div class="row">
                 <div class="col-12">
                   <span class="h1">
