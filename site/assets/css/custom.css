@@ -1497,16 +1497,19 @@
 }
 
 /* wpisy na blogu: hero zaczyna się niżej, jak na pozostałych podstronach */
-.section.page-hero-single {
+.section.page-hero-single,
+.section.case-hero {
   padding-top: clamp(200px, 16vw, 280px);
 }
 @media (max-width: 991.98px) {
-  .section.page-hero-single {
+  .section.page-hero-single,
+  .section.case-hero {
     padding-top: 170px;
   }
 }
 @media (max-width: 575.98px) {
-  .section.page-hero-single {
+  .section.page-hero-single,
+  .section.case-hero {
     padding-top: 150px;
   }
 }

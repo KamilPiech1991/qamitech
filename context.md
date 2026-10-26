@@ -228,7 +228,7 @@ Filtry: Wszystkie / Strona www / E-commerce / Inne. Każda pozycja ma etykietę 
 
 | Projekt | Typ | URL | Etykieta |
 |---|---|---|---|
-| Simed (producent sprzętu medycznego, Łomianki) — podstrona `/realizacje/simed.php` | Strona www | simed.net.pl | Qamitech |
+| Simed (producent sprzętu medycznego, Łomianki) | Strona www | simed.net.pl | Qamitech |
 | Eurodomy | Strona www | eurodomy.pl | Qamitech |
 | e-tabak.pl | E-commerce | e-tabak.pl | Qamitech |
 | Obok Lasu | Strona www | obok-lasu.pl | Qamitech |
@@ -239,7 +239,7 @@ Filtry: Wszystkie / Strona www / E-commerce / Inne. Każda pozycja ma etykietę 
 | SMKA Portal Producenta | E-commerce | smka.pl | Top Strony |
 | Region Zdrowia (parki prozdrowotne) | Strona www | regionzdrowia.pl | Top Strony |
 | PSO Tel Gracja | Strona www | psotelgracja.pl | Top Strony |
-| Bogdan Grzeszczyk (fotograf i filmowiec) — podstrona `/realizacje/bogdan-grzeszczyk.php` | Strona www | bogdangrzeszczyk.pl | Top Strony |
+| Bogdan Grzeszczyk (fotograf i filmowiec) | Strona www | bogdangrzeszczyk.pl | Top Strony |
 | Ventoni | E-commerce | ventoni.pl | Top Strony |
 | Fastclean (czyszczenie wentylacji) | Strona www | fastclean.pl | Top Strony |
 | Cloud Insight | Strona www | cloudinsight.pl | Top Strony |
@@ -268,7 +268,7 @@ Filtry: Wszystkie / Strona www / E-commerce / Inne. Każda pozycja ma etykietę 
 
 Portfolio pokazuje tylko strony/sklepy — brak realizacji z IT, sieci, Google Ads czy SEO.
 
-Od października 2026 wybrane realizacje mają własne podstrony (opis klienta, fakty, zrzuty ekranu, elementy strony, CTA) — szablon `site/part/case-study.php`, dane w tablicy `$case` na stronie. Pozostałe karty nadal prowadzą bezpośrednio do stron klientów.
+Od października 2026 realizacje z działającymi stronami mają własne podstrony case study (`/realizacje/<slug>.php`: o kliencie, wyzwanie, rozwiązanie, technologie, zrzuty na komputerze i telefonie, CTA) — szablon `site/part/case-study.php`, treści w `site/realizacje/data.php`. Najnowsza: Simed (simed.net.pl).
 
 ---
 

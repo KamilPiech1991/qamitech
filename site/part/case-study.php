@@ -43,8 +43,7 @@ require __DIR__ . '/../include/header.php';
 ?>
 
 <!-- CASE STUDY: HERO -->
-<section class="section section-content case-hero pt-xlarge pt-md-large pb-small">
-  <div class="pt-medium desk-none"></div>
+<section class="section section-content case-hero pb-small">
   <div class="container">
     <div class="breadcrumbs-wrap">
       <a href="<?php home_url(); ?>index.php"><i class="material-icons">home</i><span>Główna</span></a>
