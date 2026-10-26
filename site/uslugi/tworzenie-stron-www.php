@@ -1,7 +1,14 @@
          
 <?php 
-   $title = 'Tworzenie stron internetowych Piaseczno, Warszawa | Qamitech';
+   $title = 'Tworzenie stron internetowych Piaseczno, Warszawa – strony www i sklepy | Qamitech';
    $description = 'Tworzymy profesjonalne strony internetowe i sklepy e-commerce dla firm z Piaseczna, Warszawy i okolic. Responsywne, szybkie, zoptymalizowane pod SEO. Wycena gratis!';
+   $faq = [
+      ['q' => 'Ile kosztuje strona internetowa dla firmy?', 'a' => 'Orientacyjnie: strona wizytówkowa (1–5 podstron) od 800 do 2500 zł, strona firmowa z blogiem (5–15 podstron) od 2500 do 8000 zł, sklep internetowy na WooCommerce od 4000 do ponad 20 000 zł. Portal z rozbudowanym CMS wyceniamy indywidualnie. Wycena jest zawsze bezpłatna.'],
+      ['q' => 'Czy strona będzie zoptymalizowana pod Google i AI?', 'a' => 'Tak. Każda strona jest responsywna, szybka i ma poprawną strukturę nagłówków, metadane oraz dane strukturalne schema.org — dzięki temu jest czytelna dla Google, AI Overview i asystentów takich jak ChatGPT.'],
+      ['q' => 'Czy tworzycie sklepy internetowe?', 'a' => 'Tak — tworzymy sklepy e-commerce zintegrowane z bramkami płatności, firmami kurierskimi i systemem zamówień, najczęściej na WordPress i WooCommerce.'],
+      ['q' => 'Czy mogę spotkać się z wami osobiście?', 'a' => 'Tak. Spotykamy się w naszym biurze w Starej Iwicznej (gmina Lesznowola, między Warszawą a Piasecznem) albo u klienta — w Piasecznie, Warszawie i okolicach.'],
+      ['q' => 'Czy zajmujecie się stroną po jej uruchomieniu?', 'a' => 'Tak, oferujemy utrzymanie i rozwój strony: aktualizacje, kopie zapasowe, wsparcie techniczne, nowe podstrony i funkcje, a także pozycjonowanie i kampanie Google Ads.'],
+   ];
 ?>
          <!-- PAGE HEADER -->
 
@@ -66,6 +73,7 @@
                </div>
             </section>
 
+<?php include( __DIR__ . '/../part/faq.php' ); ?>
             </main>
 
             <!-- PAGE FOOTER -->

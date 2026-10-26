@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Outsourcing IT — Korzyści, Wyzwania, Rodzaje i Najlepsze Praktyki';
+    $description = 'Outsourcing IT stał się nieodłącznym elementem wielu firm, które chcą skoncentrować się na swojej podstawowej działalności. Pozwala to na skorzystanie z…';
     $category   = 'Zabezpieczenia';
     $autor      = 'Qamitech';
     $date       = '14 styczeń 2024';

@@ -1,5 +1,6 @@
 <?php 
     $title      = 'W jaki sposób wydajnie zarządzać danymi klientów w ramach RODO?';
+    $description = 'Zarządzanie danymi klientów jest niezwykle ważnym zagadnieniem w kontekście RODO (Ogólne Rozporządzenie o Ochronie Danych). W tym artykule przedstawimy…';
     $category   = 'Prawo w IT';
     $autor      = 'Qamitech';
     $date       = '15 marzec 2023';

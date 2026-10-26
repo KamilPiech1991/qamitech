@@ -2,6 +2,11 @@
 <?php 
    $title = 'Pomoc domowa IT Piaseczno, Warszawa | Qamitech';
    $description = 'Pomoc informatyczna w domu - instalacja systemu, konfiguracja sieci, naprawa sprzętu. Obsługujemy klientów z Piaseczna, Warszawy i okolic. Tel: 501 784 882';
+   $faq = [
+      ['q' => 'Czy przyjeżdżacie do domu klienta?', 'a' => 'Tak — dojeżdżamy do klienta w dogodnym dla niego terminie w Piasecznie, Warszawie i okolicach.'],
+      ['q' => 'W czym możecie pomóc w domu?', 'a' => 'Naprawiamy i czyścimy komputery i laptopy, instalujemy system i programy, konfigurujemy router, Wi-Fi i drukarkę, zabezpieczamy komputer i ustawiamy kopie zapasowe.'],
+      ['q' => 'Jak umówić wizytę?', 'a' => 'Zadzwoń pod numer <a href="tel:+48501784882">501 784 882</a> (pn–pt, 9:00–17:00) lub napisz na <a href="mailto:kontakt@qamitech.pl">kontakt@qamitech.pl</a>.'],
+   ];
 ?>
          <!-- PAGE HEADER -->
 
@@ -18,7 +23,7 @@
                      <div class="col-md-8">
                      <div class="section-content__content content arts-split-text">
                         <p>
-                        Nasza firma oferuje kompleksową obsługę IT z dojazdem do domu klienta. Jesteśmy zespołem doświadczonych specjalistów, którzy szybko i skutecznie rozwiązują problemy związane z komputerami, laptoami oraz innymi urządzeniami elektronicznymi.
+                        Nasza firma oferuje kompleksową obsługę IT z dojazdem do domu klienta. Jesteśmy zespołem doświadczonych specjalistów, którzy szybko i skutecznie rozwiązują problemy związane z komputerami, laptopami oraz innymi urządzeniami elektronicznymi.
                         </p>
                         <h3>
                         Nasze usługi obejmują:
@@ -41,7 +46,7 @@
                            </li>
                         </ul>
                         <h4>
-                        Dojeżdżamy do klienta w dogodnym dla niego terminie. Wszystkie nasze usługi są świadczone na najwyższym poziomie, a nasz zespół jest do dyspozycji klientów przez całą dobę. Zapraszamy do skorzystania z naszych usług!
+                        Dojeżdżamy do klienta w dogodnym dla niego terminie. Wszystkie nasze usługi są świadczone na najwyższym poziomie, a nasz zespół jest do dyspozycji klientów od poniedziałku do piątku w godzinach 9:00–17:00. Zapraszamy do skorzystania z naszych usług!
                         </h4>
                      </div>
                      </div>
@@ -49,6 +54,7 @@
                </div>
             </section>
 
+<?php include( __DIR__ . '/../part/faq.php' ); ?>
             </main>
 
             <!-- PAGE FOOTER -->

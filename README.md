@@ -4,6 +4,8 @@ Qamitech website
 - `context.md` — kontekst firmy i analiza strony www.qamitech.pl
 - `site/` — pliki strony (pojawią się po pierwszym imporcie z FTP)
 - `.github/workflows/` — import z FTP i automatyczny deploy
+- `docs/cloudflare.md` — instrukcja przeniesienia strony za Cloudflare
+- `brand/` — pliki źródłowe logo (poza stroną, nie są wysyłane na serwer)
 - `google-ads/` — skrypty do prowadzenia kampanii Google Ads z Claude Code bezpośrednio przez Google Ads API (instrukcja: [google-ads/README.md](google-ads/README.md))
 
 ## Połączenie z serwerem FTP
@@ -49,6 +51,7 @@ Każdy push na `main`, który zmienia coś w `site/`, automatycznie wgrywa zmien
 - Po wysłaniu workflow porównuje rozmiary plików na serwerze z repozytorium; przy niezgodności ponawia wysyłkę, a potem zgłasza błąd.
 - Pliki istniejące wyłącznie na serwerze (np. config z hasłami) nie są usuwane. Pliki usunięte z repozytorium też zostają na serwerze.
 - Deploy działa w środowisku `production` — w Settings → Environments możesz dodać wymóg ręcznego zatwierdzenia.
+- Gdy strona jest za Cloudflare: dodaj sekrety `CLOUDFLARE_API_TOKEN` i `CLOUDFLARE_ZONE_ID`, a deploy po wysłaniu plików wyczyści cache (szczegóły w `docs/cloudflare.md`).
 
 ## Wydajność strony (PageSpeed)
 

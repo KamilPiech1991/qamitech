@@ -1,6 +1,7 @@
 <?php 
    $page  = 'realizacje';
-   $title = 'Realizacje';
+   $title = 'Realizacje – strony internetowe i sklepy wykonane przez Qamitech';
+   $breadcrumb = 'Realizacje';
    $description = 'Wybrane realizacje Qamitech: strony internetowe i sklepy dla firm. Zobacz opisy projektów, zrzuty ekranu i technologie, z których je zbudowaliśmy.';
    $projects = require __DIR__ . '/data.php';
    ?>

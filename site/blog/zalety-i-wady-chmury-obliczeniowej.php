@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Zalety i wady chmury obliczeniowej w zamian za tradycyjne serwery';
+    $description = 'Chmura obliczeniowa to innowacyjne rozwiązanie, które coraz częściej zastępuje tradycyjne serwery. W tym artykule omówimy zalety i wady chmury…';
     $category   = 'Nowości w IT';
     $autor      = 'Qamitech';
     $date       = '26 marzec 2023';

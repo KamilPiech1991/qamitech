@@ -4,6 +4,7 @@
  * Plik realizacje/<slug>.php ustawia $slug i dołącza ten szablon; treści są w realizacje/data.php.
  */
 require_once __DIR__ . '/../include/functions.php';
+require_once __DIR__ . '/../include/seo.php';
 $projects = require __DIR__ . '/../realizacje/data.php';
 if (! isset($projects[$slug]) || ! $projects[$slug]['page']) {
     http_response_code(404);
@@ -20,6 +21,16 @@ $img = function ($file) use ($slug) { return ABS_URL . 'assets/img/realizacje/' 
 
 $ogImage = isset($p['images']['hero']) ? $img($p['images']['hero']) : null;
 
+// SEO: krótka nazwa w okruszkach i dane realizacji w JSON-LD (include/seo.php)
+$breadcrumb = $p['name'];
+$seoCase    = [
+    'client' => $p['name'],
+    'url'    => $p['url'],
+    'type'   => $p['scope'],
+    'tech'   => $p['tech'],
+    'image'  => $ogImage ? SEO_SITE_URL . 'assets/img/realizacje/' . $slug . '/' . $p['images']['hero'] : null,
+];
+
 // Inne realizacje: trzy kolejne z listy (z zawinięciem na początek).
 $slugs   = array_keys(array_filter($projects, function ($item) { return $item['page']; }));
 $index   = array_search($slug, $slugs, true);
@@ -32,8 +43,7 @@ require __DIR__ . '/../include/header.php';
 ?>
 
 <!-- CASE STUDY: HERO -->
-<section class="section section-content case-hero pt-xlarge pt-md-large pb-small">
-  <div class="pt-medium desk-none"></div>
+<section class="section section-content case-hero pb-small">
   <div class="container">
     <div class="breadcrumbs-wrap">
       <a href="<?php home_url(); ?>index.php"><i class="material-icons">home</i><span>Główna</span></a>

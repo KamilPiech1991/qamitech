@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Blockchain i jego zastosowanie w dzisiejszej erze cyfrowej';
+    $description = 'Blockchain to technologia, która stała się jednym z najgorętszych tematów w dzisiejszej erze cyfrowej. Została ona opracowana w 2008 roku przez nieznanego…';
     $category   = 'Nowości w IT';
     $autor      = 'Qamitech';
     $date       = '23 czerwca 2022';

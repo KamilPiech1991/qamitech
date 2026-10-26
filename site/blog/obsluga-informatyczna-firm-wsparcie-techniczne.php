@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Obsługa informatyczna firm: Wsparcie techniczne i optymalizacja procesów biznesowych';
+    $description = 'W erze cyfrowej, gdzie technologia stanowi rdzeń każdej firmy, usługi obsługi informatycznej stają się kluczowym elementem zapewniającym sprawne jej…';
     $category   = 'Zabezpieczenia';
     $autor      = 'Qamitech';
     $date       = '14 styczeń 2024';

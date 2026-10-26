@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Cyberbezpieczeństwo: Niewidzialna tarcza świata cyfrowego.Jak chronić się przed zagrożeniami w sieci';
+    $description = 'W dzisiejszym świecie coraz więcej naszych codziennych czynności odbywa się w sieci. Pracujemy, uczymy się, robimy zakupy, korzystamy z rozrywki i usług…';
     $category   = 'Zabezpieczenia';
     $autor      = 'Qamitech';
     $date       = '5 styczeń 2024';

@@ -1,6 +1,13 @@
 <?php 
-   $title = 'Szkolenia AI i Marketing dla firm | Qamitech Piaseczno, Warszawa';
+   $title = 'Szkolenia z AI dla firm – AI w marketingu, agenci AI, automatyzacja | Qamitech';
    $description = 'Stacjonarne szkolenia z AI, marketingu, automatyzacji i agentów AI dla firm i osób indywidualnych. Qamitech – praktyczna wiedza dla Twojego zespołu.';
+   $h1 = 'Szkolenia z AI, marketingu i IT';
+   $faq = [
+      ['q' => 'Dla kogo są szkolenia z AI?', 'a' => 'Dla firm i zespołów (grupy 5–30 osób), osób indywidualnych (szkolenia 1:1 lub w małych grupach) oraz właścicieli firm, którzy chcą wykorzystać AI do automatyzacji i obniżenia kosztów.'],
+      ['q' => 'Gdzie odbywają się szkolenia?', 'a' => 'Stacjonarnie — w siedzibie klienta lub w naszej lokalizacji w Piasecznie i Warszawie. Dla firm prowadzimy także szkolenia online.'],
+      ['q' => 'Czego nauczę się na szkoleniu z AI w marketingu?', 'a' => 'Pracy z ChatGPT, Claude i Gemini, tworzenia treści i grafik z AI, automatyzacji kampanii Google i Meta Ads, SEO wspomaganego AI i prompt engineeringu. Każdy uczestnik buduje też własnego agenta AI.'],
+      ['q' => 'Jak zapisać się na szkolenie?', 'a' => 'Napisz na <a href="mailto:kontakt@qamitech.pl">kontakt@qamitech.pl</a> — odpowiadamy w ciągu 24 godzin i dopasowujemy program do potrzeb uczestników.'],
+   ];
 ?>
          <!-- PAGE HEADER -->
 
@@ -9,12 +16,7 @@
             <!-- PAGE CONTENT -->
             <main class="page-wrapper__content">
 
-            <section class="section section-content pt-xlarge pt-md-large pb-medium">
-              <div class="container section-content__content content arts-split-text">
-                <h1>Szkolenia IT</h1>
-                <p style="font-size:1.3rem;color:#555;margin-top:12px;font-weight:400;">Naucz się digital marketingu napędzanego AI.</p>
-              </div>
-            </section>
+            <?php include( __DIR__ . '/../part/hero-page.php' ); ?>
                
             <!-- INTRO -->
             <section class="section section-content pb-large">
@@ -348,6 +350,7 @@
                </div>
             </section>
 
+<?php include( __DIR__ . '/../part/faq.php' ); ?>
             </main>
 
             <!-- PAGE FOOTER -->

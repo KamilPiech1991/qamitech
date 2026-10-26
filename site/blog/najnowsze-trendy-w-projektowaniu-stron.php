@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Najnowsze trendy w projektowaniu i tworzeniu stron internetowych';
+    $description = 'W dzisiejszych czasach strony internetowe są nie tylko wizytówką firm, ale również kluczowym narzędziem marketingowym i sprzedażowym. Projektowanie stron…';
     $category   = 'Strony www';
     $autor      = 'Qamitech';
     $date       = '25 lipiec 2022';

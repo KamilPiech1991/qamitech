@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Jak działa sztuczna inteligencja w informatyce i jak można ją wykorzystać dla swojego biznesu?';
+    $description = 'Sztuczna inteligencja (AI) to dziedzina informatyki, która zajmuje się tworzeniem systemów i programów komputerowych, które potrafią wykonywać zadania…';
     $category   = 'Nowości w IT';
     $autor      = 'Qamitech';
     $date       = '21 marzec 2023';

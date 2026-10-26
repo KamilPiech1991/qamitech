@@ -31,7 +31,7 @@
         <div class="col-md-4">
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
                 <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
-                    href="<?php home_url(); ?>blog/tworzenie-stopki.php" data-arts-hover="trigger"
+                    href="<?php home_url(); ?>blog/pozycjonowanie-seo-aeo-geo-2026.php" data-arts-hover="trigger"
                     data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                     data-arts-cursor-label="Czytaj" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                     data-arts-cursor-background-color="var(--color-accent-1)">
@@ -40,9 +40,9 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="assets/img/blog/thumbs/tworzenie-stopki.jpg"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="assets/img/blog/thumbs/blog-pozycjonowanie.jpg"
                                                 loading="lazy" width="430"
-                                                height="300" alt="Tworzenie stopki" /></div>
+                                                height="300" alt="Pozycjonowanie SEO, AEO i GEO w 2026 roku" /></div>
                                     </div>
                                 </div>
                             </div>
@@ -50,20 +50,20 @@
                     </div>
                 </a>
                 <div class="figure-project__content pt-4">
-                    <div class="figure-project__wrapper-meta arts-split-text">
+                    <div class="figure-project__wrapper-meta arts-split-text ">
                         <ul class="post-meta post-meta_mini post-meta_mini-small">
-                            <li><a href="#">Maj 21, 2022</a>
+                            <li><span>28 czerwca 2026</span>
                                 <div class="post-meta__divider"></div>
                             </li>
-                            <li><a href="#">Admin</a></li>
+                            <li><span>Qamitech</span></li>
                         </ul>
                     </div>
                     <a class="d-inline-block js-arts-cursor-no-highlight"
-                        href="<?php home_url(); ?>blog/tworzenie-stopki.php" data-arts-hover="trigger"
+                        href="<?php home_url(); ?>blog/pozycjonowanie-seo-aeo-geo-2026.php" data-arts-hover="trigger"
                         data-arts-cursor="true" data-arts-cursor-hide-native="true"
                         data-arts-cursor-label="Czytaj" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                         data-arts-cursor-background-color="var(--color-accent-1)">
-                        <h3 class="h4 arts-split-text underline-hover__target">Tworzenie stopki</h3>
+                        <h3 class="h4 arts-split-text underline-hover__target">Pozycjonowanie SEO, AEO i GEO w 2026 roku</h3>
                     </a>
                 </div>
             </div>
@@ -72,7 +72,7 @@
         <div class="col-md-4">
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline"><a
                     class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
-                    href="<?php home_url(); ?>blog/instalacja-pakietu-sun-java.php" data-arts-hover="trigger"
+                    href="<?php home_url(); ?>blog/tworzenie-stron-internetowych-2026.php" data-arts-hover="trigger"
                     data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                     data-arts-cursor-label="Czytaj" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                     data-arts-cursor-background-color="var(--color-accent-1)">
@@ -81,9 +81,9 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="assets/img/blog/thumbs/instalacja-sun-java6.jpg"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="assets/img/blog/thumbs/blog-tworzenie-stron.jpg"
                                                 loading="lazy" width="430"
-                                                height="300" alt="Instalacja Sun Java" /></div>
+                                                height="300" alt="Tworzenie stron internetowych 2026 – trendy i koszty" /></div>
                                     </div>
                                 </div>
                             </div>
@@ -91,20 +91,20 @@
                     </div>
                 </a>
                 <div class="figure-project__content pt-4">
-                    <div class="figure-project__wrapper-meta arts-split-text">
+                    <div class="figure-project__wrapper-meta arts-split-text ">
                         <ul class="post-meta post-meta_mini post-meta_mini-small">
-                            <li><a href="#">Maj 21, 2022</a>
+                            <li><span>28 czerwca 2026</span>
                                 <div class="post-meta__divider"></div>
                             </li>
-                            <li><a href="#">Admin</a></li>
+                            <li><span>Qamitech</span></li>
                         </ul>
                     </div>
                     <a class="d-inline-block js-arts-cursor-no-highlight"
-                        href="<?php home_url(); ?>blog/instalacja-pakietu-sun-java.php" data-arts-hover="trigger"
+                        href="<?php home_url(); ?>blog/tworzenie-stron-internetowych-2026.php" data-arts-hover="trigger"
                         data-arts-cursor="true" data-arts-cursor-hide-native="true"
                         data-arts-cursor-label="Czytaj" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                         data-arts-cursor-background-color="var(--color-accent-1)">
-                        <h3 class="h4 arts-split-text underline-hover__target">Instalacja pakietu sun-java6 jak na Ubuntu lucid</h3>
+                        <h3 class="h4 arts-split-text underline-hover__target">Tworzenie stron internetowych 2026 – trendy i koszty</h3>
                     </a>
                 </div>
             </div>
@@ -113,7 +113,7 @@
         <div class="col-md-4">
             <div class="figure-project" data-arts-hover-class="hover-zoom-underline"><a
                     class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
-                    href="<?php home_url(); ?>blog/dlugie-zamykanie-restart-windows.php" data-arts-hover="trigger"
+                    href="<?php home_url(); ?>blog/outsourcing-it-korzysci-wyzwania.php" data-arts-hover="trigger"
                     data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
                     data-arts-cursor-label="Czytaj" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                     data-arts-cursor-background-color="var(--color-accent-1)">
@@ -122,9 +122,9 @@
                             <div class="mask-reveal__layer mask-reveal__layer-2">
                                 <div class="js-arts-parallax__scrub w-100 h-100">
                                     <div class="lazy-wrapper">
-                                        <div class="lazy"><img class="hover-zoom__zoom" src="assets/img/blog/thumbs/restart-windows.jpg"
+                                        <div class="lazy"><img class="hover-zoom__zoom" src="assets/img/blog/outsorcing-it.jpg"
                                                 loading="lazy" width="430"
-                                                height="300" alt="Restart Windows" />
+                                                height="300" alt="Outsourcing IT — korzyści, wyzwania, rodzaje i najlepsze praktyki" />
                                         </div>
                                     </div>
                                 </div>
@@ -133,20 +133,20 @@
                     </div>
                 </a>
                 <div class="figure-project__content pt-4">
-                    <div class="figure-project__wrapper-meta arts-split-text">
+                    <div class="figure-project__wrapper-meta arts-split-text ">
                         <ul class="post-meta post-meta_mini post-meta_mini-small">
-                            <li><a href="#">Maj 21, 2022</a>
+                            <li><span>14 stycznia 2024</span>
                                 <div class="post-meta__divider"></div>
                             </li>
-                            <li><a href="#">Admin</a></li>
+                            <li><span>Qamitech</span></li>
                         </ul>
                     </div>
                     <a class="d-inline-block js-arts-cursor-no-highlight"
-                        href="<?php home_url(); ?>blog/dlugie-zamykanie-restart-windows.php" data-arts-hover="trigger"
+                        href="<?php home_url(); ?>blog/outsourcing-it-korzysci-wyzwania.php" data-arts-hover="trigger"
                         data-arts-cursor="true" data-arts-cursor-hide-native="true"
                         data-arts-cursor-label="Czytaj" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
                         data-arts-cursor-background-color="var(--color-accent-1)">
-                        <h3 class="h4 arts-split-text underline-hover__target">Długie zamykanie/ restart/ wylogowanie w Windows 7</h3>
+                        <h3 class="h4 arts-split-text underline-hover__target">Outsourcing IT — korzyści, wyzwania, rodzaje i najlepsze praktyki</h3>
                     </a>
                 </div>
             </div>

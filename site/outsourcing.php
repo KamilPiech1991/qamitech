@@ -1,7 +1,14 @@
 <?php 
    $page  = 'outsourcing';
-   $title = 'Outsourcing IT Piaseczno, Warszawa - kompleksowa obsługa firm';
+   $title = 'Outsourcing IT Warszawa, Piaseczno – obsługa informatyczna firm | Qamitech';
    $description = 'Profesjonalny outsourcing IT dla firm z Piaseczna, Warszawy i okolic. Zdalna i stacjonarna obsługa informatyczna, bezpieczeństwo IT, helpdesk. Zadzwoń: 501 784 882';
+   $faq = [
+      ['q' => 'Co to jest outsourcing IT?', 'a' => 'Outsourcing IT to przekazanie obsługi informatycznej firmy zewnętrznemu zespołowi. Qamitech przejmuje bieżącą opiekę nad komputerami, serwerem, siecią, pocztą, kontami użytkowników, VPN i kopiami zapasowymi, a także doradza przy zakupie sprzętu i przygotowuje stanowiska dla nowych pracowników — zdalnie, telefonicznie i na miejscu w firmie.'],
+      ['q' => 'Ile kosztuje outsourcing IT?', 'a' => 'Cena zależy od liczby stanowisk, oddziałów i serwerów (fizycznych i wirtualnych), wieku sprzętu oraz wymaganego czasu reakcji. Najprościej wypełnić <a href="#calc">kalkulator outsourcingu IT</a> na tej stronie — konsultant przygotuje ofertę dopasowaną do Twojej firmy. Wycena jest bezpłatna.'],
+      ['q' => 'Jak szybko reagujecie na awarie?', 'a' => 'Czas reakcji na zgłoszenia krytyczne ustalamy w umowie — w kalkulatorze możesz wybrać 2, 12 lub 24 godziny. Wsparcie świadczymy w dni robocze (pn–pt, 9:00–17:00) zdalnie, telefonicznie lub stacjonarnie, zależnie od rodzaju problemu.'],
+      ['q' => 'Dla jakich firm jest outsourcing IT?', 'a' => 'Dla małych i średnich firm z Piaseczna, Warszawy i okolic, które nie mają własnego działu IT albo chcą go odciążyć — biur, kancelarii, firm usługowych i handlowych. Obsługujemy firmy z jednym lub kilkoma oddziałami.'],
+      ['q' => 'Jak wygląda rozpoczęcie współpracy?', 'a' => 'W czterech krokach: poznajemy potrzeby firmy, sprawdzamy obecną infrastrukturę (sprzęt, sieć, oprogramowanie, zabezpieczenia, kopie zapasowe), proponujemy jasny zakres współpracy z czasem reakcji i zasadami kontaktu, a następnie przejmujemy bieżącą opiekę nad IT.'],
+   ];
    ?>
 <!-- PAGE HEADER -->
 <?php require_once( 'include/header.php' ); ?>
@@ -1050,7 +1057,7 @@
                         <li>Aktualizację systemów operacyjnych oraz oprogramowania</li>
                         <li>Monitorowanie stanu fizycznego komputerów, serwera oraz urządzeń sieciowych i peryferyjnych
                         </li>
-                        <li>Wprowadzadzanie zmian w konfiguracji</li>
+                        <li>Wprowadzanie zmian w konfiguracji</li>
                         <li>Wykonywanie kopii zapasowych kluczowych danych </li>
                      </ul>
                   </div>
@@ -1198,7 +1205,7 @@
    </div>
 </section>
 
-<section class="section section-content pt-large pb-medium">
+<section class="section section-content pt-large pb-medium" id="calc">
    <div class="container">
       <div class="section-content__content content arts-split-text">
          <h2 class="h1">
@@ -1318,6 +1325,7 @@
    </div>
 </section>
 
+<?php include( __DIR__ . '/part/faq.php' ); ?>
 </main>
 <!-- PAGE FOOTER -->
 <?php require_once( 'include/footer.php' ); ?>

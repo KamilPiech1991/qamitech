@@ -2,6 +2,11 @@
 <?php 
    $title = 'Sieci LAN WLAN Piaseczno, Warszawa - instalacja i serwis | Qamitech';
    $description = 'Projektowanie i instalacja sieci LAN, WLAN, Wi-Fi dla firm w Piasecznie, Warszawie i okolicach. Bezprzewodowe sieci biurowe, konfiguracja routerów i switchy.';
+   $faq = [
+      ['q' => 'Co obejmuje instalacja sieci w biurze?', 'a' => 'Projekt sieci, okablowanie strukturalne, montaż i konfigurację routerów, przełączników i punktów dostępowych Wi-Fi oraz zabezpieczenie sieci przed nieautoryzowanym dostępem.'],
+      ['q' => 'Czy serwisujecie istniejące sieci?', 'a' => 'Tak — diagnozujemy i usuwamy awarie, aktualizujemy oprogramowanie urządzeń sieciowych i dbamy o ich konserwację.'],
+      ['q' => 'Gdzie instalujecie sieci?', 'a' => 'W firmach z Piaseczna, Warszawy i okolic Mazowsza. Zadzwoń: <a href="tel:+48501784882">501 784 882</a>.'],
+   ];
 ?>
          <!-- PAGE HEADER -->
 
@@ -46,6 +51,7 @@
                </div>
             </section>
 
+<?php include( __DIR__ . '/../part/faq.php' ); ?>
             </main>
 
             <!-- PAGE FOOTER -->

@@ -1,5 +1,6 @@
 <?php 
     $title      = 'Instalacja pakietu sun-java6 jak na Ubuntu lucid';
+    $description = 'Jeśli chcesz zainstalować pakiet Sun Java 6 na Ubuntu Lucid, możesz postępować zgodnie z poniższymi krokami:';
     $category   = 'Kategoria';
     $autor      = 'Qamitech';
     $date       = '12 luty 2022';

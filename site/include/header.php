@@ -1,14 +1,26 @@
 <?php
    require_once ( dirname ( __FILE__ ) . '/functions.php' );
+   require_once ( dirname ( __FILE__ ) . '/seo.php' );
 
-   $metaTitle = trim((string)($title ?? 'Qamitech'));
-   $metaFullTitle = $metaTitle !== '' ? $metaTitle . ' - Qamitech Creative Solution' : 'Qamitech Creative Solution';
-   $metaDescription = trim((string)($description ?? 'Obsluga informatyczna firm, outsourcing IT, serwis komputerowy i wsparcie techniczne dla biznesu.'));
-   $metaScheme = (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-   $metaHost = $_SERVER['HTTP_HOST'] ?? parse_url(ABS_URL, PHP_URL_HOST);
-   $metaPath = strtok($_SERVER['REQUEST_URI'] ?? '/', '?') ?: '/';
-   $metaUrl = $metaScheme . '://' . $metaHost . $metaPath;
-   $metaImage = $ogImage ?? (ABS_URL . 'assets/img/opengraph.png');
+   $metaTitle = trim((string)($title ?? ''));
+   $metaFullTitle = seo_full_title($metaTitle);
+   $metaServices = seo_services();
+   $metaShortTitle = trim((string)($breadcrumb ?? ''))
+      ?: (isset($metaServices[seo_path()]) ? $metaServices[seo_path()][0] : '')
+      ?: (seo_short_title($metaTitle) ?: SEO_BRAND);
+   $metaDescription = trim((string)($description ?? 'Obsługa informatyczna firm, outsourcing IT, serwis komputerowy, strony www, Google Ads i SEO w Piasecznie, Warszawie i okolicach.'));
+   $metaUrl = seo_canonical();
+   $metaImage = SEO_SITE_URL . 'assets/img/opengraph.png';
+   $metaRobots = trim((string)($robots ?? '')) ?: 'index, follow, max-image-preview:large, max-snippet:-1';
+   $metaDateIso = isset($date) ? seo_parse_pl_date((string)$date) : null;
+   $metaIsArticle = $metaDateIso !== null && strpos(seo_path(), 'blog/') === 0;
+   if ($metaIsArticle && ! empty($image)) {
+      $metaImage = SEO_SITE_URL . 'assets/img/blog/' . $image;
+   }
+   if (isset($ogImage)) {
+      // własny obrazek podstrony (np. zrzut realizacji) — zawsze pod adresem www.qamitech.pl
+      $metaImage = SEO_SITE_URL . ltrim(str_replace(ABS_URL, '', $ogImage), '/');
+   }
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -21,9 +33,14 @@
    <meta content="telephone=no" name="format-detection" />
    <meta name="HandheldFriendly" content="true" />
    <meta name="description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>" />
+   <meta name="robots" content="<?php echo htmlspecialchars($metaRobots, ENT_QUOTES, 'UTF-8'); ?>" />
+   <link rel="canonical" href="<?php echo htmlspecialchars($metaUrl, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta property="og:locale" content="pl_PL" />
-   <meta property="og:type" content="website" />
-   <meta property="og:site_name" content="Qamitech Creative Solution" />
+   <meta property="og:type" content="<?php echo $metaIsArticle ? 'article' : 'website'; ?>" />
+<?php if ($metaIsArticle) : ?>
+   <meta property="article:published_time" content="<?php echo $metaDateIso; ?>" />
+<?php endif; ?>
+   <meta property="og:site_name" content="Qamitech" />
    <meta property="og:title" content="<?php echo htmlspecialchars($metaFullTitle, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta property="og:description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta property="og:url" content="<?php echo htmlspecialchars($metaUrl, ENT_QUOTES, 'UTF-8'); ?>" />
@@ -43,7 +60,7 @@
    <!-- Stylesheet: *.min.css budowane z vendor.css / main.css (tools/css, npm run build) -->
    <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/vendor.min.css?v=20261018" />
    <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/main.min.css?v=20261018" />
-   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css?v=20261022" />
+   <link rel="stylesheet" type="text/css" href="<?php home_url(); ?>assets/css/custom.css?v=20261026" />
    <!-- Favicons & App Icons -->
    <link rel="apple-touch-icon" sizes="57x57" href="<?php home_url(); ?>assets/img/favicons/apple-icon-57x57.png" />
    <link rel="apple-touch-icon" sizes="60x60" href="<?php home_url(); ?>assets/img/favicons/apple-icon-60x60.png" />
@@ -94,55 +111,16 @@
    </script>
 <meta name="google-site-verification" content="DmcN6mcOFtzMsCwKj2yVxW5XT3DhlzSySBLXVZG7onU" />
 
-   <!-- LocalBusiness Schema JSON-LD -->
-   <script type="application/ld+json">
-   {
-     "@context": "https://schema.org",
-     "@type": "LocalBusiness",
-     "name": "Qamitech Creative Solution",
-     "url": "https://qamitech.pl",
-     "logo": "https://qamitech.pl/assets/img/logo/logo-qamitech.png",
-     "image": "https://qamitech.pl/assets/img/logo/logo-qamitech.png",
-     "description": "Tworzenie stron internetowych, obsługa IT firm, kampanie Google Ads, outsourcing IT i pozycjonowanie SEO w Piasecznie, Warszawie i okolicach.",
-     "telephone": "+48501784882",
-     "email": "kontakt@qamitech.pl",
-     "address": {
-       "@type": "PostalAddress",
-       "streetAddress": "ul. Cicha 3",
-       "addressLocality": "Stara Iwiczna",
-       "postalCode": "05-500",
-       "addressRegion": "Mazowieckie",
-       "addressCountry": "PL"
-     },
-     "geo": {
-       "@type": "GeoCoordinates",
-       "latitude": "52.0408",
-       "longitude": "20.9742"
-     },
-     "areaServed": [
-       "Piaseczno","Warszawa","Konstancin-Jeziorna","Mysiadło","Lesznowola",
-       "Tarczyn","Grójec","Pruszków","Grodzisk Mazowiecki","Góra Kalwaria",
-       "Legionowo","Wyszków","Otwock","Siedlce"
-     ],
-     "serviceType": [
-       "Tworzenie stron internetowych",
-       "Obsługa informatyczna firm",
-       "Kampanie Google Ads",
-       "Outsourcing IT",
-       "Pozycjonowanie SEO",
-       "Serwis komputerowy",
-       "Sieci LAN WLAN",
-       "Szkolenia IT"
-     ],
-     "openingHoursSpecification": {
-       "@type": "OpeningHoursSpecification",
-       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-       "opens": "09:00",
-       "closes": "17:00"
-     },
-     "sameAs": []
-   }
-   </script>
+   <!-- Dane strukturalne (schema.org): firma, strona, okruszki, usługa / wpis / FAQ -->
+   <?php seo_jsonld([
+      'full_title'  => $metaFullTitle,
+      'short_title' => $metaShortTitle,
+      'description' => $metaDescription,
+      'faq'         => $faq ?? [],
+      'date_iso'    => $metaIsArticle ? $metaDateIso : null,
+      'image'       => $image ?? '',
+      'case'        => $seoCase ?? null,
+   ]); ?>
 </head>
 
 <body>
@@ -170,7 +148,7 @@
                         <picture>
                            <source srcset="<?php home_url(); ?>assets/img/logo/logo-qamitech-440.webp" type="image/webp" />
                            <img class="logo__img-primary" src="<?php home_url(); ?>assets/img/logo/logo-qamitech-440.png"
-                              width="220" height="63" fetchpriority="high" alt="Qamitech" />
+                              width="220" height="63" fetchpriority="high" alt="Qamitech – obsługa IT i marketing dla firm" />
                         </picture>
                         <picture>
                            <source srcset="<?php home_url(); ?>assets/img/logo/logo-qamitech-light-440.webp" type="image/webp" />
@@ -220,7 +198,7 @@
                       </ul>
                     </li>
                      <li class="nav-border <?php if($page=='jak-dzialamy'){echo 'current-menu-ancestor';} ?>">
-                        <a href="<?php home_url(); ?>index.php/#how-we-work">Jak działamy?</a>
+                        <a href="<?php home_url(); ?>index.php#how-we-work">Jak działamy?</a>
                      </li>
                      <li class="nav-border <?php if($page=='outsourcing'){echo 'current-menu-ancestor';} ?>">
                         <a href="<?php home_url(); ?>outsourcing.php">Outsourcing IT</a>

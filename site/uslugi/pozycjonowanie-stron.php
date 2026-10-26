@@ -1,7 +1,13 @@
          
 <?php 
-   $title = 'Pozycjonowanie SEO, AEO, GEO Piaseczno, Warszawa | Qamitech';
+   $title = 'Pozycjonowanie stron Piaseczno, Warszawa – SEO, AEO i GEO | Qamitech';
    $description = 'Pozycjonowanie stron w Google dla firm z Piaseczna i Warszawy. SEO, AEO (AI Overview), GEO - bądź widoczny w wynikach tradycyjnych i AI. Sprawdź ofertę!';
+   $faq = [
+      ['q' => 'Czym różni się SEO, AEO i GEO?', 'a' => 'SEO to pozycjonowanie strony w klasycznych wynikach Google. AEO (Answer Engine Optimization) to przygotowanie treści tak, by Google cytował je w odpowiedziach AI Overview. GEO (Generative Engine Optimization) zwiększa szansę, że Twoją firmę polecą ChatGPT, Gemini i inne modele językowe. W praktyce wszystkie trzy opierają się na tych samych fundamentach: szybkiej stronie, jasnych odpowiedziach, danych strukturalnych i wiarygodności firmy.'],
+      ['q' => 'Kiedy widać efekty pozycjonowania?', 'a' => 'Pierwsze efekty SEO widać zwykle po 2–3 miesiącach. Pozycjonowanie lokalne (np. „serwis komputerowy Piaseczno”) przynosi wyniki szybciej niż frazy ogólnopolskie. Postępy regularnie raportujemy.'],
+      ['q' => 'Co obejmuje pozycjonowanie lokalne?', 'a' => 'Audyt SEO, optymalizację on-page (tytuły, opisy, nagłówki, linkowanie), treści i podstrony lokalne, link building z polskich portali branżowych oraz optymalizację wizytówki Google Business Profile.'],
+      ['q' => 'Czy audyt SEO jest płatny?', 'a' => 'Nie — wstępny audyt SEO jest bezpłatny. Zadzwoń: <a href="tel:+48501784882">501 784 882</a> lub napisz: <a href="mailto:kontakt@qamitech.pl">kontakt@qamitech.pl</a>.'],
+   ];
 ?>
          <!-- PAGE HEADER -->
 
@@ -24,7 +30,7 @@
 
                         <h2>Pozycjonowanie SEO Piaseczno i Warszawa</h2>
                         <p>
-                        Specjalizujemy się w <strong>lokalnym pozycjonowaniu SEO</strong> dla firm działających w Piasecznie, Warszawie i okolicach. Pomagamy lokalnym biznesom pojawiać się na pierwszej stronie Google dla fraz takich jak "usługi IT Piaseczno", "tworzenie stron Warszawa" czy "serwis komputerowy okolice Piaseczna". Wiemy, jak wygrać z konkurencją w lokalnych wynikach.
+                        Specjalizujemy się w <strong>lokalnym pozycjonowaniu SEO</strong> dla firm działających w Piasecznie, Warszawie i okolicach. Pomagamy lokalnym biznesom pojawiać się na pierwszej stronie Google dla fraz, którymi klienci szukają usług w okolicy — np. „fryzjer Piaseczno”, „biuro rachunkowe Warszawa Ursynów” czy „mechanik Konstancin”. Strony internetowe dla takich firm tworzymy w ramach usługi <a href="tworzenie-stron-www.php">tworzenie stron internetowych</a>. Wiemy, jak wygrać z konkurencją w lokalnych wynikach.
                         </p>
 
                         <h2>Co obejmuje nasza usługa pozycjonowania?</h2>
@@ -55,6 +61,7 @@
                </div>
             </section>
 
+<?php include( __DIR__ . '/../part/faq.php' ); ?>
             </main>
 
             <!-- PAGE FOOTER -->
