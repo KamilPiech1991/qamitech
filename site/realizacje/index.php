@@ -1,7 +1,7 @@
 <?php 
    $page  = 'realizacje';
    $title = 'Realizacje – strony internetowe i sklepy wykonane przez Qamitech';
-   $description = 'Portfolio Qamitech: strony firmowe i sklepy internetowe, m.in. Eurodomy, Marmostyl, Pure Rehab, Rancilio Ekspresy, Veles Lighting, Sahra Art.';
+   $description = 'Portfolio Qamitech: strony firmowe i sklepy internetowe, m.in. Simed, Eurodomy, Marmostyl, Pure Rehab, Rancilio Ekspresy, Veles Lighting, Sahra Art.';
    ?>
 <!-- PAGE HEADER -->
 <?php require_once( '../include/header.php' ); ?>
@@ -47,6 +47,84 @@
       <div class="grid js-grid grid_fluid-2">
 
 
+
+         <!-- Simed -->
+         <div class="grid__item js-grid__item grid__item_fluid-2 grid__item_desktop-4 grid__item_tablet-6 grid__item_mobile-12 cat-site">
+            <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
+               <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
+                  href="simed.php"
+                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
+                  data-arts-cursor-label="Zobacz" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
+                  data-arts-cursor-background-color="var(--color-accent-1)">
+                  <div class="hover-zoom__inner">
+                     <div class="mask-reveal__layer mask-reveal__layer-1">
+                        <div class="mask-reveal__layer mask-reveal__layer-2">
+                           <div class="js-arts-parallax__scrub w-100 h-100">
+                              <div class="lazy-wrapper">
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                    data-src="../assets/img/realizacje/simed.jpg"
+                                    width="430" height="300" alt="Simed – strona producenta sprzętu medycznego" /></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </a>
+               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
+                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
+                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+                     <ul class="post-meta post-meta_mini post-meta_mini-small">
+                        <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
+                        <li><a href="#">Qamitech</a></li>
+                     </ul>
+                  </div>
+                  <a class="d-inline-block js-arts-cursor-no-highlight" href="simed.php">
+                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
+                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Simed</h3>
+                  </a>
+               </div>
+            </div>
+         </div>
+
+         <!-- Bogdan Grzeszczyk -->
+         <div class="grid__item js-grid__item grid__item_fluid-2 grid__item_desktop-4 grid__item_tablet-6 grid__item_mobile-12 cat-site">
+            <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
+               <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
+                  href="bogdan-grzeszczyk.php"
+                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
+                  data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
+                  data-arts-cursor-label="Zobacz" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
+                  data-arts-cursor-background-color="var(--color-accent-1)">
+                  <div class="hover-zoom__inner">
+                     <div class="mask-reveal__layer mask-reveal__layer-1">
+                        <div class="mask-reveal__layer mask-reveal__layer-2">
+                           <div class="js-arts-parallax__scrub w-100 h-100">
+                              <div class="lazy-wrapper">
+                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
+                                    data-src="../assets/img/realizacje/bogdangrzeszczyk.jpg"
+                                    width="430" height="300" alt="Bogdan Grzeszczyk – strona fotografa i filmowca" /></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </a>
+               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
+                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
+                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
+                     <ul class="post-meta post-meta_mini post-meta_mini-small">
+                        <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
+                        <li><a href="#">Top Strony</a></li>
+                     </ul>
+                  </div>
+                  <a class="d-inline-block js-arts-cursor-no-highlight" href="bogdan-grzeszczyk.php">
+                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
+                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Bogdan Grzeszczyk</h3>
+                  </a>
+               </div>
+            </div>
+         </div>
 
          <!-- Eurodomy -->
          <div class="grid__item js-grid__item grid__item_fluid-2 grid__item_desktop-4 grid__item_tablet-6 grid__item_mobile-12 cat-site">
@@ -433,45 +511,6 @@
                   <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.psotelgracja.pl" target="_blank" rel="noopener nofollow">
                      <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
                         data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">PSO Tel Gracja</h3>
-                  </a>
-               </div>
-            </div>
-         </div>
-
-         <!-- Bogdan Grzeszczyk -->
-         <div class="grid__item js-grid__item grid__item_fluid-2 grid__item_desktop-4 grid__item_tablet-6 grid__item_mobile-12 cat-site">
-            <div class="figure-project" data-arts-hover-class="hover-zoom-underline">
-               <a class="figure-project__wrapper-img js-arts-cursor-no-highlight js-arts-parallax"
-                  href="https://www.bogdangrzeszczyk.pl" target="_blank" rel="noopener nofollow"
-                  data-arts-hover="trigger" data-arts-os-animation="true" data-arts-os-animation-name="animateMask"
-                  data-arts-parallax-factor-y="0.05" data-arts-cursor="true" data-arts-cursor-hide-native="true"
-                  data-arts-cursor-label="Podgl&#261;d" data-arts-cursor-scale="2" data-arts-cursor-color="#fff"
-                  data-arts-cursor-background-color="var(--color-accent-1)">
-                  <div class="hover-zoom__inner">
-                     <div class="mask-reveal__layer mask-reveal__layer-1">
-                        <div class="mask-reveal__layer mask-reveal__layer-2">
-                           <div class="js-arts-parallax__scrub w-100 h-100">
-                              <div class="lazy-wrapper">
-                                 <div class="lazy"><img class="hover-zoom__zoom" src="#"
-                                    data-src="../assets/img/realizacje/bogdangrzeszczyk.jpg"
-                                    width="430" height="300" alt="Bogdan Grzeszczyk" /></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </a>
-               <div class="figure-project__content pt-4" data-arts-os-animation="true" data-arts-os-animation-name="animateText">
-                  <div class="figure-project__wrapper-meta arts-split-text js-arts-split-text"
-                     data-arts-split-text="lines, words" data-arts-split-text-set="words" data-arts-split-text-overflow-wrap="lines">
-                     <ul class="post-meta post-meta_mini post-meta_mini-small">
-                        <li><a href="#">Strona www</a><div class="post-meta__divider"></div></li>
-                        <li><a href="#">Top Strony</a></li>
-                     </ul>
-                  </div>
-                  <a class="d-inline-block js-arts-cursor-no-highlight" href="https://www.bogdangrzeszczyk.pl" target="_blank" rel="noopener nofollow">
-                     <h3 class="h4 js-arts-split-text arts-split-text underline-hover__target"
-                        data-arts-split-text="lines" data-arts-split-text-set="lines" data-arts-split-text-overflow-wrap="lines">Bogdan Grzeszczyk</h3>
                   </a>
                </div>
             </div>

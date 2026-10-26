@@ -9,6 +9,8 @@
  *   $hero_badge  – etykieta na grafice
  *   $hero_cta    – [tekst, adres] głównego przycisku; false = bez przycisków
  *   $hero_visual – false = bez grafiki (np. regulamin)
+ *   $hero_image  – [adres, alt] zrzutu ekranu zamiast grafiki SVG (np. podstrony realizacji)
+ *   $hero_chip   – etykieta w górnym rogu grafiki (domyślnie lokalizacja)
  */
 $heroDefaults = [
     'uslugi/tworzenie-stron-www.php'  => ['laptop_mac', 'Projektujemy szybkie, responsywne strony firmowe i sklepy internetowe zoptymalizowane pod Google i AI — dla firm z Piaseczna, Warszawy i okolic.', 'Strony od 800 zł'],
@@ -33,6 +35,8 @@ $heroLead   = $hero_lead ?? $heroDefault[1];
 $heroBadge  = $hero_badge ?? $heroDefault[2];
 $heroCta    = $hero_cta ?? ['Bezpłatna wycena', ABS_URL . 'kontakt.php'];
 $heroVisual = $hero_visual ?? true;
+$heroImage  = $hero_image ?? null;
+$heroChip   = $hero_chip ?? 'Piaseczno · Warszawa';
 $heroCrumbs = seo_breadcrumbs($metaShortTitle ?? $heroTitle);
 $e = function ($text) {
     return htmlspecialchars((string)$text, ENT_QUOTES, 'UTF-8');
@@ -74,7 +78,10 @@ $e = function ($text) {
          </div>
 <?php if ($heroVisual) : ?>
          <div class="col-lg-5 page-hero__visual-col">
-            <div class="page-hero__visual" aria-hidden="true">
+            <div class="page-hero__visual<?php echo $heroImage ? ' page-hero__visual_shot' : ''; ?>"<?php echo $heroImage ? '' : ' aria-hidden="true"'; ?>>
+<?php if ($heroImage) : ?>
+               <img class="page-hero__shot" src="<?php echo $e($heroImage[0]); ?>" alt="<?php echo $e($heroImage[1]); ?>" width="1200" height="833" fetchpriority="high" />
+<?php else : ?>
                <svg class="page-hero__art" viewBox="0 0 480 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" focusable="false">
                   <defs>
                      <pattern id="heroDots" width="24" height="24" patternUnits="userSpaceOnUse">
@@ -97,11 +104,12 @@ $e = function ($text) {
                <div class="page-hero__tile">
                   <i class="material-icons"><?php echo $e($heroIcon); ?></i>
                </div>
-               <div class="page-hero__chip page-hero__chip_top">
-                  <i class="material-icons">location_on</i><span>Piaseczno · Warszawa</span>
+<?php endif; ?>
+               <div class="page-hero__chip page-hero__chip_top" aria-hidden="true">
+                  <i class="material-icons"><?php echo $heroImage ? 'language' : 'location_on'; ?></i><span><?php echo $e($heroChip); ?></span>
                </div>
 <?php if ($heroBadge !== '') : ?>
-               <div class="page-hero__chip page-hero__chip_bottom">
+               <div class="page-hero__chip page-hero__chip_bottom" aria-hidden="true">
                   <i class="material-icons">check_circle</i><span><?php echo $e($heroBadge); ?></span>
                </div>
 <?php endif; ?>

@@ -35,5 +35,7 @@
 
 - [FAQ — najczęstsze pytania](https://www.qamitech.pl/faq.php)
 - [Realizacje (portfolio stron i sklepów)](https://www.qamitech.pl/realizacje/index.php)
+  - [Simed – strona producenta sprzętu medycznego (WordPress, 3 języki)](https://www.qamitech.pl/realizacje/simed.php)
+  - [Bogdan Grzeszczyk – strona-portfolio fotografa i filmowca](https://www.qamitech.pl/realizacje/bogdan-grzeszczyk.php)
 - [Blog](https://www.qamitech.pl/blog/index.php)
 - [Kontakt](https://www.qamitech.pl/kontakt.php)

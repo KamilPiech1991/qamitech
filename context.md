@@ -218,7 +218,7 @@ Sekcja „Qamitech w liczbach”:
 | 100% | Profesjonalizmu i zaangażowania |
 
 Na stronie **nie ma**: opinii/recenzji klientów, logotypów klientów, case studies z wynikami, certyfikatów (tylko deklaracja), zespołu, roku założenia firmy.
-Największy dowód — **portfolio: 36 realizacji** (pkt 9).
+Największy dowód — **portfolio: 37 realizacji** (pkt 9).
 
 ---
 
@@ -228,6 +228,7 @@ Filtry: Wszystkie / Strona www / E-commerce / Inne. Każda pozycja ma etykietę 
 
 | Projekt | Typ | URL | Etykieta |
 |---|---|---|---|
+| Simed (producent sprzętu medycznego, Łomianki) — podstrona `/realizacje/simed.php` | Strona www | simed.net.pl | Qamitech |
 | Eurodomy | Strona www | eurodomy.pl | Qamitech |
 | e-tabak.pl | E-commerce | e-tabak.pl | Qamitech |
 | Obok Lasu | Strona www | obok-lasu.pl | Qamitech |
@@ -238,7 +239,7 @@ Filtry: Wszystkie / Strona www / E-commerce / Inne. Każda pozycja ma etykietę 
 | SMKA Portal Producenta | E-commerce | smka.pl | Top Strony |
 | Region Zdrowia (parki prozdrowotne) | Strona www | regionzdrowia.pl | Top Strony |
 | PSO Tel Gracja | Strona www | psotelgracja.pl | Top Strony |
-| Bogdan Grzeszczyk | Strona www | bogdangrzeszczyk.pl | Top Strony |
+| Bogdan Grzeszczyk (fotograf i filmowiec) — podstrona `/realizacje/bogdan-grzeszczyk.php` | Strona www | bogdangrzeszczyk.pl | Top Strony |
 | Ventoni | E-commerce | ventoni.pl | Top Strony |
 | Fastclean (czyszczenie wentylacji) | Strona www | fastclean.pl | Top Strony |
 | Cloud Insight | Strona www | cloudinsight.pl | Top Strony |
@@ -266,6 +267,8 @@ Filtry: Wszystkie / Strona www / E-commerce / Inne. Każda pozycja ma etykietę 
 | Studio Gracja | Strona www | studio-gracja.pl | Top Strony |
 
 Portfolio pokazuje tylko strony/sklepy — brak realizacji z IT, sieci, Google Ads czy SEO.
+
+Od października 2026 wybrane realizacje mają własne podstrony (opis klienta, fakty, zrzuty ekranu, elementy strony, CTA) — szablon `site/part/case-study.php`, dane w tablicy `$case` na stronie. Pozostałe karty nadal prowadzą bezpośrednio do stron klientów.
 
 ---
 
@@ -410,7 +413,7 @@ Najnowsze wpisy (2026) są w nowym stylu: lokalne frazy, ceny, checklisty, AI/AE
 Lista do wykorzystania przy poprawkach strony, SEO i treściach.
 
 ### Treść i wiarygodność
-1. **Sprzeczne liczby:** „128 zadowolonych klientów” i „17 firm, które zaufały”, przy 36 realizacjach w portfolio. Etykieta „Zadowolonych klientów” powtarza się dwa razy (128 i 99%).
+1. **Sprzeczne liczby:** „128 zadowolonych klientów” i „17 firm, które zaufały”, przy 37 realizacjach w portfolio. Etykieta „Zadowolonych klientów” powtarza się dwa razy (128 i 99%).
 2. **Sprzeczna dostępność:** serwis komputerowy i pomoc domowa — „do dyspozycji klientów przez całą dobę”; strona główna — „Obsługa klienta 5 dni w tygodniu”; kontakt — Pn–Pt 9–17.
 3. **Różne widełki cen stron:** „od kilkuset złotych” (usługa) i „od 800 zł” (blog).
 4. **Szkolenia:** „centrum szkoleniowe w Piasecznie i Warszawie”, a w kontakcie jest jedno biuro w Starej Iwicznej. Nazwa w menu („Szkolenia IT”) nie oddaje treści (AI i marketing).

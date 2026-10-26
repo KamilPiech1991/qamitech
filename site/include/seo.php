@@ -122,6 +122,8 @@ function seo_breadcrumbs(string $current): array
         $items[] = ['Oferta', SEO_SITE_URL . 'oferta.php'];
     } elseif (strpos($path, 'blog/') === 0 && $path !== 'blog/index.php') {
         $items[] = ['Blog', SEO_SITE_URL . 'blog/index.php'];
+    } elseif (strpos($path, 'realizacje/') === 0 && $path !== 'realizacje/index.php') {
+        $items[] = ['Realizacje', SEO_SITE_URL . 'realizacje/index.php'];
     }
     $items[] = [$current, seo_canonical()];
     return $items;
@@ -256,6 +258,24 @@ function seo_graph(array $page): array
             'author'           => ['@type' => 'Organization', 'name' => SEO_BRAND, 'url' => SEO_SITE_URL],
             'publisher'        => ['@id' => $orgId],
             'image'            => $page['image'] ? SEO_SITE_URL . 'assets/img/blog/' . $page['image'] : SEO_SITE_URL . 'assets/img/opengraph.png',
+        ];
+    }
+
+    if (! empty($page['case'])) {
+        $case = $page['case'];
+        $graph[] = [
+            '@type'            => 'CreativeWork',
+            '@id'              => $url . '#case',
+            'name'             => 'Strona internetowa ' . $case['client'],
+            'description'      => $page['description'],
+            'url'              => $case['url'],
+            'image'            => SEO_SITE_URL . $case['image'],
+            'genre'            => $case['type'],
+            'keywords'         => implode(', ', $case['tech']),
+            'inLanguage'       => 'pl-PL',
+            'creator'          => ['@id' => $orgId],
+            'about'            => ['@type' => 'Organization', 'name' => $case['client_legal'] ?? $case['client'], 'url' => $case['url']],
+            'mainEntityOfPage' => ['@id' => $url . '#webpage'],
         ];
     }
 

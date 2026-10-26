@@ -17,6 +17,10 @@
    if ($metaIsArticle && ! empty($image)) {
       $metaImage = SEO_SITE_URL . 'assets/img/blog/' . $image;
    }
+   $metaCase = $case ?? null;
+   if ($metaCase) {
+      $metaImage = SEO_SITE_URL . $metaCase['image'];
+   }
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -42,9 +46,15 @@
    <meta property="og:url" content="<?php echo htmlspecialchars($metaUrl, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta property="og:image" content="<?php echo htmlspecialchars($metaImage, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta property="og:image:secure_url" content="<?php echo htmlspecialchars($metaImage, ENT_QUOTES, 'UTF-8'); ?>" />
+<?php if ($metaCase) : ?>
+   <meta property="og:image:type" content="image/jpeg" />
+   <meta property="og:image:width" content="1200" />
+   <meta property="og:image:height" content="833" />
+<?php else : ?>
    <meta property="og:image:type" content="image/png" />
    <meta property="og:image:width" content="1436" />
    <meta property="og:image:height" content="823" />
+<?php endif; ?>
    <meta name="twitter:card" content="summary_large_image" />
    <meta name="twitter:title" content="<?php echo htmlspecialchars($metaFullTitle, ENT_QUOTES, 'UTF-8'); ?>" />
    <meta name="twitter:description" content="<?php echo htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>" />
@@ -115,6 +125,7 @@
       'faq'         => $faq ?? [],
       'date_iso'    => $metaIsArticle ? $metaDateIso : null,
       'image'       => $image ?? '',
+      'case'        => $metaCase,
    ]); ?>
 </head>
 
